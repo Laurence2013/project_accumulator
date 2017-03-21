@@ -2,7 +2,7 @@ from django.test import TestCase
 from accumulator.views import index
 from decimal import Decimal
 from accumulator.models import Game, Odd
-from accumulator.views import combinationsForTwoGames, getGameCombinations, getPerOutcome, combineComboListWithGameList, breakListIntoEqualChunks, getIdAndOutcome, getLengthOfCombo, getTwoCombinedGames, calculateOddsForTwoMatches, mergePerGameWithOdds
+from accumulator.views import *
 
 class MergingOfComboOddsCalculation(TestCase):
     def setUp(self):
