@@ -1,20 +1,17 @@
 from django.shortcuts import render
 from accumulator.models import Game, Odd
-# from django.views.generic import View, ListView
-from django.http import HttpResponse, Http404
+from django.views.generic import ListView
+# from django.http import HttpResponse, Http404
 
-# class MyView(View):
-#     def get(self, request, *arg, **kwargs):
-#         return HttpResponse('Hello World!')
-#
-# class IndexView(ListView):
-#     template_name = "accumulator/index.html"
-#     model = Game
+class IndexPageListView(ListView):
+    template_name = "accumulator/index.html"
+    model = Game
+    context_object_name = 'games'
 
-def index(request):
-    games = Game.objects.all()
-    context = {'game': games}
-    return render(request, 'accumulator/index.html', context)
+# def index(request):
+#     games = Game.objects.all()
+#     context = {'game': games}
+#     return render(request, 'accumulator/index.html', context)
 
 def combinationsForTwoGames(no_games):
     if no_games is 2:
