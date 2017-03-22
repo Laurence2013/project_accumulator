@@ -16,10 +16,10 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 # from accumulator.views import index
-from accumulator.views import IndexPageListView
+from accumulator.views import IndexPageGamesView
 
 urlpatterns = [
     # url(r'^accumulator/', include('accumulator.urls')),
-    url(r'^index/$', IndexPageListView.as_view(), name='view'),
+    url(r'^index/$', IndexPageGamesView.as_view(), name='view'),
     url(r'^admin/', admin.site.urls),
 ]

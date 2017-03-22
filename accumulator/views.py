@@ -2,16 +2,26 @@ from django.shortcuts import render
 from accumulator.models import Game, Odd
 from django.views.generic import ListView
 # from django.http import HttpResponse, Http404
-
-class IndexPageListView(ListView):
-    template_name = "accumulator/index.html"
+#
+class IndexPageGamesView(ListView):
     model = Game
+    template_name = "accumulator/index.html"
     context_object_name = 'games'
 
-# def index(request):
-#     games = Game.objects.all()
-#     context = {'game': games}
-#     return render(request, 'accumulator/index.html', context)
+    def get_odds(self):
+        odds = []
+        odd_games = (Odd.objects.values_list('id','home_odds','draw_odds','away_odds'))
+
+        for odd in odd_games:
+            odds.append(odd)
+
+        return odds
+
+    def get_context_data(self, **kwargs):
+        context = super(IndexPageGamesView, self).get_context_data(**kwargs)
+        # context['odds'] = Odd.objects.values_list('id','home_odds','draw_odds','away_odds')
+        context['odds'] = self.get_odds()
+        return context
 
 def combinationsForTwoGames(no_games):
     if no_games is 2:
