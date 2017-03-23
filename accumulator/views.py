@@ -9,18 +9,23 @@ class IndexPageGamesView(ListView):
     context_object_name = 'games'
 
     def get_odds(self):
-        odds = []
-        odd_games = (Odd.objects.values_list('id','home_odds','draw_odds','away_odds'))
+        odds = Odd.objects.values_list('id','home_odds','draw_odds','away_odds')
+        oddsList = []
+        for o in range(0,len(odds)):
+           for j in range(0,len(odds[0])):
+              if not isinstance(odds[o][j],int):
+                 oddsList.append(float(odds[o][j]))
+              else:
+                 oddsList.append(odds[o][j])
+        return oddsList
 
-        for odd in odd_games:
-            odds.append(odd)
-
-        return odds
+    def chunks(listOdds,oddslen):
+        for i in range(0, len(listOdds), oddslen):
+            yield listOdds[i:i+oddslen]
 
     def get_context_data(self, **kwargs):
         context = super(IndexPageGamesView, self).get_context_data(**kwargs)
-        # context['odds'] = Odd.objects.values_list('id','home_odds','draw_odds','away_odds')
-        context['odds'] = self.get_odds()
+        # context['odds'] = list(self.chunks(self.get_odds(),4))
         return context
 
 def combinationsForTwoGames(no_games):
