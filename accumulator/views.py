@@ -1,21 +1,18 @@
 from django.shortcuts import render
 from accumulator.models import Game, Odd
-from django.views.generic import ListView
+from django.views.generic import TemplateView
 
-class IndexPageGamesView(ListView):
-    model = Odd
+class IndexPageGamesView(TemplateView):
     template_name = "accumulator/index.html"
-    context_object_name = 'games'
+    games = Game.objects.values_list('id','games')
+    odds = Odd.objects.values_list('id','home_odds','draw_odds','away_odds')
 
     def get_games(self):
-        games = Game.objects.values_list('id','games')
-        odds = Odd.objects.values_list('id','home_odds','draw_odds','away_odds')
-
         odds_games = []
-        for g in range(0,len(games)):
-           for d in range(0,len(odds)):
-              if games[g][0] is odds[d][0]:
-                 odds_games.append(games[g] + odds[d])
+        for g in range(0,len(self.games)):
+           for d in range(0,len(self.odds)):
+              if self.games[g][0] is self.odds[d][0]:
+                 odds_games.append(self.games[g] + self.odds[d])
         return odds_games
 
     def get_context_data(self, **kwargs):
