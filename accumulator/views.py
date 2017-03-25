@@ -7,6 +7,10 @@ class IndexPageGamesView(ListView):
     template_name = "accumulator/index.html"
     context_object_name = 'games'
 
+    def get_games(self):
+        games = Odd.objects.all()
+        return games
+
     def get_odds(self):
         odds = Odd.objects.values_list('id','home_odds','draw_odds','away_odds')
         oddsList = []
