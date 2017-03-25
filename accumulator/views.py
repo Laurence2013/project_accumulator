@@ -1,10 +1,9 @@
 from django.shortcuts import render
 from accumulator.models import Game, Odd
 from django.views.generic import ListView
-# from django.http import HttpResponse, Http404
-#
+
 class IndexPageGamesView(ListView):
-    model = Game
+    model = Odd
     template_name = "accumulator/index.html"
     context_object_name = 'games'
 
@@ -12,20 +11,20 @@ class IndexPageGamesView(ListView):
         odds = Odd.objects.values_list('id','home_odds','draw_odds','away_odds')
         oddsList = []
         for o in range(0,len(odds)):
-           for j in range(0,len(odds[0])):
+           for j in range(0,len(odds[o])):
               if not isinstance(odds[o][j],int):
                  oddsList.append(float(odds[o][j]))
               else:
                  oddsList.append(odds[o][j])
         return oddsList
 
-    def chunks(listOdds,oddslen):
+    def chunks(self,listOdds,oddslen):
         for i in range(0, len(listOdds), oddslen):
             yield listOdds[i:i+oddslen]
 
     def get_context_data(self, **kwargs):
         context = super(IndexPageGamesView, self).get_context_data(**kwargs)
-        # context['odds'] = list(self.chunks(self.get_odds(),4))
+        context['odds'] = list(self.chunks(self.get_odds(),4))
         return context
 
 def combinationsForTwoGames(no_games):

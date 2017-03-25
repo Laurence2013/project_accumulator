@@ -1,5 +1,4 @@
 from django.test import TestCase
-from accumulator.views import index
 from decimal import Decimal
 from accumulator.models import *
 from accumulator.views import *
