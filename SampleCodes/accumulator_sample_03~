@@ -1,0 +1,29 @@
+newList = []
+count = 0
+while count <= len(combo):
+    for c in combo[count - 1]:
+        print(c)
+    count += 1
+
+
+A
+A
+H
+H
+H
+D
+H
+A
+D
+H
+D
+D
+D
+A
+A
+H
+A
+D
+A
+A
+

@@ -1,0 +1,34 @@
+def getTwoCombinedGames(matchList):
+    calculate = []
+    for m in range(0,len(matchList)):
+       for n in range(0, len(matchList[m])):
+          if isinstance(matchList[m][n], int) is True:
+             game_id = Odd.objects.get(pk = matchList[m][n])
+          else:
+             if matchList[m][n] is 'H':
+                calculate.append(game_id.home_odds)
+             if matchList[m][n] is 'D':
+                calculate.append(game_id.draw_odds)
+             if matchList[m][n] is 'A':
+                calculate.append(game_id.away_odds)
+    return calculate
+
+
+for c in range(0, len(oddsList)):
+   odds1 = oddsList[c][0]
+   odds2 = oddsList[c][1]
+   calc = 1 * (odds1 + 1) * (odds2 + 1) - 1
+   print(str(c) + ' - ' + calc)
+      
+
+
+count = 0
+for c in range(0, len(oddsList)):
+   while count <= len(oddsList[c]):
+      odds1 = oddsList[c][count]
+      odds2 = oddsList[c][count]
+      count += 1
+      print(str(odds1) + ' ' + str(odds2))
+
+calc = 1 * (odds1 + 1) * (odds2 + 1) - 1
+print(calc)

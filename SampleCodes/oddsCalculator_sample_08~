@@ -1,0 +1,54 @@
+for m in range(0,len(getList)):
+   print(getList[m])
+   for n in range(0, len(getList[m])):
+      if isinstance(getList[m][n], int) is True:
+         game_id = Odd.objects.get(pk = getList[m][n])
+      else:
+         if getList[m][n] is 'H':
+            print(game_id.id, game_id.home_odds)
+         if getList[m][n] is 'D':
+            print(game_id.id, game_id.draw_odds)
+         if getList[m][n] is 'A':
+            print(game_id.id, game_id.away_odds)
+
+count = 0
+for m in range(0,len(getList)):
+   print(getList[m])
+   for n in range(0, len(getList[m])):
+      if isinstance(getList[m][n], int) is True:
+         game_id = Odd.objects.get(pk = getList[m][n])
+      else:
+         if getList[m][n] is 'H':
+            outcome = game_id.home_odds
+         if getList[m][n] is 'D':
+            outcome = game_id.draw_odds
+         if getList[m][n] is 'A':
+            outcome = game_id.away_odds
+         if count < 2:
+            print(count)
+            count += 1
+         else:
+            count12 = 0
+	    outcome = None
+
+
+
+count = 0
+calculate = []
+for m in range(0,len(getList)):
+   print(getList[m])
+   for n in range(0, len(getList[m])):
+      if isinstance(getList[m][n], int) is True:
+         game_id = Odd.objects.get(pk = getList[m][n])
+      else:
+         if count < 2:
+            if getList[m][n] is 'H':
+               calculate.append(game_id.home_odds)
+            if getList[m][n] is 'D':
+               calculate.append(game_id.draw_odds)
+            if getList[m][n] is 'A':
+               calculate.append(game_id.away_odds)
+            count += 1
+         else:
+            calculate = None
+            count = 0

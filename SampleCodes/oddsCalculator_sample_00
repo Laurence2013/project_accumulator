@@ -1,0 +1,66 @@
+count4 = 0
+while count4 <= len(mergeList):
+    print(mergeList[count4][1])
+    count4 += 1
+ 
+1
+1
+2
+2
+3
+3
+4
+4
+5
+5
+6
+6
+7
+7
+8
+8
+9
+9
+
+
+count4 = 0
+tempNum = ''
+while count4 <= len(mergeList):
+    if tempNum is int():
+        print('There is not interger values')
+    else:
+        print('There is integer values')
+    count4 += 1
+
+
+
+count4 = 0
+tempNum = None
+while count4 <= len(mergeList):
+    if tempNum is None:
+        tempNum = mergeList[count4 - 1][1]
+    else:
+        print('There is interger values')
+    count4 += 1
+
+
+
+count4 = 0
+tempNum = None
+
+if tempNum is None:
+        tempNum = mergeList[0][1]
+    else:
+        print('There is interger values')
+
+
+
+
+
+
+
+
+
+
+
+

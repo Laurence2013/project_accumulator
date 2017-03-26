@@ -1,0 +1,21 @@
+for m in range(0,len(getList)):
+   print(getList[m])
+   for n in range(0, len(getList[m])):
+      if isinstance(getList[m][n], int) is True:
+         game_id = Odd.objects.get(pk = getList[m][n])
+	    print(game_id.id)
+      else:
+         print(game_id)
+         print(False)
+	    game_id = None
+ 
+
+for m in range(0,len(getList)):
+   print(getList[m])
+   for n in range(0, len(getList[m])):
+      if isinstance(getList[m][n], int) is True:
+         game_id = Odd.objects.get(pk = getList[m][n])
+      else:
+         
+         game_id = None
+

@@ -1,0 +1,50 @@
+count1 = 1
+while count1 <= len(newList):
+    print(newList[count1 - 1])
+    count1 += 1
+
+newList[1] = [1, 'H']
+newList[2] = [2, 'H']
+newList[3] = [2, 'D']
+newList[4] = [3, 'H']
+newList[5] = [3, 'A']
+newList[6] = [4, 'D']
+newList[7] = [4, 'H']
+newList[8] = [5, 'D']
+newList[9] = [5, 'D']
+newList[10] = [6, 'D']
+newList[11] = [6, 'A']
+newList[12] = [7, 'A']
+newList[13] = [7, 'H']
+newList[14] = [8, 'A']
+newList[15] = [8, 'D']
+newList[17] = [9, 'A']
+newList[18] = [9, 'A']
+
+
+count1 = 1
+while count1 <= len(newList):
+    print(count1, ' = ', newList[count1 - 1])
+    count1 += 1
+
+ 
+1  =  [1, 'H']
+2  =  [1, 'H']
+3  =  [2, 'H']
+4  =  [2, 'D']
+5  =  [3, 'H']
+6  =  [3, 'A']
+7  =  [4, 'D']
+8  =  [4, 'H']
+9  =  [5, 'D']
+10  =  [5, 'D']
+11  =  [6, 'D']
+12  =  [6, 'A']
+13  =  [7, 'A']
+14  =  [7, 'H']
+15  =  [8, 'A']
+16  =  [8, 'D']
+17  =  [9, 'A']
+18  =  [9, 'A']
+
+

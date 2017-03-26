@@ -1,0 +1,32 @@
+newList = []
+count1 = 1
+while count1 <= len(combo):
+    for c in combo[count1 - 1]:
+        newList.append([count1,c])
+        for g in game:
+            newList[count1 - 1].insert(0,g)
+	count1 += 1
+
+
+
+>>> for n in newList:
+...     print(n)
+... 
+[2, 1, 2, 1, 1, 'H']
+[2, 1, 2, 1, 1, 'H']
+[2, 1, 2, 1, 2, 'H']
+[2, 1, 2, 1, 2, 'D']
+[2, 1, 2, 1, 3, 'H']
+[2, 1, 2, 1, 3, 'A']
+[2, 1, 2, 1, 4, 'D']
+[2, 1, 2, 1, 4, 'H']
+[2, 1, 2, 1, 5, 'D']
+[5, 'D']
+[6, 'D']
+[6, 'A']
+[7, 'A']
+[7, 'H']
+[8, 'A']
+[8, 'D']
+[9, 'A']
+[9, 'A']

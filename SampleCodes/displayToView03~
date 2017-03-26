@@ -1,0 +1,137 @@
+odd_id = Odd.objects.value_list('id')
+odd_id = <QuerySet [(1,), (2,), (3,)]>
+
+>>> odd_id[0][0]
+1
+>>> odd_id[1][0]
+2
+>>> odd_id[2][0]
+3
+>>> odd_id[3][0]
+
+
+>>> for i in range(0,len(odd_id)):
+...    print(odd_id[i][0])
+... 
+1
+2
+3
+
+odd = []
+for i in range(0, len(odd_id)):
+   odd.append(Odd.objects.values_list('id','home_odds','draw_odds','away_odds').get(id=odd_id[i][0]))
+
+>>> odd
+[
+(1, Decimal('0.91'), Decimal('2.75'), Decimal('3.00')), 
+(2, Decimal('1.30'), Decimal('2.00'), Decimal('2.20')), 
+(3, Decimal('1.05'), Decimal('2.10'), Decimal('2.75'))
+]
+
+
+>>> game = Odd.objects.get(pk=1)
+>>> game
+<Odd: Fiorentina vs Torino>
+
+
+games = []
+for i in range(0, len(odd_id)):
+   games.append(Odd.objects.get(pk=odd_id[i][0]))
+
+
+
+
+
+games = Game.objects.values_list('id','games')
+odds = Odd.objects.values_list('id','home_odds','draw_odds','away_odds')
+
+
+
+>>> for g in games:
+...    print(g[0])
+... 
+1
+2
+3
+>>> for d in odds:
+...    print(d[0])
+... 
+1
+2
+3
+
+
+for g in games:
+   for d in odds:
+      if g[0] is d[0]:
+         print(True)
+      else:
+         print(False)
+
+
+>>> for g in games:
+...    for d in odds:
+...       if g[0] is d[0]:
+...          print(True)
+...       else:
+...          print(False)
+... 
+True
+False
+False
+False
+True
+False
+False
+False
+True
+
+
+for d in odds:
+   for g in games:
+      if g[0] is d[0]:
+         print(True)
+      else:
+         print(False)
+
+
+>>> for d in odds:
+...    for g in games:
+...       if g[0] is d[0]:
+...          print(True)
+...       else:
+...          print(False)
+... 
+True
+False
+False
+False
+True
+False
+False
+False
+True
+
+
+ 
+
+
+odds_games = []
+for g in range(0,len(games)):
+   for d in range(0,len(odds)):
+      if games[g][0] is odds[d][0]:
+         odds_games.append(games[g] + odds[d])
+
+
+
+>>> odds_games
+[(1, 'Fiorentina vs Torino', 1, Decimal('0.91'), Decimal('2.75'), Decimal('3.00')), (2, 'Arouca vs Belenenses', 2, Decimal('1.30'), Decimal('2.00'), Decimal('2.20')), (3, 'St Pauli vs Karlsruhe', 3, Decimal('1.05'), Decimal('2.10'), Decimal('2.75'))]
+
+>>> for g in odds_games:
+...    print(g)
+... 
+(1, 'Fiorentina vs Torino', 1, Decimal('0.91'), Decimal('2.75'), Decimal('3.00'))
+(2, 'Arouca vs Belenenses', 2, Decimal('1.30'), Decimal('2.00'), Decimal('2.20'))
+(3, 'St Pauli vs Karlsruhe', 3, Decimal('1.05'), Decimal('2.10'), Decimal('2.75'))
+
+

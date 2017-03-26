@@ -1,0 +1,142 @@
+>>> def chunks(mergeList, merge_len):
+...     for i in range(0, len(mergeList), merge_len):
+...         yield mergeList[i: i + merge_len]
+
+>>> list(chunks(mergeList,2))
+[[(1, 1, 'H'), (2, 1, 'H')], [(1, 2, 'H'), (2, 2, 'D')], [(1, 3, 'H'), (2, 3, 'A')], [(1, 4, 'D'), (2, 4, 'H')], [(1, 5, 'D'), (2, 5, 'D')], [(1, 6, 'D'), (2, 6, 'A')], [(1, 7, 'A'), (2, 7, 'H')], [(1, 8, 'A'), (2, 8, 'D')], [(1, 9, 'A'), (2, 9, 'A')]]
+>>> 
+
+>>> mergeTwoMatch = list(chunks(mergeList,2))
+>>> 
+>>> for m in mergeTwoMatch:
+...     print(m)
+... 
+[(1, 1, 'H'), (2, 1, 'H')]
+[(1, 2, 'H'), (2, 2, 'D')]
+[(1, 3, 'H'), (2, 3, 'A')]
+[(1, 4, 'D'), (2, 4, 'H')]
+[(1, 5, 'D'), (2, 5, 'D')]
+[(1, 6, 'D'), (2, 6, 'A')]
+[(1, 7, 'A'), (2, 7, 'H')]
+[(1, 8, 'A'), (2, 8, 'D')]
+[(1, 9, 'A'), (2, 9, 'A')]
+
+
+>>> mergeTwoMatch[0][0]
+(1, 1, 'H')
+>>> mergeTwoMatch[0][0][0]
+1
+>>> mergeTwoMatch[0][0][2]
+'H'
+>>> mergeTwoMatch[0][1][0]
+2
+>>> mergeTwoMatch[0][1][2]
+'H'
+>>> 
+>>> 
+>>> mergeTwoMatch[1][0][0]
+1
+>>> mergeTwoMatch[1][0][2]
+'H'
+>>> mergeTwoMatch[1][1][0]
+2
+>>> mergeTwoMatch[1][1][2]
+'D'
+>>> mergeTwoMatch[2][0][0]
+1
+>>> mergeTwoMatch[2][0][2]
+'H'
+>>> mergeTwoMatch[2][1][0]
+2
+>>> mergeTwoMatch[2][1][2]
+'A'
+
+
+
+
+getOdds = []
+for k in range(0,1):
+    for i in range(0,2):
+        for j in range(0,3,2):
+            getOdds.append(mergeTwoMatch[k][i][j])
+return getOdds
+
+
+>>> getOdds
+[1, 'H', 2, 'H']
+
+
+getOdds = []
+for i in range(0,2):
+    for j in range(0,3,2):
+        getOdds.append(mergeTwoMatch[8][i][j])
+
+
+
+
+def getIdAndOutcome(matchList, matchLen):
+    getOdds = []
+    for i in range(0,2):
+        for j in range(0,3,2):
+            getOdds.append(matchList[matchLen][i][j])
+    return getOdds
+
+for m in range(0,1):
+    print(getIdAndOutcome(mergeTwoMatch,m)
+
+def getLengthOfCombo(matchList,matchLen):
+    getOdds = []
+    for m in range(0,matchLen):
+        getOdds.append(getIdAndOutcome(matchList,m))
+    return getOdds
+
+
+print(getLengthOfCombo(mergeTwoMatch,9))
+[[1, 'H', 2, 'H'], [1, 'H', 2, 'D'], [1, 'H', 2, 'A'], [1, 'D', 2, 'H'], [1, 'D', 2, 'D'], [1, 'D', 2, 'A'], [1, 'A', 2, 'H'], [1, 'A', 2, 'D'], [1, 'A', 2, 'A']]
+
+
+>>> for m in getLengthOfCombo:
+...    print(m)
+... 
+[1, 'H', 2, 'H']
+[1, 'H', 2, 'D']
+[1, 'H', 2, 'A']
+[1, 'D', 2, 'H']
+[1, 'D', 2, 'D']
+[1, 'D', 2, 'A']
+[1, 'A', 2, 'H']
+[1, 'A', 2, 'D']
+[1, 'A', 2, 'A']
+
+
+
+
+
+
+for m in getList:
+   odd_1 = Odd.objects.get(pk = m[0])
+   odd_2 = Odd.objects.get(pk = m[2])
+   if m[1] is 'H':
+      print(str(odd_1.home_odds) + ' - ' + str(odd_2.home_odds))
+   if m[1] is 'D':
+      print(str(odd_1.draw_odds) + ' - ' + str(odd_2.draw_odds))
+   if m[1] is 'A':
+      print(str(odd_1.away_odds) + ' - ' + str(odd_2.away_odds))
+
+
+0.91 - 1.30
+0.91 - 1.30
+0.91 - 1.30
+2.75 - 2.00
+2.75 - 2.00
+2.75 - 2.00
+3.00 - 2.20
+3.00 - 2.20
+3.00 - 2.20
+
+
+
+
+
+
+

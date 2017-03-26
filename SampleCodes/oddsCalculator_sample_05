@@ -1,0 +1,55 @@
+for m in range(0,len(getList)):
+   print(getList[m])
+   for n in range(0, len(getList[m])):
+      if isinstance(getList[m][n], int) is True:
+         id = Odd.objects.get(pk = getList[m][n])
+         print(id)
+      else:
+         print(False)
+ 
+[1, 'H', 2, 'H']
+Fiorentina vs Torino
+False
+Arouca vs Belenenses
+False
+[1, 'H', 2, 'D']
+Fiorentina vs Torino
+False
+Arouca vs Belenenses
+False
+[1, 'H', 2, 'A']
+Fiorentina vs Torino
+False
+Arouca vs Belenenses
+False
+[1, 'D', 2, 'H']
+Fiorentina vs Torino
+False
+Arouca vs Belenenses
+False
+[1, 'D', 2, 'D']
+Fiorentina vs Torino
+False
+Arouca vs Belenenses
+False
+[1, 'D', 2, 'A']
+Fiorentina vs Torino
+False
+Arouca vs Belenenses
+False
+[1, 'A', 2, 'H']
+Fiorentina vs Torino
+False
+Arouca vs Belenenses
+False
+[1, 'A', 2, 'D']
+Fiorentina vs Torino
+False
+Arouca vs Belenenses
+False
+[1, 'A', 2, 'A']
+Fiorentina vs Torino
+False
+Arouca vs Belenenses
+False
+

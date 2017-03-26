@@ -1,0 +1,51 @@
+newList = []
+count = 1
+no_combo = len(combo)
+while count <= no_combo:
+     for x in combo[count - 1]:
+         newList.append([count, x])
+     count += 1
+
+
+
+count = 1
+for x in range(len(combo)):
+	while count <= len(game):
+     	print(game[count - 1])
+     count += 1
+
+
+newList = []
+count = 1
+no_combo = len(combo)
+while count <= no_combo && count <= len(game):
+     for x in combo[count - 1]:
+         newList.append((game[count - 1], count, x))
+     count += 1
+
+
+newList[0].insert(0,1)
+newList[1].insert(0,2)
+newList[2].insert(0,1)
+newList[3].insert(0,2)
+
+
+count2 = 0
+while count2 <= int(match):
+    for g in game:
+        print(count2, g)
+    count2 += 1
+
+
+count1 = 0
+while count1 <= int(newList):
+    for g in game:
+        newList[count1].insert(0,g)
+    count1 += 1
+
+
+count1 = 0
+while count1 <= len(newList):
+    count1 += 1	
+    print(newList[count1 - 1])
+

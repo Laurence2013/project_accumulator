@@ -1,0 +1,18 @@
+odds_games = [(1, 'Fiorentina vs Torino', 1, Decimal('0.91'), Decimal('2.75'), Decimal('3.00')), (2, 'Arouca vs Belenenses', 2, Decimal('1.30'), Decimal('2.00'), Decimal('2.20')), (3, 'St Pauli vs Karlsruhe', 3, Decimal('1.05'), Decimal('2.10'), Decimal('2.75'))]
+
+
+
+final_games = []
+for g in odds_games:
+   for h in g:
+      if not isinstance(h, int):
+         final_games.append(h)
+          
+['Fiorentina vs Torino', Decimal('0.91'), Decimal('2.75'), Decimal('3.00'), 'Arouca vs Belenenses', Decimal('1.30'), Decimal('2.00'), Decimal('2.20'), 'St Pauli vs Karlsruhe', Decimal('1.05'), Decimal('2.10'), Decimal('2.75')]
+
+
+final_combo = []
+for n, i in enumerate(final_games):
+   if isinstance(i, Decimal):
+      final_games[n] = float(i)
+

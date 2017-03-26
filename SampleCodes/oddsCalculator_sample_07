@@ -1,0 +1,107 @@
+for m in range(0,len(getList)):
+   print(getList[m])
+   for n in range(0, len(getList[m])):
+      if isinstance(getList[m][n], int) is True:
+         game_id = Odd.objects.get(pk = getList[m][n])
+	    print(game_id.id)
+      else:
+         if getList[m][n] is 'H':
+            print(game_id.home_odds)
+         if getList[m][n] is 'D':
+            print(game_id.draw_odds)
+         if getList[m][n] is 'A':
+            print(game_id.away_odds)
+
+
+[1, 'H', 2, 'H']
+0.91
+1.30
+[1, 'H', 2, 'D']
+0.91
+2.00
+[1, 'H', 2, 'A']
+0.91
+2.20
+[1, 'D', 2, 'H']
+2.75
+1.30
+[1, 'D', 2, 'D']
+2.75
+2.00
+[1, 'D', 2, 'A']
+2.75
+2.20
+[1, 'A', 2, 'H']
+3.00
+1.30
+[1, 'A', 2, 'D']
+3.00
+2.00
+[1, 'A', 2, 'A']
+3.00
+2.20
+
+
+for m in range(0,len(getList)):
+    print(getList[m])
+    for n in range(0, len(getList[m])):
+       if isinstance(getList[m][n], int) is True:
+          game_id = Odd.objects.get(pk = getList[m][n])
+          print(game_id.id)
+       else:
+          if getList[m][n] is 'H':
+             print(game_id.home_odds)
+          if getList[m][n] is 'D':
+             print(game_id.draw_odds)
+          if getList[m][n] is 'A':
+             print(game_id.away_odds)
+
+
+
+[1, 'H', 2, 'H']
+1
+0.91
+2
+1.30
+[1, 'H', 2, 'D']
+1
+0.91
+2
+2.00
+[1, 'H', 2, 'A']
+1
+0.91
+2
+2.20
+[1, 'D', 2, 'H']
+1
+2.75
+2
+1.30
+[1, 'D', 2, 'D']
+1
+2.75
+2
+2.00
+[1, 'D', 2, 'A']
+1
+2.75
+2
+2.20
+[1, 'A', 2, 'H']
+1
+3.00
+2
+1.30
+[1, 'A', 2, 'D']
+1
+3.00
+2
+2.00
+[1, 'A', 2, 'A']
+1
+3.00
+2
+2.20
+
+

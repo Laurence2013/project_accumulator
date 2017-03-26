@@ -1,0 +1,54 @@
+for m in range(0,len(getList)):
+   print(getList[m])
+   for n in range(0, len(getList[m])):
+      if isinstance(getList[m][n], int) is True:
+         print(True)
+      else:
+         print(False)
+ 
+[1, 'H', 2, 'H']
+True
+False
+True
+False
+[1, 'H', 2, 'D']
+True
+False
+True
+False
+[1, 'H', 2, 'A']
+True
+False
+True
+False
+[1, 'D', 2, 'H']
+True
+False
+True
+False
+[1, 'D', 2, 'D']
+True
+False
+True
+False
+[1, 'D', 2, 'A']
+True
+False
+True
+False
+[1, 'A', 2, 'H']
+True
+False
+True
+False
+[1, 'A', 2, 'D']
+True
+False
+True
+False
+[1, 'A', 2, 'A']
+True
+False
+True
+False
+

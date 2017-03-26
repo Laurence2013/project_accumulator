@@ -1,0 +1,51 @@
+>>> count = 0
+>>> for m in range(0,len(getList)):
+...    print(getList[m])
+...    for n in range(0, len(getList[m])):
+...       if isinstance(getList[m][n], int) is True:
+...          game_id = Odd.objects.get(pk = getList[m][n])
+...       else:
+...          if getList[m][n] is 'H':
+...             outcome = game_id.home_odds
+...          if getList[m][n] is 'D':
+...             outcome = game_id.draw_odds
+...          if getList[m][n] is 'A':
+...             outcome = game_id.away_odds
+...          if count < 2:
+...             print(count)
+...             count += 1
+...             outcome = None
+... 
+[1, 'H', 2, 'H']
+0
+1
+[1, 'H', 2, 'D']
+[1, 'H', 2, 'A']
+[1, 'D', 2, 'H']
+[1, 'D', 2, 'D']
+[1, 'D', 2, 'A']
+[1, 'A', 2, 'H']
+[1, 'A', 2, 'D']
+[1, 'A', 2, 'A']
+
+
+calculate = []
+for m in range(0,len(getList)):
+   for n in range(0, len(getList[m])):
+      if isinstance(getList[m][n], int) is True:
+         game_id = Odd.objects.get(pk = getList[m][n])
+      else:
+         if getList[m][n] is 'H':
+            calculate.append(game_id.home_odds)
+         if getList[m][n] is 'D':
+            calculate.append(game_id.draw_odds)
+         if getList[m][n] is 'A':
+            calculate.append(game_id.away_odds)
+
+
+def chunks(oddsList,oddsLen):
+   for i in range(0, len(oddsList), oddsLen):
+      yield oddsList[i: i + oddsLen]
+
+
+
