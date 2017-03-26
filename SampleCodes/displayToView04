@@ -11,10 +11,17 @@ for g in odds_games:
 ['Fiorentina vs Torino', Decimal('0.91'), Decimal('2.75'), Decimal('3.00'), 'Arouca vs Belenenses', Decimal('1.30'), Decimal('2.00'), Decimal('2.20'), 'St Pauli vs Karlsruhe', Decimal('1.05'), Decimal('2.10'), Decimal('2.75')]
 
 
-final_combo = []
+# final_combo = []
 for n, i in enumerate(final_games):
    if isinstance(i, Decimal):
       final_games[n] = float(i)
 
 ['Fiorentina vs Torino', 0.91, 2.75, 3.0, 'Arouca vs Belenenses', 1.3, 2.0, 2.2, 'St Pauli vs Karlsruhe', 1.05, 2.1, 2.75]
 
+
+def breakListIntoEqualChunks(matchList, match_len):
+    for i in range(0, len(matchList), match_len):
+        yield matchList[i: i + match_len]
+
+
+final_combo = list(breakListIntoEqualChunks(final_games, 4))
