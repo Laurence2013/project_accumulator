@@ -20,6 +20,14 @@ class AllMethodsShould(TestCase, IndexPageGamesView):
         Odd.objects.create(id=3, home_odds=1.05, draw_odds=2.10, away_odds=2.75,
         games=Game.objects.get(pk=3))
 
+        self.odds_games = [(1, 'Fiorentina vs Torino', 1, Decimal('0.91'), Decimal('2.75'), Decimal('3.00')), (2, 'Arouca vs Belenenses', 2, Decimal('1.30'), Decimal('2.00'), Decimal('2.20')), (3, 'St Pauli vs Karlsruhe', 3, Decimal('1.05'), Decimal('2.10'), Decimal('2.75'))]
+
+        self.comboGames = ['Fiorentina vs Torino', Decimal('0.91'), Decimal('2.75'), Decimal('3.00'), 'Arouca vs Belenenses', Decimal('1.30'), Decimal('2.00'), Decimal('2.20'), 'St Pauli vs Karlsruhe', Decimal('1.05'), Decimal('2.10'), Decimal('2.75')]
+
+        self.finalComboGames = ['Fiorentina vs Torino', 0.91, 2.75, 3.0, 'Arouca vs Belenenses', 1.3, 2.0, 2.2, 'St Pauli vs Karlsruhe', 1.05, 2.1, 2.75]
+
+        self.finalAccumulator = [['Fiorentina vs Torino', 0.91, 2.75, 3.0], ['Arouca vs Belenenses', 1.3, 2.0, 2.2], ['St Pauli vs Karlsruhe', 1.05, 2.1, 2.75]]
+
     def test_CombiningTheGamesWithItsHomeDrawAndAwayOddsIndex_0(self):
         comboGame = (1, 'Fiorentina vs Torino', 1, Decimal('0.91'), Decimal('2.75'), Decimal('3.00'))
         self.assertTupleEqual(comboGame, self.get_games()[0])
@@ -31,4 +39,12 @@ class AllMethodsShould(TestCase, IndexPageGamesView):
     def test_CombiningTheGamesWithItsHomeDrawAndAwayOddsIndex_2(self):
         comboGame = (3, 'St Pauli vs Karlsruhe', 3, Decimal('1.05'), Decimal('2.10'), Decimal('2.75'))
         self.assertTupleEqual(comboGame, self.get_games()[2])
-    
+
+    def test_GetGamesAndOddsByNotIncludingPrimaryKeys(self):
+        self.assertListEqual(self.comboGames, self.get_ammended_games(self.odds_games))
+
+    def test_ChangeAllTheElementsThatHasDecimals(self):
+        self.assertListEqual(self.finalComboGames, self.get_final_game(self.comboGames))
+
+    def test_GetListAndSplitItIntoEqualParts(self):
+        self.assertListEqual(self.finalAccumulator, list(self.breakListIntoEqualChunks(self.finalComboGames, 4)))

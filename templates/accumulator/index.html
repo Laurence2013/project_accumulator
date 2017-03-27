@@ -1,6 +1,16 @@
 <h2>Hello World! This is the index page</h2>
-<ul>
-  {% for odd in odds %}
-     <li>{{ odd.games }}</li>
-  {% endfor %}
-</ul>
+
+<form method="post">
+  <fieldset>
+    <legend>Choose max 2 accumulators</legend>
+      {% for odd in odds %}
+          <input type="checkbox" name="Accumulator" value="Odds" />
+          <strong>Game - </strong>{{ odd.0 }}
+          <strong> Home odds - </strong>{{ odd.1 }}
+          <strong> Draw odds - </strong>{{ odd.2 }}
+          <strong> Away odds - </strong>{{ odd.3 }}
+          <br />
+      {% endfor %}
+      <input type="submit" value="Submit now" />
+  </fieldset>
+</form>
