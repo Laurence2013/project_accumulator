@@ -2,8 +2,9 @@ from django.shortcuts import render
 from accumulator.models import Game, Odd
 from django.views.generic import TemplateView
 from decimal import Decimal
+from accumulator.combinations.twoGamesAccumulator import TwoGamesAccumulator
 
-class IndexPageGamesView(TemplateView):
+class IndexPageGamesView(TemplateView, TwoGamesAccumulator):
     template_name = "accumulator/index.html"
     games = Game.objects.values_list('id','games')
     odds = Odd.objects.values_list('id','home_odds','draw_odds','away_odds')
@@ -29,10 +30,6 @@ class IndexPageGamesView(TemplateView):
            if isinstance(i, Decimal):
               games[n] = float(i)
         return games
-
-    def breakListIntoEqualChunks(self, matchList, match_len):
-        for i in range(0, len(matchList), match_len):
-            yield matchList[i: i + match_len]
 
     def get_context_data(self, **kwargs):
         context = super(IndexPageGamesView, self).get_context_data(**kwargs)
