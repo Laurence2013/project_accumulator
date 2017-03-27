@@ -1,6 +1,6 @@
 from django.test import TestCase
 from accumulator.views import IndexPageGamesView
-from accumulator.models import *
+from accumulator.models import Game, Odd
 from decimal import Decimal
 
 class AllMethodsShould(TestCase, IndexPageGamesView):

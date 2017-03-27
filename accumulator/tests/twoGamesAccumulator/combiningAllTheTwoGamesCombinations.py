@@ -1,20 +1,21 @@
 from django.test import TestCase
-from accumulator.views import index
-from accumulator.models import Game, Odd
-from accumulator.views import combinationsForTwoGames, getGameCombinations, getPerOutcome, combineComboListWithGameList, breakListIntoEqualChunks, getIdAndOutcome, getLengthOfCombo
+from accumulator.models import Game
+from accumulator.combinations.twoGamesAccumulator import TwoGamesAccumulator
 
-class CombiningAllTheTwoGamesCombinations(TestCase):
+class CombiningAllTheTwoGamesCombinations(TestCase, TwoGamesAccumulator):
     def setUp(self):
         Game.objects.create(id=1, games='Fiorentina vs Torino', time='19:45:00', date_of_game='2017-02-27')
         Game.objects.create(id=2, games='Arouca vs Belenenses', time='19:45:00', date_of_game='2017-02-27')
 
         self.games = Game.objects.values_list('pk', flat = True)
-        self.get_combo = combinationsForTwoGames(len(self.games))
-        self.get_games = getGameCombinations(self.get_combo, self.games)
-        self.combos = getPerOutcome(self.get_combo)
+        self.get_combo = self.combinationsForTwoGames(len(self.games))
+        self.get_games = self.getGameCombinations(self.get_combo, self.games)
+        self.combos = self.getPerOutcome(self.get_combo)
         self.match = int(len(self.get_games))
         self.game = int(len(self.combos))
-        self.new_combo = combineComboListWithGameList(self.combos, self.get_games, self.match, self.game)
+        self.new_combo = self.combineComboListWithGameList(self.combos, self.get_games, self.match, self.game)
+        self.getNum = list(self.breakListIntoEqualChunks(self.new_combo, 2))
+        self.getOddsCombo = self.getLengthOfCombo(self.getNum,9)
 
     def test_GetTheFirstIndex_0_1_WhereItsValueIs_1(self):
         self.assertEqual(1, self.new_combo[0][1])
@@ -35,35 +36,24 @@ class CombiningAllTheTwoGamesCombinations(TestCase):
         self.assertEqual(3, self.new_combo[5][1])
 
     def test_BreakListInto_2_EqualChunksIndex_0(self):
-        getNum = list(breakListIntoEqualChunks(self.new_combo, 2))
         listCombo = [(1, 1, 'H'), (2, 1, 'H')]
-        self.assertListEqual(listCombo, getNum[0])
+        self.assertListEqual(listCombo, self.getNum[0])
 
     def test_BreakListInto_2_EqualChunksIndex_1(self):
-        getNum = list(breakListIntoEqualChunks(self.new_combo, 2))
         listCombo = [(1, 2, 'H'), (2, 2, 'D')]
-        self.assertListEqual(listCombo, getNum[1])
+        self.assertListEqual(listCombo, self.getNum[1])
 
     def test_GetMergingOfTwoOutcomesIndex_0_0_0(self):
-        getNum = list(breakListIntoEqualChunks(self.new_combo, 2))
-        self.assertEqual(1, getNum[0][0][0])
+        self.assertEqual(1, self.getNum[0][0][0])
 
     def test_GroupTwoMatchesForOddsTableIndex_0(self):
-        getNum = list(breakListIntoEqualChunks(self.new_combo, 2))
-        getOddsCombo = getLengthOfCombo(getNum,9)
-        self.assertEqual([1,'H',2,'H'], getOddsCombo[0])
+        self.assertEqual([1,'H',2,'H'], self.getOddsCombo[0])
 
     def test_GroupTwoMatchesForOddsTableIndex_1(self):
-        getNum = list(breakListIntoEqualChunks(self.new_combo, 2))
-        getOddsCombo = getLengthOfCombo(getNum,9)
-        self.assertEqual([1,'H',2,'D'], getOddsCombo[1])
+        self.assertEqual([1,'H',2,'D'], self.getOddsCombo[1])
 
     def test_GroupTwoMatchesForOddsTableIndex_2(self):
-        getNum = list(breakListIntoEqualChunks(self.new_combo, 2))
-        getOddsCombo = getLengthOfCombo(getNum,9)
-        self.assertEqual([1,'H',2,'A'], getOddsCombo[2])
+        self.assertEqual([1,'H',2,'A'], self.getOddsCombo[2])
 
     def test_GroupTwoMatchesForOddsTableIndex_3(self):
-        getNum = list(breakListIntoEqualChunks(self.new_combo, 2))
-        getOddsCombo = getLengthOfCombo(getNum,9)
-        self.assertEqual([1,'D',2,'H'], getOddsCombo[3])
+        self.assertEqual([1,'D',2,'H'], self.getOddsCombo[3])

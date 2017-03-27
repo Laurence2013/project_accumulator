@@ -45,11 +45,6 @@ def combinationsForTwoGames(no_games):
         combos = [(x,y) for x in ['H','D','A'] for y in ['H','D','A']]
     return combos
 
-def combinationsForThreeGames(no_games):
-    if no_games is 3:
-        combos = [(x,y,z) for x in ['H','D','A'] for y in ['H','D','A'] for z in ['H','D','A']]
-    return combos
-
 def getPerOutcome(combos):
     count = 1
     comboList = []
