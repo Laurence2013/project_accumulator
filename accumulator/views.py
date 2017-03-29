@@ -38,5 +38,5 @@ class IndexPageGamesView(TemplateView, View, TwoGamesAccumulator):
         return context
 
     def post(self, request, *args, **kwargs):
-        print(request.POST.get("Accumulator"))
+        print(request.POST.getlist("Accumulator"))
         return render(request, self.template_name, self.get_context_data(**kwargs))
