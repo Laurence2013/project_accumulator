@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from accumulator.models import Game, Odd
-from django.views.generic import TemplateView, RedirectView
+from django.views.generic import TemplateView, View
 from decimal import Decimal
 from accumulator.combinations.twoGamesAccumulator import TwoGamesAccumulator
 
-class IndexPageGamesView(TemplateView, RedirectView, TwoGamesAccumulator):
+class IndexPageGamesView(TemplateView, View, TwoGamesAccumulator):
     template_name = "accumulator/index.html"
     games = Game.objects.values_list('id','games')
     odds = Odd.objects.values_list('id','home_odds','draw_odds','away_odds')
@@ -37,5 +37,6 @@ class IndexPageGamesView(TemplateView, RedirectView, TwoGamesAccumulator):
         (self.get_ammended_games(self.get_games())),4))
         return context
 
-    def get_redirect_url(self, *args, **kwargs):
-        return super(IndexPageGamesView, self).get_redirect_url(*args, **kwargs)
+    def post(self, request, *args, **kwargs):
+        print(request.POST.get("Accumulator"))
+        return render(request, self.template_name, self.get_context_data(**kwargs))

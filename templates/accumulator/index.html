@@ -4,11 +4,11 @@
   <fieldset>
     <legend>Choose max 2 accumulators</legend>
       {% for odd in odds %}
-          <input type="checkbox" name="Accumulator" value="Odds" />
-          <strong>Game - </strong><i id="games">{{ odd.0 }}</i>
-          <strong> Home odds - </strong><i id="home_odds">{{ odd.1 }}</i>
-          <strong> Draw odds - </strong><i id="draw_odds">{{ odd.2 }}</i>
-          <strong> Away odds - </strong><i id="away_odds">{{ odd.3 }}</i>
+          <input type="checkbox" name="Accumulator" value="{{ odd.0 }}" />
+          <strong>Game - </strong><i name="game" id="games">{{ odd.0 }}</i>
+          <strong> Home odds - </strong><i name="home" id="home_odds">{{ odd.1 }}</i>
+          <strong> Draw odds - </strong><i name="draw" id="draw_odds">{{ odd.2 }}</i>
+          <strong> Away odds - </strong><i name="away" id="away_odds">{{ odd.3 }}</i>
           <br />
       {% endfor %}
       <input type="submit" value="Get accumulator" />
