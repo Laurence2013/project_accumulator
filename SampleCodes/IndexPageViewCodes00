@@ -1,0 +1,7 @@
+>>> match = Game.objects.values_list('id').filter(games = game)
+>>> match
+<QuerySet [(1,)]>
+>>> odds = Odd.objects.values_list('id','home_odds','draw_odds','away_odds').filter(games = 1)
+>>> odds
+<QuerySet [(1, Decimal('0.91'), Decimal('2.75'), Decimal('3.00'))]>
+
