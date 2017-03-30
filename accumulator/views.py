@@ -3,6 +3,7 @@ from accumulator.models import Game, Odd
 from django.views.generic import TemplateView, View
 from decimal import Decimal
 from accumulator.combinations.twoGamesAccumulator import TwoGamesAccumulator
+from accumulator.forms import AccumulatorForm
 
 class IndexPageGamesView(TemplateView, View, TwoGamesAccumulator):
     template_name = "accumulator/index.html"
@@ -37,6 +38,14 @@ class IndexPageGamesView(TemplateView, View, TwoGamesAccumulator):
         (self.get_ammended_games(self.get_games())),4))
         return context
 
+    # def get(self, request, *args, **kwargs):
+    #     accumulator = AccumulatorForm(request.POST)
+    #     if accumulator.is_valid():
+    #         print(accumulator.cleaned_data)
+    #     return render(request, self.template_name, {})
+
     def post(self, request, *args, **kwargs):
-        print(request.POST.getlist("Accumulator"))
+        # print(request.POST.getlist("Accumulator"))
+        accumulator = AccumulatorForm(request.POST.getlist("Accumulator"))
+        print(accumulator)
         return render(request, self.template_name, self.get_context_data(**kwargs))
