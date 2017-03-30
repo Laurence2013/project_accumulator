@@ -43,6 +43,7 @@ class IndexPageGamesView(TemplateView, View, TwoGamesAccumulator):
 
         if len(get_accumulator) is 2:
             for g in range(0, len(get_accumulator)):
-                print(get_accumulator[g])
+                game = Game.objects.values_list('id').filter(games = get_accumulator[g])
+                print(game)
 
         return render(request, self.template_name, self.get_context_data(**kwargs))
