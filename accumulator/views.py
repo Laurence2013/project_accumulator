@@ -60,6 +60,6 @@ class IndexPageGamesView(TemplateView, View, TwoGamesAccumulator):
         new_combo = self.combineComboListWithGameList(combos, get_games, match, game)
         get_num = list(self.breakListIntoEqualChunks(new_combo, 2))
         get_odds_combo = self.getLengthOfCombo(get_num,9)
-        print(get_odds_combo)
+        get_all_odds_combo = self.getTwoCombinedGames(get_odds_combo)
 
         return render(request, self.template_name, self.get_context_data(**kwargs))
