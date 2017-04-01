@@ -37,13 +37,18 @@ class IndexPageGamesView(TemplateView, View, TwoGamesAccumulator):
         (self.get_ammended_games(self.get_games())),4))
         return context
 
-    def post(self, request, *args, **kwargs):
-        if request.method == "POST":
-            get_accumulator = request.POST.getlist("Accumulator")
-
+    def __filter_accumulator(self, get_accumulator):
+        game_id = []
         if len(get_accumulator) is 2:
             for g in range(0, len(get_accumulator)):
                 game = Game.objects.values_list('id').filter(games = get_accumulator[g])
-                print(game)
+                for n in game:
+                    for m in n:
+                        game_id.append(m)
+        print(game_id)
 
+    def post(self, request, *args, **kwargs):
+        if request.method == "POST":
+            get_accumulator = request.POST.getlist("Accumulator")
+        self.__filter_accumulator(get_accumulator)
         return render(request, self.template_name, self.get_context_data(**kwargs))
