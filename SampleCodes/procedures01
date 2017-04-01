@@ -1,0 +1,11 @@
+These two are in order 
+
+1) self.get_combo = self.combinationsForTwoGames(len(self.games))
+2) self.combo = self.getPerOutcome(self.get_combo)
+
+
+
+These are not in order
+
+self.get_games = self.getGameCombinations(self.get_combo, self.games)
+self.combo = self.getPerOutcome(self.get_combo)

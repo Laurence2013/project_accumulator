@@ -45,10 +45,21 @@ class IndexPageGamesView(TemplateView, View, TwoGamesAccumulator):
                 for n in game:
                     for m in n:
                         game_id.append(m)
-        print(game_id)
+        return game_id
 
     def post(self, request, *args, **kwargs):
         if request.method == "POST":
             get_accumulator = request.POST.getlist("Accumulator")
-        self.__filter_accumulator(get_accumulator)
+
+        games = self.__filter_accumulator(get_accumulator)
+        get_combos = self.combinationsForTwoGames(len(games))
+        combos = self.getPerOutcome(get_combos)
+        get_games = self.getGameCombinations(get_combos, games)
+        match = int(len(get_games))
+        game = int(len(combos))
+        new_combo = self.combineComboListWithGameList(combos, get_games, match, game)
+        get_num = list(self.breakListIntoEqualChunks(new_combo, 2))
+        get_odds_combo = self.getLengthOfCombo(get_num,9)
+        print(get_odds_combo)
+
         return render(request, self.template_name, self.get_context_data(**kwargs))
