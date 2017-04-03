@@ -65,12 +65,12 @@ class TwoGamesAccumulator():
                     calculate.append(game_id.away_odds)
         return calculate
 
-    def calculateOddsForTwoMatches(self, oddsList):
+    def calculateOddsForTwoMatches(self, oddsList, stake):
         calculate = []
         for c in range(0, len(oddsList)):
             odds1 = oddsList[c][0]
             odds2 = oddsList[c][1]
-            calc = 1 * (odds1 + 1) * (odds2 + 1) - 1
+            calc = (stake * (odds1 + 1) * (odds2 + 1)) - stake
             calculate.append(round(calc,2))
         return calculate
 

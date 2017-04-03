@@ -50,6 +50,7 @@ class IndexPageGamesView(TemplateView, View, TwoGamesAccumulator):
     def post(self, request, *args, **kwargs):
         if request.method == "POST":
             get_accumulator = request.POST.getlist("Accumulator")
+            get_stake = request.POST.get("stake")
 
         games = self.__filter_accumulator(get_accumulator)
         get_combos = self.combinationsForTwoGames(len(games))
@@ -62,7 +63,7 @@ class IndexPageGamesView(TemplateView, View, TwoGamesAccumulator):
         get_odds_combo = self.getLengthOfCombo(get_num,9)
         get_all_odds_combo = self.getTwoCombinedGames(get_odds_combo)
         get_combined_decimals = list(self.breakListIntoEqualChunks(get_all_odds_combo, 2))
-        get_combined_calculation = self.calculateOddsForTwoMatches(get_combined_decimals)
+        get_combined_calculation = self.calculateOddsForTwoMatches(get_combined_decimals, int(get_stake))
         get_all_combinations = self.mergePerGameWithOdds(get_odds_combo, get_combined_decimals, get_combined_calculation)
 
         context = {
