@@ -71,7 +71,7 @@ class TwoGamesAccumulator():
             odds1 = oddsList[c][0]
             odds2 = oddsList[c][1]
             calc = 1 * (odds1 + 1) * (odds2 + 1) - 1
-            calculate.append(calc)
+            calculate.append(round(calc,2))
         return calculate
 
     def mergePerGameWithOdds(self, combinations, odds, calculation):
