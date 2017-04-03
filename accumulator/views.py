@@ -61,5 +61,11 @@ class IndexPageGamesView(TemplateView, View, TwoGamesAccumulator):
         get_num = list(self.breakListIntoEqualChunks(new_combo, 2))
         get_odds_combo = self.getLengthOfCombo(get_num,9)
         get_all_odds_combo = self.getTwoCombinedGames(get_odds_combo)
+        get_combined_decimals = list(self.breakListIntoEqualChunks(get_all_odds_combo, 2))
+        get_combined_calculation = self.calculateOddsForTwoMatches(get_combined_decimals)
+        get_all_combinations = self.mergePerGameWithOdds(get_odds_combo, get_combined_decimals, get_combined_calculation)
+
+        for g in get_all_combinations:
+            print(g)
 
         return render(request, self.template_name, self.get_context_data(**kwargs))
