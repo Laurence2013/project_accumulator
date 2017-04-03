@@ -15,11 +15,15 @@
   </fieldset>
 </form>
 
+{% if match != None %}
+  <b>{{ match.0 }}</b> and <b>{{ match.1 }}</b>
+{% endif %}
+
 <ul>
   {% for combos in combinations %}
     <li><strong>Game outcome: </strong>{{ combos.0.1 }} - {{ combos.0.3 }}
     <strong>Match 1 odd: </strong>{{ combos.1.0 }}
     <strong>Match 2 odd: </strong>{{ combos.1.1 }}
-    <strong>Accumulator profit: </strong>{{ combos.2 }}</li>
+    <strong>Accumulator profit: </strong>£{{ combos.2 }}</li>
   {% endfor %}
 </ul>
