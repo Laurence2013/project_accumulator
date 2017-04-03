@@ -4,7 +4,7 @@
   <fieldset>
     <legend>Choose max 2 accumulators</legend>
       {% for odd in odds %}
-          <input type="checkbox" name="Accumulator" value="{{ odd.0 }}" />
+          <input type="checkbox" name="accumulator" value="{{ odd.0 }}" />
           <strong>Game - </strong><i name="game" id="games">{{ odd.0 }}</i>
           <strong> Home odds - </strong><i name="home" id="home_odds">{{ odd.1 }}</i>
           <strong> Draw odds - </strong><i name="draw" id="draw_odds">{{ odd.2 }}</i>
@@ -18,9 +18,13 @@
   </fieldset>
 </form>
 
-{% if match != None %}
-  <b>{{ match.0 }}</b> and <b>{{ match.1 }}</b>
-{% endif %}
+<p>
+  {% if match != None %}
+    <b>{{ match.0 }}</b> and <b>{{ match.1 }}</b>
+    <h4>Stake is: £{{ stake }}</h4>
+    <h4>Total stake for {{ total_games }} game(s) is £{{ total_stake }}</h4>
+  {% endif %}
+</p>
 
 <ul>
   {% for combos in combinations %}
