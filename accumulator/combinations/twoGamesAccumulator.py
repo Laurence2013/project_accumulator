@@ -2,9 +2,7 @@ from accumulator.models import Game, Odd
 
 class TwoGamesAccumulator():
     def combinationsForTwoGames(self, no_games):
-        if no_games is 2:
-            combos = [(x,y) for x in ['H','D','A'] for y in ['H','D','A']]
-        return combos
+        return [(x,y) for x in ['H','D','A'] for y in ['H','D','A']]
 
     def getPerOutcome(self, combos):
         count = 1
