@@ -2,10 +2,11 @@ from django.test import TestCase
 from decimal import Decimal
 from accumulator.models import Game, Odd
 from accumulator.combinations.twoGamesAccumulator import TwoGamesAccumulator
+from accumulator.combinations.generalGamesAccumulator import GeneralGamesAccumulator
 
 ''' This is the 7th behavioural test '''
 
-class MergingOfComboOddsCalculation(TestCase, TwoGamesAccumulator):
+class MergingOfComboOddsCalculation(TestCase, TwoGamesAccumulator, GeneralGamesAccumulator):
     def setUp(self):
         Game.objects.create(id=1, games='Fiorentina vs Torino', time='19:45:00', date_of_game='2017-02-27')
         Game.objects.create(id=2, games='Arouca vs Belenenses', time='19:45:00', date_of_game='2017-02-27')
@@ -16,9 +17,9 @@ class MergingOfComboOddsCalculation(TestCase, TwoGamesAccumulator):
         games=Game.objects.get(pk=2))
 
         self.games = Game.objects.values_list('pk', flat = True)
-        self.get_combo = self.combinationsForTwoGames(len(self.games))
+        self.get_combo = self.combinationsForTwoGames()
         self.get_games = self.getGameCombinations(self.get_combo, self.games)
-        self.combos = self.getPerOutcome(self.get_combo)
+        self.combos = self.get_per_outcome(self.get_combo)
         self.match = int(len(self.get_games))
         self.game = int(len(self.combos))
         self.new_combo = self.combineComboListWithGameList(self.combos, self.get_games, self.match, self.game)
@@ -26,25 +27,25 @@ class MergingOfComboOddsCalculation(TestCase, TwoGamesAccumulator):
         self.getOddsCombo = self.getLengthOfCombo(self.getNum,9)
         self.getAllOddsCombo = self.getTwoCombinedGames(self.getOddsCombo)
         self.getCombinedDecimals = list(self.breakListIntoEqualChunks(self.getAllOddsCombo, 2))
-        self.getCombinedCalculation = self.calculateOddsForTwoMatches(self.getCombinedDecimals)
+        self.getCombinedCalculation = self.calculateOddsForTwoMatches(self.getCombinedDecimals, 1)
         self.getAllCombinations = self.mergePerGameWithOdds(self.getOddsCombo, self.getCombinedDecimals, self.getCombinedCalculation)
 
     def test_CombineTwoMatchesWithItsOddsAndCalculationAtIndex_0(self):
-        index0List = ([1, 'H', 2, 'H'], [Decimal('0.91'), Decimal('1.30')], Decimal('3.3930'))
+        index0List = ([1, 'H', 2, 'H'], [Decimal('0.91'), Decimal('1.30')], Decimal('3.39'))
         self.assertTupleEqual(index0List, self.getAllCombinations[0])
 
     def test_CombineTwoMatchesWithItsOddsAndCalculationAtIndex_1(self):
-        index1List = ([1, 'H', 2, 'D'], [Decimal('0.91'), Decimal('2.00')], Decimal('4.7300'))
+        index1List = ([1, 'H', 2, 'D'], [Decimal('0.91'), Decimal('2.00')], Decimal('4.73'))
         self.assertTupleEqual(index1List, self.getAllCombinations[1])
 
     def test_CombineTwoMatchesWithItsOddsAndCalculationAtIndex_2(self):
-        index2List = ([1, 'H', 2, 'A'], [Decimal('0.91'), Decimal('2.20')], Decimal('5.1120'))
+        index2List = ([1, 'H', 2, 'A'], [Decimal('0.91'), Decimal('2.20')], Decimal('5.11'))
         self.assertTupleEqual(index2List, self.getAllCombinations[2])
 
     def test_CombineTwoMatchesWithItsOddsAndCalculationAtIndex_3(self):
-        index3List = ([1, 'D', 2, 'H'], [Decimal('2.75'), Decimal('1.30')], Decimal('7.6250'))
+        index3List = ([1, 'D', 2, 'H'], [Decimal('2.75'), Decimal('1.30')], Decimal('7.62'))
         self.assertTupleEqual(index3List, self.getAllCombinations[3])
 
     def test_CombineTwoMatchesWithItsOddsAndCalculationAtIndex_4(self):
-        index4List = ([1, 'D', 2, 'D'], [Decimal('2.75'), Decimal('2.00')], Decimal('10.2500'))
+        index4List = ([1, 'D', 2, 'D'], [Decimal('2.75'), Decimal('2.00')], Decimal('10.25'))
         self.assertTupleEqual(index4List, self.getAllCombinations[4])

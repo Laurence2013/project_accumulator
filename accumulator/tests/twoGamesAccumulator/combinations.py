@@ -1,9 +1,8 @@
 from django.test import TestCase
-from accumulator.combinations.twoGamesAccumulator import TwoGamesAccumulator
 from accumulator.models import Game, Odd
 from decimal import Decimal
 
-class Combinations(TestCase, TwoGamesAccumulator):
+class Combinations(TestCase):
     def setUp(self):
         Game.objects.create(id=1, games='Fiorentina vs Torino', time='19:45:00', date_of_game='2017-02-27')
         Game.objects.create(id=2, games='Arouca vs Belenenses', time='19:45:00', date_of_game='2017-02-27')

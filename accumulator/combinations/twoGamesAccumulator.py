@@ -1,35 +1,8 @@
-from accumulator.models import Game, Odd
+from accumulator.models import Odd
 
 class TwoGamesAccumulator():
-    def combinationsForTwoGames(self, no_games):
+    def combinationsForTwoGames(self):
         return [(x,y) for x in ['H','D','A'] for y in ['H','D','A']]
-
-    def getPerOutcome(self, combos):
-        count = 1
-        comboList = []
-        while count <= len(combos):
-            for x in combos[count - 1]:
-                comboList.append([count, x])
-            count += 1
-        return comboList
-
-    def getGameCombinations(self, combos, games):
-        gameList = []
-        for c in range(len(combos)):
-            for g in games:
-                gameList.append([g])
-        return gameList
-
-    def combineComboListWithGameList(self, matchList, gameList, match_len, game_len):
-        merge_combo_matches = []
-        count = 1
-        if match_len == game_len:
-            while count <= match_len:
-                merge_combo_matches.append(tuple(gameList[count - 1] + matchList[count - 1]))
-                count += 1
-        else:
-            return False
-        return merge_combo_matches
 
     def breakListIntoEqualChunks(self, matchList, match_len):
         for i in range(0, len(matchList), match_len):

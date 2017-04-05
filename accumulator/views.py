@@ -4,9 +4,11 @@ from django.views.generic import TemplateView, View
 from decimal import Decimal
 from accumulator.combinations.twoGamesAccumulator import TwoGamesAccumulator
 from accumulator.combinations.threeGamesAccumulator import ThreeGamesAccumulator
+from accumulator.combinations.generalGamesAccumulator import GeneralGamesAccumulator
 from accumulator.accumulatorPageGames.accumulatorPageGames import AccumulatorPageGames
 
-class AccumulatorPageGamesView(TemplateView, View, TwoGamesAccumulator, ThreeGamesAccumulator, AccumulatorPageGames):
+class AccumulatorPageGamesView(TemplateView, View, TwoGamesAccumulator, ThreeGamesAccumulator, AccumulatorPageGames, GeneralGamesAccumulator):
+    
     template_name = "accumulator/index.html"
     games = Game.objects.values_list('id','games')
     odds = Odd.objects.values_list('id','home_odds','draw_odds','away_odds')
@@ -27,8 +29,8 @@ class AccumulatorPageGamesView(TemplateView, View, TwoGamesAccumulator, ThreeGam
 
             if len(games) is 2:
 
-                get_combos = self.combinationsForTwoGames(len(games))
-                combos = self.getPerOutcome(get_combos)
+                get_combos = self.combinationsForTwoGames()
+                combos = self.get_per_outcome(get_combos)
                 get_games = self.getGameCombinations(get_combos, games)
                 match = int(len(get_games))
                 game = int(len(combos))
@@ -41,10 +43,9 @@ class AccumulatorPageGamesView(TemplateView, View, TwoGamesAccumulator, ThreeGam
                 get_all_combinations = self.mergePerGameWithOdds(get_odds_combo, get_combined_decimals, get_combined_calculation)
 
             elif len(games) is 3:
-                
-                get_combos = self.combinationsForThreeGames(len(games))
-                print(get_combos)
 
+                get_combos = self.combinationsForThreeGames()
+                print(get_combos)
 
         except UnboundLocalError as e:
             print('UnboundLocalError ' + str(e))

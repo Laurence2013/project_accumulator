@@ -2,10 +2,11 @@ from django.test import TestCase
 from decimal import Decimal
 from accumulator.models import Game, Odd
 from accumulator.combinations.twoGamesAccumulator import TwoGamesAccumulator
+from accumulator.combinations.generalGamesAccumulator import GeneralGamesAccumulator
 
 ''' This is the 5th behavioural test '''
 
-class MergeTheCombinedGamesAndTheOdds(TestCase, TwoGamesAccumulator):
+class MergeTheCombinedGamesAndTheOdds(TestCase, TwoGamesAccumulator, GeneralGamesAccumulator):
     def setUp(self):
         Game.objects.create(id=1, games='Fiorentina vs Torino', time='19:45:00', date_of_game='2017-02-27')
         Game.objects.create(id=2, games='Arouca vs Belenenses', time='19:45:00', date_of_game='2017-02-27')
@@ -16,9 +17,9 @@ class MergeTheCombinedGamesAndTheOdds(TestCase, TwoGamesAccumulator):
         games=Game.objects.get(pk=2))
 
         self.games = Game.objects.values_list('pk', flat = True)
-        self.get_combo = self.combinationsForTwoGames(len(self.games))
+        self.get_combo = self.combinationsForTwoGames()
         self.get_games = self.getGameCombinations(self.get_combo, self.games)
-        self.combos = self.getPerOutcome(self.get_combo)
+        self.combos = self.get_per_outcome(self.get_combo)
         self.match = int(len(self.get_games))
         self.game = int(len(self.combos))
         self.new_combo = self.combineComboListWithGameList(self.combos, self.get_games, self.match, self.game)

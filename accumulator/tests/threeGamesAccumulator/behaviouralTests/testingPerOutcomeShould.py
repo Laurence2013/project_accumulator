@@ -1,16 +1,17 @@
 from django.test import TestCase
 from accumulator.combinations.threeGamesAccumulator import ThreeGamesAccumulator
+from accumulator.combinations.generalGamesAccumulator import GeneralGamesAccumulator
 
 ''' This is the 1st behavioural test '''
 
-class TestingPerOutcomeShould(TestCase, ThreeGamesAccumulator):
+class TestingPerOutcomeShould(TestCase, ThreeGamesAccumulator, GeneralGamesAccumulator):
     def setUp(self):
         self.games = {
             'myGame1':{'id': 1, 'game': 'Fiorentina vs Torino'},
             'myGame2':{'id': 2, 'game': 'Arouca vs Belenenses'},
             'myGame3':{'id': 3, 'game': 'St Pauli vs Karlsruhe'},
         }
-        self.get_combo = self.combinationsForThreeGames(len(self.games))
+        self.get_combo = self.combinationsForThreeGames()
         self.combo = self.get_per_outcome(self.get_combo)
 
     def test_LoopIndex_0_AndCompareThatTupleIs_1_And_Tuple1Is_H(self):
@@ -30,3 +31,6 @@ class TestingPerOutcomeShould(TestCase, ThreeGamesAccumulator):
 
     def test_LoopIndex_5_AndCompareThatTupleIs_2_And_Tuple2Is_H(self):
         self.assertEqual([int(2),str('D')], self.combo[5])
+
+    def test_GetLengthOfCombo(self):
+        self.assertEqual(81, len(self.combo))

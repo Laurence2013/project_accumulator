@@ -1,16 +1,17 @@
 from django.test import TestCase
 from accumulator.combinations.twoGamesAccumulator import TwoGamesAccumulator
+from accumulator.combinations.generalGamesAccumulator import GeneralGamesAccumulator
 
 ''' This is the 1st behavioural test '''
 
-class TwoMatchCombinationsChecks(TestCase, TwoGamesAccumulator):
+class TwoMatchCombinationChecks(TestCase, TwoGamesAccumulator, GeneralGamesAccumulator):
     def setUp(self):
         self.games = {
             'myGame1':{'id': 1, 'game': 'Fiorentina vs Torino'},
             'myGame2':{'id': 2, 'game': 'Arouca vs Belenenses'},
         }
-        self.get_combo = self.combinationsForTwoGames(len(self.games))
-        self.combo = self.getPerOutcome(self.get_combo)
+        self.get_combo = self.combinationsForTwoGames()
+        self.combo = self.get_per_outcome(self.get_combo)
 
     def test_LoopIndex_0_AndCompareThatTupleIs_1_And_Tuple1Is_H(self):
         self.assertEqual([int(1),str('H')], self.combo[0])
