@@ -4,10 +4,6 @@ class TwoGamesAccumulator():
     def combinationsForTwoGames(self):
         return [(x,y) for x in ['H','D','A'] for y in ['H','D','A']]
 
-    def breakListIntoEqualChunks(self, matchList, match_len):
-        for i in range(0, len(matchList), match_len):
-            yield matchList[i: i + match_len]
-
     def getLengthOfCombo(self, matchList,matchLen):
         getOdds = []
         for m in range(0,matchLen):

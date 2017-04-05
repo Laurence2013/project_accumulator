@@ -25,3 +25,7 @@ class GeneralGamesAccumulator():
         else:
             return False
         return merge_combo_matches
+
+    def break_list_into_equal_chunks(self, matchList, match_len):
+        for i in range(0, len(matchList), match_len):
+            yield matchList[i: i + match_len]
