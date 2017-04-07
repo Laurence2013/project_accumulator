@@ -1,3 +1,5 @@
+from accumulator.models import Odd
+
 class GeneralGamesAccumulator():
     def get_per_outcome(self, combinations):
         count = 1
@@ -29,3 +31,31 @@ class GeneralGamesAccumulator():
     def break_list_into_equal_chunks(self, matchList, match_len):
         for i in range(0, len(matchList), match_len):
             yield matchList[i: i + match_len]
+
+    def get_length_of_combo(self, matchList,matchLen, maxRangeOfMatch):
+        getOdds = []
+        for m in range(0,matchLen):
+            getOdds.append(self.__get_id_and_outcome(matchList,m, maxRangeOfMatch))
+        return getOdds
+
+    def __get_id_and_outcome(self, matchList, matchLen, maxRangeOfMatch):
+        getOdds = []
+        for i in range(0,maxRangeOfMatch):
+            for j in range(0,3,2):
+                getOdds.append(matchList[matchLen][i][j])
+        return getOdds
+
+    def get_combined_games(self, matchList):
+        calculate = []
+        for m in range(0,len(matchList)):
+           for n in range(0, len(matchList[m])):
+              if isinstance(matchList[m][n], int) is True:
+                 game_id = Odd.objects.get(pk = matchList[m][n])
+              else:
+                 if matchList[m][n] is 'H':
+                    calculate.append(game_id.home_odds)
+                 if matchList[m][n] is 'D':
+                    calculate.append(game_id.draw_odds)
+                 if matchList[m][n] is 'A':
+                    calculate.append(game_id.away_odds)
+        return calculate

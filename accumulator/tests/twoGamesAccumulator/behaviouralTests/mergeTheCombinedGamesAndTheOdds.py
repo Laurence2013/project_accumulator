@@ -18,27 +18,27 @@ class MergeTheCombinedGamesAndTheOdds(TestCase, TwoGamesAccumulator, GeneralGame
 
         self.games = Game.objects.values_list('pk', flat = True)
         self.get_combo = self.combinationsForTwoGames()
-        self.get_games = self.getGameCombinations(self.get_combo, self.games)
+        self.get_games = self.get_game_combinations(self.get_combo, self.games)
         self.combos = self.get_per_outcome(self.get_combo)
         self.match = int(len(self.get_games))
         self.game = int(len(self.combos))
-        self.new_combo = self.combineComboListWithGameList(self.combos, self.get_games, self.match, self.game)
-        self.getNum = list(self.breakListIntoEqualChunks(self.new_combo, 2))
-        self.getOddsCombo = self.getLengthOfCombo(self.getNum,9)
-        self.getAllOddsCombo = self.getTwoCombinedGames(self.getOddsCombo)
-        self.getCombinedDecimals = list(self.breakListIntoEqualChunks(self.getAllOddsCombo, 2))
+        self.new_combo = self.combine_combo_list_with_game_list(self.combos, self.get_games, self.match, self.game)
+        self.get_num = list(self.break_list_into_equal_chunks(self.new_combo, 2))
+        self.get_odds_combo = self.get_length_of_combo(self.get_num,9, 2)
+        self.get_all_odds_combo = self.get_combined_games(self.get_odds_combo)
+        self.get_combined_decimals = list(self.break_list_into_equal_chunks(self.get_all_odds_combo, 2))
 
     def test_GetCombinedDecimalsFromIndex_0(self):
-        self.assertEqual([Decimal('0.91'), Decimal('1.30')], self.getCombinedDecimals[0])
+        self.assertEqual([Decimal('0.91'), Decimal('1.30')], self.get_combined_decimals[0])
 
     def test_GetCombinedDecimalsFromIndex_1(self):
-        self.assertEqual([Decimal('0.91'), Decimal('2.00')], self.getCombinedDecimals[1])
+        self.assertEqual([Decimal('0.91'), Decimal('2.00')], self.get_combined_decimals[1])
 
     def test_GetCombinedDecimalsFromIndex_2(self):
-        self.assertEqual([Decimal('0.91'), Decimal('2.20')], self.getCombinedDecimals[2])
+        self.assertEqual([Decimal('0.91'), Decimal('2.20')], self.get_combined_decimals[2])
 
     def test_GetCombinedDecimalsFromIndex_3(self):
-        self.assertEqual([Decimal('2.75'), Decimal('1.30')], self.getCombinedDecimals[3])
+        self.assertEqual([Decimal('2.75'), Decimal('1.30')], self.get_combined_decimals[3])
 
     def test_GetCombinedDecimalsFromIndex_4(self):
-        self.assertEqual([Decimal('2.75'), Decimal('2.00')], self.getCombinedDecimals[4])
+        self.assertEqual([Decimal('2.75'), Decimal('2.00')], self.get_combined_decimals[4])

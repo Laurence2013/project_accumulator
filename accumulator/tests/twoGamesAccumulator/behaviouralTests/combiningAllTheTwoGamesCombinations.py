@@ -12,13 +12,13 @@ class CombiningAllTheTwoGamesCombinations(TestCase, TwoGamesAccumulator, General
 
         self.games = Game.objects.values_list('pk', flat = True)
         self.get_combo = self.combinationsForTwoGames()
-        self.get_games = self.getGameCombinations(self.get_combo, self.games)
+        self.get_games = self.get_game_combinations(self.get_combo, self.games)
         self.combos = self.get_per_outcome(self.get_combo)
         self.match = int(len(self.get_games))
         self.game = int(len(self.combos))
-        self.new_combo = self.combineComboListWithGameList(self.combos, self.get_games, self.match, self.game)
-        self.getNum = list(self.breakListIntoEqualChunks(self.new_combo, 2))
-        self.getOddsCombo = self.getLengthOfCombo(self.getNum,9)
+        self.new_combo = self.combine_combo_list_with_game_list(self.combos, self.get_games, self.match, self.game)
+        self.getNum = list(self.break_list_into_equal_chunks(self.new_combo, 2))
+        self.getOddsCombo = self.get_length_of_combo(self.getNum,9, 2)
 
     def test_GetTheFirstIndex_0_1_WhereItsValueIs_1(self):
         self.assertEqual(1, self.new_combo[0][1])

@@ -19,7 +19,7 @@ class TestingGetLengthOfComboShould(TestCase, GeneralGamesAccumulator, ThreeGame
         self.game = int(len(self.combos))
         self.new_combo = self.combine_combo_list_with_game_list(self.combos, self.get_games, self.match, self.game)
         self.get_num = list(self.break_list_into_equal_chunks(self.new_combo,3))
-        self.get_odds_combo = self.getLengthOfCombo(self.get_num,27)
+        self.get_odds_combo = self.get_length_of_combo(self.get_num,27, 3)
 
     def test_Index_0_TheOutcomeShouldBe_1H_2H_3H(self):
         testList = [1, 'H', 2, 'H', 3, 'H']

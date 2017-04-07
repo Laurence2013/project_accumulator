@@ -18,25 +18,25 @@ class CalculatingAccumulatorFromTwoGames(TestCase, TwoGamesAccumulator, GeneralG
 
         self.games = Game.objects.values_list('pk', flat = True)
         self.get_combo = self.combinationsForTwoGames()
-        self.get_games = self.getGameCombinations(self.get_combo, self.games)
+        self.get_games = self.get_game_combinations(self.get_combo, self.games)
         self.combos = self.get_per_outcome(self.get_combo)
         self.match = int(len(self.get_games))
         self.game = int(len(self.combos))
-        self.new_combo = self.combineComboListWithGameList(self.combos, self.get_games, self.match, self.game)
-        self.getNum = list(self.breakListIntoEqualChunks(self.new_combo, 2))
-        self.getOddsCombo = self.getLengthOfCombo(self.getNum,9)
-        self.getAllOddsCombo = self.getTwoCombinedGames(self.getOddsCombo)
-        self.getCombinedDecimals = list(self.breakListIntoEqualChunks(self.getAllOddsCombo, 2))
-        self.getCombinedCalculation = self.calculateOddsForTwoMatches(self.getCombinedDecimals, 1)
+        self.new_combo = self.combine_combo_list_with_game_list(self.combos, self.get_games, self.match, self.game)
+        self.get_num = list(self.break_list_into_equal_chunks(self.new_combo, 2))
+        self.get_odds_combo = self.get_length_of_combo(self.get_num,9, 2)
+        self.get_all_odds_combo = self.get_combined_games(self.get_odds_combo)
+        self.get_combined_decimals = list(self.break_list_into_equal_chunks(self.get_all_odds_combo, 2))
+        self.get_combined_calculation = self.calculateOddsForTwoMatches(self.get_combined_decimals, 1)
 
     def test_GetCalculationOfTwoGamesIndex_0_WithStakeAt_1_Pound(self):
-        self.assertEqual(Decimal('3.39'), self.getCombinedCalculation[0])
+        self.assertEqual(Decimal('3.39'), self.get_combined_calculation[0])
 
     def test_GetCalculationOfTwoGamesIndex_1_WithStakeAt_1_Pound(self):
-        self.assertEqual(Decimal('4.73'), self.getCombinedCalculation[1])
+        self.assertEqual(Decimal('4.73'), self.get_combined_calculation[1])
 
     def test_GetCalculationOfTwoGamesIndex_2_WithStakeAt_1_Pound(self):
-        self.assertEqual(Decimal('5.11'), self.getCombinedCalculation[2])
+        self.assertEqual(Decimal('5.11'), self.get_combined_calculation[2])
 
     def test_GetCalculationOfTwoGamesIndex_3_WithStakeAt_1_Pound(self):
-        self.assertEqual(Decimal('7.62'), self.getCombinedCalculation[3])
+        self.assertEqual(Decimal('7.62'), self.get_combined_calculation[3])

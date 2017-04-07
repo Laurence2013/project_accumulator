@@ -35,9 +35,9 @@ class TwoMatchCombinations(TestCase, TwoGamesAccumulator, GeneralGamesAccumulato
     def test_ReturnFalseWhenMatchListAndGameListAreBothNotEqualTo_18(self):
         games = Game.objects.values_list('pk', flat = True)
         get_combo = self.combinationsForTwoGames()
-        get_games = self.getGameCombinations(get_combo,games)
+        get_games = self.get_game_combinations(get_combo,games)
         combos = self.get_per_outcome(get_combo)
-        new_combo = self.combineComboListWithGameList(combos, get_games, 12, 18)
+        new_combo = self.combine_combo_list_with_game_list(combos, get_games, 12, 18)
         self.assertFalse(new_combo)
 
     def test_GetPrimaryKeysFromIndex_0(self):
