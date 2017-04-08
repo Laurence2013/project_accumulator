@@ -10,7 +10,3 @@ class TwoGamesAccumulator():
             calc = (stake * (odds1 + 1) * (odds2 + 1)) - stake
             calculate.append(round(calc,2))
         return calculate
-
-    def mergePerGameWithOdds(self, combinations, odds, calculation):
-        combination = list(zip(combinations, odds, calculation))
-        return combination

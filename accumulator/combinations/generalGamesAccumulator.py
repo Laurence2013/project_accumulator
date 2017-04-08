@@ -59,3 +59,7 @@ class GeneralGamesAccumulator():
                  if matchList[m][n] is 'A':
                     calculate.append(game_id.away_odds)
         return calculate
+
+    def merge_per_game_with_odds(self, combinations, odds, calculation):
+        combination = list(zip(combinations, odds, calculation))
+        return combination
