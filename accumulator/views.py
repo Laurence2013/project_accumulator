@@ -19,6 +19,12 @@ class AccumulatorPageGamesView(TemplateView, View, TwoGamesAccumulator, ThreeGam
         (self.get_ammended_games(self.get_games())),4))
         return context
 
+    def comebined_calculations(self, combined_decimals, get_stake, len_games):
+        if len_games is 2:
+            return self.calculateOddsForTwoMatches(combined_decimals, get_stake)
+        elif len_games is 3:
+            return self.calculateOddsForThreeMatches(combined_decimals, get_stake)
+
     def post(self, request, *args, **kwargs):
         try:
             request.method == "POST"
@@ -28,27 +34,32 @@ class AccumulatorPageGamesView(TemplateView, View, TwoGamesAccumulator, ThreeGam
 
             if len(games) is 2:
                 get_combo = self.combinationsForTwoGames()
-                combos = self.get_per_outcome(get_combo)
-                get_games = self.get_game_combinations(get_combo, games)
-                match = int(len(get_games))
-                game = int(len(combos))
-                new_combo = self.combine_combo_list_with_game_list(combos, get_games, match, game)
-                get_num = list(self.break_list_into_equal_chunks(new_combo, 2))
-                get_odds_combo = self.get_length_of_combo(get_num, 9, 2)
-                get_all_odds_combo = self.get_combined_games(get_odds_combo)
-                get_combined_decimals = list(self.break_list_into_equal_chunks(get_all_odds_combo, 2))
-                get_combined_calculation = self.calculateOddsForTwoMatches(get_combined_decimals, int(get_stake))
-                get_all_combinations = self.merge_per_game_with_odds(get_odds_combo, get_combined_decimals, get_combined_calculation)
+                len_combo = 9
+            if len(games) is 3:
+                get_combo = self.combinationsForThreeGames()
+                len_combo = 27
 
-                total_stake = self.calculate_total_stake(int(get_stake), int(len(get_combo)))
-                context = {
-                    'combinations': get_all_combinations,
-                    'match': get_accumulator,
-                    'stake': get_stake,
-                    'total_games': int(len(get_combo)),
-                    'total_stake': total_stake,
-                }
-                return render(request, self.template_name, self.get_context_data(**context))
+            combos = self.get_per_outcome(get_combo)
+            get_games = self.get_game_combinations(get_combo, games)
+            match = int(len(get_games))
+            game = int(len(combos))
+            new_combo = self.combine_combo_list_with_game_list(combos, get_games, match, game)
+            get_num = list(self.break_list_into_equal_chunks(new_combo, len(games)))
+            get_odds_combo = self.get_length_of_combo(get_num, len_combo, len(games))
+            get_all_odds_combo = self.get_combined_games(get_odds_combo)
+            get_combined_decimals = list(self.break_list_into_equal_chunks(get_all_odds_combo, len(games)))
+            get_combined_calculation = self.comebined_calculations(get_combined_decimals, int(get_stake), len(games))
+            get_all_combinations = self.merge_per_game_with_odds(get_odds_combo, get_combined_decimals, get_combined_calculation)
+
+            total_stake = self.calculate_total_stake(int(get_stake), int(len(get_combo)))
+            context = {
+                'combinations': get_all_combinations,
+                'match': get_accumulator,
+                'stake': get_stake,
+                'total_games': int(len(get_combo)),
+                'total_stake': total_stake,
+            }
+            return render(request, self.template_name, self.get_context_data(**context))
         except UnboundLocalError as e:
             print('UnboundLocalError ' + str(e))
         except AttributeError as e:
