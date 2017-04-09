@@ -19,19 +19,6 @@ class AccumulatorPageGamesView(TemplateView, View, TwoGamesAccumulator, ThreeGam
         (self.get_ammended_games(self.get_games())),4))
         return context
 
-    def comebined_calculations(self, combined_decimals, get_stake, len_games):
-        if len_games is 2:
-            return self.calculateOddsForTwoMatches(combined_decimals, get_stake)
-        elif len_games is 3:
-            return self.calculateOddsForThreeMatches(combined_decimals, get_stake)
-
-    def combinations_below_stake(self, get_all_combinations, total_stake, len_games):
-        count = 0
-        for combo in get_all_combinations:
-            if combo[-1] < total_stake:
-                count += 1
-        return (count, len_games - count)
-
     def post(self, request, *args, **kwargs):
         try:
             request.method == "POST"

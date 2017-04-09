@@ -1,4 +1,6 @@
 {% load staticfiles %}
+{% load mathfilters %}
+
 <html>
 <head>
   <title>Group Accumulator</title>
@@ -82,7 +84,8 @@
             <th>Game outcome</th>
             <th>Match outcome 1</th>
             <th>Match outcome 2</th>
-            <th>Accumulator profit (£)</th>
+            <th>Accumulator gross profit (£)</th>
+            <th>Accumulator net profit (£)</th>
           </tr>
         </thead>
         <tbody>
@@ -93,8 +96,10 @@
             <td>{{ combos.1.1 }}</td>
             {% if combos.2 < total_stake %}
               <td id="BelowStake"><b>£{{ combos.2 }}</b></td>
+              <td id="BelowStake"><b>£{{ combos.2|sub:total_stake }}</b></td>
             {% else %}
               <td><b>£{{ combos.2 }}</b></td>
+              <td><b>£+{{ combos.2|sub:total_stake }}</b></td>
             {% endif %}
           </tr>
           {% endfor %}

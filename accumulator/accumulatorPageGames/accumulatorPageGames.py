@@ -35,3 +35,22 @@ class AccumulatorPageGames():
 
     def calculate_total_stake(self, stake, num_of_games):
         return num_of_games * stake
+
+    def comebined_calculations(self, combined_decimals, get_stake, len_games):
+        if len_games is 2:
+            return self.calculateOddsForTwoMatches(combined_decimals, get_stake)
+        elif len_games is 3:
+            return self.calculateOddsForThreeMatches(combined_decimals, get_stake)
+
+    def combinations_below_stake(self, get_all_combinations, total_stake, len_games):
+        count = 0
+        for combo in get_all_combinations:
+            if combo[-1] < total_stake:
+                count += 1
+        return (count, len_games - count)
+
+    def profit_loss(self, get_all_combinations, total_stake):
+        profit_loss = []
+        for combo in get_all_combinations:
+            profit_loss.append(combo[-1] - total_stake)
+        return profit_loss
