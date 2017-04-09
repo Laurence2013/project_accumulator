@@ -25,6 +25,13 @@ class AccumulatorPageGamesView(TemplateView, View, TwoGamesAccumulator, ThreeGam
         elif len_games is 3:
             return self.calculateOddsForThreeMatches(combined_decimals, get_stake)
 
+    def combinations_below_stake(self, get_all_combinations, total_stake, len_games):
+        count = 0
+        for combo in get_all_combinations:
+            if combo[-1] < total_stake:
+                count += 1
+        return (count, len_games - count)
+
     def post(self, request, *args, **kwargs):
         try:
             request.method == "POST"
@@ -50,14 +57,16 @@ class AccumulatorPageGamesView(TemplateView, View, TwoGamesAccumulator, ThreeGam
             get_combined_decimals = list(self.break_list_into_equal_chunks(get_all_odds_combo, len(games)))
             get_combined_calculation = self.comebined_calculations(get_combined_decimals, int(get_stake), len(games))
             get_all_combinations = self.merge_per_game_with_odds(get_odds_combo, get_combined_decimals, get_combined_calculation)
-
             total_stake = self.calculate_total_stake(int(get_stake), int(len(get_combo)))
+            combinations_below_stake = self.combinations_below_stake(get_all_combinations, total_stake, len_combo)
+
             context = {
                 'combinations': get_all_combinations,
                 'match': get_accumulator,
                 'stake': get_stake,
                 'total_games': int(len(get_combo)),
                 'total_stake': total_stake,
+                'calculation': combinations_below_stake,
             }
             return render(request, self.template_name, self.get_context_data(**context))
         except UnboundLocalError as e:

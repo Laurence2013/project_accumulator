@@ -35,16 +35,16 @@
 <div class="container-fluid text-center">
   <div class="row content">
     <div class="col-sm-2 sidenav">
+      <!--<p><a href="#">Link</a></p>
       <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>-->
     </div>
     <div class="col-sm-8 text-left">
       <form method='POST' action='.'>{% csrf_token %}
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>Game</th>
+            <th>Games</th>
             <th>Home Odds</th>
             <th>Draw Odds</th>
             <th>Away Odds</th>
@@ -53,7 +53,7 @@
         <tbody>
           {% for odd in odds %}
             <tr>
-              <td><input type="checkbox" name="accumulator" value="{{ odd.0 }}" /><strong>Game - </strong><i name="game" id="games">{{ odd.0 }}</i></td>
+              <td><input type="checkbox" name="accumulator" value="{{ odd.0 }}" /><i name="game" id="games">{{ odd.0 }}</i></td>
               <td><i name="home" id="home_odds">{{ odd.1 }}</i></td>
               <td><i name="draw" id="draw_odds">{{ odd.2 }}</i></td>
               <td><i name="away" id="away_odds">{{ odd.3 }}</i></td>
@@ -73,6 +73,7 @@
         <b>{{ match.0 }}</b> and <b>{{ match.1 }}</b> and <b>{{ match.2 }}</b>
         <h4>Stake is: £{{ stake }}</h4>
         <h4>Total stake for {{ total_games }} possible outcomes is £{{ total_stake }}</h4>
+        <h4>Total combinations below total take costs (making a loss) is <b>{{ calculation.0 }}</b> and combinations above (for profit) total take is <b>{{ calculation.1 }}</b> </h4>
       </p>
       <hr />
       <table class="table table-bordered">
@@ -91,7 +92,7 @@
             <td>{{ combos.1.0 }}</td>
             <td>{{ combos.1.1 }}</td>
             {% if combos.2 < total_stake %}
-              <td><b id="BelowStake">£{{ combos.2 }}</b></td>
+              <td id="BelowStake"><b>£{{ combos.2 }}</b></td>
             {% else %}
               <td><b>£{{ combos.2 }}</b></td>
             {% endif %}
@@ -102,18 +103,18 @@
       {% endif %}
     </div>
     <div class="col-sm-2 sidenav">
-      <div class="well">
+      <!--<div class="well">
         <p>ADS</p>
       </div>
       <div class="well">
-        <p>ADS</p>
+        <p>ADS</p>-->
       </div>
     </div>
   </div>
 </div>
 
 <footer class="container-fluid text-center">
-  <p>Footer Text</p>
+  <!--<p>Footer Text</p>-->
 </footer>
 
 </body>
