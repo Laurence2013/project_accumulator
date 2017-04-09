@@ -1,36 +1,120 @@
-<h2>Hello World! This is the index page</h2>
+{% load staticfiles %}
+<html>
+<head>
+  <title>Group Accumulator</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+</head>
+<body>
 
-<form method='POST' action='.'>{% csrf_token %}
-  <fieldset>
-    <legend>Choose max 2 accumulators</legend>
-      {% for odd in odds %}
-          <input type="checkbox" name="accumulator" value="{{ odd.0 }}" />
-          <strong>Game - </strong><i name="game" id="games">{{ odd.0 }}</i>
-          <strong> Home odds - </strong><i name="home" id="home_odds">{{ odd.1 }}</i>
-          <strong> Draw odds - </strong><i name="draw" id="draw_odds">{{ odd.2 }}</i>
-          <strong> Away odds - </strong><i name="away" id="away_odds">{{ odd.3 }}</i>
-          <br />
-      {% endfor %}
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+    </div>
+    <div class="col-sm-8 text-left">
+      <form method='POST' action='.'>{% csrf_token %}
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Game</th>
+            <th>Home Odds</th>
+            <th>Draw Odds</th>
+            <th>Away Odds</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for odd in odds %}
+            <tr>
+              <td><input type="checkbox" name="accumulator" value="{{ odd.0 }}" /><strong>Game - </strong><i name="game" id="games">{{ odd.0 }}</i></td>
+              <td><i name="home" id="home_odds">{{ odd.1 }}</i></td>
+              <td><i name="draw" id="draw_odds">{{ odd.2 }}</i></td>
+              <td><i name="away" id="away_odds">{{ odd.3 }}</i></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <hr />
       <p>
-        Stake £: <input id="stake" name="stake" type="text" placeholder="Enter stake here"
+        Stake £: <input id="stake" name="stake" type="text" placeholder="Enter stake here" />
       </p>
       <input type="submit" value="Get accumulator" />
-  </fieldset>
-</form>
+      </form>
+      {% if match != None %}
+      <hr />
+      <p>
+        <b>{{ match.0 }}</b> and <b>{{ match.1 }}</b> and <b>{{ match.2 }}</b>
+        <h4>Stake is: £{{ stake }}</h4>
+        <h4>Total stake for {{ total_games }} possible outcomes is £{{ total_stake }}</h4>
+      </p>
+      <hr />
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Game outcome</th>
+            <th>Match outcome 1</th>
+            <th>Match outcome 2</th>
+            <th>Accumulator profit (£)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for combos in combinations %}
+          <tr>
+            <td>{{ combos.0.1 }} - {{ combos.0.3 }} - {{ combos.0.5 }}</td>
+            <td>{{ combos.1.0 }}</td>
+            <td>{{ combos.1.1 }}</td>
+            {% if combos.2 < total_stake %}
+              <td><b id="BelowStake">£{{ combos.2 }}</b></td>
+            {% else %}
+              <td><b>£{{ combos.2 }}</b></td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  {% if match != None %}
-    <b>{{ match.0 }}</b> and <b>{{ match.1 }}</b> and <b>{{ match.2 }}</b>
-    <h4>Stake is: £{{ stake }}</h4>
-    <h4>Total stake for {{ total_games }} possible outcomes is £{{ total_stake }}</h4>
-  {% endif %}
-</p>
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
 
-<ul>
-  {% for combos in combinations %}
-    <li><strong>Game outcome: </strong>{{ combos.0.1 }} - {{ combos.0.3 }} - {{ combos.0.5 }}
-    <strong>Match 1 odd: </strong>{{ combos.1.0 }}
-    <strong>Match 2 odd: </strong>{{ combos.1.1 }}
-    <strong>Accumulator profit: </strong>£{{ combos.2 }}</li>
-  {% endfor %}
-</ul>
+</body>
+</html>
