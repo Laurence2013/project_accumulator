@@ -50,3 +50,13 @@ class AccumulatorPageGames():
             if combo[-1] < total_stake:
                 count += 1
         return (count, len_games - count)
+
+    def calculate_percent(self, get_all_combinations, total_stake):
+        counter_below = 0
+        counter_above = 0
+        for combo in get_all_combinations:
+            if combo[2] < total_stake:
+                counter_below += 1
+            else:
+                counter_above += 1
+        return [round((counter_below / total_stake * 100), 2), round((counter_above / total_stake * 100), 2)]

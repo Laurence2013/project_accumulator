@@ -51,6 +51,7 @@ class AccumulatorPageGamesView(TemplateView, View, TwoGamesAccumulator, ThreeGam
             get_all_combinations = self.merge_per_game_with_odds(get_odds_combo, get_combined_decimals, get_combined_calculation)
             total_stake = self.calculate_total_stake(int(get_stake), int(len(get_combo)))
             combinations_below_stake = self.combinations_below_stake(get_all_combinations, total_stake, len_combo)
+            cal_in_percent = self.calculate_percent(get_all_combinations, total_stake)
 
             context = {
                 'combinations': get_all_combinations,
@@ -59,7 +60,8 @@ class AccumulatorPageGamesView(TemplateView, View, TwoGamesAccumulator, ThreeGam
                 'total_games': int(len(get_combo)),
                 'total_stake': total_stake,
                 'calculation': combinations_below_stake,
-                'length_combo': len(games)
+                'length_combo': len(games),
+                'calc_in_percent': cal_in_percent,
             }
             return render(request, self.template_name, self.get_context_data(**context))
         except UnboundLocalError as e:
