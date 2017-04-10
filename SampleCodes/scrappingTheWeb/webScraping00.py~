@@ -1,0 +1,6 @@
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+
+html = urlopen('http://pythonscraping.com')
+bsObj = BeautifulSoup(html.read())
+print(hbsObj.h1)
