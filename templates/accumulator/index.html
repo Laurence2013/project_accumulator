@@ -42,7 +42,8 @@
       <p><a href="#">Link</a></p>-->
     </div>
     <div class="col-sm-8 text-left">
-      <h4>{{ daily_match }}</h4>
+      <h4>{{ infos.0.0 }}</h4>
+      <h5>{{ infos.0.1 }}</h5>
       <form method='POST' action='.'>{% csrf_token %}
       <table class="table table-bordered">
         <thead>
@@ -85,6 +86,7 @@
             <th>Game outcome</th>
             <th>Match outcome 1</th>
             <th>Match outcome 2</th>
+            <th>Match outcome 3</th>
             <th>Gross profit from stake of £{{ total_stake }}</th>
             <th>Net profit from stake of £{{ total_stake }}</th>
           </tr>
@@ -95,6 +97,7 @@
             <td>{{ combos.0.1 }} - {{ combos.0.3 }} - {{ combos.0.5 }}</td>
             <td>{{ combos.1.0 }}</td>
             <td>{{ combos.1.1 }}</td>
+            <td>{{ combos.1.2 }}</td>
             {% if combos.2 < total_stake %}
               <td id="BelowStake"><b>£{{ combos.2 }}</b></td>
               <td id="BelowStake"><b>£{{ combos.2|sub:total_stake }}</b></td>
