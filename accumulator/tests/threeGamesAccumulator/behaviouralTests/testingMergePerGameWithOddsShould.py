@@ -12,12 +12,9 @@ class TestingMergePerGameWithOddsShould(TestCase, GeneralGamesAccumulator, Three
         Game.objects.create(id=2, games='Arouca vs Belenenses', time='19:45:00', date_of_game='2017-02-27')
         Game.objects.create(id=3, games='St Pauli vs Karlsruhe', time='19:45:00', date_of_game='2017-02-27')
 
-        Odd.objects.create(id=1, home_odds=0.91, draw_odds=2.75, away_odds=3.00,
-        games=Game.objects.get(pk=1))
-        Odd.objects.create(id=2, home_odds=1.30, draw_odds=2.00, away_odds=2.20,
-        games=Game.objects.get(pk=2))
-        Odd.objects.create(id=3, home_odds=1.05, draw_odds=2.10, away_odds=2.75,
-        games=Game.objects.get(pk=3))
+        Odd.objects.create(id=1, home_odds=0.91, draw_odds=2.75, away_odds=3.00, games=Game.objects.get(pk=1))
+        Odd.objects.create(id=2, home_odds=1.30, draw_odds=2.00, away_odds=2.20, games=Game.objects.get(pk=2))
+        Odd.objects.create(id=3, home_odds=1.05, draw_odds=2.10, away_odds=2.75, games=Game.objects.get(pk=3))
 
         self.games = Game.objects.values_list('pk', flat = True)
         self.get_combo = self.combinationsForThreeGames()

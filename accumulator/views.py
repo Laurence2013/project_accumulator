@@ -4,10 +4,11 @@ from django.views.generic import TemplateView, View
 from decimal import Decimal
 from accumulator.combinations.twoGamesAccumulator import TwoGamesAccumulator
 from accumulator.combinations.threeGamesAccumulator import ThreeGamesAccumulator
+from accumulator.combinations.fourGamesAccumulator import FourGamesAccumulator
 from accumulator.combinations.generalGamesAccumulator import GeneralGamesAccumulator
 from accumulator.accumulatorPageGames.accumulatorPageGames import AccumulatorPageGames
 
-class AccumulatorPageGamesView(TemplateView, View, TwoGamesAccumulator, ThreeGamesAccumulator, AccumulatorPageGames, GeneralGamesAccumulator):
+class AccumulatorPageGamesView(TemplateView, View, TwoGamesAccumulator, ThreeGamesAccumulator, FourGamesAccumulator, AccumulatorPageGames, GeneralGamesAccumulator):
     template_name = "accumulator/index.html"
     games = Game.objects.values_list('id','games')
     match_info = MatchInfo.objects.values_list('daily_matches', 'combinations')
@@ -33,6 +34,9 @@ class AccumulatorPageGamesView(TemplateView, View, TwoGamesAccumulator, ThreeGam
             if len(games) is 3:
                 get_combo = self.combinationsForThreeGames()
                 len_combo = 27
+            if len(games) is 4:
+                get_combo = self.combinationsForFourGames()
+                len_combo = 81
 
             combos = self.get_per_outcome(get_combo)
             get_games = self.get_game_combinations(get_combo, games)
@@ -55,6 +59,7 @@ class AccumulatorPageGamesView(TemplateView, View, TwoGamesAccumulator, ThreeGam
                 'total_games': int(len(get_combo)),
                 'total_stake': total_stake,
                 'calculation': combinations_below_stake,
+                'length_combo': len(games)
             }
             return render(request, self.template_name, self.get_context_data(**context))
         except UnboundLocalError as e:

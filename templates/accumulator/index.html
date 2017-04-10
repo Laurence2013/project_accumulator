@@ -74,7 +74,15 @@
       {% if match != None %}
       <hr />
       <p>
-        <b>{{ match.0 }}</b> and <b>{{ match.1 }}</b> and <b>{{ match.2 }}</b>
+        {% if length_combo == 2 %}
+         <b>{{ match.0 }}</b> and <b>{{ match.1 }}</b>
+        {% endif %}
+        {% if length_combo == 3 %}
+         <b>{{ match.0 }}</b> and <b>{{ match.1 }}</b> and <b>{{ match.2 }}
+        {% endif %}
+        {% if length_combo == 4 %}
+         <b>{{ match.0 }}</b> and <b>{{ match.1 }}</b> and <b>{{ match.2 }} and <b>{{ match.3 }}</b>
+        {% endif %}
         <h4>Stake is: £{{ stake }}</h4>
         <h4>Total stake for {{ total_games }} possible outcomes is £{{ total_stake }}</h4>
         <h4>Total combinations below total stake costs (making a loss) is <b>{{ calculation.0 }}</b> and combinations above (for profit) total stake is <b>{{ calculation.1 }}</b> </h4>
@@ -87,6 +95,7 @@
             <th>Match outcome 1</th>
             <th>Match outcome 2</th>
             <th>Match outcome 3</th>
+            <th>Match outcome 4</th>
             <th>Gross profit from stake of £{{ total_stake }}</th>
             <th>Net profit from stake of £{{ total_stake }}</th>
           </tr>
@@ -94,10 +103,11 @@
         <tbody>
           {% for combos in combinations %}
           <tr>
-            <td>{{ combos.0.1 }} - {{ combos.0.3 }} - {{ combos.0.5 }}</td>
+            <td>{{ combos.0.1 }} - {{ combos.0.3 }} - {{ combos.0.5 }} - {{ combos.0.7 }}</td>
             <td>{{ combos.1.0 }}</td>
             <td>{{ combos.1.1 }}</td>
             <td>{{ combos.1.2 }}</td>
+            <td>{{ combos.1.3 }}</td>
             {% if combos.2 < total_stake %}
               <td id="BelowStake"><b>£{{ combos.2 }}</b></td>
               <td id="BelowStake"><b>£{{ combos.2|sub:total_stake }}</b></td>

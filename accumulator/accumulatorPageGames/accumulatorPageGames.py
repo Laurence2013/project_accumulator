@@ -41,6 +41,8 @@ class AccumulatorPageGames():
             return self.calculateOddsForTwoMatches(combined_decimals, get_stake)
         elif len_games is 3:
             return self.calculateOddsForThreeMatches(combined_decimals, get_stake)
+        elif len_games is 4:
+            return self.calculateOddsForFourMatches(combined_decimals, get_stake)
 
     def combinations_below_stake(self, get_all_combinations, total_stake, len_games):
         count = 0
