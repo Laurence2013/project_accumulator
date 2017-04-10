@@ -42,6 +42,7 @@
       <p><a href="#">Link</a></p>-->
     </div>
     <div class="col-sm-8 text-left">
+      <h4>{{ daily_match }}</h4>
       <form method='POST' action='.'>{% csrf_token %}
       <table class="table table-bordered">
         <thead>
@@ -75,7 +76,7 @@
         <b>{{ match.0 }}</b> and <b>{{ match.1 }}</b> and <b>{{ match.2 }}</b>
         <h4>Stake is: £{{ stake }}</h4>
         <h4>Total stake for {{ total_games }} possible outcomes is £{{ total_stake }}</h4>
-        <h4>Total combinations below total take costs (making a loss) is <b>{{ calculation.0 }}</b> and combinations above (for profit) total take is <b>{{ calculation.1 }}</b> </h4>
+        <h4>Total combinations below total stake costs (making a loss) is <b>{{ calculation.0 }}</b> and combinations above (for profit) total stake is <b>{{ calculation.1 }}</b> </h4>
       </p>
       <hr />
       <table class="table table-bordered">
@@ -84,8 +85,8 @@
             <th>Game outcome</th>
             <th>Match outcome 1</th>
             <th>Match outcome 2</th>
-            <th>Accumulator gross profit (£)</th>
-            <th>Accumulator net profit (£)</th>
+            <th>Gross profit from stake of £{{ total_stake }}</th>
+            <th>Net profit from stake of £{{ total_stake }}</th>
           </tr>
         </thead>
         <tbody>

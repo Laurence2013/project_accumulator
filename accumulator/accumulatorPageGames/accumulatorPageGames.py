@@ -48,9 +48,3 @@ class AccumulatorPageGames():
             if combo[-1] < total_stake:
                 count += 1
         return (count, len_games - count)
-
-    def profit_loss(self, get_all_combinations, total_stake):
-        profit_loss = []
-        for combo in get_all_combinations:
-            profit_loss.append(combo[-1] - total_stake)
-        return profit_loss

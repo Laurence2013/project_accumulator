@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from accumulator.models import Game, Odd
+from accumulator.models import Game, Odd, DailyMatche
 from django.views.generic import TemplateView, View
 from decimal import Decimal
 from accumulator.combinations.twoGamesAccumulator import TwoGamesAccumulator
@@ -8,13 +8,14 @@ from accumulator.combinations.generalGamesAccumulator import GeneralGamesAccumul
 from accumulator.accumulatorPageGames.accumulatorPageGames import AccumulatorPageGames
 
 class AccumulatorPageGamesView(TemplateView, View, TwoGamesAccumulator, ThreeGamesAccumulator, AccumulatorPageGames, GeneralGamesAccumulator):
-
     template_name = "accumulator/index.html"
     games = Game.objects.values_list('id','games')
+    daily_matches = DailyMatche.objects.get(pk=1)
     odds = Odd.objects.values_list('id','home_odds','draw_odds','away_odds')
 
     def get_context_data(self, **kwargs):
         context = super(AccumulatorPageGamesView, self).get_context_data(**kwargs)
+        context['daily_match'] = self.daily_matches
         context['odds'] = list(self.break_list_into_equal_chunks(self.get_final_game
         (self.get_ammended_games(self.get_games())),4))
         return context

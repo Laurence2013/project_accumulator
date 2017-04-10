@@ -19,3 +19,9 @@ class Odd(models.Model):
 
     def __str__(self):
         return str(self.games)
+
+class DailyMatche(models.Model):
+    daily_matches = models.CharField(max_length = 200)
+
+    def __str__(self):
+        return str(self.daily_matches)
