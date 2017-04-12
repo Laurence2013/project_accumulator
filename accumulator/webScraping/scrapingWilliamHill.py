@@ -38,6 +38,9 @@ class ScrapingWilliamHill():
         except Exception as e:
             return None
 
+    def clear_list(self):
+        self.span_id_lists.clear()
+
     def open_csv_file(self, url, path_name):
         csv_file = open(path_name)
         csv_open = csv.reader(csv_file)
@@ -45,7 +48,7 @@ class ScrapingWilliamHill():
             try:
                 self.get_span_ids(url, row)
             except Exception as e:
-                return None 
+                return None
         else:
             return True
 
