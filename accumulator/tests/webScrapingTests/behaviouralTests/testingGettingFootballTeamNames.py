@@ -14,8 +14,8 @@ class TestingGettingFootballTeamNames(TestCase, ScrapingWilliamHill):
         self.span_ids_link_1 = base_dir + '/accumulator/tests/webScrapingTests/testingFiles/span_ids_link_1.csv'
         self.team_names_from_links0_and_span0 = base_dir + '/accumulator/tests/webScrapingTests/testingFiles/team_names_from_links0_and_span0.csv'
         self.team_names_from_links1_and_span1 = base_dir + '/accumulator/tests/webScrapingTests/testingFiles/team_names_from_links1_and_span1.csv'
-        self.get_links_0 = 'http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html'
-        self.get_links_1 = 'http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/1/Football.html'
+        self.get_links_0 = 'http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/1/Football.html'
+        self.get_links_1 = 'http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/2/Football.html'
 
     def test_CheckThatSpanIds_0_FileIsNotEmpty(self):
         self.assertGreater(len(self.span_ids_link_0), 0)

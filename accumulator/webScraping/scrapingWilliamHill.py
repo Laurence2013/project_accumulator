@@ -1,9 +1,10 @@
 import os
+import csv
+from accumulator.combinations.generalGamesAccumulator import GeneralGamesAccumulator
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
-import csv
 
-class ScrapingWilliamHill():
+class ScrapingWilliamHill(GeneralGamesAccumulator):
     file_path = '/home/laurence/Documents/Django_Projects/accumulator01/src/SampleCodes/scrappingTheWeb/tbody_ids.csv'
     span_ids = '/home/laurence/Documents/Django_Projects/accumulator01/src/SampleCodes/scrappingTheWeb/span_ids.csv'
     span_id_lists = []
@@ -32,14 +33,38 @@ class ScrapingWilliamHill():
         try:
             html = urlopen(url)
             soup = BeautifulSoup(html.read(), "html5lib")
-            games = soup.find('tbody',{'id':tag_name}).findAll('td')[2].findAll('span')
+            # games = soup.find('tbody',{'id':tag_name}).findAll('td')[2].findAll('span')
+            games = soup.find('tbody',{'id':tag_name}).findAll('span')[2:]
             for game in games:
                 if 'id' in game.attrs:
                     self.span_id_lists.append(game.attrs['id'])
         except Exception as e:
+            print('ExceptionError' + str(e))
             return None
         except AttributeError as e:
+            print('AttributeError' + str(e))
             return None
+
+    def get_all_odds_for_match(self, url, tbody_link):
+        match_odds = []
+        try:
+            html = urlopen(url)
+            csv_file = open(tbody_link)
+            csv_open = csv.reader(csv_file)
+            soup = BeautifulSoup(html.read(), "html5lib")
+            for odds in csv_open:
+                for tbody in soup.find('tbody',{'id':odds}).findAll('div',{'class':'eventprice'}):
+                    match_odds.append(tbody.get_text().strip())
+            new_match_odds = list(self.break_list_into_equal_chunks(match_odds, 3))
+        except Exception as e:
+            print('ExceptionError' + str(e))
+            return None
+        except AttributeError as e:
+            print('AttributeError' + str(e))
+            return None
+        finally:
+            csv_file.close()
+        return new_match_odds
 
     def get_name_of_teams(self, span_id_link, span_id_name):
         team_names = []
@@ -59,6 +84,8 @@ class ScrapingWilliamHill():
         except TypeError as e:
             print('TypeError' + str(e))
             return None
+        finally:
+            csv_file.close()
         return team_names
 
     def clear_list(self):
@@ -79,8 +106,7 @@ class ScrapingWilliamHill():
             except TypeError as e:
                 print('TypeError' + str(e))
                 return None
-        else:
-            return True
+        csv_file.close()
 
     def save_file(self, path_name, docs):
         csvFile = open(path_name, 'w+')

@@ -14,8 +14,8 @@ class TestingWilliamHillFootballTbodyLinksShould(TestCase, ScrapingWilliamHill):
         base_dir = settings.BASE_DIR
         self.tbody_ids_link_0 = base_dir + '/accumulator/tests/webScrapingTests/testingFiles/tbody_ids_link_0.csv'
         self.tbody_ids_link_1 = base_dir + '/accumulator/tests/webScrapingTests/testingFiles/tbody_ids_link_1.csv'
-        self.get_links_0 = (self.get_tbody_ids('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html'))
-        self.get_links_1 = (self.get_tbody_ids('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/1/Football.html'))
+        self.get_links_0 = (self.get_tbody_ids('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/1/Football.html'))
+        self.get_links_1 = (self.get_tbody_ids('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/2/Football.html'))
 
     def test_CheckThat_Get_Links_0_IsGreaterThan_0(self):
         self.assertGreater(len(self.tbody_ids_link_0), 0)
