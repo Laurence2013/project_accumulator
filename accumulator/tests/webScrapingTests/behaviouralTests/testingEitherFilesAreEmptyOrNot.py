@@ -19,6 +19,8 @@ class TestingEitherFilesAreEmptyOrNot(TestCase):
         self.span_ids_link_1 = base_dir + '/accumulator/tests/webScrapingTests/testingFiles/span_ids_link_1.csv'
         self.teams_for_tbody0_and_span0 = base_dir + '/accumulator/tests/webScrapingTests/testingFiles/team_names_from_links0_and_span0.csv'
         self.teams_for_tbody1_and_span1 = base_dir + '/accumulator/tests/webScrapingTests/testingFiles/team_names_from_links1_and_span1.csv'
+        self.tbody_link_0_odds = base_dir + '/accumulator/tests/webScrapingTests/testingFiles/tbody_link_0_odds.csv'
+        self.tbody_link_1_odds = base_dir + '/accumulator/tests/webScrapingTests/testingFiles/tbody_link_1_odds.csv'
 
     def test_CheckThatTbodyIdsLink_0_FileIsEmptyOrNot(self):
         try:
@@ -67,3 +69,19 @@ class TestingEitherFilesAreEmptyOrNot(TestCase):
             with open(self.teams_for_tbody1_and_span1, "w"):
                 pass
             self.assertEqual(os.path.getsize(self.teams_for_tbody1_and_span1), 0)
+
+    def test_CheckTbody_link_0_OddsIsEitherEmptyOrNot(self):
+        try:
+            self.assertEqual(os.path.getsize(self.tbody_link_0_odds), 0)
+        except AssertionError as e:
+            with open(self.tbody_link_0_odds, "w"):
+                pass
+            self.assertEqual(os.path.getsize(self.tbody_link_0_odds), 0)
+
+    def test_CheckTbody_link_1_OddsIsEitherEmptyOrNot(self):
+        try:
+            self.assertEqual(os.path.getsize(self.tbody_link_1_odds), 0)
+        except AssertionError as e:
+            with open(self.tbody_link_0_odds, "w"):
+                pass
+            self.assertEqual(os.path.getsize(self.tbody_link_1_odds), 0)

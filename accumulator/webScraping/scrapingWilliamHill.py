@@ -1,5 +1,6 @@
 import os
 import csv
+import re
 from accumulator.combinations.generalGamesAccumulator import GeneralGamesAccumulator
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
@@ -34,10 +35,15 @@ class ScrapingWilliamHill(GeneralGamesAccumulator):
             html = urlopen(url)
             soup = BeautifulSoup(html.read(), "html5lib")
             # games = soup.find('tbody',{'id':tag_name}).findAll('td')[2].findAll('span')
-            games = soup.find('tbody',{'id':tag_name}).findAll('span')[2:]
+            # games = soup.find('tbody',{'id':tag_name}).findAll('tr')
+            # games = soup.find('tbody',{'id':tag_name}).findAll('a')
+            games = soup.find('tbody',{'id':tag_name}).findAll('span',{'id':re.compile('^[0-9]')})
             for game in games:
                 if 'id' in game.attrs:
-                    self.span_id_lists.append(game.attrs['id'])
+                    print(game.get_text().strip())
+            # for game in games:
+            #     if 'id' in game.attrs:
+            #         self.span_id_lists.append(game.attrs['id'])
         except Exception as e:
             print('ExceptionError' + str(e))
             return None
