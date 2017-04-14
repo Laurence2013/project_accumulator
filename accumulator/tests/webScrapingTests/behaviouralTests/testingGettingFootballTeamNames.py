@@ -4,6 +4,7 @@ from django.test import TestCase
 from accumulator.webScraping.scrapingWilliamHill import ScrapingWilliamHill
 
 '''
+AT THE MOMENT THIS IS NOT CURRENTLY IN USE!!!
 This is the 4th behavioural test
 '''
 

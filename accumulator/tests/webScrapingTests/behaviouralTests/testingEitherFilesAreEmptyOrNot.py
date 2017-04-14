@@ -54,22 +54,6 @@ class TestingEitherFilesAreEmptyOrNot(TestCase):
                 pass
             self.assertEqual(os.path.getsize(self.span_ids_link_1), 0)
 
-    def test_CheckThatTbody_0_AndSpanIds_0_FileIsEmptyOrNot(self):
-        try:
-            self.assertEqual(os.path.getsize(self.teams_for_tbody0_and_span0), 0)
-        except AssertionError as e:
-            with open(self.teams_for_tbody0_and_span0, "w"):
-                pass
-            self.assertEqual(os.path.getsize(self.teams_for_tbody0_and_span0), 0)
-
-    def test_CheckThatTbody_1_AndSpanIds_1_FileIsEmptyOrNot(self):
-        try:
-            self.assertEqual(os.path.getsize(self.teams_for_tbody1_and_span1), 0)
-        except AssertionError as e:
-            with open(self.teams_for_tbody1_and_span1, "w"):
-                pass
-            self.assertEqual(os.path.getsize(self.teams_for_tbody1_and_span1), 0)
-
     def test_CheckTbody_link_0_OddsIsEitherEmptyOrNot(self):
         try:
             self.assertEqual(os.path.getsize(self.tbody_link_0_odds), 0)
@@ -85,3 +69,19 @@ class TestingEitherFilesAreEmptyOrNot(TestCase):
             with open(self.tbody_link_0_odds, "w"):
                 pass
             self.assertEqual(os.path.getsize(self.tbody_link_1_odds), 0)
+
+        # def test_CheckThatTbody_0_AndSpanIds_0_FileIsEmptyOrNot(self):
+        #     try:
+        #         self.assertEqual(os.path.getsize(self.teams_for_tbody0_and_span0), 0)
+        #     except AssertionError as e:
+        #         with open(self.teams_for_tbody0_and_span0, "w"):
+        #             pass
+        #         self.assertEqual(os.path.getsize(self.teams_for_tbody0_and_span0), 0)
+        #
+        # def test_CheckThatTbody_1_AndSpanIds_1_FileIsEmptyOrNot(self):
+        #     try:
+        #         self.assertEqual(os.path.getsize(self.teams_for_tbody1_and_span1), 0)
+        #     except AssertionError as e:
+        #         with open(self.teams_for_tbody1_and_span1, "w"):
+        #             pass
+        #         self.assertEqual(os.path.getsize(self.teams_for_tbody1_and_span1), 0)
