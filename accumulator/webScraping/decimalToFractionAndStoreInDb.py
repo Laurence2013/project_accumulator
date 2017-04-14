@@ -30,9 +30,9 @@ class DecimalToFractionAndStoreInDb():
             found = re.findall("'(.+?)'", int_num)
             for f in found:
                 if f == str('EVS'):
-                    test_list.append(str(f))
+                    test_list.append(round(float(2.00),2))
                 else:
-                    test_list.append(float(f))
+                    test_list.append(round(float(f),2))
         return test_list
 
     def open_matches_file(self, file_to_open):

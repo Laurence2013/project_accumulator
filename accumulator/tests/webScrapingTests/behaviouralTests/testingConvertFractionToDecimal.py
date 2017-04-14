@@ -19,6 +19,7 @@ class TestingConvertFractionToDecimal(TestCase, DecimalToFractionAndStoreInDb):
         get_odds = self.convert_fraction_to_decimal(self.tbody_link_1_odds)
         for odds in get_odds:
             test_list.append(self.convert_string_into_float_or_string(odds))
-        print(test_list)
+        for test in test_list:
+            print(test)
 
         self.assertEqual(1,1)
