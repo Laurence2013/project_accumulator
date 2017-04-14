@@ -1,7 +1,5 @@
 from django.test import TestCase
 from django.conf import settings
-import csv
-import re
 from accumulator.webScraping.decimalToFractionAndStoreInDb import DecimalToFractionAndStoreInDb
 
 '''
@@ -19,15 +17,8 @@ class TestingConvertFractionToDecimal(TestCase, DecimalToFractionAndStoreInDb):
     def test_GetIndex_0_AndConvertEachElementFromFractionToDecimal(self):
         test_list = list()
         get_odds = self.convert_fraction_to_decimal(self.tbody_link_1_odds)
-        odds = get_odds[3]
-        for odd in odds:
-            int_num = re.sub(r'(\d+)/(\d+)', lambda m: str(int(m.group(1))/int(m.group(2))), odd)
-            found = re.findall("'(.+?)'", int_num)
-            print(found)
-            for f in found:
-                if f == str('EVS'):
-                    test_list.append(str(f))
-                else:
-                    test_list.append(float(f))
-            print(test_list)
+        for odds in get_odds:
+            test_list.append(self.convert_string_into_float_or_string(odds))
+        print(test_list)
+
         self.assertEqual(1,1)

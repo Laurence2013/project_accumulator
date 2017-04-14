@@ -1,4 +1,5 @@
 import csv
+import re
 from fractions import Fraction
 
 class DecimalToFractionAndStoreInDb():
@@ -21,6 +22,18 @@ class DecimalToFractionAndStoreInDb():
         finally:
             csv_file.close()
         return odds_list
+
+    def convert_string_into_float_or_string(self, odds):
+        test_list = list()
+        for odd in odds:
+            int_num = re.sub(r'(\d+)/(\d+)', lambda m: str(int(m.group(1))/int(m.group(2))), odd)
+            found = re.findall("'(.+?)'", int_num)
+            for f in found:
+                if f == str('EVS'):
+                    test_list.append(str(f))
+                else:
+                    test_list.append(float(f))
+        return test_list
 
     def open_matches_file(self, file_to_open):
         pass
