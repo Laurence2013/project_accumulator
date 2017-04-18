@@ -35,5 +35,11 @@ class DecimalToFractionAndStoreInDb():
                     test_list.append(round(float(f),2))
         return test_list
 
+    def create_new_list(self, odds):
+        test_list = list()
+        for odd in odds:
+            test_list.append(self.convert_string_into_float_or_string(odd))
+        return test_list
+
     def open_matches_file(self, file_to_open):
         pass

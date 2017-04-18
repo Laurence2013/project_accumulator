@@ -66,7 +66,7 @@ class TestingEitherFilesAreEmptyOrNot(TestCase):
         try:
             self.assertEqual(os.path.getsize(self.tbody_link_1_odds), 0)
         except AssertionError as e:
-            with open(self.tbody_link_0_odds, "w"):
+            with open(self.tbody_link_1_odds, "w"):
                 pass
             self.assertEqual(os.path.getsize(self.tbody_link_1_odds), 0)
 
