@@ -40,6 +40,3 @@ class DecimalToFractionAndStoreInDb():
         for odd in odds:
             test_list.append(self.convert_string_into_float_or_string(odd))
         return test_list
-
-    def open_matches_file(self, file_to_open):
-        pass
