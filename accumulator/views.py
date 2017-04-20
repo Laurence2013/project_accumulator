@@ -17,8 +17,7 @@ class AccumulatorPageGamesView(TemplateView, View, TwoGamesAccumulator, ThreeGam
     def get_context_data(self, **kwargs):
         context = super(AccumulatorPageGamesView, self).get_context_data(**kwargs)
         context['infos'] = self.match_info
-        context['odds'] = list(self.break_list_into_equal_chunks(self.get_final_game
-        (self.get_ammended_games(self.get_games())),4))
+        context['odds'] = list(self.break_list_into_equal_chunks(self.get_final_game(self.get_ammended_games(self.get_games())),4))
         return context
 
     def post(self, request, *args, **kwargs):

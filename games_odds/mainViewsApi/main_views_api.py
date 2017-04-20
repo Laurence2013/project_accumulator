@@ -16,3 +16,8 @@ class MainViewsApi(ScrapingWilliamHill):
             return True
         else:
             return False
+
+    def save_check_empty(self, ids_link, link_list):
+        self.save_file(ids_link, link_list)
+        not_empty = self.check_file_not_empty(ids_link)
+        return not_empty

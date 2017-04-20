@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import View
 from django.http import HttpResponse
 from django.conf import settings
-from accumulator.models import Game, Odd
+from accumulator.models import GameUrlLink0
 from games_odds.webScraping.scrapingWilliamHill import ScrapingWilliamHill
 from games_odds.webScraping.decimalToFractionAndStoreInDb import DecimalToFractionAndStoreInDb
 from games_odds.webScraping.combineOddsWithItsMatch import CombineOddsWithItsMatch
@@ -28,29 +28,26 @@ class ManageMatchesAndOdds(View, MainViewsApi, ScrapingWilliamHill, DecimalToFra
 
     def get(self, request, *args, **kwargs):
         links_0 = self.get_tbody(self.tbody_ids_link_0, 'http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html')
+
         if len(links_0) > 0:
-            self.save_file(self.tbody_ids_link_0, links_0)
-            not_empty1 = self.check_file_not_empty(self.tbody_ids_link_0)
-            print(not_empty1)
+            empty1 = self.save_check_empty(self.tbody_ids_link_0, links_0)
 
-        if not_empty1 is True:
+        if empty1 is True:
             self.get_span_ids('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html', self.tbody_ids_link_0)
-            self.save_file(self.span_ids_link_0, ScrapingWilliamHill.span_id_lists)
-            not_empty2 = self.check_file_not_empty(self.span_ids_link_0)
+            empty2 = self.save_check_empty(self.span_ids_link_0, ScrapingWilliamHill.span_id_lists)
             self.clear_list()
-            print(not_empty2)
 
-        if not_empty2 is True:
+        if empty2 is True:
             match_odds = self.get_all_odds_for_match('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html', self.tbody_ids_link_0)
-            self.save_file(self.get_match_odds_link_0, match_odds)
-            not_empty3 = self.check_file_not_empty(self.get_match_odds_link_0)
-            print(not_empty3)
+            empty3 = self.save_check_empty(self.get_match_odds_link_0, match_odds)
 
-        if not_empty3 is True:
+        if empty3 is True:
             get_match = self.get_match(self.span_ids_link_0)
             get_odds = self.convert_fraction_to_decimal(self.get_match_odds_link_0)
             get_converts = self.create_new_list(get_odds)
             get_combined = self.combine_odds_match(get_match, get_converts)
-            print(get_combined)
+
+        for combine in get_combined:
+            print(games=str(combine[0]))
 
         return HttpResponse('Hello world for manage_matches!')
