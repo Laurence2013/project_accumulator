@@ -3,8 +3,8 @@ from django.db import models
 # Games Table
 class Game(models.Model):
     games = models.CharField(max_length = 50)
-    time = models.TimeField((u"Time of Game"), blank=True)
-    date_of_game = models.DateField((u"Date of Game"), blank=True)
+    time = models.TimeField((u"Time of Game"), null=True)
+    date_of_game = models.DateField((u"Date of Game"), null=True)
     date_updated = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
