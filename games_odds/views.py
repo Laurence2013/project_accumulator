@@ -48,6 +48,6 @@ class ManageMatchesAndOdds(View, MainViewsApi, ScrapingWilliamHill, DecimalToFra
             get_combined = self.combine_odds_match(get_match, get_converts)
 
         for combine in get_combined:
-            print(games=str(combine[0]))
+            print(str(combine[0]), str(combine[1]))
 
         return HttpResponse('Hello world for manage_matches!')
