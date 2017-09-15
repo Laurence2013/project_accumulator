@@ -118,3 +118,5 @@ class OddsGameUrlLink6(models.Model):
 
     def __str__(self):
         return str(self.games)
+
+# class OddsGameTimeUpdateUrlLink0(models.Model):

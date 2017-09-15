@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import View
-from django.http import HttpResponse
+from django.views.generic import TemplateView
 from django.conf import settings
 # from accumulator.models import GameUrlLink0
 from games_odds.webScraping.scrapingWilliamHill import ScrapingWilliamHill
@@ -12,7 +11,8 @@ from games_odds.mainViewsApi.main_views_api import MainViewsApi
 This is what happens at the back, this manages all the games and odds
 '''
 
-class ManageMatchesAndOdds(View, MainViewsApi, ScrapingWilliamHill, DecimalToFractionAndStoreInDb, CombineOddsWithItsMatch):
+class ManageMatchesAndOdds(TemplateView, MainViewsApi, ScrapingWilliamHill, DecimalToFractionAndStoreInDb, CombineOddsWithItsMatch):
+    template_name = 'accumulator/william_hill/accumulators.html'
     base_dir = settings.BASE_DIR
     tbody_ids_link_0 = base_dir + '/games_odds/williamHillFiles/tag_name_tbody_attr_ids/ids_for_tag_tbody_link_0.csv'
     tbody_ids_link_1 = base_dir + '/games_odds/williamHillFiles/tag_name_tbody_attr_ids/ids_for_tag_tbody_link_1.csv'
@@ -23,8 +23,11 @@ class ManageMatchesAndOdds(View, MainViewsApi, ScrapingWilliamHill, DecimalToFra
     tbody_ids_link_6 = base_dir + '/games_odds/williamHillFiles/tag_name_tbody_attr_ids/ids_for_tag_tbody_link_6.csv'
 
     span_ids_link_0 = base_dir + '/games_odds/williamHillFiles/tag_name_span_attr_ids/ids_for_tag_span_link_0.csv'
-
     get_match_odds_link_0 = base_dir + '/games_odds/williamHillFiles/get_match_odds/get_match_odds_link_0.csv'
+
+    def get_context_data(self, **kwargs):
+        context = super(ManageMatchesAndOdds, self).get_context_data(**kwargs)
+        return context
 
     def get(self, request, *args, **kwargs):
         links_0 = self.get_tbody(self.tbody_ids_link_0, 'http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html')
@@ -47,7 +50,7 @@ class ManageMatchesAndOdds(View, MainViewsApi, ScrapingWilliamHill, DecimalToFra
             get_converts = self.create_new_list(get_odds)
             get_combined = self.combine_odds_match(get_match, get_converts)
 
-        for combine in get_combined:
-            print(str(combine[0]), str(combine[1]))
-
-        return HttpResponse('Hello world for manage_matches!')
+        context = {
+            'games': list(get_combined),
+        }
+        return render(request, self.template_name, self.get_context_data(**context))
