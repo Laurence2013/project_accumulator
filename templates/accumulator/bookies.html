@@ -1,1 +1,27 @@
-<h2>This is where all the bookies as listed</h2>
+{% extends 'accumulator/base.html' %}
+
+{% block content %}
+<h3>Here is a list of all the bookies listed so far</h3>
+<table class='table table-bordered'>
+  <thead>
+    <tr>
+      <th>Online bookies</th>
+      <th>Click button to view</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>William Hill</td>
+      <td><a href="{% url 'william_hill' %}">Click to view</a></td>
+    </tr>
+    <tr>
+      <td>Bet365</td>
+      <td>Click to view</td>
+    </tr>
+    <tr>
+      <td>Bet Victor</td>
+      <td>Click to view</td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}
