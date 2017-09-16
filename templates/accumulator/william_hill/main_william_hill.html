@@ -2,4 +2,20 @@
 
 {% block content %}
 <h2>This is Main William Hill Page</h2>
+<table class='table table-bordered'>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Click button to view</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for get_match in get_matches %}
+    <tr>
+      <td>{{ get_match }}</td>
+      <td><a href="http://localhost:8000/william_hill_games_{{ forloop.counter0}}">Click here to refresh and view all games</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}

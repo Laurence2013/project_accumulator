@@ -8,6 +8,22 @@ from bs4 import BeautifulSoup
 class ScrapingWilliamHill(GeneralGamesAccumulator):
     span_id_lists = []
 
+    def get_daily_matches_dates(self, url):
+        get_daily_matches_dates = list()
+        try:
+            html = urlopen(url)
+            soup = BeautifulSoup(html.read(), "html5lib")
+            games = soup.find('div',{'class':'paginationDailyMatches'}).findAll('span')[:7]
+            for game in games:
+                get_daily_matches_dates.append(game.get_text())
+        except Exception as e:
+            print('ExceptionError' + str(e))
+            return None
+        return get_daily_matches_dates
+
+    def get_file_size(self):
+        pass
+
     def get_tbody_ids(self, url):
         tbody_ids = []
         try:
