@@ -54,16 +54,67 @@ class William_Hill_Games_0(TemplateView, MainViewsApi, ScrapingWilliamHill, Deci
         return context
 
     def get(self, request, *args, **kwargs):
-        set_list_empty = list()
+        not_empty_files = 0
+        empty_files = 0
 
         for files in self.get_list_file_size():
             if files != int(0):
-                set_list_empty.append(self.tbody_ids_link_0)
-                set_list_empty.append(self.span_ids_link_0)
-                set_list_empty.append(self.get_match_odds_link_0)
-                self.empty_files(set_list_empty)
+                not_empty_files += 1
+            if files == int(0):
+                empty_files += 1
 
-        return render(request, self.template_name, self.get_context_data())
+        if not_empty_files == 3:
+            get_match = self.get_match(self.span_ids_link_0)
+            get_odds = self.convert_fraction_to_decimal(self.get_match_odds_link_0)
+            get_converts = self.create_new_list(get_odds)
+            get_combined = self.combine_odds_match(get_match, get_converts)
+            context = {'games': list(get_combined),}
+            return render(request, self.template_name, self.get_context_data(**context))
+
+        if empty_files == 3:
+            links_0 = self.get_tbody(self.tbody_ids_link_0, 'http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html')
+            if len(links_0) > 0:
+                empty1 = self.save_check_empty(self.tbody_ids_link_0, links_0)
+            if empty1 is True:
+                self.get_span_ids('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html', self.tbody_ids_link_0)
+                empty2 = self.save_check_empty(self.span_ids_link_0, ScrapingWilliamHill.span_id_lists)
+                self.clear_list()
+            if empty2 is True:
+                match_odds = self.get_all_odds_for_match('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html', self.tbody_ids_link_0)
+                empty3 = self.save_check_empty(self.get_match_odds_link_0, match_odds)
+            if empty3 is True:
+                get_match = self.get_match(self.span_ids_link_0)
+                get_odds = self.convert_fraction_to_decimal(self.get_match_odds_link_0)
+                get_converts = self.create_new_list(get_odds)
+                get_combined = self.combine_odds_match(get_match, get_converts)
+                context = {'games': list(get_combined),}
+            return render(request, self.template_name, self.get_context_data(**context))
+
+        if empty_files < 3 or not_empty_files < 3:
+            set_list_empty = list()
+            set_list_empty.append(self.tbody_ids_link_0)
+            set_list_empty.append(self.span_ids_link_0)
+            set_list_empty.append(self.get_match_odds_link_0)
+            self.empty_files(set_list_empty)
+
+            links_0 = self.get_tbody(self.tbody_ids_link_0, 'http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html')
+            if len(links_0) > 0:
+                empty1 = self.save_check_empty(self.tbody_ids_link_0, links_0)
+            if empty1 is True:
+                self.get_span_ids('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html', self.tbody_ids_link_0)
+                empty2 = self.save_check_empty(self.span_ids_link_0, ScrapingWilliamHill.span_id_lists)
+                self.clear_list()
+            if empty2 is True:
+                match_odds = self.get_all_odds_for_match('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html', self.tbody_ids_link_0)
+                empty3 = self.save_check_empty(self.get_match_odds_link_0, match_odds)
+            if empty3 is True:
+                get_match = self.get_match(self.span_ids_link_0)
+                get_odds = self.convert_fraction_to_decimal(self.get_match_odds_link_0)
+                get_converts = self.create_new_list(get_odds)
+                get_combined = self.combine_odds_match(get_match, get_converts)
+                context = {'games': list(get_combined),}
+            return render(request, self.template_name, self.get_context_data(**context))
+
 
     def get_list_file_size(self):
         file_sizes = []
@@ -78,6 +129,13 @@ class William_Hill_Games_0(TemplateView, MainViewsApi, ScrapingWilliamHill, Deci
 
 
 
+
+
+# set_list_empty = list()
+# set_list_empty.append(self.tbody_ids_link_0)
+# set_list_empty.append(self.span_ids_link_0)
+# set_list_empty.append(self.get_match_odds_link_0)
+# self.empty_files(set_list_empty)
 
 
 # links_0 = self.get_tbody(self.tbody_ids_link_0, 'http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html')
