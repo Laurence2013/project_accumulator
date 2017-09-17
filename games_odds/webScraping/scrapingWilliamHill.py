@@ -21,8 +21,22 @@ class ScrapingWilliamHill(GeneralGamesAccumulator):
             return None
         return get_daily_matches_dates
 
-    def get_file_size(self):
-        pass
+    def get_file_size(self, file_size):
+        try:
+            size = os.path.getsize(file_size)
+        except Exception as e:
+            print('ExceptionError' + str(e))
+            return None
+        return size
+
+    def empty_files(self, files):
+        try:
+            for empty_files in files:
+                open(empty_files, 'w').close()
+        except Exception as e:
+            print('ExceptionError' + str(e))
+            return None
+        return True
 
     def get_tbody_ids(self, url):
         tbody_ids = []
