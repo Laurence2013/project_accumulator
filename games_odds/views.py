@@ -1,3 +1,4 @@
+import datetime
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.conf import settings
@@ -5,10 +6,6 @@ from games_odds.webScraping.scrapingWilliamHill import ScrapingWilliamHill
 from games_odds.webScraping.decimalToFractionAndStoreInDb import DecimalToFractionAndStoreInDb
 from games_odds.webScraping.combineOddsWithItsMatch import CombineOddsWithItsMatch
 from games_odds.mainViewsApi.main_views_api import MainViewsApi
-
-'''
-This is what happens at the back, this manages all the games and odds
-'''
 
 class Bookies(TemplateView):
     template_name = 'accumulator/bookies.html'
@@ -48,6 +45,9 @@ class William_Hill_Games_0(TemplateView, MainViewsApi, ScrapingWilliamHill, Deci
 
     def get(self, request, refresh_no, *args, **kwargs):
         if int(refresh_no) is int(1):
+            refresh_time = datetime.datetime.now().strftime("%A, %d. %B %Y %I:%M%p")
+            print(refresh_time)
+
             is_refresh = self.empty_csv_files()
             if is_refresh is True:
                 context = self.combine_matches_odds('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html')
@@ -55,7 +55,6 @@ class William_Hill_Games_0(TemplateView, MainViewsApi, ScrapingWilliamHill, Deci
         else:
             not_empty_files = 0
             empty_files = 0
-
             for files in self.get_list_file_size():
                 if files != int(0):
                     not_empty_files += 1
