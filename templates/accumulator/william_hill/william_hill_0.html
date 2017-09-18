@@ -1,6 +1,13 @@
 {% extends 'accumulator/base.html' %}
 
 {% block content %}
+<div class="row" id='refresh_padding'>
+  <div class="col-sm-8"></div>
+  <div class="col-sm-4">
+    <a href="{% url 'refresh_page' %}" >Click here to refresh</a>
+    <b><i>This was refreshed at time</i></b>
+  </div>
+</div>
 <table class="table table-bordered">
   <thead>
     <tr>
