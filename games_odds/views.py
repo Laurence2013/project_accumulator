@@ -46,28 +46,32 @@ class William_Hill_Games_0(TemplateView, MainViewsApi, ScrapingWilliamHill, Deci
         context = super(William_Hill_Games_0, self).get_context_data(**kwargs)
         return context
 
-    def get(self, request, *args, **kwargs):
-        not_empty_files = 0
-        empty_files = 0
-
-        for files in self.get_list_file_size():
-            if files != int(0):
-                not_empty_files += 1
-            if files == int(0):
-                empty_files += 1
-
-        if not_empty_files == 3:
-            context = self.combine_matches_odds_2()
-            return render(request, self.template_name, self.get_context_data(**context))
-
-        if empty_files == 3:
-            context = self.combine_matches_odds('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html')
-            return render(request, self.template_name, self.get_context_data(**context))
-
-        if empty_files < 3 or not_empty_files < 3:
-            is_empty = self.empty_csv_files()
-            if is_empty is True:
+    def get(self, request, refresh_no, *args, **kwargs):
+        if int(refresh_no) is int(1):
+            is_refresh = self.empty_csv_files()
+            if is_refresh is True:
                 context = self.combine_matches_odds('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html')
+            return render(request, self.template_name, self.get_context_data(**context))
+        else:
+            not_empty_files = 0
+            empty_files = 0
+
+            for files in self.get_list_file_size():
+                if files != int(0):
+                    not_empty_files += 1
+                if files == int(0):
+                    empty_files += 1
+
+            if not_empty_files == 3:
+                context = self.combine_matches_odds_2()
+                return render(request, self.template_name, self.get_context_data(**context))
+            if empty_files == 3:
+                context = self.combine_matches_odds('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html')
+                return render(request, self.template_name, self.get_context_data(**context))
+            if empty_files < 3 or not_empty_files < 3:
+                is_empty = self.empty_csv_files()
+                if is_empty is True:
+                    context = self.combine_matches_odds('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html')
             return render(request, self.template_name, self.get_context_data(**context))
 
     def empty_csv_files(self):
@@ -112,27 +116,6 @@ class William_Hill_Games_0(TemplateView, MainViewsApi, ScrapingWilliamHill, Deci
         file_sizes.append(get_file_size1)
         file_sizes.append(get_file_size2)
         return file_sizes
-
-class RefreshAllMatchesAndOdds(William_Hill_Games_0, TemplateView, ScrapingWilliamHill, CombineOddsWithItsMatch):
-    def get_context_data(self, **kwargs):
-        context = super(RefreshAllMatchesAndOdds, self).get_context_data(**kwargs)
-        return context
-
-    def get(self, request, *args, **kwargs):
-        is_empty = self.empty_csv_files()
-        if is_empty is True:
-            context = self.combine_matches_odds('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html')
-        return render(request, self.template_name, self.get_context_data(**context))
-
-    def empty_csv_files(self):
-        set_list_empty = list()
-        set_list_empty.append(self.tbody_ids_link_0)
-        set_list_empty.append(self.span_ids_link_0)
-        set_list_empty.append(self.get_match_odds_link_0)
-        is_empty = self.empty_files(set_list_empty)
-        if is_empty is True:
-            return True
-
 
 
 # tbody_ids_link_1 = base_dir + '/games_odds/williamHillFiles/tag_name_tbody_attr_ids/ids_for_tag_tbody_link_1.csv'
