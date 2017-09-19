@@ -6,6 +6,7 @@ from games_odds.webScraping.scrapingWilliamHill import ScrapingWilliamHill
 from games_odds.webScraping.decimalToFractionAndStoreInDb import DecimalToFractionAndStoreInDb
 from games_odds.webScraping.combineOddsWithItsMatch import CombineOddsWithItsMatch
 from games_odds.mainViewsApi.main_views_api import MainViewsApi
+from games_odds.models import TimeOfRefresh
 
 class Bookies(TemplateView):
     template_name = 'accumulator/bookies.html'
@@ -46,11 +47,16 @@ class William_Hill_Games_0(TemplateView, MainViewsApi, ScrapingWilliamHill, Deci
     def get(self, request, refresh_no, *args, **kwargs):
         if int(refresh_no) is int(1):
             refresh_time = datetime.datetime.now().strftime("%A, %d. %B %Y %I:%M%p")
-            print(refresh_time)
-
+            TimeOfRefresh.objects.all()
+            refresh = TimeOfRefresh(date_of_refresh=refresh_time)
+            refresh.save()
+            get_refresh_date = TimeOfRefresh.objects.last()
             is_refresh = self.empty_csv_files()
             if is_refresh is True:
-                context = self.combine_matches_odds('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html')
+                context = {
+                    'games': self.combine_matches_odds('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html'),
+                    'get_refresh_date': get_refresh_date,
+                }
             return render(request, self.template_name, self.get_context_data(**context))
         else:
             not_empty_files = 0
@@ -62,15 +68,27 @@ class William_Hill_Games_0(TemplateView, MainViewsApi, ScrapingWilliamHill, Deci
                     empty_files += 1
 
             if not_empty_files == 3:
-                context = self.combine_matches_odds_2()
+                get_refresh_date = TimeOfRefresh.objects.last()
+                context = {
+                    'games': self.combine_matches_odds_2(),
+                    'get_refresh_date': get_refresh_date,
+                }
                 return render(request, self.template_name, self.get_context_data(**context))
             if empty_files == 3:
-                context = self.combine_matches_odds('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html')
+                get_refresh_date = TimeOfRefresh.objects.last()
+                context = {
+                    'games': self.combine_matches_odds('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html'),
+                    'get_refresh_date': get_refresh_date,
+                }
                 return render(request, self.template_name, self.get_context_data(**context))
             if empty_files < 3 or not_empty_files < 3:
                 is_empty = self.empty_csv_files()
+                get_refresh_date = TimeOfRefresh.objects.last()
                 if is_empty is True:
-                    context = self.combine_matches_odds('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html')
+                    context = {
+                        'games': self.combine_matches_odds('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/0/Football.html'),
+                        'get_refresh_date': get_refresh_date,
+                    }
             return render(request, self.template_name, self.get_context_data(**context))
 
     def empty_csv_files(self):
@@ -102,8 +120,8 @@ class William_Hill_Games_0(TemplateView, MainViewsApi, ScrapingWilliamHill, Deci
         get_odds = self.convert_fraction_to_decimal(self.get_match_odds_link_0)
         get_converts = self.create_new_list(get_odds)
         get_combined = self.combine_odds_match(get_match, get_converts)
-        context = {'games': list(get_combined),}
-        return context
+        # context = {'games': list(get_combined),}
+        return get_combined
 
     def get_list_file_size(self):
         file_sizes = []

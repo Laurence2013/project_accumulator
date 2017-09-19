@@ -5,7 +5,7 @@
   <div class="col-sm-8"></div>
   <div class="col-sm-4">
     <a href="{% url 'william_hill_0' refresh_no=1 %}" >Click here to refresh</a>
-    <b><i>This was refreshed at time</i></b>
+    <b><i>{{ get_refresh_date }}</i></b>
   </div>
 </div>
 <table class="table table-bordered">
