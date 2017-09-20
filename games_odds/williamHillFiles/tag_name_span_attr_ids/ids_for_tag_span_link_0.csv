@@ -1,98 +1,140 @@
-Leicester   v   Liverpool
-Brentford   v   Norwich
-Aston Villa   v   Middlesbrough
-Bristol City   v   Stoke
-Burnley   v   Leeds
-Wolves   v   Bristol Rovers
-Bournemouth   v   Brighton
-Crystal Palace   v   Huddersfield
-West Ham   v   Bolton
-Tottenham   v   Barnsley
-Reading   v   Swansea
-Wigan   v   Northampton
-Hibernian   v   Livingston
-Partick   v   Rangers
-Valencia   v   Malaga
-Barcelona   v   Eibar
-M'gladbach   v   Stuttgart
-Schalke   v   Bayern Munich
-Wolfsburg   v   Werder Bremen
-Augsburg   v   Leipzig
-Bologna   v   Inter Milan
-Sporting Gijon   v   Numancia
-Shanghai Shenhua   v   Shandong Luneng
-Accrington   v   Middlesbrough Academy
-Bury   v   Rochdale
-Walsall   v   West Brom U23
-Zwaluwen   v   Den Bosch
-Waalwijk   v   Sparta Rotterdam
-Kozakken Boys   v   De Graafschap
-Barendrecht   v   Go Ahead Eagles
-Emmen   v   NEC Nijmegen
-Helmond Sport   v   Cambuur Leeuwarden
-Gvvv   v   Dordrecht
-Noordwijk   v   Fortuna Sittard
-Quick Boys   v   Volendam
-Oss   v   Almere
-Sparta Nijkerk   v   FC Eindhoven
-Genemuiden   v   De Treffers
-MVV Maastricht   v   AZ Alkmaar
-Sporting Lisbon   v   Maritimo
-Holstein Kiel   v   St Pauli
-Ingolstadt   v   Duisburg
-Kaiserslautern   v   Aue
-Sandhausen   v   Union Berlin
-Ternana   v   Brescia
-Parma   v   Empoli
-Spezia   v   Novara
-Ascoli   v   Frosinone
-Pro Vercelli   v   Salernitana
-Bari   v   Cremonese
-Palermo   v   Perugia
-Pescara   v   Virtus Entella
-Cittadella   v   Cesena
-Carpi   v   Foggia
-Tours   v   Nimes
-Le Havre   v   Sochaux
-Niort   v   Brest
-Auxerre   v   Lorient
-Paris F.C.   v   Orleans
-Ajaccio   v   Valenciennes
-Nancy   v   Bourg-en-Bresse
-Chateauroux   v   Clermont Foot
-Reims   v   Gazelec Ajaccio
-Wingate and Finchley   v   Hemel Hempstead
-Rushden & Diamonds   v   Alfreton Town
-Haughmond   v   Boston
-Hyde   v   Warrington
-FC United of Manchester   v   Handsworth Parramore FC
-Royston Town   v   Braintree
-Heybridge   v   Met Police
-Enfield   v   Hanwell Town
-Tokatspor   v   Kahramanmarasspor
-Sanliurfaspor   v   Pazarspor
-Diyarbakirspor   v   Istanbulspor
-Payas Belediye   v   Amedspor
-Bandirmaspor   v   Corum Belediyespor
-Bodrum Belediyesi   v   Gaziantep BB
-Menemen Belediyespor   v   Darica Genclerbirligi
-Kirklarelispor   v   Nigde Belediyespor
-Muglaspor   v   Etimesgut Belediyespor
-Vanspor   v   Kayserispor
-Balikesirspor   v   Karsspor
-Boluspor   v   Sinopspor
-Mersin   v   Orhangazispor
-Borussia Oedt   v   Lustenau
-Grodig   v   LASK Linz
-SC Neusiedl   v   Ried
-Union St Florian   v   Weiz
-Gleisdorf   v   Wolfsberger
-Austria Klagenfurt   v   Kapfenberg
-Horn   v   Hartberg
-Amstetten   v   Wacker Innsbruck
-Kortrijk   v   Entente Durbuy
-Sint Truiden   v   Leuven
-Antwerp   v   Lierse
-FK MAS Taborsko   v   Teplice
-Bohemians   v   Vlasim
-VB 1968   v   Jammerbugt
+Everton   v   Sunderland
+Arsenal   v   Doncaster
+Chelsea   v   Nottingham Forest
+West Brom   v   Man City
+Man Utd   v   Burton
+Dundee   v   Celtic
+Athletic Bilbao   v   Atletico Madrid
+Leganes   v   Girona
+Deportivo La Coruna   v   Alaves
+Sevilla   v   Las Palmas
+Real Madrid   v   Real Betis
+Benevento   v   Roma
+AC Milan   v   Spal
+Lazio   v   Napoli
+Genoa   v   Chievo
+Juventus   v   Fiorentina
+Udinese   v   Torino
+Verona   v   Sampdoria
+Atalanta   v   Crotone
+Cagliari   v   Sassuolo
+FC Koln   v   Eintracht Frankfurt
+Hamburg   v   Dortmund
+Hertha Berlin   v   Leverkusen
+Mainz   v   Hoffenheim
+Freiburg   v   Hannover
+Cordoba   v   Tenerife
+Formentera   v   Logrones
+Segoviana   v   Ponferradina
+Calahorra   v   Fuenlabrada
+Talavera   v   Cartagena
+Cadiz   v   Osasuna
+Hercules   v   Elche
+Real Murcia   v   Olot
+Capelle   v   Roda JC
+Swift   v   Vitesse
+Scheveningen   v   Ajax
+VVSB   v   Telstar
+Achilles 29   v   NAC Breda
+ONS Sneek   v   Twente
+ASV De Dijk   v   HHC
+Ajax Amateurs   v   Utrecht
+Apeldoorn Csv   v   Willem II
+Excelsior   v   Heerenveen
+Staphorst   v   Koninklijke
+Lisse   v   Hoek
+Katwijk   v   Ter Leede
+Feyenoord   v   ADO Den Haag
+Leixoes   v   Pacos Ferreira
+Benfica   v   Braga
+Arouca   v   Sport. Lisbon B
+Fortuna Dusseldorf   v   Regensburg
+Dynamo Dresden   v   Arminia Bielefeld
+Heidenheim   v   Darmstadt
+Braunschweig   v   Greuther Furth
+Inegolspor   v   Malatyaspor
+Duzyurtspor   v   Gumushane Doganspor
+Batman Petrolspor   v   Goztepe
+Sancaktepe Belediye Spor   v   Elazigspor
+Kozan Belediyespor   v   Adanaspor
+Hatayspor   v   Ergene Velimese Spor
+Denizlispor   v   Duzcespor
+Kecioerenguecue   v   Silivrispor
+Hacettepe   v   Yeni Altindag Belediyespor
+Erzin Belediyespor   v   Fatih Karagumruk
+Kastamonuspor   v   Ofspor
+Yesil Bursa AS   v   Karsiyaka
+Korfez Bld Spor   v   Edirne Spor Genclik
+Tuzlaspor   v   Zonguldakspor
+Bergama Belediyespor   v   Sariyer
+Giresunspor   v   Cizrespor
+Altay Izmir   v   Erzurum BB
+Altinordu   v   Sultanbeyli
+Samsunspor   v   Ankara Demirspor
+Manisaspor   v   Arsynspor
+Bucaspor   v   Pendikspor
+Adana Demirspor   v   Bayrampasa
+Gaziantepspor   v   Tire 1922 Spor
+Bursaspor   v   Tarsus Idmanyurdu
+Fethiyespor   v   Nazilli Belediyespor
+Anif Red Bull   v   Sturm Graz
+Union Vocklamarkt   v   Austria Vienna
+SC/ESV Parndorf   v   Mattersburg
+Bad Gleichenberg   v   Admira Modling
+Union Gurten   v   Altach
+ASK Elektra   v   Rapid Vienna
+Mouscron   v   Tubize
+Cercle Brugge   v   Genk
+Oostende   v   Union St Gilloise
+Lommel   v   Waasland-Beveren
+Luik FC   v   Zulte-Waregem
+Mechelen   v   Bocholter
+Eupen   v   Rupel Boom
+Lokeren   v   Beerschot Wilrijk
+Roeselare   v   Club Brugge
+Verbroedering Geel   v   Gent
+Westerlo   v   Anderlecht
+Standard Liege   v   KSK Heist
+Hodonin-Sardice   v   Liberec
+Domazlice   v   Dukla Prague
+Zivanice   v   Sigma Olomouc
+HFK Olomouc   v   Hradec Kralove
+Kromeriz   v   Karvina
+Jihlava   v   Banik Sokolov
+Mlada Boleslav   v   Pribram
+Jablonec   v   Viktoria Zizkov
+Znojmo   v   Sparta Prague
+Slavia Prague   v   Trinec
+Middelfart   v   AaB Aalborg
+Otterup   v   Randers
+Greve   v   Midtjylland
+Naestved   v   Koge
+Hedensted IF   v   Lyngby
+Skive   v   Copenhagen
+Holbaek   v   Horsens
+Hvidovre   v   Helsingor
+Slagelse   v   Hobro
+Ledoje Smorum Fodbold   v   Brondby
+Platanias   v   Apollon Smyrnis
+Atromitos   v   Kerkyra
+PAOK   v   Levadiakos
+Panachaiki 2005   v   Anagennisi Karditsa
+AEK   v   Lamia 1964
+Panathinaikos   v   Larissa
+Valerenga   v   Sarpsborg 08
+Gornik Zabrze   v   Sandecja Nowy Sacz
+Korona   v   Wisla Krakow
+Luch-Energiya   v   Anzhi
+Tomsk   v   Krasnodar
+Shinnik Yaroslavl   v   Ural
+FK Tambov   v   Arsenal Tula
+Orenburg   v   Rubin Kazan
+Tyumen   v   Tosno
+Avangard Kursk   v   CSKA Moscow
+Volgar   v   Rostov
+Spartak Nalchik   v   Dynamo Moscow
+Kuban   v   Spartak Moscow
+Ostersund   v   Malmo
+Halmstads   v   Kalmar
+Hammarby   v   IFK Goteborg
+Jonkopings Sodra   v   Sirius
