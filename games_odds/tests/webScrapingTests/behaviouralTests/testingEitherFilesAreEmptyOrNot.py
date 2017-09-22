@@ -4,9 +4,7 @@ from django.test import TestCase
 
 '''
 This is the 1st behavioural test
-
 This one must be executed FIRST to make sure that the files are empty
-
 The logic here needed to check if file is either empty or not for tbody_ids
 '''
 

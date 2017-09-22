@@ -17,6 +17,16 @@ class WilliamHillBase(ScrapingWilliamHill):
             get_refresh_date = TimeOfRefreshWilliamHill1.objects.last()
         return get_refresh_date
 
+    def get_empty_files(self, tbody_ids_link, span_ids_link, get_match_odds_link):
+        not_empty_files = 0
+        empty_files = 0
+        for files in self.get_list_file_size(tbody_ids_link, span_ids_link, get_match_odds_link):
+            if files != int(0):
+                not_empty_files += 1
+            if files == int(0):
+                empty_files += 1
+        return [not_empty_files, empty_files]
+
     def empty_csv_files(self, tbody_id_links, span_ids_link, get_match_odds_link):
         set_list_empty = list()
         set_list_empty.append(tbody_id_links)

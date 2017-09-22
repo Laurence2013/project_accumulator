@@ -6,7 +6,7 @@ from games_odds.webScraping.scrapingWilliamHill import ScrapingWilliamHill
 from games_odds.webScraping.decimalToFractionAndStoreInDb import DecimalToFractionAndStoreInDb
 from games_odds.webScraping.combineOddsWithItsMatch import CombineOddsWithItsMatch
 from games_odds.mainViewsApi.main_views_api import MainViewsApi
-from games_odds.models import TimeOfRefreshWilliamHill0
+from games_odds.models import TimeOfRefreshWilliamHill0, TimeOfRefreshWilliamHill1
 from games_odds.william_hill_base import WilliamHillBase
 
 class Bookies(TemplateView):
@@ -55,30 +55,23 @@ class William_Hill_Games_0(WilliamHillBase, TemplateView, MainViewsApi, Scraping
                 context = self.get_context(self.william_hill_link, self.tbody_ids_link_0, self.span_ids_link_0, self.get_match_odds_link_0, get_refresh_date)
             return render(request, self.template_name, self.get_context_data(**context))
         else:
-            not_empty_files = 0
-            empty_files = 0
-            for files in self.get_list_file_size(self.tbody_ids_link_0, self.span_ids_link_0, self.get_match_odds_link_0):
-                if files != int(0):
-                    not_empty_files += 1
-                if files == int(0):
-                    empty_files += 1
-
-            if not_empty_files == 3:
+            get_file_count = self.get_empty_files(self.tbody_ids_link_0, self.span_ids_link_0, self.get_match_odds_link_0)
+            if get_file_count[0] == 3:
                 get_refresh_date = TimeOfRefreshWilliamHill0.objects.last()
                 context = {
                     'games': self.combine_matches_odds_2(self.span_ids_link_0, self.get_match_odds_link_0),
                     'get_refresh_date': get_refresh_date,
                 }
                 return render(request, self.template_name, self.get_context_data(**context))
-            if empty_files == 3:
-                get_refresh_date = TimeOfRefresh.objects.last()
-                context = self.get_context(self.william_hill_link, self.tbody_ids_link_0, self.span_ids_link_0, self.get_match_odds_link_0)
+            if get_file_count[1] == 3:
+                get_refresh_date = TimeOfRefreshWilliamHill0.objects.last()
+                context = self.get_context(self.william_hill_link, self.tbody_ids_link_0, self.span_ids_link_0, self.get_match_odds_link_0, get_refresh_date)
                 return render(request, self.template_name, self.get_context_data(**context))
-            if empty_files < 3 or not_empty_files < 3:
+            if get_file_count[1] < 3 or get_file_count[0] < 3:
                 is_empty = self.empty_csv_files(self.tbody_ids_link_0, self.span_ids_link_0, self.get_match_odds_link_0)
-                get_refresh_date = TimeOfRefresh.objects.last()
+                get_refresh_date = TimeOfRefreshWilliamHill0.objects.last()
                 if is_empty is True:
-                    context = self.get_context(self.william_hill_link, self.tbody_ids_link_0, self.span_ids_link_0, self.get_match_odds_link_0)
+                    context = self.get_context(self.william_hill_link, self.tbody_ids_link_0, self.span_ids_link_0, self.get_match_odds_link_0, get_refresh_date)
             return render(request, self.template_name, self.get_context_data(**context))
 
 class William_Hill_Games_1(WilliamHillBase, TemplateView, MainViewsApi, ScrapingWilliamHill, DecimalToFractionAndStoreInDb, CombineOddsWithItsMatch):
@@ -103,30 +96,23 @@ class William_Hill_Games_1(WilliamHillBase, TemplateView, MainViewsApi, Scraping
                 context = self.get_context(self.william_hill_link, self.tbody_ids_link_1, self.span_ids_link_1, self.get_match_odds_link_1, get_refresh_date)
             return render(request, self.template_name, self.get_context_data(**context))
         else:
-            not_empty_files = 0
-            empty_files = 0
-            for files in self.get_list_file_size(self.tbody_ids_link_1, self.span_ids_link_1, self.get_match_odds_link_1):
-                if files != int(0):
-                    not_empty_files += 1
-                if files == int(0):
-                    empty_files += 1
-
-            if not_empty_files == 3:
-                get_refresh_date = TimeOfRefreshWilliamHill0.objects.last()
+            get_file_count = self.get_empty_files(self.tbody_ids_link_1, self.span_ids_link_1, self.get_match_odds_link_1)
+            if get_file_count[0] == 3:
+                get_refresh_date = TimeOfRefreshWilliamHill1.objects.last()
                 context = {
                     'games': self.combine_matches_odds_2(self.span_ids_link_1, self.get_match_odds_link_1),
                     'get_refresh_date': get_refresh_date,
                 }
                 return render(request, self.template_name, self.get_context_data(**context))
-            if empty_files == 3:
-                get_refresh_date = TimeOfRefresh.objects.last()
-                context = self.get_context(self.william_hill_link, self.tbody_ids_link_1, self.span_ids_link_1, self.get_match_odds_link_1)
+            if get_file_count[1] == 3:
+                get_refresh_date = TimeOfRefreshWilliamHill1.objects.last()
+                context = self.get_context(self.william_hill_link, self.tbody_ids_link_1, self.span_ids_link_1, self.get_match_odds_link_1, get_refresh_date)
                 return render(request, self.template_name, self.get_context_data(**context))
-            if empty_files < 3 or not_empty_files < 3:
+            if get_file_count[1] < 3 or get_file_count[0] < 3:
                 is_empty = self.empty_csv_files(self.tbody_ids_link_1, self.span_ids_link_1, self.get_match_odds_link_1)
-                get_refresh_date = TimeOfRefresh.objects.last()
+                get_refresh_date = TimeOfRefreshWilliamHill1.objects.last()
                 if is_empty is True:
-                    context = self.get_context(self.william_hill_link, self.tbody_ids_link_1, self.span_ids_link_1, self.get_match_odds_link_1)
+                    context = self.get_context(self.william_hill_link, self.tbody_ids_link_1, self.span_ids_link_1, self.get_match_odds_link_1, get_refresh_date)
             return render(request, self.template_name, self.get_context_data(**context))
 
 # tbody_ids_link_1 = base_dir + '/games_odds/williamHillFiles/tag_name_tbody_attr_ids/ids_for_tag_tbody_link_1.csv'
