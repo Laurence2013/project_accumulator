@@ -1,8 +1,19 @@
 import datetime
+from django.core.urlresolvers import resolve
 from games_odds.webScraping.scrapingWilliamHill import ScrapingWilliamHill
 from games_odds.models import TimeOfRefreshWilliamHill0, TimeOfRefreshWilliamHill1
 
 class WilliamHillBase(ScrapingWilliamHill):
+
+    def get_web_details_0(self, request_info, william_hill_link, tbody_ids_link, span_ids_link, get_match_odds_link):
+        current_url = resolve(request_info).url_name
+        get_refresh_date = self.get_date(current_url)
+        is_refresh = self.empty_csv_files(tbody_ids_link, span_ids_link, get_match_odds_link)
+        if is_refresh is True:
+            context = self.get_context(william_hill_link, tbody_ids_link, span_ids_link, get_match_odds_link, get_refresh_date)
+            return context
+        return None
+
     def get_date(self, current_url):
         refresh_time = datetime.datetime.now().strftime("%A, %d. %B %Y %I:%M%p")
         if current_url is str('william_hill_0'):
