@@ -8,12 +8,12 @@ from games_odds.william_hill_base import WilliamHillBase
 from games_odds.webScraping.scrapingWilliamHill import ScrapingWilliamHill
 
 '''
-This is testing no 3a
+This is testing no 4a
 This is testing the refresh_no sent, sending 1 and emptying two files -> get_match_odds_link_0.csv and ids_for_tag_span_link_0.csv
 Then refresh page with refresh_no 1
 '''
 
-class TestingWilliamHillDeleteTwoCsvFile1(TestCase, MainViewsApi, WilliamHillBase, ScrapingWilliamHill):
+class TestingWilliamHillDeleteThreeCsvFile2(TestCase, MainViewsApi, WilliamHillBase, ScrapingWilliamHill):
     def setUp(self):
         self.factory = RequestFactory()
         self.base_dir = settings.BASE_DIR
@@ -28,6 +28,13 @@ class TestingWilliamHillDeleteTwoCsvFile1(TestCase, MainViewsApi, WilliamHillBas
     def test_empty_2b_file_is_true(self):
         my_file = list()
         get_match_odds_link_0 = self.base_dir + '/games_odds/williamHillFiles/tag_name_span_attr_ids/ids_for_tag_span_link_0.csv'
+        my_file.append(get_match_odds_link_0)
+        is_empty_file = self.empty_files(my_file)
+        self.assertTrue(is_empty_file)
+
+    def test_empty_2b_file_is_true(self):
+        my_file = list()
+        get_match_odds_link_0 = self.base_dir + '/games_odds/williamHillFiles/tag_name_tbody_attr_ids/ids_for_tag_tbody_link_0.csv'
         my_file.append(get_match_odds_link_0)
         is_empty_file = self.empty_files(my_file)
         self.assertTrue(is_empty_file)

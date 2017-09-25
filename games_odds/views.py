@@ -50,24 +50,8 @@ class William_Hill_Games_0(WilliamHillBase, TemplateView, MainViewsApi, Scraping
             context = self.get_web_details_0(request.path_info, self.william_hill_link, self.tbody_ids_link_0, self.span_ids_link_0, self.get_match_odds_link_0)
             return render(request, self.template_name, self.get_context_data(**context))
         else:
-            get_file_count = self.get_empty_files(self.tbody_ids_link_0, self.span_ids_link_0, self.get_match_odds_link_0)
-            if get_file_count[0] == 3:
-                get_refresh_date = TimeOfRefreshWilliamHill1.objects.last()
-                context = {
-                    'games': self.combine_matches_odds_2(self.span_ids_link_0, self.get_match_odds_link_0),
-                    'get_refresh_date': get_refresh_date,
-                }
-                return render(request, self.template_name, self.get_context_data(**context))
-            if get_file_count[1] == 3:
-                get_refresh_date = TimeOfRefreshWilliamHill0.objects.last()
-                context = self.get_context(self.william_hill_link, self.tbody_ids_link_0, self.span_ids_link_0, self.get_match_odds_link_0, get_refresh_date)
-                return render(request, self.template_name, self.get_context_data(**context))
-            if get_file_count[1] < 3 or get_file_count[0] < 3:
-                is_empty = self.empty_csv_files(self.tbody_ids_link_0, self.span_ids_link_0, self.get_match_odds_link_0)
-                get_refresh_date = TimeOfRefreshWilliamHill0.objects.last()
-                if is_empty is True:
-                    context = self.get_context(self.william_hill_link, self.tbody_ids_link_0, self.span_ids_link_0, self.get_match_odds_link_0, get_refresh_date)
-                return render(request, self.template_name, self.get_context_data(**context))
+            context = self.get_web_details_1(self.william_hill_link, self.tbody_ids_link_0, self.span_ids_link_0, self.get_match_odds_link_0)
+            return render(request, self.template_name, self.get_context_data(**context))
 
 class William_Hill_Games_1(WilliamHillBase, TemplateView, MainViewsApi, ScrapingWilliamHill, DecimalToFractionAndStoreInDb, CombineOddsWithItsMatch):
     template_name = 'accumulator/william_hill/william_hill_1.html'

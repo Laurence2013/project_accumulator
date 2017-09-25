@@ -1,133 +1,98 @@
-West Ham   v   Tottenham
-Everton   v   Bournemouth
-Southampton   v   Man Utd
-Man City   v   Crystal Palace
-Burnley   v   Huddersfield
-Stoke   v   Chelsea
-Swansea   v   Watford
-Leicester   v   Liverpool
-Leeds   v   Ipswich
-Wolves   v   Barnsley
-Norwich   v   Bristol City
-QPR   v   Burton
-Sunderland   v   Cardiff
-Reading   v   Hull
-Bolton   v   Brentford
-Fulham   v   Middlesbrough
-Preston   v   Millwall
-Derby   v   Birmingham
-Aston Villa   v   Nottingham Forest
-Scunthorpe   v   Portsmouth
-Charlton   v   Bury
-Shrewsbury   v   Blackburn
-Plymouth   v   Doncaster
-Bristol Rovers   v   Blackpool
-Northampton   v   Bradford
-Fleetwood   v   Southend
-Rochdale   v   Gillingham
-Rotherham   v   Oldham
-Oxford   v   Walsall
-Peterborough   v   Wigan
-Notts County   v   Lincoln
-Crewe   v   Carlisle
-Luton   v   Chesterfield
-Barnet   v   Crawley
-Mansfield   v   Cambridge
-Stevenage   v   Morecambe
-Colchester   v   Wycombe
-Yeovil   v   Port Vale
-Coventry   v   Exeter
-Accrington   v   Cheltenham
-Newport   v   Grimsby
-Rangers   v   Celtic
-Ross County   v   Hibernian
-St Johnstone   v   Hamilton
-Kilmarnock   v   Dundee
-Partick   v   Hearts
-Atletico Madrid   v   Sevilla
-Alaves   v   Real Madrid
-Malaga   v   Athletic Bilbao
-Girona   v   Barcelona
-Roma   v   Udinese
-Spal   v   Napoli
-Juventus   v   Torino
-Hoffenheim   v   Schalke
-Werder Bremen   v   Freiburg
-Stuttgart   v   Augsburg
-Mainz   v   Hertha Berlin
-Leipzig   v   Eintracht Frankfurt
-Dortmund   v   M'gladbach
-Montpellier   v   Paris Saint-Germain
-Bordeaux   v   Guingamp
-Metz   v   Troyes
-Caen   v   Amiens
-Lyon   v   Dijon
-Estoril   v   Chaves
-Moreirense   v   Sporting Lisbon
-Benfica   v   Pacos Ferreira
-Willem II   v   Heerenveen
-Heracles   v   Roda JC
-Feyenoord   v   NAC Breda
-ADO Den Haag   v   Sparta Rotterdam
-Dumbarton   v   Inverness
-Dundee Utd   v   Morton
-Brechin   v   Dunfermline
-Falkirk   v   Livingston
-Alloa   v   Albion
-Raith Rovers   v   Airdrie
-East Fife   v   Forfar
-Queen's Park   v   Ayr
-Stranraer   v   Arbroath
-Stirling   v   Annan
-Elgin   v   Montrose
-Edinburgh   v   Peterhead
-Stenhousemuir   v   Berwick
-Clyde   v   Cowdenbeath
-New York City   v   Houston
-New England   v   Toronto
-Philadelphia   v   Chicago
-DC United   v   San Jose
-Columbus   v   New York Red Bulls
-Minnesota   v   Dallas
-Salt Lake   v   Seattle
-Vancouver   v   Colorado
-Patronato   v   Atl. Tucuman
-Arsenal FC   v   Temperley
-Huracan   v   Union Santa Fe
-Chacarita   v   Talleres
-Velez   v   Boca Juniors
-Godoy Cruz   v   Independiente
-Yanbian   v   Liaoning Whowin
-Tianjin TEDA   v   Tianjin Quanjian
-Jiangsu Suning   v   Guizhou Zhicheng
-Shanghai Shenhua   v   Guangzhou R.F
-Flamengo   v   Avai
-Santos   v   Atletico-PR
-Banks O'Dee   v   Huntly
-Brora Rangers   v   Girvan
-Wick Academy   v   Stirling Uni
-Selkirk   v   Gretna 2008
-Nairn County   v   Whitehill Welfare
-Lothian Thistle HV   v   Inverurie Loco
-Edinburgh Uni   v   Lossiemouth
-Glenafton    v   Threave Rovers
-Gala Fairydean   v   Keith
-Fraserburgh   v   Forres Mech
-Formartine Utd   v   Turriff Utd
-Edusport Academy   v   Rothes
-Deveronvale   v   Hawick Royal Albert
-CS Strollers   v   Strathspey Thistle
-Colville Park   v   Cumbernauld Colts
-Clachnacuddin   v   Fort William
-Tranmere   v   Wrexham
-Hartlepool   v   Eastleigh
-Chester   v   Maidenhead
-Halifax   v   Bromley
-Guiseley   v   Dover
-Solihull   v   Dag and Red
-Fylde   v   Woking
-Sutton   v   Barrow
-Aldershot   v   Leyton Orient
-Maidstone   v   Gateshead
-Boreham Wood   v   Ebbsfleet
-Torquay   v   Macclesfield
+Monaco   v   Porto
+Besiktas   v   Leipzig
+Napoli   v   Feyenoord
+Dortmund   v   Real Madrid
+Spartak Moscow   v   Liverpool
+Man City   v   Shakhtar Donetsk
+APOEL Nicosia   v   Tottenham
+Sevilla   v   Maribor
+Brentford   v   Derby
+Burton   v   Aston Villa
+Bristol City   v   Bolton
+Cardiff   v   Leeds
+Hull   v   Preston
+Middlesbrough   v   Norwich
+Millwall   v   Reading
+Nottingham Forest   v   Fulham
+Barnsley   v   QPR
+Ipswich   v   Sunderland
+MK Dons   v   Northampton
+Wigan   v   Plymouth
+Blackpool   v   Rochdale
+Walsall   v   Charlton
+Bury   v   Oxford
+Gillingham   v   Scunthorpe
+Oldham   v   Peterborough
+Bradford   v   Fleetwood
+Southend   v   Wimbledon
+Blackburn   v   Rotherham
+Doncaster   v   Shrewsbury
+Portsmouth   v   Bristol Rovers
+Morecambe   v   Luton
+Swindon   v   Coventry
+Chesterfield   v   Yeovil
+Wycombe   v   Crewe
+Cambridge   v   Forest Green
+Lincoln   v   Barnet
+Exeter   v   Notts County
+Cheltenham   v   Mansfield
+Grimsby   v   Colchester
+Port Vale   v   Accrington
+Crawley   v   Newport
+Carlisle   v   Stevenage
+Sport Recife   v   Vasco da Gama (Bra)
+Estudiantes   v   San Lorenzo
+Chrobry Glogow   v   Piast Gliwice
+Ashton Utd   v   Workington
+Rushall Olympic   v   Coalville
+Matlock   v   Shaw Lane
+Barwell   v   Mickleover Sports
+Grantham   v   Sutton Coldfield
+Warrington   v   Stourbridge
+Stafford Rangers   v   Nantwich
+Stalybridge   v   Halesowen
+Marine   v   Farsley
+Buxton   v   Whitby
+Lancaster City   v   Witton Albion
+Hednesford   v   Altrincham
+Redditch   v   Slough
+Stratford Town   v   Chesham Utd
+Weymouth   v   Basingstoke
+Merthyr Town   v   Tiverton Town
+Kings Langley   v   Gosport
+Dunstable   v   Bishops Stortford
+St Neots Town   v   Royston Town
+Kings Lynn   v   Biggleswade
+Kettering   v   Banbury
+Hendon   v   Staines
+Lowestoft   v   Thurrock
+Worthing   v   Kingstonian
+Brightlingsea   v   Wingate and Finchley
+Harrow Borough   v   Dulwich Hamlet
+Tonbridge Angels   v   Dorking
+Harlow   v   Needham Market
+Ferro   v   Almagro
+Aldosivi   v   Nueva Chicago
+Criciuma   v   Figueirense
+Brasil de Pelotas   v   Luverdense
+Santa Cruz   v   Ceara
+Boa   v   Goias GO
+Parana   v   Nautico
+Vila Nova GO   v   CRB AL
+Oeste   v   Londrina
+ABC RN   v   Juventude
+Paysandu   v   Guarani (Bra)
+CSA AL   v   Tombense
+Barcelona SC   v   Delfin
+Tachira   v   Estud. De Merida
+Trujillanos   v   Deportivo Lara
+Oberhausen   v   Dortmund 2
+Siracusa   v   Fidelis Andria
+East Thurrock   v   St Albans
+Sriwijaya FC   v   Persela Lamongan
+Gresik   v   Persepam Madura
+PS Tni   v   Mitra Kukar
+Sepidrood Rasht   v   Esteghlal Tehran
+Foolad Khuzestank   v   Esteghlal Khuzestan
+Naft Tehran   v   Sepahan
+Zob Ahan   v   Saipa
