@@ -14,25 +14,30 @@ class WilliamHillBase(ScrapingWilliamHill):
             return context
         return None
 
-    def get_web_details_1(self, william_hill_link, tbody_ids_link, span_ids_link, get_match_odds_link):
+    def get_web_details_1(self, william_hill_link, tbody_ids_link, span_ids_link, get_match_odds_link, TimeOfRefreshWilliamHill):
+        get_refresh_date = self.get_refresh(TimeOfRefreshWilliamHill)
         get_file_count = self.get_empty_files(tbody_ids_link, span_ids_link, get_match_odds_link)
         if get_file_count[0] == 3:
-            get_refresh_date = TimeOfRefreshWilliamHill0.objects.last()
             context = {
                 'games': self.combine_matches_odds_2(span_ids_link, get_match_odds_link),
                 'get_refresh_date': get_refresh_date,
             }
             return context
         if get_file_count[1] == 3:
-            get_refresh_date = TimeOfRefreshWilliamHill0.objects.last()
             context = self.get_context(william_hill_link, tbody_ids_link, span_ids_link, get_match_odds_link, get_refresh_date)
             return context
         if get_file_count[1] < 3 or get_file_count[0] < 3:
             is_empty = self.empty_csv_files(tbody_ids_link, span_ids_link, get_match_odds_link)
-            get_refresh_date = TimeOfRefreshWilliamHill0.objects.last()
             if is_empty is True:
                 context = self.get_context(william_hill_link, tbody_ids_link, span_ids_link, get_match_odds_link, get_refresh_date)
                 return context
+
+    def get_refresh(self, TimeOfRefreshWilliamHill):
+        if str(TimeOfRefreshWilliamHill) is str('TimeOfRefreshWilliamHill0'):
+            get_refresh_date = TimeOfRefreshWilliamHill0.objects.last()
+        if TimeOfRefreshWilliamHill is 'TimeOfRefreshWilliamHill1':
+            get_refresh_date = TimeOfRefreshWilliamHill1.objects.last()
+        return get_refresh_date
 
     def get_date(self, current_url):
         refresh_time = datetime.datetime.now().strftime("%A, %d. %B %Y %I:%M%p")

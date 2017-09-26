@@ -27,7 +27,7 @@ class TestingWilliamHillCsvFileIsTrueAfterRefresh2(TestCase, MainViewsApi, Willi
         get_file_size = self.check_file_not_empty(file_link)
         self.assertTrue(get_file_size)
 
-    def test_empty_ids_for_tag_span_link_0_file_is_false(self):
+    def test_empty_ids_for_tag_tag_tbody_0_file_is_false(self):
         file_link = self.base_dir + '/games_odds/williamHillFiles/tag_name_tbody_attr_ids/ids_for_tag_tbody_link_0.csv'
         get_file_size = self.check_file_not_empty(file_link)
         self.assertTrue(get_file_size)
