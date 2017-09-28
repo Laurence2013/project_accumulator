@@ -35,17 +35,17 @@ class WilliamHillBase(ScrapingWilliamHill):
     def get_refresh(self, TimeOfRefreshWilliamHill):
         if str(TimeOfRefreshWilliamHill) is str('TimeOfRefreshWilliamHill0'):
             get_refresh_date = TimeOfRefreshWilliamHill0.objects.last()
-        if TimeOfRefreshWilliamHill is 'TimeOfRefreshWilliamHill1':
+        if str(TimeOfRefreshWilliamHill) is str('TimeOfRefreshWilliamHill1'):
             get_refresh_date = TimeOfRefreshWilliamHill1.objects.last()
-        if TimeOfRefreshWilliamHill is 'TimeOfRefreshWilliamHill2':
+        if str(TimeOfRefreshWilliamHill) is str('TimeOfRefreshWilliamHill2'):
             get_refresh_date = TimeOfRefreshWilliamHill2.objects.last()
-        if TimeOfRefreshWilliamHill is 'TimeOfRefreshWilliamHill3':
+        if str(TimeOfRefreshWilliamHill) is str('TimeOfRefreshWilliamHill3'):
             get_refresh_date = TimeOfRefreshWilliamHill3.objects.last()
-        if TimeOfRefreshWilliamHill is 'TimeOfRefreshWilliamHill4':
+        if str(TimeOfRefreshWilliamHill) is str('TimeOfRefreshWilliamHill4'):
             get_refresh_date = TimeOfRefreshWilliamHill4.objects.last()
-        if TimeOfRefreshWilliamHill is 'TimeOfRefreshWilliamHill5':
+        if str(TimeOfRefreshWilliamHill) is str('TimeOfRefreshWilliamHill5'):
             get_refresh_date = TimeOfRefreshWilliamHill5.objects.last()
-        if TimeOfRefreshWilliamHill is 'TimeOfRefreshWilliamHill6':
+        if str(TimeOfRefreshWilliamHill) is str('TimeOfRefreshWilliamHill6'):
             get_refresh_date = TimeOfRefreshWilliamHill6.objects.last()
         return get_refresh_date
 
