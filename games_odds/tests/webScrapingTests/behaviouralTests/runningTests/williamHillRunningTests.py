@@ -16,6 +16,10 @@ from games_odds.tests.webScrapingTests.behaviouralTests.williamHillGame4.wh4Test
 from games_odds.tests.webScrapingTests.behaviouralTests.williamHillGame4.wh4TestingWilliamHillDeleteTwoCsvFile2 import Wh4TestingWilliamHillDeleteTwoCsvFile2
 from games_odds.tests.webScrapingTests.behaviouralTests.williamHillGame4.wh4TestingWilliamHillDeleteThreeCsvFile3 import Wh4TestingWilliamHillDeleteThreeCsvFile3
 
+from games_odds.tests.webScrapingTests.behaviouralTests.williamHillGame5.wh5TestingWilliamHillDeleteOneCsvFile1 import Wh5TestingWilliamHillDeleteOneCsvFile1
+from games_odds.tests.webScrapingTests.behaviouralTests.williamHillGame5.wh5TestingWilliamHillDeleteTwoCsvFile2 import Wh5TestingWilliamHillDeleteTwoCsvFile2
+from games_odds.tests.webScrapingTests.behaviouralTests.williamHillGame5.wh5TestingWilliamHillDeleteThreeCsvFile3 import Wh5TestingWilliamHillDeleteThreeCsvFile3
+
 class WilliamHillRunningTests(TestCase):
     def suite(self):
         suite = TestSuite()
@@ -39,6 +43,9 @@ class WilliamHillRunningTests(TestCase):
         wh4_testingWilliamHillDeleteTwoCsvFile2 = Wh4TestingWilliamHillDeleteTwoCsvFile2()
         wh4_testingWilliamHillDeleteThreeCsvFile3 = Wh4TestingWilliamHillDeleteThreeCsvFile3()
 
+        wh5_testingWilliamHillDeleteOneCsvFile1 = Wh5TestingWilliamHillDeleteOneCsvFile1()
+        wh5_testingWilliamHillDeleteTwoCsvFile2 = Wh5TestingWilliamHillDeleteTwoCsvFile2()
+        wh5_testingWilliamHillDeleteThreeCsvFile3 = Wh5TestingWilliamHillDeleteThreeCsvFile3()
 
         suite.addTest(testingWilliamHillDeleteOneCsvFile0)
         suite.addTest(testingWilliamHillDeleteTwoCsvFile1)
@@ -59,6 +66,10 @@ class WilliamHillRunningTests(TestCase):
         suite.addTest(wh4_testingWilliamHillDeleteOneCsvFile1)
         suite.addTest(wh4_testingWilliamHillDeleteTwoCsvFile2)
         suite.addTest(wh4_testingWilliamHillDeleteThreeCsvFile3)
+
+        suite.addTest(wh5_testingWilliamHillDeleteOneCsvFile1)
+        suite.addTest(wh5_testingWilliamHillDeleteTwoCsvFile2)
+        suite.addTest(wh5_testingWilliamHillDeleteThreeCsvFile3)
 
         return suite
 

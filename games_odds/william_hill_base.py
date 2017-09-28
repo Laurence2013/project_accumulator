@@ -1,7 +1,7 @@
 import datetime
 from django.core.urlresolvers import resolve
 from games_odds.webScraping.scrapingWilliamHill import ScrapingWilliamHill
-from games_odds.models import TimeOfRefreshWilliamHill0, TimeOfRefreshWilliamHill1, TimeOfRefreshWilliamHill2, TimeOfRefreshWilliamHill3, TimeOfRefreshWilliamHill4
+from games_odds.models import TimeOfRefreshWilliamHill0, TimeOfRefreshWilliamHill1, TimeOfRefreshWilliamHill2, TimeOfRefreshWilliamHill3, TimeOfRefreshWilliamHill4, TimeOfRefreshWilliamHill5
 
 class WilliamHillBase(ScrapingWilliamHill):
 
@@ -43,6 +43,8 @@ class WilliamHillBase(ScrapingWilliamHill):
             get_refresh_date = TimeOfRefreshWilliamHill3.objects.last()
         if TimeOfRefreshWilliamHill is 'TimeOfRefreshWilliamHill4':
             get_refresh_date = TimeOfRefreshWilliamHill4.objects.last()
+        if TimeOfRefreshWilliamHill is 'TimeOfRefreshWilliamHill5':
+            get_refresh_date = TimeOfRefreshWilliamHill5.objects.last()
         return get_refresh_date
 
     def get_date(self, current_url):
@@ -72,6 +74,11 @@ class WilliamHillBase(ScrapingWilliamHill):
             refresh = TimeOfRefreshWilliamHill4(william_hill_id=current_url, date_of_refresh=refresh_time)
             refresh.save()
             get_refresh_date = TimeOfRefreshWilliamHill4.objects.last()
+        if current_url is str('william_hill_5'):
+            TimeOfRefreshWilliamHill5.objects.all()
+            refresh = TimeOfRefreshWilliamHill5(william_hill_id=current_url, date_of_refresh=refresh_time)
+            refresh.save()
+            get_refresh_date = TimeOfRefreshWilliamHill5.objects.last()
         return get_refresh_date
 
     def get_empty_files(self, tbody_ids_link, span_ids_link, get_match_odds_link):

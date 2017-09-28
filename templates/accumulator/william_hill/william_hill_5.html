@@ -1,0 +1,31 @@
+{% extends 'accumulator/base.html' %}
+
+{% block content %}
+<div class="row" id='refresh_padding'>
+  <div class="col-sm-8"></div>
+  <div class="col-sm-4">
+    <a href="{% url 'william_hill_5' refresh_no=1 %}" >Click here to refresh</a>
+    <b><i>{{ get_refresh_date }}</i></b>
+  </div>
+</div>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Games</th>
+      <th>Home</th>
+      <th>Draw</th>
+      <th>Away</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for game in games %}
+      <tr>
+        <td><i>{{ game.0 }}</i></td>
+        <td><i>{{ game.1.0 }}</i></td>
+        <td><i>{{ game.1.1 }}</i></td>
+        <td><i>{{ game.1.2 }}</i></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
