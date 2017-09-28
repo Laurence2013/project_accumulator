@@ -11,6 +11,6 @@ class TestingRefreshDateAndTime1(TestCase, WilliamHillBase):
         refresh.save()
         self.get_refresh_date_0 = TimeOfRefreshWilliamHill1.objects.last()
 
-    def test_get_last_date_for_TimeOfRefreshWilliamHill0(self):
+    def test_get_last_date_for_TimeOfRefreshWilliamHill1(self):
         get_refresh_date = self.get_refresh(str('TimeOfRefreshWilliamHill1'))
         self.assertEqual(self.get_refresh_date_0, get_refresh_date)

@@ -6,7 +6,7 @@ from games_odds.william_hill_base import WilliamHillBase
 from games_odds.webScraping.scrapingWilliamHill import ScrapingWilliamHill
 
 '''
-This is testing no 1a
+This is testing no 0
 This is testing the refresh_no sent, 1 is to refresh and get all games and odds
 0 is to just get the current csv files in system
 2 and 3 are doing nothing
