@@ -18,14 +18,19 @@ class TestingWilliamHillDeleteOneCsvFile0(TestCase, MainViewsApi, WilliamHillBas
         self.factory = RequestFactory()
         self.base_dir = settings.BASE_DIR
 
-    def test_empty_1_file_is_true(self):
+    def test_01_empty_1_file_is_true(self):
         my_file = list()
         get_match_odds_link_0 = self.base_dir + '/games_odds/williamHillFiles/get_match_odds/get_match_odds_link_0.csv'
         my_file.append(get_match_odds_link_0)
         is_empty_file = self.empty_files(my_file)
         self.assertTrue(is_empty_file)
 
-    def test_william_hill_view_as_200_and_refresh_no_is_1(self):
+    def test_02_william_hill_view_as_200_and_refresh_no_is_1(self):
         request = self.factory.get(reverse('william_hill_0', args=[1]))
         response = William_Hill_Games_0.as_view()(request,1)
         self.assertEqual(response.status_code, 200)
+
+    def test_03_empty_get_match_odds_link_0_file_is_false(self):
+        file_link = self.base_dir + '/games_odds/williamHillFiles/get_match_odds/get_match_odds_link_0.csv'
+        get_file_size = self.check_file_not_empty(file_link)
+        self.assertTrue(get_file_size)
