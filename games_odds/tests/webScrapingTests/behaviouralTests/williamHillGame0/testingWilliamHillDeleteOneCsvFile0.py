@@ -8,7 +8,7 @@ from games_odds.william_hill_base import WilliamHillBase
 from games_odds.webScraping.scrapingWilliamHill import ScrapingWilliamHill
 
 '''
-This is testing no 2a
+This is testing no 2
 This is testing the refresh_no sent, sending 1 and emptying a file -> get_match_odds_link_0.csv
 Then refresh page with refresh_no 1
 '''
