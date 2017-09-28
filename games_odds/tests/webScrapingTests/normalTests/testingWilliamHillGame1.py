@@ -17,21 +17,21 @@ class TestingWilliamHillGame1(TestCase, WilliamHillBase, ScrapingWilliamHill):
         self.factory = RequestFactory()
 
     def test_william_hill_view_as_200_and_refresh_no_is_0(self):
-        request = self.factory.get(reverse('william_hill_0', args=[0]))
+        request = self.factory.get(reverse('william_hill_1', args=[0]))
         response = William_Hill_Games_1.as_view()(request,0)
         self.assertEqual(response.status_code, 200)
 
     def test_william_hill_view_as_200_and_refresh_no_is_1(self):
-        request = self.factory.get(reverse('william_hill_0', args=[1]))
+        request = self.factory.get(reverse('william_hill_1', args=[1]))
         response = William_Hill_Games_1.as_view()(request,1)
         self.assertEqual(response.status_code, 200)
 
     def test_william_hill_view_as_200_and_refresh_no_is_2(self):
-        request = self.factory.get(reverse('william_hill_0', args=[2]))
+        request = self.factory.get(reverse('william_hill_1', args=[2]))
         response = William_Hill_Games_1.as_view()(request,2)
         self.assertEqual(response.status_code, 200)
 
     def test_william_hill_view_as_200_and_refresh_no_is_3(self):
-        request = self.factory.get(reverse('william_hill_0', args=[3]))
+        request = self.factory.get(reverse('william_hill_1', args=[3]))
         response = William_Hill_Games_1.as_view()(request,3)
         self.assertEqual(response.status_code, 200)
