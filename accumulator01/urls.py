@@ -1,7 +1,7 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 from accumulator.views import AccumulatorPageGamesView
-from games_odds.views import Bookies, Main_William_Hill, William_Hill_Games_0, William_Hill_Games_1, William_Hill_Games_2, William_Hill_Games_3, William_Hill_Games_4, William_Hill_Games_5
+from games_odds.views import Bookies, Main_William_Hill, William_Hill_Games_0, William_Hill_Games_1, William_Hill_Games_2, William_Hill_Games_3, William_Hill_Games_4, William_Hill_Games_5, William_Hill_Games_6
 
 urlpatterns = [
     url(r'^index/$', AccumulatorPageGamesView.as_view(), name='view'),
@@ -13,5 +13,6 @@ urlpatterns = [
     url(r'^william_hill_games_3/(?P<refresh_no>[0-9]+|0)/$', William_Hill_Games_3.as_view(), name='william_hill_3'),
     url(r'^william_hill_games_4/(?P<refresh_no>[0-9]+|0)/$', William_Hill_Games_4.as_view(), name='william_hill_4'),
     url(r'^william_hill_games_5/(?P<refresh_no>[0-9]+|0)/$', William_Hill_Games_5.as_view(), name='william_hill_5'),
+    url(r'^william_hill_games_6/(?P<refresh_no>[0-9]+|0)/$', William_Hill_Games_6.as_view(), name='william_hill_6'),
     url(r'^admin/', admin.site.urls),
 ]
