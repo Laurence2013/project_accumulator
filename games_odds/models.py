@@ -24,6 +24,14 @@ class TimeOfRefreshWilliamHill2(models.Model):
     def __str__(self):
         return self.date_of_refresh
 
+class TimeOfRefreshWilliamHill3(models.Model):
+    date_of_refresh = models.CharField(max_length = 100)
+    william_hill_id = models.CharField(max_length = 100)
+    date_updated = models.DateTimeField(auto_now_add = True)
+
+    def __str__(self):
+        return self.date_of_refresh
+
 class GameUrlLink0(models.Model):
     games = models.CharField(max_length = 100)
     date_updated = models.DateTimeField(auto_now_add = True)
