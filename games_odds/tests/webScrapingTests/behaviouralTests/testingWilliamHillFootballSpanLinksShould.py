@@ -17,21 +17,21 @@ class TestingWilliamHillFootballSpanLinksShould(TestCase, ScrapingWilliamHill):
         self.get_links_0 = 'http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/1/Football.html'
         self.get_links_1 = 'http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/2/Football.html'
 
-    def test_Save_SpanIdsLink_0_IntoFileAndCheckThat_SpanIdsLink_0_IsGreaterThan_0(self):
+    def test_01_Save_SpanIdsLink_0_IntoFileAndCheckThat_SpanIdsLink_0_IsGreaterThan_0(self):
         self.get_span_ids(self.get_links_0, self.tbody_ids_link_0)
         self.assertGreater(len(ScrapingWilliamHill.span_id_lists), 0)
 
-    def test_SaveSpanIdsLink_0_IntoCsvFile(self):
+    def test_02_SaveSpanIdsLink_0_IntoCsvFile(self):
         self.get_span_ids(self.get_links_0, self.tbody_ids_link_0)
         self.save_file(self.span_ids_link_0, ScrapingWilliamHill.span_id_lists)
         self.assertGreater(os.path.getsize(self.span_ids_link_0), 0)
         self.clear_list()
 
-    def test_Save_SpanIdsLink_1_IntoFileAndCheckThat_SpanIdsLink_1_IsGreaterThan_0(self):
+    def test_03_Save_SpanIdsLink_1_IntoFileAndCheckThat_SpanIdsLink_1_IsGreaterThan_0(self):
         self.get_span_ids(self.get_links_1, self.tbody_ids_link_1)
         self.assertGreater(len(ScrapingWilliamHill.span_id_lists), 0)
 
-    def test_SaveSpanIdsLink_1_IntoCsvFile(self):
+    def test_04_SaveSpanIdsLink_1_IntoCsvFile(self):
         self.get_span_ids(self.get_links_1, self.tbody_ids_link_1)
         self.save_file(self.span_ids_link_1, ScrapingWilliamHill.span_id_lists)
         self.assertGreater(os.path.getsize(self.span_ids_link_1), 0)

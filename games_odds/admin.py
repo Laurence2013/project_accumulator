@@ -1,9 +1,10 @@
 from django.contrib import admin
-from games_odds.models import TimeOfRefreshWilliamHill0, TimeOfRefreshWilliamHill1, GameUrlLink0, GameUrlLink1, GameUrlLink2, GameUrlLink3, GameUrlLink4, GameUrlLink5, GameUrlLink6, OddsGameUrlLink0
+from games_odds.models import TimeOfRefreshWilliamHill0, TimeOfRefreshWilliamHill1, TimeOfRefreshWilliamHill2, GameUrlLink0, GameUrlLink1, GameUrlLink2, GameUrlLink3, GameUrlLink4, GameUrlLink5, GameUrlLink6, OddsGameUrlLink0
 from games_odds.models import OddsGameUrlLink1, OddsGameUrlLink2, OddsGameUrlLink3, OddsGameUrlLink4, OddsGameUrlLink5, OddsGameUrlLink6
 
 admin.site.register(TimeOfRefreshWilliamHill0)
 admin.site.register(TimeOfRefreshWilliamHill1)
+admin.site.register(TimeOfRefreshWilliamHill2)
 admin.site.register(GameUrlLink0)
 admin.site.register(GameUrlLink1)
 admin.site.register(GameUrlLink2)

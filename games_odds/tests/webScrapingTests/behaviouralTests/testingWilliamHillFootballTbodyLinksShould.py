@@ -17,16 +17,16 @@ class TestingWilliamHillFootballTbodyLinksShould(TestCase, ScrapingWilliamHill):
         self.get_links_0 = (self.get_tbody_ids('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/1/Football.html'))
         self.get_links_1 = (self.get_tbody_ids('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/2/Football.html'))
 
-    def test_CheckThat_Get_Links_0_IsGreaterThan_0(self):
+    def test_01_CheckThat_Get_Links_0_IsGreaterThan_0(self):
         self.assertGreater(len(self.tbody_ids_link_0), 0)
 
-    def test_Save_Get_Links_0_IntoFile(self):
+    def test_02_Save_Get_Links_0_IntoFile(self):
         self.save_file(self.tbody_ids_link_0, self.get_links_0)
         self.assertGreater(os.path.getsize(self.tbody_ids_link_0), 0)
 
-    def test_CheckThat_Get_Links_1_IsGreaterThan_0(self):
+    def test_03_CheckThat_Get_Links_1_IsGreaterThan_0(self):
         self.assertGreater(len(self.tbody_ids_link_1), 0)
 
-    def test_Save_Get_Links_1_IntoFile(self):
+    def test_04_Save_Get_Links_1_IntoFile(self):
         self.save_file(self.tbody_ids_link_1, self.get_links_1)
         self.assertGreater(os.path.getsize(self.tbody_ids_link_1), 0)

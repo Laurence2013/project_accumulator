@@ -20,7 +20,7 @@ class TestingEitherFilesAreEmptyOrNot(TestCase):
         self.tbody_link_0_odds = base_dir + '/games_odds/tests/webScrapingTests/testingFiles/tbody_link_0_odds.csv'
         self.tbody_link_1_odds = base_dir + '/games_odds/tests/webScrapingTests/testingFiles/tbody_link_1_odds.csv'
 
-    def test_CheckThatTbodyIdsLink_0_FileIsEmptyOrNot(self):
+    def test_01_CheckThatTbodyIdsLink_0_FileIsEmptyOrNot(self):
         try:
             self.assertEqual(os.path.getsize(self.tbody_ids_link_0), 0)
         except AssertionError as e:
@@ -28,7 +28,7 @@ class TestingEitherFilesAreEmptyOrNot(TestCase):
                 pass
             self.assertEqual(os.path.getsize(self.tbody_ids_link_0), 0)
 
-    def test_CheckThatTbodyIdsLink_1_FileIsEmptyOrNot(self):
+    def test_02_CheckThatTbodyIdsLink_1_FileIsEmptyOrNot(self):
         try:
             self.assertEqual(os.path.getsize(self.tbody_ids_link_1), 0)
         except AssertionError as e:
@@ -36,7 +36,7 @@ class TestingEitherFilesAreEmptyOrNot(TestCase):
                 pass
             self.assertEqual(os.path.getsize(self.tbody_ids_link_1), 0)
 
-    def test_CheckThatSpanIdsLink_0_FileIsEmptyOrNot(self):
+    def test_03_CheckThatSpanIdsLink_0_FileIsEmptyOrNot(self):
         try:
             self.assertEqual(os.path.getsize(self.span_ids_link_0), 0)
         except AssertionError as e:
@@ -44,7 +44,7 @@ class TestingEitherFilesAreEmptyOrNot(TestCase):
                 pass
             self.assertEqual(os.path.getsize(self.span_ids_link_0), 0)
 
-    def test_CheckThatSpanIdsLink_1_FileIsEmptyOrNot(self):
+    def test_04_CheckThatSpanIdsLink_1_FileIsEmptyOrNot(self):
         try:
             self.assertEqual(os.path.getsize(self.span_ids_link_1), 0)
         except AssertionError as e:
@@ -52,7 +52,7 @@ class TestingEitherFilesAreEmptyOrNot(TestCase):
                 pass
             self.assertEqual(os.path.getsize(self.span_ids_link_1), 0)
 
-    def test_CheckTbody_link_0_OddsIsEitherEmptyOrNot(self):
+    def test_05_CheckTbody_link_0_OddsIsEitherEmptyOrNot(self):
         try:
             self.assertEqual(os.path.getsize(self.tbody_link_0_odds), 0)
         except AssertionError as e:
@@ -60,7 +60,7 @@ class TestingEitherFilesAreEmptyOrNot(TestCase):
                 pass
             self.assertEqual(os.path.getsize(self.tbody_link_0_odds), 0)
 
-    def test_CheckTbody_link_1_OddsIsEitherEmptyOrNot(self):
+    def test_06_CheckTbody_link_1_OddsIsEitherEmptyOrNot(self):
         try:
             self.assertEqual(os.path.getsize(self.tbody_link_1_odds), 0)
         except AssertionError as e:
