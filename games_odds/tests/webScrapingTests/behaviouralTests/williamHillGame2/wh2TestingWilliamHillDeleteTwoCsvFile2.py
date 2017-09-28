@@ -13,7 +13,7 @@ This is testing the refresh_no sent, sending 1 and emptying two files -> get_mat
 Then refresh page with refresh_no 1
 '''
 
-class TestingWilliamHillDeleteTwoCsvFile2(TestCase, MainViewsApi, WilliamHillBase, ScrapingWilliamHill):
+class Wh2TestingWilliamHillDeleteTwoCsvFile2(TestCase, MainViewsApi, WilliamHillBase, ScrapingWilliamHill):
     def setUp(self):
         self.factory = RequestFactory()
         self.base_dir = settings.BASE_DIR
@@ -37,12 +37,12 @@ class TestingWilliamHillDeleteTwoCsvFile2(TestCase, MainViewsApi, WilliamHillBas
         response = William_Hill_Games_1.as_view()(request,1)
         self.assertEqual(response.status_code, 200)
 
-    def test_04_empty_get_match_odds_link_1_file_is_false(self):
+    def test_04_empty_get_match_odds_link_2_file_is_false(self):
         file_link = self.base_dir + '/games_odds/williamHillFiles/get_match_odds/get_match_odds_link_1.csv'
         get_file_size = self.check_file_not_empty(file_link)
         self.assertTrue(get_file_size)
 
-    def test_05_empty_ids_for_tag_span_link_1_file_is_false(self):
+    def test_05_empty_ids_for_tag_span_link_2_file_is_false(self):
         file_link = self.base_dir + '/games_odds/williamHillFiles/tag_name_span_attr_ids/ids_for_tag_span_link_1.csv'
         get_file_size = self.check_file_not_empty(file_link)
         self.assertTrue(get_file_size)

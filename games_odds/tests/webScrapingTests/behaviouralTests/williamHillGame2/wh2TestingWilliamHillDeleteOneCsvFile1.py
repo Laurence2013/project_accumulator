@@ -30,7 +30,7 @@ class Wh2TestingWilliamHillDeleteOneCsvFile1(TestCase, MainViewsApi, WilliamHill
         response = William_Hill_Games_2.as_view()(request,1)
         self.assertEqual(response.status_code, 200)
 
-    def test_03_empty_get_match_odds_link_1_file_is_false(self):
+    def test_03_empty_get_match_odds_link_2_file_is_false(self):
         file_link = self.base_dir + '/games_odds/williamHillFiles/get_match_odds/get_match_odds_link_2.csv'
         get_file_size = self.check_file_not_empty(file_link)
         self.assertTrue(get_file_size)
