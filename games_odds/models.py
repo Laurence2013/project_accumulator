@@ -56,57 +56,73 @@ class TimeOfRefreshWilliamHill6(models.Model):
     def __str__(self):
         return self.date_of_refresh
 
-class GameUrlLink0(models.Model):
+class WilliamHillCsvLinks(models.Model):
+    url_name = models.CharField(max_length = 50)
+    get_match_odds_link_csv = models.CharField(max_length = 100)
+    ids_for_tag_span_link_csv = models.CharField(max_length = 100)
+    ids_for_tag_tbody_link_csv = models.CharField(max_length = 100)
+    date_updated = models.DateTimeField(auto_now_add = True)
+
+    def __str__(self):
+        return self.url_name
+
+class WilliamHillGames0(models.Model):
+    url_game_link = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
+    games = models.CharField(max_length = 100)
+    date_updated = models.DateTimeField(auto_now_add = True)
+
+    def __str__(self):
+        return self.games
+class WilliamHillGames1(models.Model):
+    url_game_link = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
     games = models.CharField(max_length = 100)
     date_updated = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
         return self.games
 
-class GameUrlLink1(models.Model):
+class WilliamHillGames2(models.Model):
+    url_game_link = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
     games = models.CharField(max_length = 100)
     date_updated = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
         return self.games
 
-class GameUrlLink2(models.Model):
+class WilliamHillGames3(models.Model):
+    url_game_link = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
     games = models.CharField(max_length = 100)
     date_updated = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
         return self.games
 
-class GameUrlLink3(models.Model):
+class WilliamHillGames4(models.Model):
+    url_game_link = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
     games = models.CharField(max_length = 100)
     date_updated = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
         return self.games
 
-class GameUrlLink4(models.Model):
+class WilliamHillGames5(models.Model):
+    url_game_link = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
     games = models.CharField(max_length = 100)
     date_updated = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
         return self.games
 
-class GameUrlLink5(models.Model):
+class WilliamHillGames6(models.Model):
+    url_game_link = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
     games = models.CharField(max_length = 100)
     date_updated = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
         return self.games
 
-class GameUrlLink6(models.Model):
-    games = models.CharField(max_length = 100)
-    date_updated = models.DateTimeField(auto_now_add = True)
-
-    def __str__(self):
-        return self.games
-
-class OddsGameUrlLink0(models.Model):
-    games = models.ForeignKey(GameUrlLink0, on_delete = models.CASCADE)
+class WilliamHillOdds0(models.Model):
+    games = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
     home_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     draw_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     away_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
@@ -115,8 +131,8 @@ class OddsGameUrlLink0(models.Model):
     def __str__(self):
         return str(self.games)
 
-class OddsGameUrlLink1(models.Model):
-    games = models.ForeignKey(GameUrlLink1, on_delete = models.CASCADE)
+class WilliamHillOdds1(models.Model):
+    games = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
     home_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     draw_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     away_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
@@ -125,8 +141,8 @@ class OddsGameUrlLink1(models.Model):
     def __str__(self):
         return str(self.games)
 
-class OddsGameUrlLink2(models.Model):
-    games = models.ForeignKey(GameUrlLink2, on_delete = models.CASCADE)
+class WilliamHillOdds2(models.Model):
+    games = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
     home_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     draw_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     away_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
@@ -135,8 +151,8 @@ class OddsGameUrlLink2(models.Model):
     def __str__(self):
         return str(self.games)
 
-class OddsGameUrlLink3(models.Model):
-    games = models.ForeignKey(GameUrlLink3, on_delete = models.CASCADE)
+class WilliamHillOdds3(models.Model):
+    games = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
     home_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     draw_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     away_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
@@ -145,8 +161,8 @@ class OddsGameUrlLink3(models.Model):
     def __str__(self):
         return str(self.games)
 
-class OddsGameUrlLink4(models.Model):
-    games = models.ForeignKey(GameUrlLink4, on_delete = models.CASCADE)
+class WilliamHillOdds4(models.Model):
+    games = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
     home_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     draw_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     away_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
@@ -155,8 +171,8 @@ class OddsGameUrlLink4(models.Model):
     def __str__(self):
         return str(self.games)
 
-class OddsGameUrlLink5(models.Model):
-    games = models.ForeignKey(GameUrlLink4, on_delete = models.CASCADE)
+class WilliamHillOdds5(models.Model):
+    games = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
     home_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     draw_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     away_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
@@ -165,8 +181,8 @@ class OddsGameUrlLink5(models.Model):
     def __str__(self):
         return str(self.games)
 
-class OddsGameUrlLink6(models.Model):
-    games = models.ForeignKey(GameUrlLink5, on_delete = models.CASCADE)
+class WilliamHillOdds6(models.Model):
+    games = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
     home_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     draw_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     away_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
@@ -174,5 +190,3 @@ class OddsGameUrlLink6(models.Model):
 
     def __str__(self):
         return str(self.games)
-
-# class OddsGameTimeUpdateUrlLink0(models.Model):

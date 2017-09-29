@@ -1,0 +1,17 @@
+    WilliamHillCsvLinks.objects.create(id=2,
+    url_name = str('link_1'), get_match_odds_link_csv = str('get_match_odds_link_1.csv'), ids_for_tag_span_link_csv = str('ids_for_tag_span_link_1.csv'), ids_for_tag_tbody_link_csv = str('ids_for_tag_tbody_link_1.csv'))
+
+    WilliamHillCsvLinks.objects.create(id=3,
+    url_name = str('link_2'), get_match_odds_link_csv = str('get_match_odds_link_2.csv'), ids_for_tag_span_link_csv = str('ids_for_tag_span_link_2.csv'), ids_for_tag_tbody_link_csv = str('ids_for_tag_tbody_link_2.csv'))
+
+    WilliamHillCsvLinks.objects.create(id=4,
+    url_name = str('link_3'), get_match_odds_link_csv = str('get_match_odds_link_3.csv'), ids_for_tag_span_link_csv = str('ids_for_tag_span_link_3.csv'), ids_for_tag_tbody_link_csv = str('ids_for_tag_tbody_link_3.csv'))
+
+    WilliamHillCsvLinks.objects.create(id=5,
+    url_name = str('link_4'), get_match_odds_link_csv = str('get_match_odds_link_4.csv'), ids_for_tag_span_link_csv = str('ids_for_tag_span_link_41.csv'), ids_for_tag_tbody_link_csv = str('ids_for_tag_tbody_link_4.csv'))
+
+    WilliamHillCsvLinks.objects.create(id=6,
+    url_name = str('link_5'), get_match_odds_link_csv = str('get_match_odds_link_5.csv'), ids_for_tag_span_link_csv = str('ids_for_tag_span_link_5.csv'), ids_for_tag_tbody_link_csv = str('ids_for_tag_tbody_link_5.csv'))
+
+    WilliamHillCsvLinks.objects.create(id=7,
+    url_name = str('link_6'), get_match_odds_link_csv = str('get_match_odds_link_6.csv'), ids_for_tag_span_link_csv = str('ids_for_tag_span_link_6.csv'), ids_for_tag_tbody_link_csv = str('ids_for_tag_tbody_link_6.csv'))
