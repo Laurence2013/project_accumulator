@@ -1,6 +1,11 @@
 from django.test import TestCase
 from games_odds.models import WilliamHillCsvLinks
 
+'''
+This is 1st scenario, from the id chosen from the html page from user side or admin side, according to what the user clicked on or admin clicked on,
+for example they link clicked on id link_0 then link_0 is checked against the database and its csv files are checked
+'''
+
 class TestingCheckCsvToDbForLink0(TestCase):
     def setUp(self):
         WilliamHillCsvLinks.objects.create(id=1,
