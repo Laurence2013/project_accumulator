@@ -109,17 +109,21 @@ class WilliamHillBase(ScrapingWilliamHill):
 
     def combine_matches_odds(self, william_hill_link, tbody_ids_link, span_ids_link, get_match_odds_link):
         links_0 = self.get_tbody(tbody_ids_link, william_hill_link)
-        if len(links_0) > 0:
-            empty1 = self.save_check_empty(tbody_ids_link, links_0)
-        if empty1 is True:
-            self.get_span_ids(william_hill_link, tbody_ids_link)
-            empty2 = self.save_check_empty(span_ids_link, self.span_id_lists)
-            self.clear_list()
-        if empty2 is True:
-            match_odds = self.get_all_odds_for_match(william_hill_link, tbody_ids_link)
-            empty3 = self.save_check_empty(get_match_odds_link, match_odds)
-        if empty3 is True:
-            context = self.combine_matches_odds_2(span_ids_link, get_match_odds_link)
+        try:
+            if len(links_0) > 0:
+                empty1 = self.save_check_empty(tbody_ids_link, links_0)
+            if empty1 is True:
+                self.get_span_ids(william_hill_link, tbody_ids_link)
+                empty2 = self.save_check_empty(span_ids_link, self.span_id_lists)
+                self.clear_list()
+            if empty2 is True:
+                match_odds = self.get_all_odds_for_match(william_hill_link, tbody_ids_link)
+                empty3 = self.save_check_empty(get_match_odds_link, match_odds)
+            if empty3 is True:
+                context = self.combine_matches_odds_2(span_ids_link, get_match_odds_link)
+        except Exception as e:
+            print('Exception', str(e))
+            return e
         return context
 
     def combine_matches_odds_2(self, span_ids_link, get_match_odds_link):
