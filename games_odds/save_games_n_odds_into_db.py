@@ -9,7 +9,13 @@ class SaveGamesNOddsIntoDb(CombineOddsWithItsMatch):
         get_match_odds_file_path_0 = base_dir + "/games_odds/williamHillFiles/tag_name_span_attr_ids/" + get_url.ids_for_tag_span_link_csv
         return str(get_match_odds_file_path_0)
 
-    def get_games_from_csv_file(self):
-        get_csv_file_path = self.check_db_csv_name_with_csv_file(str('link_0'))
+    def get_games_from_csv_file(self, link_no):
+        get_csv_file_path = self.check_db_csv_name_with_csv_file(link_no)
         get_matches = self.get_match(get_csv_file_path)
         return get_matches
+
+    def store_csv_files_into_list(self, get_matches):
+        list_of_matches = list()
+        for matches in get_matches:
+            list_of_matches.append(matches)
+        return list_of_matches
