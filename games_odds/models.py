@@ -68,14 +68,14 @@ class WilliamHillCsvLinks(models.Model):
 
 class WilliamHillGames0(models.Model):
     url_game_link = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
-    games = models.CharField(max_length = 100)
+    games = models.CharField(max_length = 300)
     date_updated = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
         return self.games
 class WilliamHillGames1(models.Model):
     url_game_link = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
-    games = models.CharField(max_length = 100)
+    games = models.CharField(max_length = 300)
     date_updated = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
@@ -83,7 +83,7 @@ class WilliamHillGames1(models.Model):
 
 class WilliamHillGames2(models.Model):
     url_game_link = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
-    games = models.CharField(max_length = 100)
+    games = models.CharField(max_length = 300)
     date_updated = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
@@ -91,7 +91,7 @@ class WilliamHillGames2(models.Model):
 
 class WilliamHillGames3(models.Model):
     url_game_link = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
-    games = models.CharField(max_length = 100)
+    games = models.CharField(max_length = 300)
     date_updated = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
@@ -99,7 +99,7 @@ class WilliamHillGames3(models.Model):
 
 class WilliamHillGames4(models.Model):
     url_game_link = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
-    games = models.CharField(max_length = 100)
+    games = models.CharField(max_length = 300)
     date_updated = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
@@ -107,7 +107,7 @@ class WilliamHillGames4(models.Model):
 
 class WilliamHillGames5(models.Model):
     url_game_link = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
-    games = models.CharField(max_length = 100)
+    games = models.CharField(max_length = 300)
     date_updated = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
@@ -115,7 +115,7 @@ class WilliamHillGames5(models.Model):
 
 class WilliamHillGames6(models.Model):
     url_game_link = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
-    games = models.CharField(max_length = 100)
+    games = models.CharField(max_length = 300)
     date_updated = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
