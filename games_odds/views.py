@@ -6,6 +6,7 @@ from games_odds.webScraping.decimalToFractionAndStoreInDb import DecimalToFracti
 from games_odds.webScraping.combineOddsWithItsMatch import CombineOddsWithItsMatch
 from games_odds.mainViewsApi.main_views_api import MainViewsApi
 from games_odds.william_hill_base import WilliamHillBase
+from games_odds.save_games_n_odds_into_db import SaveGamesNOddsIntoDb
 
 class Bookies(TemplateView):
     template_name = 'accumulator/bookies.html'
@@ -177,3 +178,17 @@ class William_Hill_Games_6(WilliamHillBase, TemplateView, MainViewsApi, Scraping
         else:
             context = self.get_web_details_1(self.william_hill_link, self.tbody_ids_link_6, self.span_ids_link_6, self.get_match_odds_link_6, str('TimeOfRefreshWilliamHill6'))
             return render(request, self.template_name, self.get_context_data(**context))
+
+class SortGamesOddsIntoDb(TemplateView, SaveGamesNOddsIntoDb):
+    template_name = 'accumulator/william_hill/william_hill_0.html'
+    base_dir = settings.BASE_DIR
+
+    def get_context_data(self, **kwargs):
+        context = super(SortGamesOddsIntoDb, self).get_context_data(**kwargs)
+        return context
+
+    def get(self, request, link_no, *args, **kwargs):
+        if link_no == str('link_0'):
+            games_from_csv_file = self.get_games_from_csv_file(link_no, str('ids_for_tag_span_link_0'))
+            self.store_games_or_odds_into_db(link_no, games_from_csv_file)
+        return render(request, self.template_name, self.get_context_data())
