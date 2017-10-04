@@ -1,6 +1,7 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.shortcuts import render, redirect
+from django.views.generic import View, TemplateView
 from django.conf import settings
+from django.contrib import messages
 from games_odds.webScraping.scrapingWilliamHill import ScrapingWilliamHill
 from games_odds.webScraping.decimalToFractionAndStoreInDb import DecimalToFractionAndStoreInDb
 from games_odds.webScraping.combineOddsWithItsMatch import CombineOddsWithItsMatch
@@ -16,7 +17,9 @@ class Bookies(TemplateView):
         return context
 
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name, self.get_context_data())
+        storage = messages.get_messages(request)
+        context = {'message': storage}
+        return render(request, self.template_name, self.get_context_data(**context))
 
 class Main_William_Hill(TemplateView, ScrapingWilliamHill):
     template_name = 'accumulator/william_hill/main_william_hill.html'
@@ -179,16 +182,14 @@ class William_Hill_Games_6(WilliamHillBase, TemplateView, MainViewsApi, Scraping
             context = self.get_web_details_1(self.william_hill_link, self.tbody_ids_link_6, self.span_ids_link_6, self.get_match_odds_link_6, str('TimeOfRefreshWilliamHill6'))
             return render(request, self.template_name, self.get_context_data(**context))
 
-class SortGamesOddsIntoDb(TemplateView, SaveGamesNOddsIntoDb):
-    template_name = 'accumulator/william_hill/william_hill_0.html'
-    base_dir = settings.BASE_DIR
-
-    def get_context_data(self, **kwargs):
-        context = super(SortGamesOddsIntoDb, self).get_context_data(**kwargs)
-        return context
-
+class SortGamesOddsIntoDb(View, SaveGamesNOddsIntoDb):
     def get(self, request, link_no, *args, **kwargs):
         if link_no == str('link_0'):
-            games_from_csv_file = self.get_games_from_csv_file(link_no, str('ids_for_tag_span_link_0'))
-            self.store_games_or_odds_into_db(link_no, games_from_csv_file)
-        return render(request, self.template_name, self.get_context_data())
+            messages.success(request, 'You have successfully added to database')
+            # games_from_csv_file = self.get_games_from_csv_file(link_no, str('ids_for_tag_span_link_0'))
+            # isStored = self.store_games_or_odds_into_db(link_no, games_from_csv_file)
+            # if isStored is True:
+            #     messages.success(request, 'You have successfully added to database')
+            #     print('hello')
+            #     print(reverse('sort_games_into_db'))
+        return redirect('bookies')

@@ -26,6 +26,8 @@ class SaveGamesNOddsIntoDb(CombineOddsWithItsMatch):
         for game in store_games_or_odds:
             store_tag_span_link_0_list = WilliamHillGames0(games=game, url_game_link_id=int(get_id.id))
             store_tag_span_link_0_list.save()
+            return True
+        return False
 
     def get_ids_for_tag_span_link_csv(self, link_no):
         base_dir = settings.BASE_DIR
