@@ -185,11 +185,10 @@ class William_Hill_Games_6(WilliamHillBase, TemplateView, MainViewsApi, Scraping
 class SortGamesOddsIntoDb(View, SaveGamesNOddsIntoDb):
     def get(self, request, link_no, *args, **kwargs):
         if link_no == str('link_0'):
-            messages.success(request, 'You have successfully added to database')
-            # games_from_csv_file = self.get_games_from_csv_file(link_no, str('ids_for_tag_span_link_0'))
-            # isStored = self.store_games_or_odds_into_db(link_no, games_from_csv_file)
-            # if isStored is True:
-            #     messages.success(request, 'You have successfully added to database')
-            #     print('hello')
-            #     print(reverse('sort_games_into_db'))
-        return redirect('bookies')
+            games_from_csv_file = self.get_games_from_csv_file(link_no, str('ids_for_tag_span_link_0'))
+            isStored = self.store_games_or_odds_into_db(link_no, games_from_csv_file)
+            if isStored is True:
+                messages.success(request, 'You have successfully added to database')
+            else:
+                messages.error(request, 'Something went wrong, nothing was added to the database!')
+            return redirect('bookies')

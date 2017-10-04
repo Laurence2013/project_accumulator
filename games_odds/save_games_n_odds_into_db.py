@@ -26,6 +26,7 @@ class SaveGamesNOddsIntoDb(CombineOddsWithItsMatch):
         for game in store_games_or_odds:
             store_tag_span_link_0_list = WilliamHillGames0(games=game, url_game_link_id=int(get_id.id))
             store_tag_span_link_0_list.save()
+        if WilliamHillGames0.objects.count() >= 1:
             return True
         return False
 
