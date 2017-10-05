@@ -33,7 +33,7 @@ class TestingGetGamesFromCsvAndStoreIntoDbForLink0(TestCase, SaveGamesNOddsIntoD
 
     def test_04_check_that_ids_for_tag_span_link_0_csv_is_stored_in_tag_name_span_attr_ids_folder(self):
         base_dir = settings.BASE_DIR
-        ids_for_tag_span_link_0 = self.check_db_csv_name_with_csv_file(str('link_0'), str('ids_for_tag_span_link_0'))
+        ids_for_tag_span_link_0 = self.check_db_csv_name_with_csv_file(str('link_0'))
         self.assertEqual(base_dir + "/games_odds/williamHillFiles/tag_name_span_attr_ids/ids_for_tag_span_link_0.csv", ids_for_tag_span_link_0)
 
     def test_05_check_both_csv_files_ids_for_tag_span_link_0_is_the_same(self):
@@ -42,12 +42,12 @@ class TestingGetGamesFromCsvAndStoreIntoDbForLink0(TestCase, SaveGamesNOddsIntoD
         get_testing_files_matches = self.get_match(get_testing_files)
         get_testing_files_list_of_matches = self.store_csv_files_into_list(get_testing_files_matches)
 
-        get_ids_for_tag_span_link_0 = self.get_games_from_csv_file(str('link_0'), str('ids_for_tag_span_link_0'))
+        get_ids_for_tag_span_link_0 = self.get_games_from_csv_file(str('link_0'))
         get_ids_for_tag_span_link_0_list = self.store_csv_files_into_list(get_ids_for_tag_span_link_0)
         self.assertListEqual(get_testing_files_list_of_matches, get_ids_for_tag_span_link_0_list)
 
     def test_06_store_list_of_matches_into_db(self):
-        get_ids_for_tag_span_link_0 = self.get_games_from_csv_file(str('link_0'), str('ids_for_tag_span_link_0'))
+        get_ids_for_tag_span_link_0 = self.get_games_from_csv_file(str('link_0'))
         get_ids_for_tag_span_link_0_list = self.store_csv_files_into_list(get_ids_for_tag_span_link_0)
         store_tag_span_link_0_list = WilliamHillGames0(games=get_ids_for_tag_span_link_0_list, url_game_link_id=1)
         store_tag_span_link_0_list.save()
