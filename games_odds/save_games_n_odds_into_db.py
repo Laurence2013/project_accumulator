@@ -1,5 +1,5 @@
 from django.conf import settings
-from games_odds.models import WilliamHillGames0
+from games_odds.models import WilliamHillGames0, WilliamHillGames1
 from games_odds.models import WilliamHillCsvLinks
 from games_odds.webScraping.combineOddsWithItsMatch import CombineOddsWithItsMatch
 
