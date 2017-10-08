@@ -3,7 +3,7 @@ from games_odds.models import WilliamHillGames0, WilliamHillGames1
 from games_odds.models import WilliamHillCsvLinks
 from games_odds.webScraping.combineOddsWithItsMatch import CombineOddsWithItsMatch
 
-class SaveGamesNOddsIntoDb(CombineOddsWithItsMatch):
+class SaveGamesIntoDb(CombineOddsWithItsMatch):
     def check_db_csv_name_with_csv_file(self, link_no):
         get_match_odds_file_path = self.get_ids_for_tag_span_link_csv(link_no)
         return get_match_odds_file_path
@@ -25,13 +25,13 @@ class SaveGamesNOddsIntoDb(CombineOddsWithItsMatch):
         get_match_odds_file_path_0 = base_dir + "/games_odds/williamHillFiles/tag_name_span_attr_ids/" + get_url.ids_for_tag_span_link_csv
         return get_match_odds_file_path_0
 
-    def store_games_or_odds_into_db(self, link_no, csv_list):
-        isTrue = self.return_games_or_odds_into_db(link_no, csv_list)
+    def store_games_into_db(self, link_no, csv_list):
+        isTrue = self.return_games_into_db(link_no, csv_list)
         if isTrue is True:
             return True
         return False
 
-    def return_games_or_odds_into_db(self, link_no, csv_list):
+    def return_games_into_db(self, link_no, csv_list):
         store_games_or_odds = self.store_csv_files_into_list(csv_list)
         if link_no == str('link_0'):
             get_id = WilliamHillCsvLinks.objects.get(url_name=link_no)

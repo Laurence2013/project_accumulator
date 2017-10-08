@@ -3,7 +3,7 @@ from django.test import TestCase
 from django.conf import settings
 from games_odds.models import WilliamHillCsvLinks
 from games_odds.models import WilliamHillGames1
-from games_odds.save_games_n_odds_into_db import SaveGamesNOddsIntoDb
+from games_odds.save_games_into_db import SaveGamesIntoDb
 from games_odds.webScraping.combineOddsWithItsMatch import CombineOddsWithItsMatch
 
 '''
@@ -13,7 +13,7 @@ This is 2nd scenario, if user or admin clicked on link_1 then the csv file for g
 3 - Each game in list or tuple is saved into db = WilliamHillGames1
 '''
 
-class TestingGetGamesFromCsvAndStoreIntoDbForLink1(TestCase, SaveGamesNOddsIntoDb, CombineOddsWithItsMatch):
+class TestingGetGamesFromCsvAndStoreIntoDbForLink1(TestCase, SaveGamesIntoDb, CombineOddsWithItsMatch):
     def setUp(self):
         WilliamHillCsvLinks.objects.create(id=2,
         url_name = str('link_1'), get_match_odds_link_csv = str('get_match_odds_link_1.csv'), ids_for_tag_span_link_csv = str('ids_for_tag_span_link_1.csv'), ids_for_tag_tbody_link_csv = str('ids_for_tag_tbody_link_1.csv'))
