@@ -122,7 +122,7 @@ class WilliamHillGames6(models.Model):
         return self.games
 
 class WilliamHillOdds0(models.Model):
-    games = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
+    games = models.ForeignKey(WilliamHillGames0, on_delete = models.CASCADE)
     home_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     draw_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     away_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
@@ -132,7 +132,7 @@ class WilliamHillOdds0(models.Model):
         return str(self.games)
 
 class WilliamHillOdds1(models.Model):
-    games = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
+    games = models.ForeignKey(WilliamHillGames1, on_delete = models.CASCADE)
     home_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     draw_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     away_odds = models.DecimalField(max_digits = 5, decimal_places = 2)

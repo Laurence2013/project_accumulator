@@ -8,6 +8,7 @@ from games_odds.webScraping.combineOddsWithItsMatch import CombineOddsWithItsMat
 from games_odds.mainViewsApi.main_views_api import MainViewsApi
 from games_odds.william_hill_base import WilliamHillBase
 from games_odds.save_games_into_db import SaveGamesIntoDb
+from games_odds.save_odds_into_db import SaveOddsIntoDb
 
 class Bookies(TemplateView):
     template_name = 'accumulator/bookies.html'
@@ -182,10 +183,10 @@ class William_Hill_Games_6(WilliamHillBase, TemplateView, MainViewsApi, Scraping
             context = self.get_web_details_1(self.william_hill_link, self.tbody_ids_link_6, self.span_ids_link_6, self.get_match_odds_link_6, str('TimeOfRefreshWilliamHill6'))
             return render(request, self.template_name, self.get_context_data(**context))
 
-class SortGamesOddsIntoDb(View, SaveGamesIntoDb):
+class SortGamesOddsIntoDb(View, SaveOddsIntoDb, SaveGamesIntoDb):
     def get(self, request, link_no, *args, **kwargs):
-        isStored = self.get_csv_file_type(link_no)
-        if isStored is True:
+        isGameStored, isOddsStored = self.get_csv_file_type(link_no)
+        if isGameStored is True and isOddsStored is True:
             messages.success(request, 'You have successfully added to database')
         else:
             messages.error(request, 'Something went wrong, nothing was added to the database!')
@@ -195,6 +196,8 @@ class SortGamesOddsIntoDb(View, SaveGamesIntoDb):
         get_link_no = link_no[-1:]
         get_link = str('link_') + get_link_no
         games_from_csv_file = self.get_games_from_csv_file(get_link)
+        odds_from_csv_file = self.get_odds_from_csv_file(get_link)
+        isGamesStored = True
         isGamesStored = self.store_games_into_db(get_link, games_from_csv_file)
-        isOddsStored = self.store_odds_into_db()
-        return isStored
+        isOddsStored = self.store_odds_into_db(get_link, odds_from_csv_file)
+        return isGamesStored, isOddsStored
