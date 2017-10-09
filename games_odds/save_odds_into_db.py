@@ -1,5 +1,5 @@
 from django.conf import settings
-from games_odds.models import WilliamHillGames0, WilliamHillGames1, WilliamHillOdds0, WilliamHillOdds1
+from games_odds.models import *
 from games_odds.models import WilliamHillCsvLinks
 from games_odds.webScraping.decimalToFractionAndStoreInDb import DecimalToFractionAndStoreInDb
 
@@ -48,4 +48,54 @@ class SaveOddsIntoDb(DecimalToFractionAndStoreInDb):
                 store_tag_span_link_list.save()
                 count += 1
             if WilliamHillOdds1.objects.count() >= 1:
+                return True
+        if link_no == str('link_2'):
+            game_id = WilliamHillGames2.objects.all()
+            for game in game_id:
+                games_list.append(game.id)
+            for game in csv_list:
+                store_tag_span_link_list = WilliamHillOdds2(home_odds=game[0], draw_odds=game[1], away_odds=game[2], games_id=games_list[count])
+                store_tag_span_link_list.save()
+                count += 1
+            if WilliamHillOdds2.objects.count() >= 1:
+                return True
+        if link_no == str('link_3'):
+            game_id = WilliamHillGames3.objects.all()
+            for game in game_id:
+                games_list.append(game.id)
+            for game in csv_list:
+                store_tag_span_link_list = WilliamHillOdds3(home_odds=game[0], draw_odds=game[1], away_odds=game[2], games_id=games_list[count])
+                store_tag_span_link_list.save()
+                count += 1
+            if WilliamHillOdds3.objects.count() >= 1:
+                return True
+        if link_no == str('link_4'):
+            game_id = WilliamHillGames4.objects.all()
+            for game in game_id:
+                games_list.append(game.id)
+            for game in csv_list:
+                store_tag_span_link_list = WilliamHillOdds4(home_odds=game[0], draw_odds=game[1], away_odds=game[2], games_id=games_list[count])
+                store_tag_span_link_list.save()
+                count += 1
+            if WilliamHillOdds4.objects.count() >= 1:
+                return True
+        if link_no == str('link_5'):
+            game_id = WilliamHillGames5.objects.all()
+            for game in game_id:
+                games_list.append(game.id)
+            for game in csv_list:
+                store_tag_span_link_list = WilliamHillOdds5(home_odds=game[0], draw_odds=game[1], away_odds=game[2], games_id=games_list[count])
+                store_tag_span_link_list.save()
+                count += 1
+            if WilliamHillOdds5.objects.count() >= 1:
+                return True
+        if link_no == str('link_6'):
+            game_id = WilliamHillGames6.objects.all()
+            for game in game_id:
+                games_list.append(game.id)
+            for game in csv_list:
+                store_tag_span_link_list = WilliamHillOdds6(home_odds=game[0], draw_odds=game[1], away_odds=game[2], games_id=games_list[count])
+                store_tag_span_link_list.save()
+                count += 1
+            if WilliamHillOdds6.objects.count() >= 1:
                 return True

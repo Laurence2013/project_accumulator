@@ -197,7 +197,6 @@ class SortGamesOddsIntoDb(View, SaveOddsIntoDb, SaveGamesIntoDb):
         get_link = str('link_') + get_link_no
         games_from_csv_file = self.get_games_from_csv_file(get_link)
         odds_from_csv_file = self.get_odds_from_csv_file(get_link)
-        isGamesStored = True
         isGamesStored = self.store_games_into_db(get_link, games_from_csv_file)
         isOddsStored = self.store_odds_into_db(get_link, odds_from_csv_file)
         return isGamesStored, isOddsStored
