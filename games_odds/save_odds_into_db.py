@@ -1,6 +1,5 @@
 from django.conf import settings
 from games_odds.models import *
-from games_odds.models import WilliamHillCsvLinks
 from games_odds.webScraping.decimalToFractionAndStoreInDb import DecimalToFractionAndStoreInDb
 
 class SaveOddsIntoDb(DecimalToFractionAndStoreInDb):
@@ -21,6 +20,21 @@ class SaveOddsIntoDb(DecimalToFractionAndStoreInDb):
         return get_match_odds_file_path_0
 
     def store_odds_into_db(self, link_no, csv_list):
+        if WilliamHillOdds0.objects.count() >=1:
+            WilliamHillOdds0.objects.all().delete()
+        if WilliamHillOdds1.objects.count() >=1:
+            WilliamHillOdds1.objects.all().delete()
+        if WilliamHillOdds2.objects.count() >=1:
+            WilliamHillOdds2.objects.all().delete()
+        if WilliamHillOdds3.objects.count() >=1:
+            WilliamHillOdds3.objects.all().delete()
+        if WilliamHillOdds4.objects.count() >=1:
+            WilliamHillOdds4.objects.all().delete()
+        if WilliamHillOdds5.objects.count() >=1:
+            WilliamHillOdds5.objects.all().delete()
+        if WilliamHillOdds6.objects.count() >=1:
+            WilliamHillOdds6.objects.all().delete()
+
         isTrue = self.return_odds_into_db(link_no, csv_list)
         if isTrue is True:
             return True

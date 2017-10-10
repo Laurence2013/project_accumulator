@@ -1,6 +1,5 @@
 from django.conf import settings
-from games_odds.models import WilliamHillGames0, WilliamHillGames1
-from games_odds.models import WilliamHillCsvLinks
+from games_odds.models import *
 from games_odds.webScraping.combineOddsWithItsMatch import CombineOddsWithItsMatch
 
 class SaveGamesIntoDb(CombineOddsWithItsMatch):
@@ -26,6 +25,21 @@ class SaveGamesIntoDb(CombineOddsWithItsMatch):
         return get_match_odds_file_path_0
 
     def store_games_into_db(self, link_no, csv_list):
+        if WilliamHillGames0.objects.count() >=1:
+            WilliamHillGames0.objects.all().delete()
+        if WilliamHillGames1.objects.count() >=1:
+            WilliamHillGames1.objects.all().delete()
+        if WilliamHillGames2.objects.count() >=1:
+            WilliamHillGames2.objects.all().delete()
+        if WilliamHillGames3.objects.count() >=1:
+            WilliamHillGames3.objects.all().delete()
+        if WilliamHillGames4.objects.count() >=1:
+            WilliamHillGames4.objects.all().delete()
+        if WilliamHillGames5.objects.count() >=1:
+            WilliamHillGames5.objects.all().delete()
+        if WilliamHillGames6.objects.count() >=1:
+            WilliamHillGames6.objects.all().delete()
+
         isTrue = self.return_games_into_db(link_no, csv_list)
         if isTrue is True:
             return True

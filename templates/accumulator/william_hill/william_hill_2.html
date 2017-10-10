@@ -2,10 +2,13 @@
 
 {% block content %}
 <div class="row" id='refresh_padding'>
-  <div class="col-sm-8"></div>
+  <div class="col-sm-6"></div>
   <div class="col-sm-4">
     <a href="{% url 'william_hill_2' refresh_no=1 %}" >Click here to refresh</a>
     <b><i>{{ get_refresh_date }}</i></b>
+  </div>
+  <div class="col-sm-2">
+    <a href="{% url 'sort_games_into_db' link_no='link_2' %}" >Click here to save into Database</a>
   </div>
 </div>
 <table class="table table-bordered">
