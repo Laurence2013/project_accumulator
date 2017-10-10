@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import View, TemplateView
 from django.conf import settings
 from django.contrib import messages
+from accumulator.models import BookiesDailyMatche
 from games_odds.webScraping.scrapingWilliamHill import ScrapingWilliamHill
 from games_odds.webScraping.decimalToFractionAndStoreInDb import DecimalToFractionAndStoreInDb
 from games_odds.webScraping.combineOddsWithItsMatch import CombineOddsWithItsMatch
@@ -19,7 +20,10 @@ class Bookies(TemplateView):
 
     def get(self, request, *args, **kwargs):
         storage = messages.get_messages(request)
+        bd = BookiesDailyMatche.object.count()
         context = {'message': storage}
+        # if bd == 0:
+        #
         return render(request, self.template_name, self.get_context_data(**context))
 
 class Main_William_Hill(TemplateView, ScrapingWilliamHill):
