@@ -33,7 +33,6 @@ class Main_William_Hill(TemplateView, ScrapingWilliamHill):
     def get(self, request, update_no, *args, **kwargs):
         get_match_dates = []
         get_match_dates.append(str('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/Football.html'))
-        
         if int(update_no) is 1:
             if WilliamHillDailyMatche.objects.count() >= 1 or WilliamHillDailyMatche.objects.count() == 0:
                 WilliamHillDailyMatche.objects.all().delete()
