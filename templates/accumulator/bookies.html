@@ -12,20 +12,24 @@
     <tr>
       <th>Online bookies</th>
       <th>Click button to view</th>
+      <th>Click to update</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>William Hill</td>
-      <td><a href="{% url 'william_hill' %}">Click to view</a></td>
+      <td><a href="{% url 'william_hill' update_no=0 %}">Click to view</a></td>
+      <td><a href="{% url 'william_hill_update' update_no=1 %}">Click here to update</a></td>
     </tr>
     <tr>
       <td>Bet365</td>
       <td>Click to view</td>
+      <td>Click here to update</td>
     </tr>
     <tr>
       <td>Bet Victor</td>
       <td>Click to view</td>
+      <td>Click here to update</td>
     </tr>
   </tbody>
 </table>

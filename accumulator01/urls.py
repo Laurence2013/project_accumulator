@@ -6,7 +6,8 @@ from games_odds.views import Bookies, Main_William_Hill, William_Hill_Games_0, W
 urlpatterns = [
     url(r'^index/$', AccumulatorPageGamesView.as_view(), name='view'),
     url(r'^bookies/$', Bookies.as_view(), name='bookies'),
-    url(r'^william_hill/$', Main_William_Hill.as_view(), name='william_hill'),
+    url(r'^william_hill/(?P<update_no>[0-1]+|0)/$', Main_William_Hill.as_view(), name='william_hill'),
+    url(r'^william_hill_update/(?P<update_no>[0-1]+|0)/$', Main_William_Hill.as_view(), name='william_hill_update'),
     url(r'^william_hill_games_0/(?P<refresh_no>[0-9]+|0)/$', William_Hill_Games_0.as_view(), name='william_hill_0'),
     url(r'^william_hill_games_1/(?P<refresh_no>[0-9]+|0)/$', William_Hill_Games_1.as_view(), name='william_hill_1'),
     url(r'^william_hill_games_2/(?P<refresh_no>[0-9]+|0)/$', William_Hill_Games_2.as_view(), name='william_hill_2'),

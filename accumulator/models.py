@@ -35,8 +35,8 @@ class Bookie(models.Model):
     def __str__(self):
         return self.bookies_name
 
-class BookiesDailyMatche(models.Model):
-    bookies_id = models.ForeignKey(Bookie, on_delete = models.CASCADE)
+class WilliamHillDailyMatche(models.Model):
+    bookies = models.ForeignKey(Bookie, on_delete = models.CASCADE)
     dates_of_games = models.CharField(max_length = 50)
     date_updated = models.DateTimeField(auto_now_add = True)
 

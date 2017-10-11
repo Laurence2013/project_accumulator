@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import View, TemplateView
 from django.conf import settings
 from django.contrib import messages
-from accumulator.models import BookiesDailyMatche
+from accumulator.models import WilliamHillDailyMatche, Bookie
 from games_odds.webScraping.scrapingWilliamHill import ScrapingWilliamHill
 from games_odds.webScraping.decimalToFractionAndStoreInDb import DecimalToFractionAndStoreInDb
 from games_odds.webScraping.combineOddsWithItsMatch import CombineOddsWithItsMatch
@@ -20,10 +20,7 @@ class Bookies(TemplateView):
 
     def get(self, request, *args, **kwargs):
         storage = messages.get_messages(request)
-        bd = BookiesDailyMatche.object.count()
         context = {'message': storage}
-        # if bd == 0:
-        #
         return render(request, self.template_name, self.get_context_data(**context))
 
 class Main_William_Hill(TemplateView, ScrapingWilliamHill):
@@ -33,12 +30,28 @@ class Main_William_Hill(TemplateView, ScrapingWilliamHill):
         context = super(Main_William_Hill, self).get_context_data(**kwargs)
         return context
 
-    def get(self, request, *args, **kwargs):
-        get_match_dates = str('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/Football.html')
-
-        get_matches = self.get_daily_matches_dates(get_match_dates)
-        context = { 'get_matches': get_matches, }
-        return render(request, self.template_name, self.get_context_data(**context))
+    def get(self, request, update_no, *args, **kwargs):
+        get_match_dates = []
+        get_match_dates.append(str('http://sports.williamhill.com/bet/en-gb/betting/y/5/tm/Football.html'))
+        
+        if int(update_no) is 1:
+            if WilliamHillDailyMatche.objects.count() >= 1 or WilliamHillDailyMatche.objects.count() == 0:
+                WilliamHillDailyMatche.objects.all().delete()
+                for match in range(0, len(get_match_dates)):
+                    get_matches = self.get_daily_matches_dates(get_match_dates[match])
+                    bookies_id = Bookie.objects.filter(id='1')
+                    bookies_id_final = bookies_id.get()
+                    for matches in get_matches:
+                        bm = WilliamHillDailyMatche(dates_of_games=matches, bookies=bookies_id_final)
+                        bm.save()
+                get_match_games = WilliamHillDailyMatche.objects.all()
+                context = { 'get_matches': get_match_games, }
+                return render(request, self.template_name, self.get_context_data(**context))
+        else:
+            template_name = 'accumulator/bookies.html'
+            get_match_games = WilliamHillDailyMatche.objects.all()
+            context = { 'get_matches': get_match_games, }
+            return render(request, template_name, self.get_context_data(**context))
 
 class William_Hill_Games_0(WilliamHillBase, TemplateView, MainViewsApi, ScrapingWilliamHill, DecimalToFractionAndStoreInDb, CombineOddsWithItsMatch):
     template_name = 'accumulator/william_hill/william_hill_0.html'
