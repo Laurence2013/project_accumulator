@@ -1,7 +1,8 @@
 import datetime
 from django.core.urlresolvers import resolve
+from accumulator.models import WilliamHillDailyMatche, Bookie
 from games_odds.webScraping.scrapingWilliamHill import ScrapingWilliamHill
-from games_odds.models import TimeOfRefreshWilliamHill0, TimeOfRefreshWilliamHill1, TimeOfRefreshWilliamHill2, TimeOfRefreshWilliamHill3, TimeOfRefreshWilliamHill4, TimeOfRefreshWilliamHill5, TimeOfRefreshWilliamHill6
+from games_odds.models import *
 
 class WilliamHillBase(ScrapingWilliamHill):
 
@@ -149,3 +150,12 @@ class WilliamHillBase(ScrapingWilliamHill):
             'games': self.combine_matches_odds(william_hill_link, tbody_ids_link, span_ids_link, get_match_odds_link),
             'get_refresh_date': get_refresh_date,
         }
+
+    def get_william_hill_daily_matches_dates(self, get_match_dates):
+        for match in range(0, len(get_match_dates)):
+            get_matches = self.get_daily_matches_dates(get_match_dates[match])
+            bookies_id = Bookie.objects.filter(id='1')
+            bookies_id_final = bookies_id.get()
+            for matches in get_matches:
+                bm = WilliamHillDailyMatche(dates_of_games=matches, bookies=bookies_id_final)
+                bm.save()

@@ -20,19 +20,19 @@ class SaveOddsIntoDb(DecimalToFractionAndStoreInDb):
         return get_match_odds_file_path_0
 
     def store_odds_into_db(self, link_no, csv_list):
-        if WilliamHillOdds0.objects.count() >=1:
+        if str(link_no) is 'link_0':
             WilliamHillOdds0.objects.all().delete()
-        if WilliamHillOdds1.objects.count() >=1:
+        if str(link_no) is 'link_1':
             WilliamHillOdds1.objects.all().delete()
-        if WilliamHillOdds2.objects.count() >=1:
+        if str(link_no) is 'link_2':
             WilliamHillOdds2.objects.all().delete()
-        if WilliamHillOdds3.objects.count() >=1:
+        if str(link_no) is 'link_3':
             WilliamHillOdds3.objects.all().delete()
-        if WilliamHillOdds4.objects.count() >=1:
+        if str(link_no) is 'link_4':
             WilliamHillOdds4.objects.all().delete()
-        if WilliamHillOdds5.objects.count() >=1:
+        if str(link_no) is 'link_5':
             WilliamHillOdds5.objects.all().delete()
-        if WilliamHillOdds6.objects.count() >=1:
+        if str(link_no) is 'link_6':
             WilliamHillOdds6.objects.all().delete()
 
         isTrue = self.return_odds_into_db(link_no, csv_list)

@@ -73,6 +73,7 @@ class WilliamHillGames0(models.Model):
 
     def __str__(self):
         return self.games
+
 class WilliamHillGames1(models.Model):
     url_game_link = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
     games = models.CharField(max_length = 300)
