@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from accumulator.models import *
 from django.views.generic import TemplateView
-from django.http import Http404
 from decimal import Decimal
 from accumulator.combinations.twoGamesAccumulator import TwoGamesAccumulator
 from accumulator.combinations.threeGamesAccumulator import ThreeGamesAccumulator
@@ -25,8 +24,12 @@ class AccumulatorPageGamesView(TemplateView, TwoGamesAccumulator, ThreeGamesAccu
         return context
 
     def get(self, request, *args, **kwargs):
-        print(request)
-        print(kwargs)
+        if kwargs.get('slug'):
+            bookie = kwargs.get('slug')
+            bookie_name = Bookie.objects.get(bookies_name=bookie)
+            bookie_games = WilliamHillDailyMatche.objects.all().filter(bookies=bookie_name)
+            print(bookie_games)
+            
         return render(request, self.template_name, self.get_context_data(**kwargs))
 
     def post(self, request, *args, **kwargs):
