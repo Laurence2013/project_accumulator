@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from accumulator.models import Game, Odd, MatchInfo
-from django.views.generic import TemplateView, View
+from accumulator.models import *
+from django.views.generic import TemplateView
+from django.http import Http404
 from decimal import Decimal
 from accumulator.combinations.twoGamesAccumulator import TwoGamesAccumulator
 from accumulator.combinations.threeGamesAccumulator import ThreeGamesAccumulator
@@ -8,17 +9,25 @@ from accumulator.combinations.fourGamesAccumulator import FourGamesAccumulator
 from accumulator.combinations.generalGamesAccumulator import GeneralGamesAccumulator
 from accumulator.accumulatorPageGames.accumulatorPageGames import AccumulatorPageGames
 
-class AccumulatorPageGamesView(TemplateView, View, TwoGamesAccumulator, ThreeGamesAccumulator, FourGamesAccumulator, AccumulatorPageGames, GeneralGamesAccumulator):
+class AccumulatorPageGamesView(TemplateView, TwoGamesAccumulator, ThreeGamesAccumulator, FourGamesAccumulator, AccumulatorPageGames, GeneralGamesAccumulator):
     template_name = "accumulator/index.html"
+    template_bookies = "accumulator/bookies.html"
     games = Game.objects.values_list('id','games')
     match_info = MatchInfo.objects.values_list('daily_matches', 'combinations')
     odds = Odd.objects.values_list('id','home_odds','draw_odds','away_odds')
+    get_bookies = Bookie.objects.all()
 
     def get_context_data(self, **kwargs):
         context = super(AccumulatorPageGamesView, self).get_context_data(**kwargs)
         context['infos'] = self.match_info
+        context['bookies'] = self.get_bookies
         context['odds'] = list(self.break_list_into_equal_chunks(self.get_final_game(self.get_ammended_games(self.get_games())),4))
         return context
+
+    def get(self, request, *args, **kwargs):
+        print(request)
+        print(kwargs)
+        return render(request, self.template_name, self.get_context_data(**kwargs))
 
     def post(self, request, *args, **kwargs):
         try:
