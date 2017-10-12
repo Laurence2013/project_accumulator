@@ -25,20 +25,27 @@ class SaveGamesIntoDb(CombineOddsWithItsMatch):
         return get_match_odds_file_path_0
 
     def store_games_into_db(self, link_no, csv_list):
-        if str(link_no) is 'link_0':
-            WilliamHillOdds0.objects.all().delete()
-        if str(link_no) is 'link_1':
-            WilliamHillOdds1.objects.all().delete()
-        if str(link_no) is 'link_2':
-            WilliamHillOdds2.objects.all().delete()
-        if str(link_no) is 'link_3':
-            WilliamHillOdds3.objects.all().delete()
-        if str(link_no) is 'link_4':
-            WilliamHillOdds4.objects.all().delete()
-        if str(link_no) is 'link_5':
-            WilliamHillOdds5.objects.all().delete()
-        if str(link_no) is 'link_6':
-            WilliamHillOdds6.objects.all().delete()
+        if link_no == 'link_0':
+            if WilliamHillGames0.objects.count() >= 1:
+                WilliamHillGames0.objects.all().delete()
+        if link_no == 'link_1':
+            if WilliamHillGames1.objects.count() >= 1:
+                WilliamHillGames1.objects.all().delete()
+        if link_no == 'link_2':
+            if WilliamHillGames2.objects.count() >= 1:
+                WilliamHillGames2.objects.all().delete()
+        if link_no == 'link_3':
+            if WilliamHillGames3.objects.count() >= 1:
+                WilliamHillGames3.objects.all().delete()
+        if link_no == 'link_4':
+            if WilliamHillGames4.objects.count() >= 1:
+                WilliamHillGames4.objects.all().delete()
+        if link_no == 'link_5':
+            if WilliamHillGames5.objects.count() >= 1:
+                WilliamHillGames5.objects.all().delete()
+        if link_no == 'link_6':
+            if WilliamHillGames6.objects.count() >= 1:
+                WilliamHillGames6.objects.all().delete()
 
         isTrue = self.return_games_into_db(link_no, csv_list)
         if isTrue is True:
