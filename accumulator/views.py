@@ -1,7 +1,10 @@
+import json
+from django.conf import settings
 from django.shortcuts import render
 from accumulator.models import *
 from django.views.generic import TemplateView
 from decimal import Decimal
+from django.core import serializers
 from accumulator.combinations.twoGamesAccumulator import TwoGamesAccumulator
 from accumulator.combinations.threeGamesAccumulator import ThreeGamesAccumulator
 from accumulator.combinations.fourGamesAccumulator import FourGamesAccumulator
@@ -24,12 +27,16 @@ class AccumulatorPageGamesView(TemplateView, TwoGamesAccumulator, ThreeGamesAccu
         return context
 
     def get(self, request, *args, **kwargs):
+        base_dir = settings.BASE_DIR
         if kwargs.get('slug'):
             bookie = kwargs.get('slug')
             bookie_name = Bookie.objects.get(bookies_name=bookie)
             bookie_games = WilliamHillDailyMatche.objects.all().filter(bookies=bookie_name)
-            print(bookie_games)
-            
+            bookie_games = serializers.serialize('json', bookie_games)
+            daily_games = json.dumps(bookie_games)
+            with open(base_dir + '/accumulator/static/json/daily_match_dates.json', 'w') as f:
+                f.write(daily_games)
+
         return render(request, self.template_name, self.get_context_data(**kwargs))
 
     def post(self, request, *args, **kwargs):
