@@ -1,11 +1,14 @@
 from django.conf.urls import include, url
 from django.contrib import admin
-from accumulator.views import AccumulatorPageGamesView
+from accumulator.views import JsonAsView, AccumulatorPageGamesView
 from games_odds.views import Bookies, Main_William_Hill, William_Hill_Games_0, William_Hill_Games_1, William_Hill_Games_2, William_Hill_Games_3, William_Hill_Games_4, William_Hill_Games_5, William_Hill_Games_6, SortGamesOddsIntoDb
 
 urlpatterns = [
     url(r'^index/$', AccumulatorPageGamesView.as_view(), name='accumulator'),
     url(r'^index/(?P<slug>[\w\s]+)/$', AccumulatorPageGamesView.as_view(), name='accumulator'),
+
+    url(r'^index/(?P<slug>[\w\s]+)/daily_match_dates/$', JsonAsView.as_view(), name='json'),
+
     url(r'^bookies/$', Bookies.as_view(), name='bookies'),
     url(r'^william_hill/(?P<update_no>[0-1]+)|0/$', Main_William_Hill.as_view(), name='william_hill'),
     url(r'^william_hill_update/(?P<update_no>[0-1]+|0)/$', Main_William_Hill.as_view(), name='william_hill_update'),

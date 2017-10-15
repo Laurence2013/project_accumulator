@@ -1,15 +1,29 @@
 import json
+from pprint import pprint
 from django.conf import settings
 from django.shortcuts import render
 from accumulator.models import *
-from django.views.generic import TemplateView
+from django.views.generic import View, TemplateView
 from decimal import Decimal
 from django.core import serializers
+from django.http import HttpResponse
 from accumulator.combinations.twoGamesAccumulator import TwoGamesAccumulator
 from accumulator.combinations.threeGamesAccumulator import ThreeGamesAccumulator
 from accumulator.combinations.fourGamesAccumulator import FourGamesAccumulator
 from accumulator.combinations.generalGamesAccumulator import GeneralGamesAccumulator
 from accumulator.accumulatorPageGames.accumulatorPageGames import AccumulatorPageGames
+
+class JsonAsView(View):
+    def get_context_data(self, **kwargs):
+        context = super(JsonAsView, self).get_context_data(**kwargs)
+        return context
+
+    def get(self, request, *args, **kwargs):
+        base_dir = settings.BASE_DIR
+        json_file_0 = base_dir + '/accumulator/static/json/daily_match_dates.json'
+        with open(json_file_0) as json_file:
+            json_data = json.load(json_file)
+        return HttpResponse(json_data, content_type='application/json')
 
 class AccumulatorPageGamesView(TemplateView, TwoGamesAccumulator, ThreeGamesAccumulator, FourGamesAccumulator, AccumulatorPageGames, GeneralGamesAccumulator):
     template_name = "accumulator/index.html"
@@ -30,13 +44,16 @@ class AccumulatorPageGamesView(TemplateView, TwoGamesAccumulator, ThreeGamesAccu
         base_dir = settings.BASE_DIR
         if kwargs.get('slug'):
             bookie = kwargs.get('slug')
-            bookie_name = Bookie.objects.get(bookies_name=bookie)
-            bookie_games = WilliamHillDailyMatche.objects.all().filter(bookies=bookie_name)
-            bookie_games = serializers.serialize('json', bookie_games)
-            daily_games = json.dumps(bookie_games)
-            with open(base_dir + '/accumulator/static/json/daily_match_dates.json', 'w') as f:
-                f.write(daily_games)
-
+            if Bookie.objects.get(bookies_name=bookie):
+                bookie_name = Bookie.objects.get(bookies_name=bookie)
+                bookie_games = WilliamHillDailyMatche.objects.all().filter(bookies=bookie_name)
+                bookie_games = serializers.serialize('json', bookie_games)
+                daily_games = json.dumps(bookie_games)
+                # with open(base_dir + '/accumulator/static/json/daily_match_dates.json', 'w') as f:
+                #     f.write(daily_games)
+            else:
+                print('nothing')
+                daily_games.close()
         return render(request, self.template_name, self.get_context_data(**kwargs))
 
     def post(self, request, *args, **kwargs):
