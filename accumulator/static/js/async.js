@@ -2,18 +2,17 @@ window.onload = function(){
   var http = new XMLHttpRequest();
 
   http.onreadystatechange = function(){
-    console.log(http.status)
     if(http.readyState == 4 && http.status == 200){
-      console.log('It is happening here ', http.response);
-    } else{
-      console.log('Nothing is happening here ', http.readyState)
+      var dates = JSON.parse(http.responseText);
+      console.log(dates);
+      console.log(dates[0]['fields']);
+      console.log(dates[1]);
+      var results = document.getElementById('results');
+      results.innerHTML = dates[0]['fields'].dates_of_games;
     }
   }
-  console.dir(open)
   http.open("GET", "daily_match_dates", true);
-  console.log(http.open)
+  http.setRequestHeader('Contet-type', 'application/json', true);
   http.send();
+  results.innerHTML = 'requesting ...';
 }
-
-// var geturl = window.location
-// console.log(geturl)

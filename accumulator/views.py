@@ -1,5 +1,4 @@
 import json
-from pprint import pprint
 from django.conf import settings
 from django.shortcuts import render
 from accumulator.models import *
