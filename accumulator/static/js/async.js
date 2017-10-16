@@ -6,7 +6,7 @@ window.onload = function(){
       var dates = JSON.parse(http.responseText);
       var results = document.getElementById('results');
       var mainHtml = '';
-
+      console.log(http.responseText)
       mainHtml += '<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View all game dates<span class="caret"></span></button>';
       mainHtml += '<ul class="dropdown-menu" role="menu">';
       for (i = 0; i < dates.length; i++){

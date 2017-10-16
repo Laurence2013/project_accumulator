@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^index/(?P<slug>[\w\s]+)/daily_match_dates/$', JsonAsView.as_view(), name='json'),
 
     url(r'^bookies/$', Bookies.as_view(), name='bookies'),
-    url(r'^william_hill/(?P<update_no>[0-1]+)|0/$', Main_William_Hill.as_view(), name='william_hill'),
+    url(r'^william_hill/(?P<update_no>[0-1]+|0)/$', Main_William_Hill.as_view(), name='william_hill'),
     url(r'^william_hill_update/(?P<update_no>[0-1]+|0)/$', Main_William_Hill.as_view(), name='william_hill_update'),
     url(r'^william_hill_games_0/(?P<refresh_no>[0-9]+|0)/$', William_Hill_Games_0.as_view(), name='william_hill_0'),
     url(r'^william_hill_games_1/(?P<refresh_no>[0-9]+|0)/$', William_Hill_Games_1.as_view(), name='william_hill_1'),

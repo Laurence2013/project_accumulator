@@ -1,4 +1,5 @@
 from django.db import models
+from games_odds.models import WilliamHillCsvLinks
 
 # Games Table
 class Game(models.Model):
@@ -37,6 +38,7 @@ class Bookie(models.Model):
 
 class WilliamHillDailyMatche(models.Model):
     bookies = models.ForeignKey(Bookie, on_delete = models.CASCADE)
+    wh_csv_links = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
     dates_of_games = models.CharField(max_length = 50)
     date_updated = models.DateTimeField(auto_now_add = True)
 

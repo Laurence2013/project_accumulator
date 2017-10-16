@@ -2,6 +2,7 @@ import json
 from django.conf import settings
 from django.shortcuts import render
 from accumulator.models import *
+from games_odds.models import *
 from django.views.generic import View, TemplateView
 from decimal import Decimal
 from django.core import serializers
