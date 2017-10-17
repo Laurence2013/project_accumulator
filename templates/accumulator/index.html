@@ -51,7 +51,7 @@
             <span class="caret"></span></button>
             <ul class="dropdown-menu">
               {% for bookie in bookies %}
-                <li><a href="{% url 'accumulator' slug=bookie.bookies_name %}">{{ bookie.bookies_name }}</a></li>
+                <li><a href="{% url 'accumulator_bookies_name' slug=bookie.bookies_name %}">{{ bookie.bookies_name }}</a></li>
               {% endfor %}
             </ul>
           </div>
@@ -149,9 +149,7 @@
   </div>
 </div>
 
-<footer class="container-fluid text-center">
-  <!-- <p id="results"></p> -->
-</footer>
+<footer class="container-fluid text-center"></footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="{% static 'js/async.js' %}"></script>

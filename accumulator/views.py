@@ -1,6 +1,6 @@
 import json
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from accumulator.models import *
 from games_odds.models import *
 from django.views.generic import View, TemplateView
@@ -24,6 +24,12 @@ class JsonAsView(View):
         with open(json_file_0) as json_file:
             json_data = json.load(json_file)
         return HttpResponse(json_data, content_type='application/json')
+
+class GetBookiesDailyGames(View):
+    def get(self, request, *args, **kwargs):
+        print(request)
+        print(kwargs)
+        return redirect('accumulator')
 
 class AccumulatorPageGamesView(TemplateView, TwoGamesAccumulator, ThreeGamesAccumulator, FourGamesAccumulator, AccumulatorPageGames, GeneralGamesAccumulator):
     template_name = "accumulator/index.html"
