@@ -60,3 +60,9 @@ class AccumulatorPageGames():
             else:
                 counter_above += 1
         return [round((counter_below / total_stake * 100), 2), round((counter_above / total_stake * 100), 2)]
+
+    def getting_matches_and_odds_from_db(self, bookie_list_id):
+        bookie_id = None
+        for b_id in bookie_list_id:
+            bookie_id = b_id
+        return bookie_id

@@ -26,12 +26,13 @@ class JsonAsView(View):
         return HttpResponse(json_data, content_type='application/json')
 
 class GetBookiesDailyGames(View):
+    bookie_game_date_id = []
+
     def get(self, request, *args, **kwargs):
-        print(request)
-        print(kwargs)
+        self.bookie_game_date_id.append(int(kwargs['daily_games_id']))
         return redirect('accumulator')
 
-class AccumulatorPageGamesView(TemplateView, TwoGamesAccumulator, ThreeGamesAccumulator, FourGamesAccumulator, AccumulatorPageGames, GeneralGamesAccumulator):
+class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccumulator, ThreeGamesAccumulator, FourGamesAccumulator, AccumulatorPageGames, GeneralGamesAccumulator):
     template_name = "accumulator/index.html"
     template_bookies = "accumulator/bookies.html"
     games = Game.objects.values_list('id','games')
@@ -41,6 +42,9 @@ class AccumulatorPageGamesView(TemplateView, TwoGamesAccumulator, ThreeGamesAccu
 
     def get_context_data(self, **kwargs):
         context = super(AccumulatorPageGamesView, self).get_context_data(**kwargs)
+
+        self.getting_matches_and_odds_from_db(GetBookiesDailyGames.bookie_game_date_id)
+
         context['infos'] = self.match_info
         context['bookies'] = self.get_bookies
         context['odds'] = list(self.break_list_into_equal_chunks(self.get_final_game(self.get_ammended_games(self.get_games())),4))
