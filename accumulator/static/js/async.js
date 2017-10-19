@@ -20,6 +20,3 @@ window.onload = function(){
   http.send();
   results.innerHTML = 'requesting ...';
 }
-
-
-// url(r'^index/(?P<slug>[\w\s]+)/daily_match_dates/(?P<slugr>[\d]+)/$', GetBookiesDailyGames.as_view(), name='bookies_daily_games'),

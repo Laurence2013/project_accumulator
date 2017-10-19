@@ -42,9 +42,14 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
 
     def get_context_data(self, **kwargs):
         context = super(AccumulatorPageGamesView, self).get_context_data(**kwargs)
+        getids = None
+        match_day_id = self.getting_matches_and_odds_from_db(GetBookiesDailyGames.bookie_game_date_id)
+        get_ids = WilliamHillDailyMatche.objects.values('wh_csv_links_id').get(id=match_day_id)
 
-        # self.getting_matches_and_odds_from_db(GetBookiesDailyGames.bookie_game_date_id)
+        for wh in get_ids.values():
+            getids = wh
 
+        wh0 = WilliamHillGames0.objects.values('games').filter(url_game_link_id=getids)
         context['infos'] = self.match_info
         context['bookies'] = self.get_bookies
         context['odds'] = list(self.break_list_into_equal_chunks(self.get_final_game(self.get_ammended_games(self.get_games())),4))
