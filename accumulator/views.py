@@ -43,7 +43,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
     def get_context_data(self, **kwargs):
         context = super(AccumulatorPageGamesView, self).get_context_data(**kwargs)
 
-        self.getting_matches_and_odds_from_db(GetBookiesDailyGames.bookie_game_date_id)
+        # self.getting_matches_and_odds_from_db(GetBookiesDailyGames.bookie_game_date_id)
 
         context['infos'] = self.match_info
         context['bookies'] = self.get_bookies
