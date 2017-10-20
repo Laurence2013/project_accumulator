@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from accumulator.models import *
 from games_odds.models import *
 from django.views.generic import View, TemplateView
+from django.views.generic.base import RedirectView
 from decimal import Decimal
 from django.core import serializers
 from django.http import HttpResponse
@@ -23,7 +24,7 @@ class JsonAsView(View):
         json_file_0 = base_dir + '/accumulator/static/json/daily_match_dates.json'
         with open(json_file_0) as json_file:
             json_data = json.load(json_file)
-        return HttpResponse(json_data, content_type='application/json')
+            return HttpResponse(json_data, content_type='application/json')
 
 class GetBookiesDailyGames(View):
     bookie_game_date_id = []
@@ -42,14 +43,12 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
 
     def get_context_data(self, **kwargs):
         context = super(AccumulatorPageGamesView, self).get_context_data(**kwargs)
-        getids = None
-        match_day_id = self.getting_matches_and_odds_from_db(GetBookiesDailyGames.bookie_game_date_id)
-        get_ids = WilliamHillDailyMatche.objects.values('wh_csv_links_id').get(id=match_day_id)
+        # match_day_id = self.getting_matches_and_odds_from_db(GetBookiesDailyGames.bookie_game_date_id)
+        # get_ids = WilliamHillDailyMatche.objects.values('wh_csv_links_id').get(id=match_day_id)
+        # get_bookies_ids = self.get_bookies_ids(get_ids)
+        # wh0 = WilliamHillGames0.objects.values('games').filter(url_game_link_id=get_bookies_ids)
+        # get_games = self.extract_and_get_games(wh0)
 
-        for wh in get_ids.values():
-            getids = wh
-
-        wh0 = WilliamHillGames0.objects.values('games').filter(url_game_link_id=getids)
         context['infos'] = self.match_info
         context['bookies'] = self.get_bookies
         context['odds'] = list(self.break_list_into_equal_chunks(self.get_final_game(self.get_ammended_games(self.get_games())),4))
@@ -59,16 +58,16 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
         base_dir = settings.BASE_DIR
         if kwargs.get('slug'):
             bookie = kwargs.get('slug')
-            if Bookie.objects.get(bookies_name=bookie):
+            if bookie == 'daily_match_dates':
+                return render(request, self.template_name, self.get_context_data())
+            else:
+                Bookie.objects.get(bookies_name=bookie)
                 bookie_name = Bookie.objects.get(bookies_name=bookie)
                 bookie_games = WilliamHillDailyMatche.objects.all().filter(bookies=bookie_name)
                 bookie_games = serializers.serialize('json', bookie_games)
                 daily_games = json.dumps(bookie_games)
-                # with open(base_dir + '/accumulator/static/json/daily_match_dates.json', 'w') as f:
-                #     f.write(daily_games)
-            else:
-                print('nothing')
-                daily_games.close()
+                with open(base_dir + '/accumulator/static/json/daily_match_dates.json', 'w') as f:
+                    f.write(daily_games)
         return render(request, self.template_name, self.get_context_data(**kwargs))
 
     def post(self, request, *args, **kwargs):

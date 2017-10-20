@@ -66,3 +66,16 @@ class AccumulatorPageGames():
         for b_id in bookie_list_id:
             bookie_id = b_id
         return bookie_id
+
+    def get_bookies_ids(self, get_ids):
+        getids = None
+        for wh in get_ids.values():
+            getids = wh
+        return getids
+
+    def extract_and_get_games(self,bookies_games):
+        games = []
+        for b_games in bookies_games:
+           for each_match in list(b_games.values()):
+              games.append(each_match)
+        return games
