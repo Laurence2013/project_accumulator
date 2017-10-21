@@ -50,6 +50,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             get_bookies_ids = self.get_bookies_ids(get_ids)
             wh0 = WilliamHillGames0.objects.values('games').filter(url_game_link_id=get_bookies_ids)
             get_games = self.extract_and_get_games(wh0)
+            GetBookiesDailyGames.bookie_game_date_id = []
             print(get_games)
 
         context['infos'] = self.match_info
