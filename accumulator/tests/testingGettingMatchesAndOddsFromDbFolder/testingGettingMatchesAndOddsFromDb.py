@@ -1,10 +1,12 @@
 from django.test import TestCase
 from games_odds.models import *
 from accumulator.models import *
+from decimal import Decimal
 from accumulator.accumulatorPageGames.accumulatorPageGames import AccumulatorPageGames
 
 class TestingGettingMatchesAndOddsFromDb(TestCase):
     def setUp(self):
+        self.whlist = [WilliamHillOdds0, WilliamHillOdds1, WilliamHillOdds2]
         Bookie.objects.create(id=1, bookies_name='William Hill', date_updated='2017-10-10 21:32:11')
 
         WilliamHillCsvLinks.objects.create(id=1, url_name='link_0', get_match_odds_link_csv='get_match_odds_link_0.csv', ids_for_tag_span_link_csv='ids_for_tag_span_link_0.csv', ids_for_tag_tbody_link_csv='ids_for_tag_tbody_link_0.csv', date_updated='2017-10-12 17:02:20')
@@ -45,5 +47,44 @@ class TestingGettingMatchesAndOddsFromDb(TestCase):
         get_games = accumGames.extract_and_get_games(wh0)
         self.assertEqual(wh_list, get_games)
 
-    def test_04_get_odds_from_wh_according_to_wh_csv_links_id(self):
-        pass
+    def test_04_count_length_of_WilliamHillGames0(self):
+        get_length = WilliamHillGames0.objects.count()
+        self.assertEqual(3, get_length)
+
+    def test_05_get_odds_id_89_from_WilliamHillGames0_where_id_is_89(self):
+        odds = {'away_odds': Decimal('0.04'), 'home_odds': Decimal('16.00'), 'draw_odds': Decimal('10.00')}
+        get_games_id = WilliamHillGames0.objects.get(id=89)
+        get_odds = WilliamHillOdds0.objects.values('home_odds','draw_odds','away_odds').get(games_id=get_games_id.id)
+        self.assertEqual(odds, get_odds)
+
+    def test_06_get_odds_id_90_from_WilliamHillGames0_where_id_is_90(self):
+        odds = {'away_odds': Decimal('1.88'), 'home_odds': Decimal('1.45'), 'draw_odds': Decimal('2.00')}
+        get_games_id = WilliamHillGames0.objects.get(id=90)
+        get_odds = WilliamHillOdds0.objects.values('home_odds','draw_odds','away_odds').get(games_id=get_games_id.id)
+        self.assertEqual(odds, get_odds)
+
+    def test_07_get_odds_id_91_from_WilliamHillGames0_where_id_is_91(self):
+        odds = {'away_odds': Decimal('2.40'), 'home_odds': Decimal('1.05'), 'draw_odds': Decimal('2.25')}
+        get_games_id = WilliamHillGames0.objects.get(id=91)
+        get_odds = WilliamHillOdds0.objects.values('home_odds','draw_odds','away_odds').get(games_id=get_games_id.id)
+        self.assertEqual(odds, get_odds)
+
+    def test_08_check_models_class_name(self):
+        class_name = WilliamHillOdds0.__class__
+        self.assertEqual(class_name, self.whlist[0].__class__)
+
+    def test_09_check_models_class_name(self):
+        class_name = WilliamHillOdds1.__class__
+        self.assertEqual(class_name, self.whlist[1].__class__)
+
+    def test_10_check_models_class_name(self):
+        class_name = WilliamHillOdds1.__class__
+        self.assertEqual(class_name, self.whlist[1].__class__)
+
+    def test_11_testing_extract_by_getting_odds_function(self):
+        odds = [{'away_odds': Decimal('0.04'), 'home_odds': Decimal('16.00'), 'draw_odds': Decimal('10.00')}, {'away_odds': Decimal('1.88'), 'home_odds': Decimal('1.45'), 'draw_odds': Decimal('2.00')}, {'away_odds': Decimal('2.40'), 'home_odds': Decimal('1.05'), 'draw_odds': Decimal('2.25')}]
+
+        accumulatorGames = AccumulatorPageGames()
+        get_games_id = WilliamHillGames0.objects.values('id')
+        get_odds = accumulatorGames.extract_by_getting_odds(self.whlist[0], get_games_id)
+        self.assertEqual(odds, get_odds)

@@ -1,5 +1,6 @@
 from decimal import Decimal
-from accumulator.models import Game
+from accumulator.models import *
+from games_odds.models import *
 
 class AccumulatorPageGames():
     def get_games(self):
@@ -80,3 +81,10 @@ class AccumulatorPageGames():
            for each_match in list(b_games.values()):
               games.append(each_match)
         return games
+
+    def extract_by_getting_odds(self, WilliamHillOdds, get_games_id):
+        get_odds = []
+        for game_id in get_games_id:
+            for each_game in list(game_id.values()):
+                get_odds.append(WilliamHillOdds.objects.values('home_odds','draw_odds','away_odds').get(games_id=each_game))
+        return get_odds
