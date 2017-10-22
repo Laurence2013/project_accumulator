@@ -1,0 +1,36 @@
+def get_games(self, games, odds):
+    bgames = []
+    for game in range(0, len(games), 2):
+        bgames.append(games[game:game + 2])
+
+    for g in bgames:
+        g.extend([g[0]])
+
+    bookies_odds = []
+    for odd in odds:
+        bookies_odds.append(sorted(odd.items(), reverse=True))
+
+    oddslist = []
+    for odds in range(0, len(bookies_odds)):
+        oddslist.append(bookies_odds[odds][0][1])
+        oddslist.append(bookies_odds[odds][1][1])
+        oddslist.append(bookies_odds[odds][2][1])
+
+    oddslist2 = []
+    for odd in range(0, len(oddslist), 3):
+        oddslist2.append(oddslist[odd:odd + 3])
+
+    count = 0
+    oddslist3 = []
+    while count < len(bgames) and count < len(oddslist2):
+        oddslist3.append(tuple(bgames[count] + oddslist2[count]))
+        count += 1
+    # print()
+    # print(oddslist3)
+    # print()
+    # for g in range(0,len(games)):
+    #    for d in range(0,len(odds)):
+    #       if games[g][0] is odds[d][0]:
+    #          odds_games.append(games[g] + odds[d])
+    # print(odds_games)
+    return oddslist3
