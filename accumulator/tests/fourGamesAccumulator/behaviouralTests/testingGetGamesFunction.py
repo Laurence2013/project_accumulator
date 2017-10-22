@@ -19,4 +19,4 @@ class TestingGetGamesFunction(TestCase):
         accumulator = AccumulatorPageGames()
         wh0 = WilliamHillGames0.objects.values('id','games').filter(url_game_link_id=1)
         get_games = accumulator.get_games(self.games, self.odds)
-        # self.assertEqual(self.final_games_odds_list, get_games)
+        self.assertEqual(self.final_games_odds_list, get_games)

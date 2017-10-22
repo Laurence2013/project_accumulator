@@ -1,4 +1,3 @@
-from collections import OrderedDict
 from decimal import Decimal
 from accumulator.models import *
 from games_odds.models import *
@@ -8,22 +7,46 @@ class AccumulatorPageGames():
         bgames = []
         for game in range(0, len(games), 2):
             bgames.append(games[game:game + 2])
+        print()
+        print(bgames)
+        print()
         for g in bgames:
             g.extend([g[0]])
-
         print()
+        print(bgames)
+        print()
+        bookies_odds = []
         for odd in odds:
-            od = OrderedDict(sorted(odd.items(), reverse=True))
-            print(od)
-        # for k,v in odds.items():
-        #     print(k,v)
+            bookies_odds.append(sorted(odd.items(), reverse=True))
 
+        oddslist = []
+        for odds in range(0, len(bookies_odds)):
+            oddslist.append(bookies_odds[odds][0][1])
+            oddslist.append(bookies_odds[odds][1][1])
+            oddslist.append(bookies_odds[odds][2][1])
+        print()
+        print(oddslist)
+        print()
+        oddslist2 = []
+        for odd in range(0, len(oddslist), 3):
+            oddslist2.append(oddslist[odd:odd + 3])
+        print()
+        print(oddslist2)
+        print()
+        count = 0
+        oddslist3 = []
+        while count < len(bgames) and count < len(oddslist2):
+            oddslist3.append(tuple(bgames[count] + oddslist2[count]))
+            count += 1
+        # print()
+        # print(oddslist3)
+        # print()
         # for g in range(0,len(games)):
         #    for d in range(0,len(odds)):
         #       if games[g][0] is odds[d][0]:
         #          odds_games.append(games[g] + odds[d])
         # print(odds_games)
-        return None
+        return oddslist3
 
     def get_ammended_games(self, games):
         final_games = []
