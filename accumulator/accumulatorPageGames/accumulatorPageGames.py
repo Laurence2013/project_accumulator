@@ -1,28 +1,22 @@
+from collections import OrderedDict
 from decimal import Decimal
 from accumulator.models import *
 from games_odds.models import *
 
 class AccumulatorPageGames():
     def get_games(self, games, odds):
-        # print()
-        # print(games)
-        # print()
-        # print(odds)
-        print()
         bgames = []
         for game in range(0, len(games), 2):
-            # id_num = games[game]
             bgames.append(games[game:game + 2])
-
-        print()
         for g in bgames:
             g.extend([g[0]])
 
         print()
-        # for g in bgames:
-        #     tuple(g)
-
-        print(bgames)
+        for odd in odds:
+            od = OrderedDict(sorted(odd.items(), reverse=True))
+            print(od)
+        # for k,v in odds.items():
+        #     print(k,v)
 
         # for g in range(0,len(games)):
         #    for d in range(0,len(odds)):
