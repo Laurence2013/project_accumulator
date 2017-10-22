@@ -20,5 +20,7 @@ window.onload = function(){
     http.setRequestHeader('Contet-type', 'application/json', true);
     http.send();
     results.innerHTML = 'requesting ...';
+  }else{
+    console.log('This is the alternative')
   }
 }

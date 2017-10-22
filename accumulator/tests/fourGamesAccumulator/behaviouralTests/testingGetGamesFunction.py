@@ -10,7 +10,7 @@ class TestingGetGamesFunction(TestCase):
         (90, 'Ponte Preta \xa0 v \xa0\xa0Santos', 90, Decimal('1.45'), Decimal('2.00'), Decimal('1.88')),
         (91, 'Vitoria BA \xa0 v \xa0\xa0Sport Recife', 91, Decimal('1.05'), Decimal('2.25'), Decimal('2.40'))]
 
-        self.games = [89, 'ARC Oleiros \xa0 v \xa0\xa0Sporting Lisbon', 90, 'Ponte Preta \xa0 v \xa0\xa0Santos', 91, 'Vitoria BA \xa0 v \xa0\xa0Sport Recife']
+        self.games = ['ARC Oleiros \xa0 v \xa0\xa0Sporting Lisbon', 89, 'Ponte Preta \xa0 v \xa0\xa0Santos', 90, 'Vitoria BA \xa0 v \xa0\xa0Sport Recife', 91]
         self.odds = [{'away_odds': Decimal('0.04'), 'draw_odds': Decimal('10.00'), 'home_odds': Decimal('16.00')},
         {'away_odds': Decimal('1.88'), 'draw_odds': Decimal('2.00'), 'home_odds': Decimal('1.45')},
         {'away_odds': Decimal('2.40'), 'draw_odds': Decimal('2.25'), 'home_odds': Decimal('1.05')}]

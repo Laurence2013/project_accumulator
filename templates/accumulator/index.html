@@ -73,7 +73,7 @@
         <tbody>
           {% for odd in odds %}
             <tr>
-              <td><input type="checkbox" name="accumulator" value="{{ odd.0 }}" /><i name="game" id="games">{{ odd.0 }}</i></td>
+              <td><input type="checkbox" name="accumulator" value="{{ odd.0 }}" /><i name="game" id="games"> - {{ odd.0 }}</i></td>
               <td><i name="home" id="home_odds">{{ odd.1 }}</i></td>
               <td><i name="draw" id="draw_odds">{{ odd.2 }}</i></td>
               <td><i name="away" id="away_odds">{{ odd.3 }}</i></td>

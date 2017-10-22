@@ -5,10 +5,13 @@ from games_odds.models import *
 class AccumulatorPageGames():
     def get_games(self, games, odds):
         bgames = []
+        bgames2 = []
         for game in range(0, len(games), 2):
             bgames.append(games[game:game + 2])
         for g in bgames:
             g.extend([g[0]])
+        for gaq in bgames:
+            bgames2.append(gaq[1:])
 
         bookies_odds = []
         for odd in odds:
@@ -27,7 +30,7 @@ class AccumulatorPageGames():
         count = 0
         oddslist3 = []
         while count < len(bgames) and count < len(oddslist2):
-            oddslist3.append(tuple(bgames[count] + oddslist2[count]))
+            oddslist3.append(tuple(bgames2[count] + oddslist2[count]))
             count += 1
         return oddslist3
 
