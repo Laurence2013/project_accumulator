@@ -30,7 +30,6 @@ class GetBookiesDailyGames(View):
     bookie_game_date_id = []
 
     def get(self, request, *args, **kwargs):
-        print(kwargs)
         self.bookie_game_date_id.append(int(kwargs['daily_games_id']))
         return redirect('accumulator')
 
@@ -49,15 +48,20 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             match_day_id = self.getting_matches_and_odds_from_db(get_game_date_id)
             get_ids = WilliamHillDailyMatche.objects.values('wh_csv_links').get(id=match_day_id)
             get_bookies_ids = self.get_bookies_ids(get_ids)
-            wh0 = WilliamHillGames0.objects.values('games').filter(url_game_link_id=get_bookies_ids)
-            get_games = self.extract_and_get_games(wh0)
+            wh0 = WilliamHillGames0.objects.values('id','games').filter(url_game_link_id=get_bookies_ids)
+            # print(wh0)
+            get_bookie_games = self.extract_and_get_games(wh0)
+            # print(get_bookie_games)
             get_games_id = WilliamHillGames0.objects.values('id')
             get_odds = self.extract_by_getting_odds(self.whlist[0], get_games_id)
+            # print(get_odds)
+            # print(self.get_games(get_bookie_games, get_odds))
             GetBookiesDailyGames.bookie_game_date_id = []
 
         context['infos'] = self.match_info
         context['bookies'] = self.get_bookies
-        context['odds'] = list(self.break_list_into_equal_chunks(self.get_final_game(self.get_ammended_games(self.get_games())),4))
+        context['odds'] = list(self.break_list_into_equal_chunks(self.get_final_game(self.get_ammended_games(self.get_games(self.games, self.odds))),4))
+        # context['odds'] = list(self.break_list_into_equal_chunks(self.get_final_game(self.get_ammended_games(final_games_odds_list)),4))
         return context
 
     def get(self, request, *args, **kwargs):

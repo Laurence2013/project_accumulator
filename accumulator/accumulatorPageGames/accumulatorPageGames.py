@@ -3,13 +3,33 @@ from accumulator.models import *
 from games_odds.models import *
 
 class AccumulatorPageGames():
-    def get_games(self):
-        odds_games = []
-        for g in range(0,len(self.games)):
-           for d in range(0,len(self.odds)):
-              if self.games[g][0] is self.odds[d][0]:
-                 odds_games.append(self.games[g] + self.odds[d])
-        return odds_games
+    def get_games(self, games, odds):
+        # print()
+        # print(games)
+        # print()
+        # print(odds)
+        print()
+        bgames = []
+        for game in range(0, len(games), 2):
+            # id_num = games[game]
+            bgames.append(games[game:game + 2])
+
+        print()
+        for g in bgames:
+            g.extend([g[0]])
+
+        print()
+        # for g in bgames:
+        #     tuple(g)
+
+        print(bgames)
+
+        # for g in range(0,len(games)):
+        #    for d in range(0,len(odds)):
+        #       if games[g][0] is odds[d][0]:
+        #          odds_games.append(games[g] + odds[d])
+        # print(odds_games)
+        return None
 
     def get_ammended_games(self, games):
         final_games = []
