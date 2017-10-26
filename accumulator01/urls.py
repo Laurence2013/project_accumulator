@@ -7,7 +7,7 @@ urlpatterns = [
     url(r'^index/$', AccumulatorPageGamesView.as_view(), name='accumulator'),
     url(r'^index/(?P<slug>[\w\s]+)/$', AccumulatorPageGamesView.as_view(), name='accumulator_bookies_name'),
 
-    url(r'^index/(?P<slug>[\w\s]+)/daily_match_dates/$', JsonAsView.as_view(), name='json'),
+    url(r'^index/(?P<slug>[\w\s]+|0)/daily_match_dates/$', JsonAsView.as_view(), name='json'),
     url(r'^index/(?P<slug>[\w\s]+)/(?P<daily_games_id>[\d]+)/$', GetBookiesDailyGames.as_view(), name='bookies_daily_games_id'),
 
     url(r'^bookies/$', Bookies.as_view(), name='bookies'),

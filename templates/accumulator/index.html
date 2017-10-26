@@ -60,6 +60,9 @@
           <p id="results" class="dropdown"></p>
         </div>
       </h5>
+      {% if main_page_load == 'Nothing' %}
+        <div id='main_page_load'></div>
+      {% else %}
       <form method='POST' action='.'>{% csrf_token %}
       <table class="table table-bordered">
         <thead>
@@ -137,6 +140,8 @@
         </tbody>
       </table>
       {% endif %}
+      {% endif %}
+
     </div>
     <div class="col-sm-2 sidenav">
       <!--<div class="well">

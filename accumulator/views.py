@@ -58,6 +58,8 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             context['odds'] = list(self.break_list_into_equal_chunks(self.get_final_game(self.get_ammended_games(self.get_games(get_bookie_games, get_odds))),4))
             GetBookiesDailyGames.bookie_game_date_id = []
             return context
+        context['bookies'] = self.get_bookies
+        context['main_page_load'] = 'Nothing'
         return context
 
     def get(self, request, *args, **kwargs):
