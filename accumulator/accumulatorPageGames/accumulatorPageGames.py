@@ -1,3 +1,5 @@
+import re
+from django.db import connection
 from decimal import Decimal
 from accumulator.models import *
 from games_odds.models import *
@@ -48,14 +50,14 @@ class AccumulatorPageGames():
               games[n] = float(i)
         return games
 
-    def filter_accumulator(self, get_accumulator):
-        game_id = []
-        for g in range(0, len(get_accumulator)):
-            game = Game.objects.values_list('id').filter(games = get_accumulator[g])
-            for n in game:
-                for m in n:
-                    game_id.append(m)
-        return game_id
+    def filter_accumulator(self, get_accumulator, bookies_name):
+        games_list_id = list()
+        for each_game in get_accumulator:
+            game1 = bookies_name.objects.values('id').filter(games__games=str(each_game))
+            for game2 in game1:
+                for game3 in game2.values():
+                    games_list_id.append(game3)
+        return games_list_id
 
     def calculate_total_stake(self, stake, num_of_games):
         return num_of_games * stake

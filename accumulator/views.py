@@ -13,6 +13,7 @@ from accumulator.combinations.threeGamesAccumulator import ThreeGamesAccumulator
 from accumulator.combinations.fourGamesAccumulator import FourGamesAccumulator
 from accumulator.combinations.generalGamesAccumulator import GeneralGamesAccumulator
 from accumulator.accumulatorPageGames.accumulatorPageGames import AccumulatorPageGames
+from accumulator.accumulatorPageGames.settersGettersBookies import SettersGettersBookies
 
 class JsonAsView(View):
     def get_context_data(self, **kwargs):
@@ -40,10 +41,12 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
     odds = Odd.objects.values_list('id','home_odds','draw_odds','away_odds')
     get_bookies = Bookie.objects.all()
     whlist = [WilliamHillOdds0, WilliamHillOdds1, WilliamHillOdds2, WilliamHillOdds3, WilliamHillOdds4, WilliamHillOdds5, WilliamHillOdds6]
+    bookies_name = SettersGettersBookies()
 
     def get_context_data(self, **kwargs):
         context = super(AccumulatorPageGamesView, self).get_context_data(**kwargs)
         get_game_date_id = GetBookiesDailyGames.bookie_game_date_id
+        print(get_game_date_id)
         if len(get_game_date_id) != 0:
             match_day_id = self.getting_matches_and_odds_from_db(get_game_date_id)
             get_ids = WilliamHillDailyMatche.objects.values('wh_csv_links').get(id=match_day_id)
@@ -52,14 +55,18 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             get_bookie_games = self.extract_and_get_games(wh0)
             get_games_id = WilliamHillGames0.objects.values('id')
             get_odds = self.extract_by_getting_odds(self.whlist[0], get_games_id)
+            self.bookies_name.set(self.whlist[0])
 
             context['infos'] = self.match_info
             context['bookies'] = self.get_bookies
             context['odds'] = list(self.break_list_into_equal_chunks(self.get_final_game(self.get_ammended_games(self.get_games(get_bookie_games, get_odds))),4))
-            GetBookiesDailyGames.bookie_game_date_id = []
+            # GetBookiesDailyGames.bookie_game_date_id = []
             return context
+
+        context['infos'] = self.match_info
         context['bookies'] = self.get_bookies
         context['main_page_load'] = 'Nothing'
+        GetBookiesDailyGames.bookie_game_date_id = []
         return context
 
     def get(self, request, *args, **kwargs):
@@ -83,7 +90,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             request.method == "POST"
             get_accumulator = request.POST.getlist("accumulator")
             get_stake = request.POST.get("stake")
-            games = self.filter_accumulator(get_accumulator)
+            games = self.filter_accumulator(get_accumulator, self.bookies_name.get())
 
             if len(games) is 2:
                 get_combo = self.combinationsForTwoGames()
@@ -102,7 +109,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             new_combo = self.combine_combo_list_with_game_list(combos, get_games, match, game)
             get_num = list(self.break_list_into_equal_chunks(new_combo, len(games)))
             get_odds_combo = self.get_length_of_combo(get_num, len_combo, len(games))
-            get_all_odds_combo = self.get_combined_games(get_odds_combo)
+            get_all_odds_combo = self.get_combined_games(get_odds_combo, self.bookies_name.get())
             get_combined_decimals = list(self.break_list_into_equal_chunks(get_all_odds_combo, len(games)))
             get_combined_calculation = self.comebined_calculations(get_combined_decimals, int(get_stake), len(games))
             get_all_combinations = self.merge_per_game_with_odds(get_odds_combo, get_combined_decimals, get_combined_calculation)
@@ -127,6 +134,6 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             print('AttributeError ' + str(e))
         except ValueError as e:
             print('ValueError ' + str(e))
-        except TypeError as e:
-            print('TypeError ' + str(e))
+        # except TypeError as e:
+        #     print('TypeError ' + str(e))
         return render(request, self.template_name, self.get_context_data(**kwargs))

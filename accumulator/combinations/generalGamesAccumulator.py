@@ -1,4 +1,5 @@
-from accumulator.models import Odd
+from accumulator.models import *
+from games_odds.models import *
 
 class GeneralGamesAccumulator():
     def get_per_outcome(self, combinations):
@@ -45,12 +46,12 @@ class GeneralGamesAccumulator():
                 getOdds.append(matchList[matchLen][i][j])
         return getOdds
 
-    def get_combined_games(self, matchList):
+    def get_combined_games(self, matchList, bookies_name):
         calculate = []
         for m in range(0,len(matchList)):
            for n in range(0, len(matchList[m])):
               if isinstance(matchList[m][n], int) is True:
-                 game_id = Odd.objects.get(pk = matchList[m][n])
+                 game_id = bookies_name.objects.get(pk = matchList[m][n])
               else:
                  if matchList[m][n] is 'H':
                     calculate.append(game_id.home_odds)

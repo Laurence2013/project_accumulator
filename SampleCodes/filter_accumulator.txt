@@ -1,0 +1,27 @@
+def filter_accumulator(self, get_accumulator, bookies_name):
+      # cursor = connection.cursor()
+      # for each_game in get_accumulator:
+      #     cursor.execute("SELECT id, games FROM games_odds_williamhillgames0 WHERE games=%s",str(each_game).encode('utf-8').strip())
+      #     row = cursor.fetchall()
+      #     print(row)
+
+
+      # print(get_accumulator)
+      empty_games = list()
+      # for game in get_accumulator:
+      #     empty_games.append(game.replace(u'\xa0', u' '))
+      # g2 = bookies_name.objects.all()
+      for each_game in get_accumulator:
+          game = bookies_name.objects.values('id').filter(games__games=str(each_game))
+          empty_games.append(game)
+
+      print(empty_games)
+
+      # game_id = []
+      # for g in get_accumulator:
+      #     game = WilliamHillGames0.objects.values('id').filter(games=g)
+      #     for n in game:
+      #         for m in n:
+      #             game_id.append(m)
+      # return game_id
+      return empty_games
