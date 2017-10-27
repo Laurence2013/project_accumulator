@@ -154,8 +154,8 @@ class WilliamHillBase(ScrapingWilliamHill):
     def get_william_hill_daily_matches_dates(self, get_match_dates):
         for match in range(0, len(get_match_dates)):
             get_matches = self.get_daily_matches_dates(get_match_dates[match])
-            bookies_id = Bookie.objects.filter(id='1')
-            bookies_id_final = bookies_id.get()
+            bookies_id = Bookie.objects.filter(id='1').get()
+            wh_csv_id = WilliamHillCsvLinks.objects.filter(id='1').get()
             for matches in get_matches:
-                bm = WilliamHillDailyMatche(dates_of_games=matches, bookies=bookies_id_final)
+                bm = WilliamHillDailyMatche.objects.create(bookies=bookies_id, wh_csv_links=wh_csv_id, dates_of_games=matches)
                 bm.save()

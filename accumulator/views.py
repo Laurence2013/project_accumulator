@@ -134,6 +134,6 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             print('AttributeError ' + str(e))
         except ValueError as e:
             print('ValueError ' + str(e))
-        # except TypeError as e:
-        #     print('TypeError ' + str(e))
+        except TypeError as e:
+            print('TypeError ' + str(e))
         return render(request, self.template_name, self.get_context_data(**kwargs))
