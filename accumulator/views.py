@@ -56,6 +56,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
     get_bookies = Bookie.objects.all()
     whlist = [WilliamHillOdds0, WilliamHillOdds1, WilliamHillOdds2, WilliamHillOdds3, WilliamHillOdds4, WilliamHillOdds5, WilliamHillOdds6]
     bookies_name = SettersGettersBookies()
+    main_page_load = True
 
     def get_context_data(self, **kwargs):
         context = super(AccumulatorPageGamesView, self).get_context_data(**kwargs)
@@ -109,7 +110,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
 
         context['infos'] = self.match_info
         context['bookies'] = self.get_bookies
-        context['main_page_load'] = False
+        context['main_page_load'] = self.main_page_load
         GetBookiesDailyGames.bookie_game_date_id = []
         return context
 
@@ -165,6 +166,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             total_stake = self.calculate_total_stake(int(get_stake), int(len(get_combo)))
             combinations_below_stake = self.combinations_below_stake(get_all_combinations, total_stake, len_combo)
             cal_in_percent = self.calculate_percent(get_all_combinations, total_stake)
+            self.main_page_load = False
 
             context = {
                 'combinations': get_all_combinations,
@@ -175,6 +177,8 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
                 'calculation': combinations_below_stake,
                 'length_combo': len(games),
                 'calc_in_percent': cal_in_percent,
+                'games_with_odds_load': True,
+                'main_page_load': self.main_page_load,
             }
             return render(request, self.template_name, self.get_context_data(**context))
         except UnboundLocalError as e:

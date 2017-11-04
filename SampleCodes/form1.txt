@@ -1,0 +1,28 @@
+
+<!-- <form method='POST' action='/index/'>{% csrf_token %}
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Games</th>
+      <th>Home Odds</th>
+      <th>Draw Odds</th>
+      <th>Away Odds</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for odd in odds %}
+      <tr>
+        <td><input type="checkbox" name="accumulator" value="{{ odd.0 }}" /><i name="game" id="games"> - {{ odd.0 }}</i></td>
+        <td><i name="home" id="home_odds">{{ odd.1 }}</i></td>
+        <td><i name="draw" id="draw_odds">{{ odd.2 }}</i></td>
+        <td><i name="away" id="away_odds">{{ odd.3 }}</i></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<hr />
+<p>
+  Stake £: <input id="stake" name="stake" type="text" placeholder="Enter stake here" />
+</p>
+<input type="submit" value="Get accumulator" />
+</form> -->
