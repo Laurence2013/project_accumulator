@@ -60,6 +60,8 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
     def get_context_data(self, **kwargs):
         context = super(AccumulatorPageGamesView, self).get_context_data(**kwargs)
         get_game_date_id = GetBookiesDailyGames.bookie_game_date_id
+        add_games_id_to_json = list()
+
         if len(get_game_date_id) != 0:
             match_day_id = self.getting_matches_and_odds_from_db(get_game_date_id)
             get_ids = WilliamHillDailyMatche.objects.values('wh_csv_links').get(id=match_day_id)
@@ -74,12 +76,20 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             context['bookies'] = self.get_bookies
             turn_to_json = list(self.break_list_into_equal_chunks(self.get_final_game(self.get_ammended_games(self.get_games(get_bookie_games, get_odds))),4))
 
-            if WilliamHillGamesWithOdds0.objects.count() > 0:
-                WilliamHillGamesWithOdds0.objects.all().delete()
+            # if WilliamHillGamesWithOdds0.objects.count() > 0:
+            #     WilliamHillGamesWithOdds0.objects.all().delete()
+
+            for games in get_games_id:
+                for game in games.values():
+                    add_games_id_to_json.append(game)
+
+            for turns in range(0, len(turn_to_json)):
+                insert_id_into_games_odds = turn_to_json[turns]
+                insert_id_into_games_odds.append(add_games_id_to_json[turns])
 
             for games in range(0, len(turn_to_json)):
-                save_games = WilliamHillGamesWithOdds0(match=turn_to_json[games][0], home_odds=turn_to_json[games][1], draw_odds=turn_to_json[games][2], away_odds=turn_to_json[games][3])
-                save_games.save()
+                save_games = WilliamHillGamesWithOdds0(match=turn_to_json[games][0], home_odds=turn_to_json[games][1], draw_odds=turn_to_json[games][2], away_odds=turn_to_json[games][3], games_id=turn_to_json[games][4])
+                # save_games.save()
 
             games_with_odds = WilliamHillGamesWithOdds0.objects.all()
             games_with_odds = serializers.serialize('json', games_with_odds)
@@ -129,6 +139,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             get_accumulator = request.POST.getlist("accumulator")
             get_stake = request.POST.get("stake")
             games = self.filter_accumulator(get_accumulator, self.bookies_name.get())
+            print('3 ',games)
             if len(games) is 2:
                 get_combo = self.combinationsForTwoGames()
                 len_combo = 9

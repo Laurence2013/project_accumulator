@@ -56,7 +56,7 @@ CreateANewRequest.prototype = {
         mainHtml += '<tbody>';
         for(i = 0; i < games_with_odds.length; i++){
           mainHtml += '<tr>'
-          mainHtml += '<td><input type="checkbox" name="accumulator" value='+ games_with_odds[i].pk +'/><i name="game" id="games"> - '+ games_with_odds[i]['fields'].match +'</i></td>'
+          mainHtml += '<td><input type="checkbox" name="accumulator" value='+ games_with_odds[i]['fields'].games_id +'/><i name="game" id="games"> - '+ games_with_odds[i]['fields'].match +'</i></td>'
           mainHtml += '<td><i name="home" id="home_odds">'+ games_with_odds[i]['fields'].home_odds +'</i></td>'
           mainHtml += '<td><i name="home" id="home_odds">'+ games_with_odds[i]['fields'].draw_odds +'</i></td>'
           mainHtml += '<td><i name="home" id="home_odds">'+ games_with_odds[i]['fields'].away_odds +'</i></td>'

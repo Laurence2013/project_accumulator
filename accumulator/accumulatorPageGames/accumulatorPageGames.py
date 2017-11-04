@@ -51,11 +51,17 @@ class AccumulatorPageGames():
         return games
 
     def filter_accumulator(self, get_accumulator, bookies_name):
-        print('2 ',get_accumulator)
         games_list_id = list()
+        strip_accum = list()
 
-        for each_game in get_accumulator:
-            game1 = bookies_name.objects.values('id').filter(games__games=str(each_game))
+        for accum in get_accumulator:
+            strip_accum.append(accum.strip('/'))
+        print('1 ',strip_accum)
+        for each_game in strip_accum:
+            print('1a ', each_game)
+            # game1 = bookies_name.objects.values('id').filter(games__games=each_game)
+            game1 = bookies_name.objects.get(id=each_game)
+            print('2 ',game1)
             for game2 in game1:
                 for game3 in game2.values():
                     games_list_id.append(game3)
