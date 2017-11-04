@@ -64,7 +64,9 @@
         <div id='main_page_load'></div>
       {% else %}
       {% if each_match == True %}
-        <div id='each_match'></div>
+        <form method='POST' action='/index/'>{% csrf_token %}
+          <div id='each_match'></div>
+        </form>
         <!-- <form method='POST' action='/index/'>{% csrf_token %}
         <table class="table table-bordered">
           <thead>

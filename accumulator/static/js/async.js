@@ -43,10 +43,7 @@ CreateANewRequest.prototype = {
     http.onreadystatechange = function(){
       if(http.readyState == 4 && http.status == 200){
         var games_with_odds = JSON.parse(http.responseText);
-        console.log(games_with_odds)
-
         var mainHtml = '';
-        mainHtml += "<form method='POST' action='/index/'>{% csrf_token %}'";
         mainHtml += '<table class="table table-bordered">';
         mainHtml += '<thead>';
         mainHtml += '<tr>';
@@ -56,8 +53,23 @@ CreateANewRequest.prototype = {
         mainHtml += '<th>Away Odds</th>';
         mainHtml += '</tr>';
         mainHtml += '</thead>';
+        mainHtml += '<tbody>';
+        for(i = 0; i < games_with_odds.length; i++){
+          mainHtml += '<tr>'
+          mainHtml += '<td><input type="checkbox" name="accumulator" value='+ games_with_odds[i].match +'/><i name="game" id="games"> - '+ games_with_odds[i]['fields'].match +'</i></td>'
+          mainHtml += '<td><i name="home" id="home_odds">'+ games_with_odds[i]['fields'].home_odds +'</i></td>'
+          mainHtml += '<td><i name="home" id="home_odds">'+ games_with_odds[i]['fields'].draw_odds +'</i></td>'
+          mainHtml += '<td><i name="home" id="home_odds">'+ games_with_odds[i]['fields'].away_odds +'</i></td>'
+          mainHtml += '</tr>'
+        }
+        mainHtml += '</tbody>';
         mainHtml += '</table>';
-        mainHtml += '</form>';
+        mainHtml += '<hr />';
+        mainHtml += '<p>';
+        mainHtml += 'Stake £: <input id="stake" name="stake" type="text" placeholder="Enter stake here" />';
+        mainHtml += '</p>';
+        mainHtml += '<input type="submit" value="Get accumulator" />';
+        each_match.innerHTML = mainHtml;
       }
     }
     http.open("GET", "games/daily_match_games", true);
