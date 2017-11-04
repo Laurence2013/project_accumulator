@@ -1,0 +1,47 @@
+
+
+
+var createANewRequest = {
+  'http': new XMLHttpRequest(),
+}
+
+window.onload = function(){
+  if(window.location.pathname != '/index/'){
+    createANewRequest.http.onreadystatechange = function(){
+        if(createANewRequest.http.readyState == 4 && createANewRequest.http.status == 200){
+          var dates = JSON.parse(createANewRequest.http.responseText);
+          var mainHtml = '';
+          mainHtml += '<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">View all game dates<span class="caret"></span></button>';
+          mainHtml += '<ul class="dropdown-menu" role="menu">';
+          for (i = 0; i < dates.length; i++){
+            mainHtml += '<li><a href="'+ dates[i].pk +'">'+ dates[i]['fields'].dates_of_games + '</a></li>';
+          }
+          mainHtml += '</ul>';
+          results.innerHTML = mainHtml;
+        }
+      }
+
+    createANewRequest.http.open("GET", "daily_match_dates", true);
+    createANewRequest.http.setRequestHeader('Contet-type', 'application/json', true);
+    createANewRequest.http.send();
+    results.innerHTML = 'Requesting ...';
+  }else{
+    if(document.getElementById('main_page_load')){
+      createANewRequest.http.onreadystatechange = function(){
+        if(createANewRequest.http.readyState == 4 && createANewRequest.http.status == 200){
+          var mainHtml = ''
+          mainHtml += '<div class="col-sm-12 text-center">';
+          mainHtml += '<div><b>Please select one of the bookies from the drop down menu</b></div>';
+          mainHtml += '</div>';
+          main_page_load.innerHTML = mainHtml;
+        }
+      }
+      createANewRequest.http.open("GET", "daily_match_dates", true);
+      createANewRequest.http.setRequestHeader('Contet-type', 'application/json', true);
+      createANewRequest.http.send();
+      main_page_load.innerHTML = '<div class="col-sm-12 text-center">Requesting ...</div>';
+  }
+  if (document.getElementById('each_match')){
+    console.log('this is to load')
+  }
+}}
