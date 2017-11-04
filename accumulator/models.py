@@ -1,5 +1,5 @@
 from django.db import models
-from games_odds.models import WilliamHillCsvLinks
+from games_odds.models import *
 
 # Games Table
 class Game(models.Model):

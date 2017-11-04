@@ -129,7 +129,6 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             get_accumulator = request.POST.getlist("accumulator")
             get_stake = request.POST.get("stake")
             games = self.filter_accumulator(get_accumulator, self.bookies_name.get())
-
             if len(games) is 2:
                 get_combo = self.combinationsForTwoGames()
                 len_combo = 9
