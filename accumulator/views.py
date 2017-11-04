@@ -139,7 +139,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             get_accumulator = request.POST.getlist("accumulator")
             get_stake = request.POST.get("stake")
             games = self.filter_accumulator(get_accumulator, self.bookies_name.get())
-            print('3 ',games)
+
             if len(games) is 2:
                 get_combo = self.combinationsForTwoGames()
                 len_combo = 9
@@ -161,6 +161,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             get_combined_decimals = list(self.break_list_into_equal_chunks(get_all_odds_combo, len(games)))
             get_combined_calculation = self.comebined_calculations(get_combined_decimals, int(get_stake), len(games))
             get_all_combinations = self.merge_per_game_with_odds(get_odds_combo, get_combined_decimals, get_combined_calculation)
+
             total_stake = self.calculate_total_stake(int(get_stake), int(len(get_combo)))
             combinations_below_stake = self.combinations_below_stake(get_all_combinations, total_stake, len_combo)
             cal_in_percent = self.calculate_percent(get_all_combinations, total_stake)

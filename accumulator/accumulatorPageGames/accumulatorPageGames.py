@@ -56,12 +56,10 @@ class AccumulatorPageGames():
 
         for accum in get_accumulator:
             strip_accum.append(accum.strip('/'))
-        print('1 ',strip_accum)
+        
         for each_game in strip_accum:
-            print('1a ', each_game)
             # game1 = bookies_name.objects.values('id').filter(games__games=each_game)
-            game1 = bookies_name.objects.get(id=each_game)
-            print('2 ',game1)
+            game1 = bookies_name.objects.values('id').filter(games_id=each_game)
             for game2 in game1:
                 for game3 in game2.values():
                     games_list_id.append(game3)
