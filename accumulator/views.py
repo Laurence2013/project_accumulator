@@ -77,8 +77,8 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             context['bookies'] = self.get_bookies
             turn_to_json = list(self.break_list_into_equal_chunks(self.get_final_game(self.get_ammended_games(self.get_games(get_bookie_games, get_odds))),4))
 
-            # if WilliamHillGamesWithOdds0.objects.count() > 0:
-            #     WilliamHillGamesWithOdds0.objects.all().delete()
+            if WilliamHillGamesWithOdds0.objects.count() > 0:
+                WilliamHillGamesWithOdds0.objects.all().delete()
 
             for games in get_games_id:
                 for game in games.values():
@@ -90,7 +90,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
 
             for games in range(0, len(turn_to_json)):
                 save_games = WilliamHillGamesWithOdds0(match=turn_to_json[games][0], home_odds=turn_to_json[games][1], draw_odds=turn_to_json[games][2], away_odds=turn_to_json[games][3], games_id=turn_to_json[games][4])
-                # save_games.save()
+                save_games.save()
 
             games_with_odds = WilliamHillGamesWithOdds0.objects.all()
             games_with_odds = serializers.serialize('json', games_with_odds)
@@ -142,9 +142,6 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             get_stake = request.POST.get("stake")
             games = self.filter_accumulator(get_accumulator, self.bookies_name.get())
 
-            # for games_with_odds_id in get_accumulator:
-            #     print(games_with_odds_id)
-
             for games_with_odds_id in get_accumulator:
                 get_games = WilliamHillGamesWithOdds0.objects.get(games_id=games_with_odds_id)
                 final_chosen_games.append(get_games.match)
@@ -189,8 +186,8 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
                 'main_page_load': self.main_page_load,
             }
             return render(request, self.template_name, self.get_context_data(**context))
-        # except UnboundLocalError as e:
-        #     print('UnboundLocalError ' + str(e))
+        except UnboundLocalError as e:
+            print('UnboundLocalError ' + str(e))
         except AttributeError as e:
             print('AttributeError ' + str(e))
         except ValueError as e:
