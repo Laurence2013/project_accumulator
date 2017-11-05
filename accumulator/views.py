@@ -198,6 +198,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
         return render(request, self.template_name, self.get_context_data(**kwargs))
 
     def test(self):
+        row_list = list()
         from django.db import connection
         conn = connection.cursor()
         conn.execute('''CREATE TEMPORARY TABLE TEST(name VARCHAR(20) NOT NULL, town VARCHAR(20) NOT NULL);''')
@@ -205,7 +206,8 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             conn.execute('''INSERT INTO TEST(name, town) VALUES('lozza','wolves');''')
         conn.execute('''SELECT * FROM TEST;''')
         for row in range(0, 3):
-            print(conn.fetchone())
+            row_list.append(conn.fetchone())
+        print(row_list[2])
         # conn.execute('''INSERT INTO TEST(name, town) VALUES('lozza','wolves');''')
         # conn.execute('''INSERT INTO TEST(name, town) VALUES('craig','wolves');''')
         # conn.execute('''INSERT INTO TEST(name, town) VALUES('mark','wolves');''')
