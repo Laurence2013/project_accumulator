@@ -62,6 +62,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
         context = super(AccumulatorPageGamesView, self).get_context_data(**kwargs)
         get_game_date_id = GetBookiesDailyGames.bookie_game_date_id
         add_games_id_to_json = list()
+        self.test()
 
         if len(get_game_date_id) != 0:
             match_day_id = self.getting_matches_and_odds_from_db(get_game_date_id)
@@ -77,8 +78,8 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             context['bookies'] = self.get_bookies
             turn_to_json = list(self.break_list_into_equal_chunks(self.get_final_game(self.get_ammended_games(self.get_games(get_bookie_games, get_odds))),4))
 
-            if WilliamHillGamesWithOdds0.objects.count() > 0:
-                WilliamHillGamesWithOdds0.objects.all().delete()
+            # if WilliamHillGamesWithOdds0.objects.count() > 0:
+            #     WilliamHillGamesWithOdds0.objects.all().delete()
 
             for games in get_games_id:
                 for game in games.values():
@@ -90,7 +91,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
 
             for games in range(0, len(turn_to_json)):
                 save_games = WilliamHillGamesWithOdds0(match=turn_to_json[games][0], home_odds=turn_to_json[games][1], draw_odds=turn_to_json[games][2], away_odds=turn_to_json[games][3], games_id=turn_to_json[games][4])
-                save_games.save()
+                # save_games.save()
 
             games_with_odds = WilliamHillGamesWithOdds0.objects.all()
             games_with_odds = serializers.serialize('json', games_with_odds)
@@ -195,3 +196,19 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
         except TypeError as e:
             print('TypeError ' + str(e))
         return render(request, self.template_name, self.get_context_data(**kwargs))
+
+    def test(self):
+        from django.db import connection
+        conn = connection.cursor()
+        conn.execute('''CREATE TEMPORARY TABLE TEST(name VARCHAR(20) NOT NULL, town VARCHAR(20) NOT NULL);''')
+        conn.execute('''INSERT INTO TEST(name, town) VALUES('lozza','wolves');''')
+        conn.execute('''INSERT INTO TEST(name, town) VALUES('craig','wolves');''')
+        conn.execute('''INSERT INTO TEST(name, town) VALUES('mark','wolves');''')
+        conn.execute('''SELECT * FROM TEST;''')
+        print(conn.fetchone())
+        print(conn.fetchone())
+        print(conn.fetchone())
+        conn.execute('''DROP TABLE TEST;''')
+        print(conn.fetchone())
+        print(conn.fetchone())
+        print(conn.fetchone())
