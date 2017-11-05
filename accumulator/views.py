@@ -135,11 +135,19 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
         return render(request, self.template_name, self.get_context_data(**kwargs))
 
     def post(self, request, *args, **kwargs):
+        final_chosen_games = list()
         try:
             request.method == "POST"
             get_accumulator = request.POST.getlist("accumulator")
             get_stake = request.POST.get("stake")
             games = self.filter_accumulator(get_accumulator, self.bookies_name.get())
+
+            # for games_with_odds_id in get_accumulator:
+            #     print(games_with_odds_id)
+
+            for games_with_odds_id in get_accumulator:
+                get_games = WilliamHillGamesWithOdds0.objects.get(games_id=games_with_odds_id)
+                final_chosen_games.append(get_games.match)
 
             if len(games) is 2:
                 get_combo = self.combinationsForTwoGames()
@@ -170,7 +178,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
 
             context = {
                 'combinations': get_all_combinations,
-                'match': get_accumulator,
+                'match': final_chosen_games,
                 'stake': get_stake,
                 'total_games': int(len(get_combo)),
                 'total_stake': total_stake,
@@ -181,8 +189,8 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
                 'main_page_load': self.main_page_load,
             }
             return render(request, self.template_name, self.get_context_data(**context))
-        except UnboundLocalError as e:
-            print('UnboundLocalError ' + str(e))
+        # except UnboundLocalError as e:
+        #     print('UnboundLocalError ' + str(e))
         except AttributeError as e:
             print('AttributeError ' + str(e))
         except ValueError as e:
