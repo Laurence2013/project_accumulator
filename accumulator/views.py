@@ -1,6 +1,7 @@
 import os
 import json
 from django.conf import settings
+from django.db import connection
 from django.shortcuts import render, redirect
 from accumulator.models import *
 from games_odds.models import *
@@ -8,7 +9,7 @@ from django.views.generic import View, TemplateView
 from django.views.generic.base import RedirectView
 from decimal import Decimal
 from django.core import serializers
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from accumulator.combinations.twoGamesAccumulator import TwoGamesAccumulator
 from accumulator.combinations.threeGamesAccumulator import ThreeGamesAccumulator
 from accumulator.combinations.fourGamesAccumulator import FourGamesAccumulator
@@ -35,10 +36,10 @@ class GamesJsonAsView(View):
 
     def get(self, request, games_json, *args, **kwargs):
         base_dir = settings.BASE_DIR
-        json_file_0 = base_dir + '/accumulator/static/json/display_games_with_odds.json'
+        json_file_0 = base_dir + '/accumulator/static/json/test.txt'
         with open(json_file_0) as json_file:
             json_data = json.load(json_file)
-            return HttpResponse(json_data, content_type='application/json')
+            return JsonResponse(json_data)
 
 class GetBookiesDailyGames(View):
     bookie_game_date_id = []
@@ -63,8 +64,8 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
         get_game_date_id = GetBookiesDailyGames.bookie_game_date_id
         add_games_id_to_json = list()
 
-        if WilliamHillGamesWithOdds0.objects.count() > 0:
-            WilliamHillGamesWithOdds0.objects.all().delete()
+        # if WilliamHillGamesWithOdds0.objects.count() > 0:
+        #     WilliamHillGamesWithOdds0.objects.all().delete()
 
         if len(get_game_date_id) != 0:
             match_day_id = self.getting_matches_and_odds_from_db(get_game_date_id)
@@ -80,8 +81,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             context['bookies'] = self.get_bookies
             turn_to_json = list(self.break_list_into_equal_chunks(self.get_final_game(self.get_ammended_games(self.get_games(get_bookie_games, get_odds))),4))
 
-            # if WilliamHillGamesWithOdds0.objects.count() > 0:
-            #     WilliamHillGamesWithOdds0.objects.all().delete()
+            self.test()
 
             for games in get_games_id:
                 for game in games.values():
@@ -93,7 +93,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
 
             for games in range(0, len(turn_to_json)):
                 save_games = WilliamHillGamesWithOdds0(match=turn_to_json[games][0], home_odds=turn_to_json[games][1], draw_odds=turn_to_json[games][2], away_odds=turn_to_json[games][3], games_id=turn_to_json[games][4])
-                save_games.save()
+                # save_games.save()
 
             games_with_odds = WilliamHillGamesWithOdds0.objects.all()
             games_with_odds = serializers.serialize('json', games_with_odds)
@@ -200,16 +200,40 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
         return render(request, self.template_name, self.get_context_data(**kwargs))
 
     def test(self):
+        row_dict = {}
         row_list = list()
-        from django.db import connection
         conn = connection.cursor()
         conn.execute('''CREATE TEMPORARY TABLE TEST(name VARCHAR(20) NOT NULL, town VARCHAR(20) NOT NULL);''')
-        for row in range(0, 3):
-            conn.execute('''INSERT INTO TEST(name, town) VALUES('lozza','wolves');''')
+
+        for row in range(0, 5):
+            conn.execute('''INSERT INTO TEST(name, town) VALUES('lozza1','wolves');''')
         conn.execute('''SELECT * FROM TEST;''')
-        for row in range(0, 3):
+
+        tables = conn.description
+
+        for row in range(0, 5):
             row_list.append(conn.fetchone())
-        print(row_list)
+
+        for row in range(0, len(row_list)):
+            row_dict[row] = row_list[row]
+
+        # row_dict['tom'] = {
+        #     'name': 'tom',
+        #     'address': '1 red street, NY',
+        #     'phone': 12345
+        # }
+        # row_dict['mark'] = {
+        #     'name': 'mark',
+        #     'address': '2 blue street, NY',
+        #     'phone': 67864
+        # }
+
+        s = json.dumps(row_dict, ensure_ascii=False, indent=4)
+        with open(self.base_dir + "/accumulator/static/json/test.txt", "w") as f:
+            f.write(s)
+
+        conn.close()
+
         # conn.execute('''INSERT INTO TEST(name, town) VALUES('lozza','wolves');''')
         # conn.execute('''INSERT INTO TEST(name, town) VALUES('craig','wolves');''')
         # conn.execute('''INSERT INTO TEST(name, town) VALUES('mark','wolves');''')

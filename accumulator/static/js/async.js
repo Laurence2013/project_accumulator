@@ -43,6 +43,7 @@ CreateANewRequest.prototype = {
     http.onreadystatechange = function(){
       if(http.readyState == 4 && http.status == 200){
         var games_with_odds = JSON.parse(http.responseText);
+        console.log(games_with_odds[2][0])
         var mainHtml = '';
         mainHtml += '<table class="table table-bordered">';
         mainHtml += '<thead>';
