@@ -40,7 +40,7 @@ class GamesJsonAsView(View):
         json_file_0 = base_dir + '/accumulator/static/json/test.json'
         with open(json_file_0) as json_file:
             json_data = json.load(json_file)
-            return JsonResponse(json_data)
+        return JsonResponse(json_data)
 
 class GetBookiesDailyGames(View):
     bookie_game_date_id = []
@@ -65,9 +65,6 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
         get_game_date_id = GetBookiesDailyGames.bookie_game_date_id
         add_games_id_to_json = list()
 
-        # if WilliamHillGamesWithOdds0.objects.count() > 0:
-        #     WilliamHillGamesWithOdds0.objects.all().delete()
-
         if len(get_game_date_id) != 0:
             match_day_id = self.getting_matches_and_odds_from_db(get_game_date_id)
             get_ids = WilliamHillDailyMatche.objects.values('wh_csv_links').get(id=match_day_id)
@@ -91,25 +88,6 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
                 insert_id_into_games_odds.append(add_games_id_to_json[turns])
 
             self.turnGamesWithOddsIntoJson(turn_to_json)
-
-            # for games in range(0, len(turn_to_json)):
-            #     save_games = WilliamHillGamesWithOdds0(match=turn_to_json[games][0], home_odds=turn_to_json[games][1], draw_odds=turn_to_json[games][2], away_odds=turn_to_json[games][3], games_id=turn_to_json[games][4])
-                # save_games.save()
-
-            # games_with_odds = WilliamHillGamesWithOdds0.objects.all()
-            # games_with_odds = serializers.serialize('json', games_with_odds)
-            # dump_games_to_json = json.dumps(games_with_odds, ensure_ascii=False, indent=4)
-            # file_to_json = self.base_dir + '/accumulator/static/json/display_games_with_odds.json'
-            # try:
-            #     if os.path.getsize(file_to_json) > 0:
-            #         self.dump_as_json_file(file_to_json, dump_games_to_json)
-            #         context['each_match'] = True
-            #     else:
-            #         open(file_to_json).close()
-            #         self.dump_as_json_file(file_to_json, dump_games_to_json)
-            #         context['each_match'] = True
-            # except Exception as e:
-            #     print(e)
             context['each_match'] = True
             return context
 
@@ -118,11 +96,6 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
         context['main_page_load'] = self.main_page_load
         GetBookiesDailyGames.bookie_game_date_id = []
         return context
-
-    def dump_as_json_file(self, json_file, dump_games_to_json):
-        with open(json_file, 'w') as f:
-            f.write(dump_games_to_json)
-        GetBookiesDailyGames.bookie_game_date_id = []
 
     def get(self, request, *args, **kwargs):
         if kwargs.get('slug'):
