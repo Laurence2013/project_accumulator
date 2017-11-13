@@ -1,22 +1,51 @@
 {
-    "0": [
-        "lozza1",
-        "wolves"
-    ],
-    "1": [
-        "lozza1",
-        "wolves"
-    ],
-    "2": [
-        "lozza1",
-        "wolves"
-    ],
-    "3": [
-        "lozza1",
-        "wolves"
-    ],
-    "4": [
-        "lozza1",
-        "wolves"
-    ]
+    "0": "('Chelsea \\xa0 v \\xa0\\xa0Man Utd', Decimal('0.18'), Decimal('4.50'), Decimal('28.00'), 282)",
+    "1": "('Everton \\xa0 v \\xa0\\xa0Watford', Decimal('2.60'), Decimal('0.75'), Decimal('3.60'), 283)",
+    "2": "('Real Sociedad \\xa0 v \\xa0\\xa0Eibar', Decimal('0.04'), Decimal('14.00'), Decimal('33.00'), 284)",
+    "3": "('Villarreal \\xa0 v \\xa0\\xa0Malaga', Decimal('0.70'), Decimal('2.20'), Decimal('5.50'), 285)",
+    "4": "('Real Madrid \\xa0 v \\xa0\\xa0Las Palmas', Decimal('0.08'), Decimal('11.00'), Decimal('20.00'), 286)",
+    "5": "('Atalanta \\xa0 v \\xa0\\xa0Spal', Decimal('0.15'), Decimal('5.50'), Decimal('22.00'), 287)",
+    "6": "('Sassuolo \\xa0 v \\xa0\\xa0AC Milan', Decimal('3.00'), Decimal('2.50'), Decimal('0.91'), 288)",
+    "7": "('Wolfsburg \\xa0 v \\xa0\\xa0Hertha Berlin', Decimal('0.22'), Decimal('4.50'), Decimal('16.00'), 289)",
+    "8": "('St Etienne \\xa0 v \\xa0\\xa0Lyon', Decimal('3.00'), Decimal('2.50'), Decimal('0.91'), 290)",
+    "9": "('Guimaraes \\xa0 v \\xa0\\xa0Benfica', Decimal('3.80'), Decimal('2.75'), Decimal('0.70'), 291)",
+    "10": "('Sporting Lisbon \\xa0 v \\xa0\\xa0Braga', Decimal('0.44'), Decimal('3.00'), Decimal('5.50'), 292)",
+    "11": "('Toronto \\xa0 v \\xa0\\xa0New York Red Bulls', Decimal('0.57'), Decimal('3.20'), Decimal('3.80'), 293)",
+    "12": "('New York City \\xa0 v \\xa0\\xa0Columbus', Decimal('0.65'), Decimal('3.20'), Decimal('3.20'), 294)",
+    "13": "('Estudiantes \\xa0 v \\xa0\\xa0Argentinos Juniors', Decimal('1.62'), Decimal('1.10'), Decimal('3.75'), 295)",
+    "14": "('Belgrano \\xa0 v \\xa0\\xa0Independiente', Decimal('2.80'), Decimal('1.20'), Decimal('1.90'), 296)",
+    "15": "('River Plate \\xa0 v \\xa0\\xa0Boca Juniors', Decimal('1.45'), Decimal('2.10'), Decimal('1.80'), 297)",
+    "16": "('Cruzeiro \\xa0 v \\xa0\\xa0Atletico-PR', Decimal('0.80'), Decimal('2.20'), Decimal('3.50'), 298)",
+    "17": "('Corinthians \\xa0 v \\xa0\\xa0Palmeiras', Decimal('1.38'), Decimal('2.00'), Decimal('2.00'), 299)",
+    "18": "('Gremio \\xa0 v \\xa0\\xa0Flamengo', Decimal('1.15'), Decimal('2.00'), Decimal('2.40'), 300)",
+    "19": "('Bahia \\xa0 v \\xa0\\xa0Ponte Preta', Decimal('0.73'), Decimal('2.30'), Decimal('3.80'), 301)",
+    "20": "('Chapecoense \\xa0 v \\xa0\\xa0Sport Recife', Decimal('0.95'), Decimal('2.25'), Decimal('2.75'), 302)",
+    "21": "('Vasco da Gama (Bra) \\xa0 v \\xa0\\xa0Vitoria BA', Decimal('1.10'), Decimal('2.25'), Decimal('2.30'), 303)",
+    "22": "('Osasuna \\xa0 v \\xa0\\xa0Granada', Decimal('1.70'), Decimal('1.20'), Decimal('2.90'), 304)",
+    "23": "('Valladolid \\xa0 v \\xa0\\xa0Gimnastic', Decimal('1.90'), Decimal('1.90'), Decimal('1.50'), 305)",
+    "24": "('Almeria \\xa0 v \\xa0\\xa0Cadiz', Decimal('1.30'), Decimal('2.00'), Decimal('2.20'), 306)",
+    "25": "('Empoli \\xa0 v \\xa0\\xa0Spezia', Decimal('10.00'), Decimal('2.40'), Decimal('0.44'), 307)",
+    "26": "('Sivasspor \\xa0 v \\xa0\\xa0Konyaspor', Decimal('0.22'), Decimal('4.00'), Decimal('20.00'), 308)",
+    "27": "('Goztepe \\xa0 v \\xa0\\xa0Besiktas', Decimal('66.00'), Decimal('25.00'), Decimal('0.01'), 309)",
+    "28": "('Olimpik Donetsk \\xa0 v \\xa0\\xa0Zorya', Decimal('0.85'), Decimal('2.30'), Decimal('3.50'), 310)",
+    "29": "('Dynamo Kiev \\xa0 v \\xa0\\xa0Vorskla Poltava', Decimal('0.12'), Decimal('6.50'), Decimal('22.00'), 311)",
+    "30": "('AEK \\xa0 v \\xa0\\xa0PAOK', Decimal('2.70'), Decimal('1.62'), Decimal('1.30'), 312)",
+    "31": "('Haugesund \\xa0 v \\xa0\\xa0Stromsgodset', Decimal('1.80'), Decimal('1.50'), Decimal('2.25'), 313)",
+    "32": "('Viking \\xa0 v \\xa0\\xa0Sarpsborg 08', Decimal('3.33'), Decimal('1.60'), Decimal('1.25'), 314)",
+    "33": "('Odd BK \\xa0 v \\xa0\\xa0Stabaek', Decimal('66.00'), Decimal('40.00'), Decimal('0.00'), 315)",
+    "34": "('Sogndal \\xa0 v \\xa0\\xa0Tromso', Decimal('6.50'), Decimal('2.70'), Decimal('0.53'), 316)",
+    "35": "('Brann \\xa0 v \\xa0\\xa0Lillestrom', Decimal('0.30'), Decimal('3.60'), Decimal('11.00'), 317)",
+    "36": "('Aalesund \\xa0 v \\xa0\\xa0Rosenborg', Decimal('2.50'), Decimal('2.60'), Decimal('0.95'), 318)",
+    "37": "('Pogon Szczecin \\xa0 v \\xa0\\xa0Legia Warsaw', Decimal('6.50'), Decimal('2.70'), Decimal('0.44'), 319)",
+    "38": "('Guillermo Brown \\xa0 v \\xa0\\xa0Ferro Carril Oeste', Decimal('1.30'), Decimal('1.60'), Decimal('2.50'), 320)",
+    "39": "('Almagro \\xa0 v \\xa0\\xa0Dep. Moron', Decimal('1.25'), Decimal('1.88'), Decimal('2.25'), 321)",
+    "40": "('Flandria \\xa0 v \\xa0\\xa0Rivadavia', Decimal('1.45'), Decimal('1.80'), Decimal('2.00'), 322)",
+    "41": "('Temuco \\xa0 v \\xa0\\xa0Antofagasta', Decimal('1.50'), Decimal('2.00'), Decimal('1.80'), 323)",
+    "42": "('Colo Colo \\xa0 v \\xa0\\xa0Union Espanola', Decimal('0.70'), Decimal('2.50'), Decimal('3.60'), 324)",
+    "43": "('Cobresal \\xa0 v \\xa0\\xa0Iberia', Decimal('1.10'), Decimal('2.40'), Decimal('2.10'), 325)",
+    "44": "('Nublense \\xa0 v \\xa0\\xa0Puerto Monnt', Decimal('0.75'), Decimal('2.40'), Decimal('3.20'), 326)",
+    "45": "('Deportes Valdivia \\xa0 v \\xa0\\xa0Copiapo', Decimal('0.67'), Decimal('2.50'), Decimal('3.80'), 327)",
+    "46": "('Cobreloa \\xa0 v \\xa0\\xa0La Serena', Decimal('1.20'), Decimal('2.20'), Decimal('1.88'), 328)",
+    "47": "('San Marcos \\xa0 v \\xa0\\xa0Union La Calera', Decimal('1.20'), Decimal('2.10'), Decimal('2.10'), 329)",
+    "48": "('Pumas UNAM \\xa0 v \\xa0\\xa0Santos Laguna', Decimal('1.80'), Decimal('2.50'), Decimal('1.40'), 330)"
 }

@@ -9,6 +9,7 @@ from django.views.generic import View, TemplateView
 from django.views.generic.base import RedirectView
 from decimal import Decimal
 from django.core import serializers
+from django.core.serializers.json import DjangoJSONEncoder
 from django.http import HttpResponse, JsonResponse
 from accumulator.combinations.twoGamesAccumulator import TwoGamesAccumulator
 from accumulator.combinations.threeGamesAccumulator import ThreeGamesAccumulator
@@ -36,7 +37,7 @@ class GamesJsonAsView(View):
 
     def get(self, request, games_json, *args, **kwargs):
         base_dir = settings.BASE_DIR
-        json_file_0 = base_dir + '/accumulator/static/json/test.txt'
+        json_file_0 = base_dir + '/accumulator/static/json/test.json'
         with open(json_file_0) as json_file:
             json_data = json.load(json_file)
             return JsonResponse(json_data)
@@ -81,8 +82,6 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             context['bookies'] = self.get_bookies
             turn_to_json = list(self.break_list_into_equal_chunks(self.get_final_game(self.get_ammended_games(self.get_games(get_bookie_games, get_odds))),4))
 
-            self.test()
-
             for games in get_games_id:
                 for game in games.values():
                     add_games_id_to_json.append(game)
@@ -91,24 +90,27 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
                 insert_id_into_games_odds = turn_to_json[turns]
                 insert_id_into_games_odds.append(add_games_id_to_json[turns])
 
-            for games in range(0, len(turn_to_json)):
-                save_games = WilliamHillGamesWithOdds0(match=turn_to_json[games][0], home_odds=turn_to_json[games][1], draw_odds=turn_to_json[games][2], away_odds=turn_to_json[games][3], games_id=turn_to_json[games][4])
+            self.turnGamesWithOddsIntoJson(turn_to_json)
+
+            # for games in range(0, len(turn_to_json)):
+            #     save_games = WilliamHillGamesWithOdds0(match=turn_to_json[games][0], home_odds=turn_to_json[games][1], draw_odds=turn_to_json[games][2], away_odds=turn_to_json[games][3], games_id=turn_to_json[games][4])
                 # save_games.save()
 
-            games_with_odds = WilliamHillGamesWithOdds0.objects.all()
-            games_with_odds = serializers.serialize('json', games_with_odds)
-            dump_games_to_json = json.dumps(games_with_odds, ensure_ascii=False, indent=4)
-            file_to_json = self.base_dir + '/accumulator/static/json/display_games_with_odds.json'
-            try:
-                if os.path.getsize(file_to_json) > 0:
-                    self.dump_as_json_file(file_to_json, dump_games_to_json)
-                    context['each_match'] = True
-                else:
-                    open(file_to_json).close()
-                    self.dump_as_json_file(file_to_json, dump_games_to_json)
-                    context['each_match'] = True
-            except Exception as e:
-                print(e)
+            # games_with_odds = WilliamHillGamesWithOdds0.objects.all()
+            # games_with_odds = serializers.serialize('json', games_with_odds)
+            # dump_games_to_json = json.dumps(games_with_odds, ensure_ascii=False, indent=4)
+            # file_to_json = self.base_dir + '/accumulator/static/json/display_games_with_odds.json'
+            # try:
+            #     if os.path.getsize(file_to_json) > 0:
+            #         self.dump_as_json_file(file_to_json, dump_games_to_json)
+            #         context['each_match'] = True
+            #     else:
+            #         open(file_to_json).close()
+            #         self.dump_as_json_file(file_to_json, dump_games_to_json)
+            #         context['each_match'] = True
+            # except Exception as e:
+            #     print(e)
+            context['each_match'] = True
             return context
 
         context['infos'] = self.match_info
@@ -199,49 +201,25 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             print('TypeError ' + str(e))
         return render(request, self.template_name, self.get_context_data(**kwargs))
 
-    def test(self):
+    def turnGamesWithOddsIntoJson(self, turn_to_json):
         row_dict = {}
         row_list = list()
         conn = connection.cursor()
-        conn.execute('''CREATE TEMPORARY TABLE TEST(name VARCHAR(20) NOT NULL, town VARCHAR(20) NOT NULL);''')
+        conn.execute('''CREATE TEMPORARY TABLE GamesWithOdds(match_games VARCHAR(100) NOT NULL, home_odds DECIMAL(5,2) NOT NULL DEFAULT 0.00, draw_odds DECIMAL(5,2) NOT NULL DEFAULT 0.00, away_odds DECIMAL(5,2) NOT NULL DEFAULT 0.00, games_id INT NOT NULL);''')
 
-        for row in range(0, 5):
-            conn.execute('''INSERT INTO TEST(name, town) VALUES('lozza1','wolves');''')
-        conn.execute('''SELECT * FROM TEST;''')
+        for row in range(0, len(turn_to_json)):
+            conn.execute('''INSERT INTO GamesWithOdds(match_games, home_odds, draw_odds, away_odds, games_id) VALUES(%s, %s, %s, %s, %s)''',(turn_to_json[row][0], turn_to_json[row][1], turn_to_json[row][2], turn_to_json[row][3], turn_to_json[row][4]))
 
-        tables = conn.description
+        conn.execute('''SELECT * FROM GamesWithOdds;''')
 
-        for row in range(0, 5):
+        for row in range(0, len(turn_to_json)):
             row_list.append(conn.fetchone())
 
         for row in range(0, len(row_list)):
             row_dict[row] = row_list[row]
 
-        # row_dict['tom'] = {
-        #     'name': 'tom',
-        #     'address': '1 red street, NY',
-        #     'phone': 12345
-        # }
-        # row_dict['mark'] = {
-        #     'name': 'mark',
-        #     'address': '2 blue street, NY',
-        #     'phone': 67864
-        # }
-
-        s = json.dumps(row_dict, ensure_ascii=False, indent=4)
-        with open(self.base_dir + "/accumulator/static/json/test.txt", "w") as f:
+        s = json.dumps(row_dict, ensure_ascii=False, indent=4, cls=DjangoJSONEncoder)
+        with open(self.base_dir + "/accumulator/static/json/test.json", "w") as f:
             f.write(s)
 
         conn.close()
-
-        # conn.execute('''INSERT INTO TEST(name, town) VALUES('lozza','wolves');''')
-        # conn.execute('''INSERT INTO TEST(name, town) VALUES('craig','wolves');''')
-        # conn.execute('''INSERT INTO TEST(name, town) VALUES('mark','wolves');''')
-        # conn.execute('''SELECT * FROM TEST;''')
-        # print(conn.fetchone())
-        # print(conn.fetchone())
-        # print(conn.fetchone())
-        # conn.execute('''DROP TABLE TEST;''')
-        # print(conn.fetchone())
-        # print(conn.fetchone())
-        # print(conn.fetchone())
