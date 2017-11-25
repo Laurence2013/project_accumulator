@@ -42,13 +42,11 @@ CreateANewRequest.prototype = {
     var http   = new XMLHttpRequest();
     http.onreadystatechange = function(){
       if(http.readyState == 4 && http.status == 200){
-        console.log(http)
         var games_with_odds = JSON.parse(http.responseText);
         count = 0
         for(var i in games_with_odds){
           if(games_with_odds.hasOwnProperty(i)) count++;
         }
-        console.log(count)
         var mainHtml = '';
         mainHtml += '<table class="table table-bordered">';
         mainHtml += '<thead>';
@@ -61,15 +59,14 @@ CreateANewRequest.prototype = {
         mainHtml += '</thead>';
         mainHtml += '<tbody>';
         for(i = 0; i < count; i++){
-          console.log(games_with_odds[i][i])
           mainHtml += '<tr>'
           // games_with_odds[i]['fields'].games_id and games_with_odds[i]['fields'].match
-          mainHtml += '<td><input type="checkbox" name="accumulator" value="'+ games_with_odds[i][4] +'"/><i> - '+ games_with_odds[i][0] +'</i></td>'
+          mainHtml += '<td><input type="checkbox" name="accumulator" value="'+ games_with_odds[i][4] +'" autocomplete="off"/><i> - '+ games_with_odds[i][0] +'</i></td>'
           // games_with_odds[i]['fields'].home_odds
           mainHtml += '<td><i name="home" id="home_odds">'+ games_with_odds[i][1] +'</i></td>'
           // games_with_odds[i]['fields'].draw_odds
           mainHtml += '<td><i name="home" id="home_odds">'+ games_with_odds[i][2] +'</i></td>'
-          // // games_with_odds[i]['fields'].away_odds
+          // games_with_odds[i]['fields'].away_odds
           mainHtml += '<td><i name="home" id="home_odds">'+ games_with_odds[i][3] +'</i></td>'
           mainHtml += '</tr>'
         }
@@ -79,7 +76,7 @@ CreateANewRequest.prototype = {
         mainHtml += '<p>';
         mainHtml += 'Stake £: <input id="stake" name="stake" type="text" placeholder="Enter stake here" />';
         mainHtml += '</p>';
-        mainHtml += '<input type="submit" value="Get accumulator" />';
+        mainHtml += '<button class="btn btn-primary btn-sm" data-target="#accumulator" data-toggle="modal">Get accumulator</button>';
         each_match.innerHTML = mainHtml;
       }
     }

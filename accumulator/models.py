@@ -20,7 +20,7 @@ class Odd(models.Model):
 
     def __str__(self):
         return str(self.games)
-
+ 
 class MatchInfo(models.Model):
     daily_matches = models.CharField(max_length = 200)
     combinations = models.CharField(max_length = 200)

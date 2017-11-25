@@ -59,6 +59,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
     whlist = [WilliamHillOdds0, WilliamHillOdds1, WilliamHillOdds2, WilliamHillOdds3, WilliamHillOdds4, WilliamHillOdds5, WilliamHillOdds6]
     bookies_name = SettersGettersBookies()
     main_page_load = True
+    open(base_dir + '/accumulator/static/json/test.json', 'w').close()
 
     def get_context_data(self, **kwargs):
         context = super(AccumulatorPageGamesView, self).get_context_data(**kwargs)
@@ -113,7 +114,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
         return render(request, self.template_name, self.get_context_data(**kwargs))
 
     def post(self, request, *args, **kwargs):
-        final_chosen_games = list()
+        # final_chosen_games = list()
         try:
             request.method == "POST"
             get_accumulator = request.POST.getlist("accumulator")
@@ -121,8 +122,12 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             games = self.filter_accumulator(get_accumulator, self.bookies_name.get())
 
             for games_with_odds_id in get_accumulator:
-                get_games = WilliamHillGamesWithOdds0.objects.get(games_id=games_with_odds_id)
-                final_chosen_games.append(get_games.match)
+                get_games = WilliamHillGames0.objects.get(id=games_with_odds_id)
+                final_chosen_games.append(get_games.games)
+
+            # for games_with_odds_id in get_accumulator:
+            #     get_games = WilliamHillGamesWithOdds0.objects.get(games_id=games_with_odds_id)
+            #     final_chosen_games.append(get_games.match)
 
             if len(games) is 2:
                 get_combo = self.combinationsForTwoGames()
@@ -151,9 +156,11 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             cal_in_percent = self.calculate_percent(get_all_combinations, total_stake)
             self.main_page_load = False
 
+            self.turnChosenAccumulatorsToJson(get_stake, total_stake, len(games), get_all_combinations)
+
             context = {
                 'combinations': get_all_combinations,
-                'match': final_chosen_games,
+                # 'match': final_chosen_games,
                 'stake': get_stake,
                 'total_games': int(len(get_combo)),
                 'total_stake': total_stake,
@@ -173,6 +180,31 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
         except TypeError as e:
             print('TypeError ' + str(e))
         return render(request, self.template_name, self.get_context_data(**kwargs))
+
+    def turnChosenAccumulatorsToJson(self, get_stake, total_stake, no_games, get_all_combinations):
+        row_dict = {}
+        row_list = list()
+        conn = connection.cursor()
+
+        if no_games is 2:
+            conn.execute('''CREATE TEMPORARY TABLE AccumulatorTable(team_a_id INT NOT NULL, team_a_outcome CHAR(10) NOT NULL, team_b_id INT NOT NULL, team_b_outcome CHAR(10) NOT NULL, match_odds_1 DECIMAL(5,2) NOT NULL DEFAULT 0.00, match_odds_2 DECIMAL(5,2) NOT NULL DEFAULT 0.00, gross_profit DECIMAL(5,2) NOT NULL)''')
+
+            for row in range(0, len(get_all_combinations)):
+                conn.execute('''INSERT INTO AccumulatorTable(team_a_id, team_a_outcome, team_b_id, team_b_outcome, match_odds_1, match_odds_2, gross_profit) VALUES(%s, %s, %s, %s, %s, %s, %s)''',
+                (get_all_combinations[row][0][0], get_all_combinations[row][0][1], get_all_combinations[row][0][2], get_all_combinations[row][0][3], get_all_combinations[row][1][0], get_all_combinations[row][1][1], get_all_combinations[row][2]))
+
+            conn.execute('''SELECT * FROM AccumulatorTable;''')
+            for row in range(0, len(get_all_combinations)):
+                row_list.append(conn.fetchone())
+
+            for row in range(0, len(row_list)):
+                row_dict[row] = row_list[row]
+
+            s = json.dumps(row_dict, ensure_ascii=False, indent=4, cls=DjangoJSONEncoder)
+            with open(self.base_dir + "/accumulator/static/json/test2.json", "w") as f:
+                f.write(s)
+
+            conn.close()
 
     def turnGamesWithOddsIntoJson(self, turn_to_json):
         row_dict = {}
