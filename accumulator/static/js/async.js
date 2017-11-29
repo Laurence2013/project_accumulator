@@ -18,7 +18,7 @@ CreateANewRequest.prototype = {
       }
     }
     http.open("GET", "daily_match_dates", true);
-    http.setRequestHeader('Contet-type', 'application/json', true);
+    http.setRequestHeader('Content-type', 'application/json', true);
     http.send();
     results.innerHTML = 'Requesting ...';
   },
@@ -34,12 +34,12 @@ CreateANewRequest.prototype = {
       }
     }
     http.open("GET", "daily_match_dates", true);
-    http.setRequestHeader('Contet-type', 'application/json', true);
+    http.setRequestHeader('Content-type', 'application/json', true);
     http.send();
     main_page_load.innerHTML = '<div class="col-sm-12 text-center">Requesting ...</div>';
   },
   loadEachGame: function(){
-    var http   = new XMLHttpRequest();
+    var http = new XMLHttpRequest();
     http.onreadystatechange = function(){
       if(http.readyState == 4 && http.status == 200){
         var games_with_odds = JSON.parse(http.responseText);
@@ -81,7 +81,19 @@ CreateANewRequest.prototype = {
       }
     }
     http.open("GET", "games/daily_match_games", true);
-    http.setRequestHeader('Contet-type', 'application/json', true);
+    http.setRequestHeader('Content-type', 'application/json', true);
+    http.send();
+  },
+  combinations: function(){
+    var http = new XMLHttpRequest();
+    http.onreadystatechange = function(){
+      if(http.readyState == 4 && http.status == 200){
+        var games_with_odds = JSON.parse(http.responseText);
+        console.log(games_with_odds);
+      }
+    }
+    http.open("GET", "123456/combos", true);
+    http.setRequestHeader('Content-type', 'application/json', true);
     http.send();
   }
 }
@@ -96,5 +108,8 @@ window.onload = function(){
   }
   if(document.getElementById('each_match')){
     getGames.loadEachGame();
+  }
+  if(document.getElementById('mad_combos')){
+    getGames.combinations();
   }
 }

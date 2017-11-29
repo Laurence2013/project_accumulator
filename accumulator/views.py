@@ -3,6 +3,7 @@ import json
 from django.conf import settings
 from django.db import connection
 from django.shortcuts import render, redirect
+from django.core.urlresolvers import reverse
 from accumulator.models import *
 from games_odds.models import *
 from django.views.generic import View, TemplateView
@@ -10,7 +11,7 @@ from django.views.generic.base import RedirectView
 from decimal import Decimal
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from accumulator.combinations.twoGamesAccumulator import TwoGamesAccumulator
 from accumulator.combinations.threeGamesAccumulator import ThreeGamesAccumulator
 from accumulator.combinations.fourGamesAccumulator import FourGamesAccumulator
@@ -42,6 +43,19 @@ class GamesJsonAsView(View):
             json_data = json.load(json_file)
         return JsonResponse(json_data)
 
+class GetAllCombinations(View):
+    template_name = "accumulator/index.html"
+    def get_context_data(self, **kwargs):
+        context = super(GetAllCombinations, self).get_context_data(**kwargs)
+        return context
+
+    def get(self, request, *args, **kwargs):
+        base_dir = settings.BASE_DIR
+        get_all_combinations = base_dir + '/accumulator/static/json/get_all_combinations.json'
+        with open(get_all_combinations) as json_file:
+            json_data = json.load(json_file)
+        return JsonResponse(json_data)
+
 class GetBookiesDailyGames(View):
     bookie_game_date_id = []
 
@@ -59,7 +73,7 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
     whlist = [WilliamHillOdds0, WilliamHillOdds1, WilliamHillOdds2, WilliamHillOdds3, WilliamHillOdds4, WilliamHillOdds5, WilliamHillOdds6]
     bookies_name = SettersGettersBookies()
     main_page_load = True
-    open(base_dir + '/accumulator/static/json/test.json', 'w').close()
+    # open(base_dir + '/accumulator/static/json/test.json', 'w').close()
 
     def get_context_data(self, **kwargs):
         context = super(AccumulatorPageGamesView, self).get_context_data(**kwargs)
@@ -114,7 +128,8 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
         return render(request, self.template_name, self.get_context_data(**kwargs))
 
     def post(self, request, *args, **kwargs):
-        # final_chosen_games = list()
+        get_all_combinations_dict = dict()
+        final_chosen_games = list()
         try:
             request.method == "POST"
             get_accumulator = request.POST.getlist("accumulator")
@@ -151,6 +166,13 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             get_combined_calculation = self.comebined_calculations(get_combined_decimals, int(get_stake), len(games))
             get_all_combinations = self.merge_per_game_with_odds(get_odds_combo, get_combined_decimals, get_combined_calculation)
 
+            for row in range(0, len(get_all_combinations)):
+                get_all_combinations_dict[row] = get_all_combinations[row]
+
+            s = json.dumps(get_all_combinations_dict, ensure_ascii=False, indent=4, cls=DjangoJSONEncoder)
+            with open(self.base_dir + "/accumulator/static/json/get_all_combinations.json", "w") as f:
+                f.write(s)
+
             total_stake = self.calculate_total_stake(int(get_stake), int(len(get_combo)))
             combinations_below_stake = self.combinations_below_stake(get_all_combinations, total_stake, len_combo)
             cal_in_percent = self.calculate_percent(get_all_combinations, total_stake)
@@ -159,16 +181,17 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             self.turnChosenAccumulatorsToJson(get_stake, total_stake, len(games), get_all_combinations)
 
             context = {
-                'combinations': get_all_combinations,
+                # 'combinations': get_all_combinations,
                 # 'match': final_chosen_games,
-                'stake': get_stake,
-                'total_games': int(len(get_combo)),
-                'total_stake': total_stake,
-                'calculation': combinations_below_stake,
-                'length_combo': len(games),
-                'calc_in_percent': cal_in_percent,
-                'games_with_odds_load': True,
-                'main_page_load': self.main_page_load,
+                # 'stake': get_stake,
+                # 'total_games': int(len(get_combo)),
+                # 'total_stake': total_stake,
+                # 'calculation': combinations_below_stake,
+                # 'length_combo': len(games),
+                # 'calc_in_percent': cal_in_percent,
+                # 'games_with_odds_load': True,
+                # 'main_page_load': self.main_page_load,
+                'mad_combos': True,
             }
             return render(request, self.template_name, self.get_context_data(**context))
         except UnboundLocalError as e:

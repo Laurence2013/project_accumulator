@@ -1,6 +1,6 @@
 from django.conf.urls import include, url
 from django.contrib import admin
-from accumulator.views import JsonAsView, GetBookiesDailyGames, AccumulatorPageGamesView, GamesJsonAsView
+from accumulator.views import JsonAsView, GetBookiesDailyGames, AccumulatorPageGamesView, GamesJsonAsView, GetAllCombinations
 from games_odds.views import Bookies, Main_William_Hill, William_Hill_Games_0, William_Hill_Games_1, William_Hill_Games_2, William_Hill_Games_3, William_Hill_Games_4, William_Hill_Games_5, William_Hill_Games_6, SortGamesOddsIntoDb
 
 urlpatterns = [
@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^index/(?P<slug>[\w\s]+)/$', AccumulatorPageGamesView.as_view(), name='accumulator_bookies_name'),
 
     url(r'^index/(?P<slug>[\w\s]+|0)/daily_match_dates/$', JsonAsView.as_view(), name='json'),
+    url(r'^index/(?P<slug>[\w\s]+)/combos/$', GetAllCombinations.as_view(), name='get_all_combinations'),
     url(r'^index/(?P<games_json>[\w\s]+)/daily_match_games/$', GamesJsonAsView.as_view(), name='games_json'),
     url(r'^index/(?P<slug>[\w\s]+)/(?P<daily_games_id>[\d]+)/$', GetBookiesDailyGames.as_view(), name='bookies_daily_games_id'),
 
