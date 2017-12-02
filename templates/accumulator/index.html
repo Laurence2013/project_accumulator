@@ -66,13 +66,14 @@
       {% if games_with_odds_load == True %}
         <div id='games_with_odds_load'></div>
       {% endif %}
-      {% if each_match == True %}
-        <form method='POST' action='/index/'>{% csrf_token %}
-          <div id='each_match'></div>
-        </form>
-      {% endif %}
       {% if mad_combos == True %}
         <div id='mad_combos'></div>
+      {% else %}
+        {% if each_match == True %}
+          <form method='POST' action='/index/'>{% csrf_token %}
+            <div id='each_match'></div>
+          </form>
+        {% endif %}
       {% endif %}
       {% if match != None %}
       <hr />

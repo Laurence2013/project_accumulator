@@ -76,7 +76,8 @@ CreateANewRequest.prototype = {
         mainHtml += '<p>';
         mainHtml += 'Stake £: <input id="stake" name="stake" type="text" placeholder="Enter stake here" />';
         mainHtml += '</p>';
-        mainHtml += '<button class="btn btn-primary btn-sm" data-target="#accumulator" data-toggle="modal">Get accumulator</button>';
+        mainHtml += '<button class="btn btn-primary btn-sm" data-target="#myModal" data-toggle="modal">Get accumulator</button>';
+        // mainHtml += '<button class="btn btn-primary btn-sm" data-target="#accumulator" data-toggle="modal">Get accumulator</button>';
         each_match.innerHTML = mainHtml;
       }
     }
@@ -89,7 +90,30 @@ CreateANewRequest.prototype = {
     http.onreadystatechange = function(){
       if(http.readyState == 4 && http.status == 200){
         var games_with_odds = JSON.parse(http.responseText);
-        console.log(games_with_odds);
+        var games_output = Object.keys(games_with_odds);
+
+        for(i = 0; i < games_output.length; i++){
+          console.log(games_with_odds[i]);
+        }
+
+        var mainHtml = '';
+        mainHtml += '<table class="table table-bordered">';
+        mainHtml += ' <thead>';
+        mainHtml += '   <tr>';
+        mainHtml += '     <th>Game outcome</th>';
+        mainHtml += '     <th>Match odds 1</th>';
+        mainHtml += '     <th>Match odds 2</th>';
+        mainHtml += '     <th>Match odds 3</th>';
+        mainHtml += '     <th>Match odds 4</th>';
+        mainHtml += '     <th>Gross profit from stake</th>'
+        mainHtml += '     <th>Net profit from stake</th>';
+        mainHtml += '   </tr>';
+        mainHtml += ' </thead>';
+        mainHtml += ' <tbody>';
+
+        mainHtml += ' </tbody>';
+        mainHtml += '</table>';
+        mad_combos.innerHTML = mainHtml;
       }
     }
     http.open("GET", "123456/combos", true);

@@ -181,16 +181,16 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             self.turnChosenAccumulatorsToJson(get_stake, total_stake, len(games), get_all_combinations)
 
             context = {
-                # 'combinations': get_all_combinations,
-                # 'match': final_chosen_games,
-                # 'stake': get_stake,
-                # 'total_games': int(len(get_combo)),
-                # 'total_stake': total_stake,
-                # 'calculation': combinations_below_stake,
-                # 'length_combo': len(games),
-                # 'calc_in_percent': cal_in_percent,
-                # 'games_with_odds_load': True,
-                # 'main_page_load': self.main_page_load,
+            # 'combinations': get_all_combinations,
+            # 'stake': get_stake,
+            # 'total_stake': total_stake,
+            # 'length_combo': len(games),
+            # 'games_with_odds_load': True,
+            # 'match': final_chosen_games,
+                'total_games': int(len(get_combo)),
+                'calculation': combinations_below_stake,
+                'calc_in_percent': cal_in_percent,
+                'main_page_load': self.main_page_load,
                 'mad_combos': True,
             }
             return render(request, self.template_name, self.get_context_data(**context))
