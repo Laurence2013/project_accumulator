@@ -94,6 +94,11 @@ CreateANewRequest.prototype = {
 
         for(i = 0; i < games_output.length; i++){
           console.log(games_with_odds[i]);
+          // console.log(games_with_odds[i][0]);
+          console.log(games_with_odds[i][0][1] + ' - ' + games_with_odds[i][0][3]);
+          // console.log(games_with_odds[i].length);
+          // console.log(games_with_odds[i][0].length);
+          // console.log(games_with_odds[i][1].length + ' - ' + games_with_odds[i][3].length);
         }
 
         var mainHtml = '';
@@ -110,7 +115,11 @@ CreateANewRequest.prototype = {
         mainHtml += '   </tr>';
         mainHtml += ' </thead>';
         mainHtml += ' <tbody>';
-
+        for(i = 0; i < games_output.length; i++){
+          mainHtml += '   <tr>';
+          mainHtml += '<td>'+games_with_odds[i][0][1] + ' - ' + games_with_odds[i][0][3] +'</td>';
+          mainHtml += '   </tr>';
+        }
         mainHtml += ' </tbody>';
         mainHtml += '</table>';
         mad_combos.innerHTML = mainHtml;
