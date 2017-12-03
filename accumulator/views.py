@@ -169,7 +169,10 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             for row in range(0, len(get_all_combinations)):
                 get_all_combinations_dict[row] = get_all_combinations[row]
 
-            get_all_combinations_dict.update({'stake':get_stake})
+            get_all_combinations_dict.update({
+                'stake':get_stake,
+                'match': final_chosen_games,
+            })
 
             s = json.dumps(get_all_combinations_dict, ensure_ascii=False, indent=4, cls=DjangoJSONEncoder)
             with open(self.base_dir + "/accumulator/static/json/get_all_combinations.json", "w") as f:

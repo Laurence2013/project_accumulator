@@ -90,19 +90,27 @@ CreateANewRequest.prototype = {
     http.onreadystatechange = function(){
       if(http.readyState == 4 && http.status == 200){
         var games_with_odds = JSON.parse(http.responseText);
+        console.log(games_with_odds);
         var games_output = Object.keys(games_with_odds);
         var stake = games_with_odds['stake'];
         console.log('stake ' + stake);
-        var total_games = games_output.length - 1;
+        var total_games = games_output.length - 2;
         console.log('total games ' + total_games);
         var total_cost = stake * total_games;
         console.log('total cost ' + total_cost);
 
         var mainHtml = '';
+        mainHtml += '<div class="col-sm-12" id="combinations_info">';
+        mainHtml += '<hr />';
+        mainHtml += '<p class="get_font_size_1"><b>Your chosen games are as follows</b>:</p>';
+        for(j = 0; j < games_with_odds['match'].length; j++){
+            mainHtml +='<p class="get_font_size_2">'+games_with_odds['match'][j]+'</p>';
+        }
+        mainHtml += '</div>';
         mainHtml += '<table class="table table-bordered">';
         mainHtml += ' <thead>';
         mainHtml += '   <tr>';
-        mainHtml += '     <th>Game outcome</th>';
+        mainHtml += '     <th>Games outcome</th>';
         mainHtml += '     <th>Match odds 1</th>';
         mainHtml += '     <th>Match odds 2</th>';
         mainHtml += '     <th>Match odds 3</th>';
@@ -112,9 +120,13 @@ CreateANewRequest.prototype = {
         mainHtml += '   </tr>';
         mainHtml += ' </thead>';
         mainHtml += ' <tbody>';
-        for(i = 0; i < games_output.length - 1; i++){
+        for(i = 0; i < games_output.length - 2; i++){
+          games_1 = games_with_odds[i][0][1] ? games_with_odds[i][0][1] : '';
+          games_2 = games_with_odds[i][0][3] ? games_with_odds[i][0][3] : '';
+          games_3 = games_with_odds[i][0][5] ? games_with_odds[i][0][5] : '';
+          games_4 = games_with_odds[i][0][7] ? games_with_odds[i][0][7] : '';
           mainHtml += '<tr>';
-          mainHtml += '<td>'+games_with_odds[i][0][1] + ' - ' + games_with_odds[i][0][3] + ' - ' + games_with_odds[i][0][5] + ' - ' + games_with_odds[i][0][7] +'</td>';
+          mainHtml += '<td>'+ games_1 + '  ' + games_2  + '  ' + games_3 + '  ' + games_4 +'</td>';
           if(typeof(games_with_odds[i][1][0]) === 'undefined'){
             mainHtml += '<td></td>';
           }else{
@@ -138,7 +150,11 @@ CreateANewRequest.prototype = {
           mainHtml += '<td>'+ games_with_odds[i][2] +'</td>';
           if(games_with_odds['stake']){
             var per_odd_calc = games_with_odds[i][2] - total_cost;
-            mainHtml += '<td>' + per_odd_calc.toFixed(2) + '</td>';
+            if(per_odd_calc > 0){
+              mainHtml += '<td>' + per_odd_calc.toFixed(2) + '</td>';
+            }else{
+              mainHtml += '<td id="BelowStake">' + per_odd_calc.toFixed(2) + '</td>';
+            }
           }else{
             mainHtml += '<td></td>';
           }
