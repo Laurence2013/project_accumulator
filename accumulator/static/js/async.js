@@ -100,13 +100,17 @@ CreateANewRequest.prototype = {
         console.log('total cost ' + total_cost);
 
         var mainHtml = '';
-        mainHtml += '<div class="col-sm-12" id="combinations_info">';
+        mainHtml += '<div class="grid">';
+        mainHtml += '<div class="row" id="combinations_info">';
         mainHtml += '<hr />';
-        mainHtml += '<p class="get_font_size_1"><b>Your chosen games are as follows</b>:</p>';
+        mainHtml += '<div class="col-sm-6">'+ '<p class="get_font_size_1"><b>Your chosen games are as follows</b>:</p>';
         for(j = 0; j < games_with_odds['match'].length; j++){
             mainHtml +='<p class="get_font_size_2">'+games_with_odds['match'][j]+'</p>';
-        }
+        } +'</div>';
+        mainHtml += '<div class="col-sm-6"></div>';
         mainHtml += '</div>';
+        mainHtml += '</div>';
+
         mainHtml += '<table class="table table-bordered">';
         mainHtml += ' <thead>';
         mainHtml += '   <tr>';
@@ -120,6 +124,7 @@ CreateANewRequest.prototype = {
         mainHtml += '   </tr>';
         mainHtml += ' </thead>';
         mainHtml += ' <tbody>';
+
         for(i = 0; i < games_output.length - 2; i++){
           games_1 = games_with_odds[i][0][1] ? games_with_odds[i][0][1] : '';
           games_2 = games_with_odds[i][0][3] ? games_with_odds[i][0][3] : '';
