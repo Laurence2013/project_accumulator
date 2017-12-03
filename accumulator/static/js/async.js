@@ -91,15 +91,12 @@ CreateANewRequest.prototype = {
       if(http.readyState == 4 && http.status == 200){
         var games_with_odds = JSON.parse(http.responseText);
         var games_output = Object.keys(games_with_odds);
-
-        for(i = 0; i < games_output.length; i++){
-          console.log(games_with_odds[i]);
-          // console.log(games_with_odds[i][0]);
-          console.log(games_with_odds[i][0][1] + ' - ' + games_with_odds[i][0][3]);
-          // console.log(games_with_odds[i].length);
-          // console.log(games_with_odds[i][0].length);
-          // console.log(games_with_odds[i][1].length + ' - ' + games_with_odds[i][3].length);
-        }
+        var stake = games_with_odds['stake'];
+        console.log('stake ' + stake);
+        var total_games = games_output.length - 1;
+        console.log('total games ' + total_games);
+        var total_cost = stake * total_games;
+        console.log('total cost ' + total_cost);
 
         var mainHtml = '';
         mainHtml += '<table class="table table-bordered">';
@@ -115,10 +112,37 @@ CreateANewRequest.prototype = {
         mainHtml += '   </tr>';
         mainHtml += ' </thead>';
         mainHtml += ' <tbody>';
-        for(i = 0; i < games_output.length; i++){
-          mainHtml += '   <tr>';
-          mainHtml += '<td>'+games_with_odds[i][0][1] + ' - ' + games_with_odds[i][0][3] +'</td>';
-          mainHtml += '   </tr>';
+        for(i = 0; i < games_output.length - 1; i++){
+          mainHtml += '<tr>';
+          mainHtml += '<td>'+games_with_odds[i][0][1] + ' - ' + games_with_odds[i][0][3] + ' - ' + games_with_odds[i][0][5] + ' - ' + games_with_odds[i][0][7] +'</td>';
+          if(typeof(games_with_odds[i][1][0]) === 'undefined'){
+            mainHtml += '<td></td>';
+          }else{
+            mainHtml += '<td>'+ games_with_odds[i][1][0] +'</td>';
+          }
+          if(typeof(games_with_odds[i][1][1]) === 'undefined'){
+            mainHtml += '<td></td>';
+          }else{
+            mainHtml += '<td>'+ games_with_odds[i][1][1] +'</td>';
+          }
+          if(typeof(games_with_odds[i][1][2]) === 'undefined'){
+            mainHtml += '<td></td>';
+          }else{
+            mainHtml += '<td>'+ games_with_odds[i][1][2] +'</td>';
+          }
+          if(typeof(games_with_odds[i][1][3]) === 'undefined'){
+            mainHtml += '<td></td>';
+          }else{
+            mainHtml += '<td>'+ games_with_odds[i][1][3] +'</td>';
+          }
+          mainHtml += '<td>'+ games_with_odds[i][2] +'</td>';
+          if(games_with_odds['stake']){
+            var per_odd_calc = games_with_odds[i][2] - total_cost;
+            mainHtml += '<td>' + per_odd_calc.toFixed(2) + '</td>';
+          }else{
+            mainHtml += '<td></td>';
+          }
+          mainHtml += '</tr>';
         }
         mainHtml += ' </tbody>';
         mainHtml += '</table>';
