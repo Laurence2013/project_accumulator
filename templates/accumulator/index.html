@@ -68,6 +68,8 @@
       {% endif %}
       {% if mad_combos == True %}
         <div id='mad_combos'></div>
+      {% elif mad_combos2 == True %}
+        <div id='mad_combos2'></div>
       {% else %}
         {% if each_match == True %}
           <form method='POST' action='/index/'>{% csrf_token %}

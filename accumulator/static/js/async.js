@@ -193,6 +193,83 @@ CreateANewRequest.prototype = {
     http.open("GET", "123456/combos", true);
     http.setRequestHeader('Content-type', 'application/json', true);
     http.send();
+  },
+  chosenCombinations: function(){
+    var http = new XMLHttpRequest();
+    http.onreadystatechange = function(){
+      if(http.readyState == 4 && http.status == 200){
+        var games_with_odds = JSON.parse(http.responseText);
+        var games_output = Object.keys(games_with_odds);
+        var stake = games_with_odds['stake'];
+        var total_games = games_output.length - 2;
+        var total_cost = stake * total_games;
+        var calc_profit_counter = 0;
+        var calc_below_profit_counter = 0;
+
+        var mainHtml = '';
+        mainHtml += '<div class="clearfix"></div>';
+        mainHtml += '<div class="grid">';
+        mainHtml += '<div class="row">';
+        mainHtml += '<div class="col-sm-12 col-xs-12"><p class="get_font_size_1"><b>Your chosen games are as follows:</b></p>';
+        for(j = 0; j < games_with_odds['match'].length; j++){
+            mainHtml +='<p class="get_font_size_2">'+games_with_odds['match'][j]+'</p>';
+        }
+        mainHtml += '</div>';
+        mainHtml += '</div>';
+        mainHtml += '</div>';
+        mainHtml += '<table class="table table-bordered">';
+        mainHtml += ' <thead>';
+        mainHtml += '   <tr>';
+        mainHtml += '     <th>Games outcome</th>';
+        mainHtml += '     <th>Match odds 1</th>';
+        mainHtml += '     <th>Match odds 2</th>';
+        mainHtml += '     <th>Match odds 3</th>';
+        mainHtml += '     <th>Match odds 4</th>';
+        mainHtml += '     <th>Profit before before stake</th>'
+        mainHtml += '     <th>Choose your accumulator</th>';
+        mainHtml += '   </tr>';
+        mainHtml += ' </thead>';
+        mainHtml += ' <tbody>';
+
+        for(i = 0; i < games_output.length - 2; i++){
+          games_1 = games_with_odds[i][0][1] ? games_with_odds[i][0][1] : '';
+          games_2 = games_with_odds[i][0][3] ? games_with_odds[i][0][3] : '';
+          games_3 = games_with_odds[i][0][5] ? games_with_odds[i][0][5] : '';
+          games_4 = games_with_odds[i][0][7] ? games_with_odds[i][0][7] : '';
+          mainHtml += '<tr>';
+          mainHtml += '<td>'+ games_1 + '  ' + games_2  + '  ' + games_3 + '  ' + games_4 +'</td>';
+          if(typeof(games_with_odds[i][1][0]) === 'undefined'){
+            mainHtml += '<td></td>';
+          }else{
+            mainHtml += '<td>'+ games_with_odds[i][1][0] +'</td>';
+          }
+          if(typeof(games_with_odds[i][1][1]) === 'undefined'){
+            mainHtml += '<td></td>';
+          }else{
+            mainHtml += '<td>'+ games_with_odds[i][1][1] +'</td>';
+          }
+          if(typeof(games_with_odds[i][1][2]) === 'undefined'){
+            mainHtml += '<td></td>';
+          }else{
+            mainHtml += '<td>'+ games_with_odds[i][1][2] +'</td>';
+          }
+          if(typeof(games_with_odds[i][1][3]) === 'undefined'){
+            mainHtml += '<td></td>';
+          }else{
+            mainHtml += '<td>'+ games_with_odds[i][1][3] +'</td>';
+          }
+          mainHtml += '<td>'+ games_with_odds[i][2] +'</td>';
+          mainHtml += '<td><input type="checkbox" id="choose_accumulator" name="accumulator"></td>';
+          mainHtml += '</tr>';
+        }
+        mainHtml += ' </tbody>';
+        mainHtml += '</table>';
+        mad_combos2.innerHTML = mainHtml;
+      }
+    }
+    http.open("GET", "123456/combos", true);
+    http.setRequestHeader('Content-type', 'application/json', true);
+    http.send();
   }
 }
 
@@ -210,5 +287,9 @@ window.onload = function(){
   if(document.getElementById('mad_combos')){
     alert('Here displays all your profit and loss for all combinations for your chosen games');
     getGames.combinations();
+  }
+  if(document.getElementById('mad_combos2')){
+    alert('Here you can select your chosen accumulator and compare it with other bookmakers');
+    getGames.chosenCombinations();
   }
 }

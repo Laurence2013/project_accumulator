@@ -130,13 +130,8 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
     def post(self, request, *args, **kwargs):
         get_all_combinations_dict = dict()
         final_chosen_games = list()
-
-        if request.POST.get('get_all_accumulator') == 'True':
-            print('It is True = get_all_accumulator')
-
-        if request.POST.get('get_an_accumulator') == 'True':
-            print('It is True = get_an_accumulator')
-
+        mad_combos = False
+        mad_combos2 = False
         try:
             request.method == "POST"
             get_accumulator = request.POST.getlist("accumulator")
@@ -146,10 +141,6 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             for games_with_odds_id in get_accumulator:
                 get_games = WilliamHillGames0.objects.get(id=games_with_odds_id)
                 final_chosen_games.append(get_games.games)
-
-            # for games_with_odds_id in get_accumulator:
-            #     get_games = WilliamHillGamesWithOdds0.objects.get(games_id=games_with_odds_id)
-            #     final_chosen_games.append(get_games.match)
 
             if len(games) is 2:
                 get_combo = self.combinationsForTwoGames()
@@ -189,21 +180,21 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             combinations_below_stake = self.combinations_below_stake(get_all_combinations, total_stake, len_combo)
             cal_in_percent = self.calculate_percent(get_all_combinations, total_stake)
             self.main_page_load = False
-
             self.turnChosenAccumulatorsToJson(get_stake, total_stake, len(games), get_all_combinations)
 
+            if request.POST.get('get_all_accumulator') == 'True':
+                mad_combos = True
+
+            if request.POST.get('get_an_accumulator') == 'True':
+                mad_combos2 = True
+
             context = {
-            # 'combinations': get_all_combinations,
-            # 'stake': get_stake,
-            # 'total_stake': total_stake,
-            # 'length_combo': len(games),
-            # 'games_with_odds_load': True,
-            # 'match': final_chosen_games,
                 'total_games': int(len(get_combo)),
                 'calculation': combinations_below_stake,
                 'calc_in_percent': cal_in_percent,
                 'main_page_load': self.main_page_load,
-                'mad_combos': True,
+                'mad_combos': mad_combos,
+                'mad_combos2': mad_combos2,
             }
             return render(request, self.template_name, self.get_context_data(**context))
         except UnboundLocalError as e:
