@@ -90,27 +90,51 @@ CreateANewRequest.prototype = {
     http.onreadystatechange = function(){
       if(http.readyState == 4 && http.status == 200){
         var games_with_odds = JSON.parse(http.responseText);
-        console.log(games_with_odds);
         var games_output = Object.keys(games_with_odds);
         var stake = games_with_odds['stake'];
-        console.log('stake ' + stake);
         var total_games = games_output.length - 2;
-        console.log('total games ' + total_games);
         var total_cost = stake * total_games;
-        console.log('total cost ' + total_cost);
+        var calc_profit_counter = 0;
+        var calc_below_profit_counter = 0;
 
         var mainHtml = '';
+        mainHtml += '<div class="clearfix"></div>';
         mainHtml += '<div class="grid">';
-        mainHtml += '<div class="row" id="combinations_info">';
-        mainHtml += '<hr />';
-        mainHtml += '<div class="col-sm-6">'+ '<p class="get_font_size_1"><b>Your chosen games are as follows</b>:</p>';
+        mainHtml += '<div class="row">';
+        mainHtml += '<div class="col-sm-5 col-xs-6"><p class="get_font_size_1"><b>Your chosen games are as follows:</b></p>';
         for(j = 0; j < games_with_odds['match'].length; j++){
             mainHtml +='<p class="get_font_size_2">'+games_with_odds['match'][j]+'</p>';
-        } +'</div>';
-        mainHtml += '<div class="col-sm-6"></div>';
+        }
+        mainHtml += '</div>';
+        mainHtml += '<div class="col-sm-2 col-xs-3"><p class="get_font_size_1"><b>Other infos:</b></p>';
+        mainHtml += '<p class="get_font_size_2"><b>Stake(£): </b>'+ stake +'</p>';
+        mainHtml += '<p class="get_font_size_2"><b>Total games: </b>'+ total_games +'</p>';
+        mainHtml += '<p class="get_font_size_2"><b>Stake cost(£): </b>'+ total_cost +'</p>';
+        mainHtml += '</div>';
+        mainHtml += '<div class="row">';
+        mainHtml += '<div class="col-sm-5 col-xs-3"><p class="get_font_size_1"><b>Other infos:</b></p>';
+        mainHtml += '<p class="get_font_size_2"><b>No. Profit below stake (£): </b>';
+        for(k = 0; k < games_output.length - 2; k++){
+          var calc_profit = games_with_odds[k][2] - total_cost;
+          if(calc_profit.toFixed(2) < 0){
+            calc_below_profit_counter += 1;
+          }
+        }
+        mainHtml += calc_below_profit_counter;
+        mainHtml += '</p>';
+        mainHtml += '<p class="get_font_size_2"><b>No. Profit above or equal to stake (£): </b>';
+        for(k = 0; k < games_output.length - 2; k++){
+          var calc_profit = games_with_odds[k][2] - total_cost;
+          if(calc_profit.toFixed(2) > 0){
+            calc_profit_counter += 1;
+          }
+        }
+        mainHtml += calc_profit_counter;
+        mainHtml += '</p>';
+        mainHtml += ' </div>';
         mainHtml += '</div>';
         mainHtml += '</div>';
-
+        mainHtml += '</div>';
         mainHtml += '<table class="table table-bordered">';
         mainHtml += ' <thead>';
         mainHtml += '   <tr>';
