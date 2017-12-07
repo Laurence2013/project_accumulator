@@ -130,6 +130,13 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
     def post(self, request, *args, **kwargs):
         get_all_combinations_dict = dict()
         final_chosen_games = list()
+
+        if request.POST.get('get_all_accumulator') == 'True':
+            print('It is True = get_all_accumulator')
+
+        if request.POST.get('get_an_accumulator') == 'True':
+            print('It is True = get_an_accumulator')
+
         try:
             request.method == "POST"
             get_accumulator = request.POST.getlist("accumulator")

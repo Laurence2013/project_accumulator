@@ -60,13 +60,9 @@ CreateANewRequest.prototype = {
         mainHtml += '<tbody>';
         for(i = 0; i < count; i++){
           mainHtml += '<tr>'
-          // games_with_odds[i]['fields'].games_id and games_with_odds[i]['fields'].match
           mainHtml += '<td><input type="checkbox" name="accumulator" value="'+ games_with_odds[i][4] +'" autocomplete="off"/><i> - '+ games_with_odds[i][0] +'</i></td>'
-          // games_with_odds[i]['fields'].home_odds
           mainHtml += '<td><i name="home" id="home_odds">'+ games_with_odds[i][1] +'</i></td>'
-          // games_with_odds[i]['fields'].draw_odds
           mainHtml += '<td><i name="home" id="home_odds">'+ games_with_odds[i][2] +'</i></td>'
-          // games_with_odds[i]['fields'].away_odds
           mainHtml += '<td><i name="home" id="home_odds">'+ games_with_odds[i][3] +'</i></td>'
           mainHtml += '</tr>'
         }
@@ -76,8 +72,8 @@ CreateANewRequest.prototype = {
         mainHtml += '<p>';
         mainHtml += 'Stake £: <input id="stake" name="stake" type="text" placeholder="Enter stake here" />';
         mainHtml += '</p>';
-        mainHtml += '<button class="btn btn-primary btn-sm" data-target="#myModal" data-toggle="modal">Get accumulator</button>';
-        // mainHtml += '<button class="btn btn-primary btn-sm" data-target="#accumulator" data-toggle="modal">Get accumulator</button>';
+        mainHtml += '<button class="btn btn-primary btn-sm" name="get_all_accumulator" value="True">Get all accumulator</button>';
+        mainHtml += '<button class="btn btn-primary btn-sm" name="get_an_accumulator" value="True">Get an accumulator</button>';
         each_match.innerHTML = mainHtml;
       }
     }
@@ -112,8 +108,8 @@ CreateANewRequest.prototype = {
         mainHtml += '<p class="get_font_size_2"><b>Stake cost(£): </b>'+ total_cost +'</p>';
         mainHtml += '</div>';
         mainHtml += '<div class="row">';
-        mainHtml += '<div class="col-sm-5 col-xs-3"><p class="get_font_size_1"><b>Other infos:</b></p>';
-        mainHtml += '<p class="get_font_size_2"><b>No. Profit below stake (£): </b>';
+        mainHtml += '<div class="col-sm-5 col-xs-3"><p class="get_font_size_1"><b>Profit and Loss:</b></p>';
+        mainHtml += '<p class="get_font_size_2"><b>No. of Losses below stake (£): </b>';
         for(k = 0; k < games_output.length - 2; k++){
           var calc_profit = games_with_odds[k][2] - total_cost;
           if(calc_profit.toFixed(2) < 0){
@@ -212,6 +208,7 @@ window.onload = function(){
     getGames.loadEachGame();
   }
   if(document.getElementById('mad_combos')){
+    alert('Here displays all your profit and loss for all combinations for your chosen games');
     getGames.combinations();
   }
 }

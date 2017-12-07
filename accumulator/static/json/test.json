@@ -1,814 +1,338 @@
 {
     "0": [
-        "Arsenal   v   Tottenham",
-        "1.20",
-        "2.60",
-        "2.25",
-        434
+        "Copenhagen   v   FC Sheriff",
+        "0.75",
+        "2.50",
+        "4.00",
+        550
     ],
     "1": [
-        "Liverpool   v   Southampton",
-        "0.40",
-        "4.00",
-        "7.00",
-        435
+        "Young Boys   v   Skenderbeu Korce",
+        "0.60",
+        "3.00",
+        "4.50",
+        551
     ],
     "2": [
-        "Crystal Palace   v   Everton",
-        "1.40",
-        "2.20",
-        "2.20",
-        436
+        "Istanbul Basaksehir   v   Braga",
+        "0.80",
+        "2.50",
+        "3.50",
+        552
     ],
     "3": [
-        "Bournemouth   v   Huddersfield",
-        "0.83",
-        "2.40",
-        "4.00",
-        437
+        "Hoffenheim   v   Ludogorets",
+        "1.70",
+        "2.25",
+        "1.60",
+        553
     ],
     "4": [
-        "Leicester   v   Man City",
-        "8.50",
-        "4.00",
-        "0.35",
-        438
+        "Fastav Zlin   v   Lokomotiv",
+        "5.00",
+        "2.60",
+        "0.62",
+        554
     ],
     "5": [
-        "Burnley   v   Swansea",
-        "1.10",
-        "2.20",
-        "3.00",
-        439
+        "Apollon Limassol   v   Everton",
+        "0.95",
+        "2.60",
+        "2.75",
+        555
     ],
     "6": [
-        "West Brom   v   Chelsea",
-        "5.50",
-        "3.00",
-        "0.57",
-        440
+        "Dynamo Kiev   v   Partizan Belgrade",
+        "0.62",
+        "2.80",
+        "4.50",
+        556
     ],
     "7": [
-        "Man Utd   v   Newcastle",
-        "0.30",
-        "4.00",
-        "12.00",
-        441
+        "Atalanta   v   Lyon",
+        "1.20",
+        "2.50",
+        "2.10",
+        557
     ],
     "8": [
-        "Norwich   v   Barnsley",
-        "0.67",
-        "3.00",
+        "Villarreal   v   Maccabi Tel Aviv",
+        "0.70",
+        "2.80",
         "3.80",
-        442
+        558
     ],
     "9": [
-        "Reading   v   Wolves",
-        "3.33",
-        "2.50",
-        "0.83",
-        443
+        "Rijeka   v   AC Milan",
+        "1.90",
+        "2.30",
+        "1.40",
+        559
     ],
     "10": [
-        "Sunderland   v   Millwall",
+        "Austria Vienna   v   AEK",
+        "2.00",
+        "2.40",
         "1.30",
-        "2.20",
-        "2.20",
-        444
+        560
     ],
     "11": [
-        "Hull   v   Ipswich",
-        "0.95",
-        "2.60",
-        "2.60",
-        445
+        "Slavia Prague   v   Astana",
+        "0.57",
+        "2.80",
+        "5.00",
+        561
     ],
     "12": [
-        "Birmingham   v   Nottingham Forest",
-        "1.50",
-        "2.30",
-        "1.80",
-        446
+        "Zorya   v   Athletic Bilbao",
+        "3.33",
+        "2.40",
+        "0.85",
+        562
     ],
     "13": [
-        "Cardiff   v   Brentford",
-        "1.20",
-        "2.30",
-        "2.30",
-        447
+        "Vitesse   v   Nice",
+        "1.25",
+        "2.40",
+        "2.10",
+        563
     ],
     "14": [
-        "QPR   v   Aston Villa",
-        "1.70",
+        "Vardar Skopje   v   Rosenborg",
         "2.20",
-        "1.62",
-        448
+        "2.60",
+        "1.15",
+        564
     ],
     "15": [
-        "Sheff Wed   v   Bristol City",
-        "1.15",
-        "2.40",
-        "2.30",
-        449
-    ],
-    "16": [
-        "Fulham   v   Derby",
-        "1.20",
-        "2.30",
-        "2.30",
-        450
-    ],
-    "17": [
-        "Bristol Rovers   v   Wimbledon",
-        "1.15",
-        "2.30",
-        "2.40",
-        451
-    ],
-    "18": [
-        "Wigan   v   Bradford",
-        "0.62",
-        "2.80",
-        "4.50",
-        452
-    ],
-    "19": [
-        "Plymouth   v   Oxford",
-        "1.90",
-        "2.30",
-        "1.40",
-        453
-    ],
-    "20": [
-        "Walsall   v   Gillingham",
-        "0.91",
-        "2.50",
-        "3.00",
-        454
-    ],
-    "21": [
-        "Fleetwood   v   Doncaster",
-        "1.75",
-        "2.20",
-        "1.60",
-        455
-    ],
-    "22": [
-        "Charlton   v   MK Dons",
-        "0.91",
-        "2.40",
-        "3.20",
-        456
-    ],
-    "23": [
-        "Rotherham   v   Shrewsbury",
-        "1.25",
-        "2.30",
-        "2.20",
-        457
-    ],
-    "24": [
-        "Bury   v   Blackburn",
-        "2.80",
-        "2.50",
-        "0.95",
-        458
-    ],
-    "25": [
-        "Northampton   v   Scunthorpe",
-        "2.30",
-        "2.30",
-        "1.20",
-        459
-    ],
-    "26": [
-        "Portsmouth   v   Southend",
-        "0.91",
-        "2.50",
-        "3.00",
-        460
-    ],
-    "27": [
-        "Peterborough   v   Blackpool",
-        "1.10",
-        "2.50",
-        "2.30",
-        461
-    ],
-    "28": [
-        "Oldham   v   Rochdale",
-        "1.62",
-        "2.30",
-        "1.62",
-        462
-    ],
-    "29": [
-        "Forest Green   v   Crewe",
-        "1.30",
-        "2.20",
-        "2.20",
-        463
-    ],
-    "30": [
-        "Wycombe   v   Crawley",
-        "0.80",
-        "2.50",
-        "3.50",
-        464
-    ],
-    "31": [
-        "Colchester   v   Morecambe",
-        "0.80",
-        "2.50",
-        "3.50",
-        465
-    ],
-    "32": [
-        "Lincoln   v   Coventry",
-        "1.70",
-        "2.10",
-        "1.70",
-        466
-    ],
-    "33": [
-        "Luton   v   Cambridge",
-        "0.67",
-        "2.80",
-        "4.00",
-        467
-    ],
-    "34": [
-        "Chesterfield   v   Exeter",
-        "2.20",
-        "2.20",
-        "1.30",
-        468
-    ],
-    "35": [
-        "Yeovil   v   Swindon",
-        "2.60",
-        "2.20",
-        "2.00",
-        469
-    ],
-    "36": [
-        "Mansfield   v   Stevenage",
-        "0.80",
-        "2.50",
-        "3.50",
-        470
-    ],
-    "37": [
-        "Notts County   v   Cheltenham",
-        "1.05",
-        "2.40",
-        "2.60",
-        471
-    ],
-    "38": [
-        "Port Vale   v   Barnet",
-        "2.00",
-        "2.40",
-        "2.75",
-        472
-    ],
-    "39": [
-        "Grimsby   v   Carlisle",
-        "1.80",
-        "2.10",
-        "1.62",
-        473
-    ],
-    "40": [
-        "Accrington   v   Newport",
-        "1.10",
-        "2.40",
-        "2.40",
-        474
-    ],
-    "41": [
-        "Ross County   v   Celtic",
-        "12.00",
-        "5.00",
-        "0.22",
-        475
-    ],
-    "42": [
-        "Dundee   v   Kilmarnock",
-        "1.50",
-        "2.20",
-        "1.90",
-        476
-    ],
-    "43": [
-        "Hibernian   v   St Johnstone",
-        "0.57",
-        "2.80",
-        "5.00",
-        477
-    ],
-    "44": [
-        "Aberdeen   v   Motherwell",
-        "0.75",
-        "2.75",
-        "3.50",
-        478
-    ],
-    "45": [
-        "Rangers   v   Hamilton",
-        "0.33",
-        "4.00",
-        "8.00",
-        479
-    ],
-    "46": [
-        "Getafe   v   Alaves",
-        "0.83",
-        "2.20",
-        "4.00",
-        480
-    ],
-    "47": [
-        "Leganes   v   Barcelona",
-        "7.50",
-        "3.80",
-        "0.36",
-        481
-    ],
-    "48": [
-        "Sevilla   v   Celta Vigo",
-        "0.70",
-        "3.00",
-        "3.50",
-        482
-    ],
-    "49": [
-        "Atletico Madrid   v   Real Madrid",
-        "2.20",
-        "2.20",
-        "1.30",
-        483
-    ],
-    "50": [
-        "Wolfsburg   v   Freiburg",
-        "0.62",
-        "2.80",
-        "4.50",
-        484
-    ],
-    "51": [
-        "Hoffenheim   v   Eintracht Frankfurt",
-        "1.25",
-        "2.30",
-        "2.20",
-        485
-    ],
-    "52": [
-        "Leverkusen   v   Leipzig",
-        "1.30",
-        "2.40",
-        "2.00",
-        486
-    ],
-    "53": [
-        "Mainz   v   FC Koln",
-        "0.91",
-        "2.50",
-        "3.00",
-        487
-    ],
-    "54": [
-        "Bayern Munich   v   Augsburg",
-        "0.14",
-        "7.50",
-        "14.00",
-        488
-    ],
-    "55": [
-        "Hertha Berlin   v   M'gladbach",
-        "1.90",
-        "2.20",
-        "1.50",
-        489
-    ],
-    "56": [
-        "Paris Saint-Germain   v   Nantes",
-        "0.11",
-        "8.00",
-        "25.00",
-        490
-    ],
-    "57": [
-        "Strasbourg   v   Rennes",
-        "1.30",
-        "2.20",
-        "2.20",
-        491
-    ],
-    "58": [
-        "Toulouse   v   Metz",
-        "0.73",
-        "2.50",
-        "4.00",
-        492
-    ],
-    "59": [
-        "Guingamp   v   Angers",
-        "1.30",
-        "2.20",
-        "2.20",
-        493
-    ],
-    "60": [
-        "Dijon   v   Troyes",
-        "0.83",
-        "2.50",
-        "3.33",
-        494
-    ],
-    "61": [
-        "Roma   v   Lazio",
-        "1.10",
-        "2.60",
-        "2.25",
-        495
-    ],
-    "62": [
-        "Napoli   v   AC Milan",
-        "0.44",
-        "3.50",
-        "6.00",
-        496
-    ],
-    "63": [
-        "Leyton Orient   v   Dover",
-        "1.30",
-        "2.25",
-        "1.88",
-        497
-    ],
-    "64": [
-        "Woking   v   Maidenhead",
-        "1.50",
-        "2.50",
-        "1.62",
-        498
-    ],
-    "65": [
-        "Fylde   v   Torquay",
-        "0.91",
-        "2.75",
-        "2.75",
-        499
-    ],
-    "66": [
-        "Maidstone   v   Solihull",
-        "0.67",
-        "2.80",
-        "4.00",
-        500
-    ],
-    "67": [
-        "Eastleigh   v   Barrow",
-        "1.25",
-        "2.30",
-        "2.20",
-        501
-    ],
-    "68": [
-        "Wrexham   v   Ebbsfleet",
-        "1.40",
-        "2.30",
-        "2.00",
-        502
-    ],
-    "69": [
-        "Bromley   v   Chester",
-        "2.00",
-        "2.50",
-        "2.60",
-        503
-    ],
-    "70": [
-        "Sutton   v   Halifax",
-        "0.57",
-        "2.80",
-        "5.00",
-        504
-    ],
-    "71": [
-        "Gateshead   v   Tranmere",
-        "1.90",
-        "2.20",
-        "1.50",
-        505
-    ],
-    "72": [
-        "Macclesfield   v   Boreham Wood",
-        "1.30",
-        "2.20",
-        "2.20",
-        506
-    ],
-    "73": [
-        "Hartlepool   v   Aldershot",
-        "1.62",
-        "2.30",
-        "1.62",
-        507
-    ],
-    "74": [
-        "Dag and Red   v   Guiseley",
+        "Steaua Bucharest   v   Lugano",
         "0.50",
         "3.20",
         "5.50",
-        508
+        565
     ],
-    "75": [
-        "Cowdenbeath   v   Annan",
-        "2.50",
-        "2.30",
-        "2.00",
-        509
-    ],
-    "76": [
-        "Feyenoord   v   VVV Venlo",
-        "0.29",
-        "4.00",
-        "8.50",
-        510
-    ],
-    "77": [
-        "Twente   v   Heerenveen",
-        "1.40",
-        "2.60",
-        "1.60",
-        511
-    ],
-    "78": [
-        "NAC Breda   v   Ajax",
-        "10.00",
-        "5.00",
-        "0.22",
-        512
-    ],
-    "79": [
-        "Willem II   v   Sparta Rotterdam",
-        "1.05",
-        "2.20",
-        "2.50",
-        513
-    ],
-    "80": [
-        "Sydney FC   v   Newcastle Jets",
-        "0.70",
-        "2.80",
+    "16": [
+        "Arsenal   v   BATE Borisov",
+        "0.40",
         "3.80",
-        514
+        "6.50",
+        566
     ],
-    "81": [
-        "Banfield   v   Temperley",
-        "0.57",
-        "2.75",
-        "4.50",
-        515
-    ],
-    "82": [
-        "Defensa y Justicia   v   Lanus",
-        "0.60",
-        "2.50",
-        "4.50",
-        516
-    ],
-    "83": [
-        "San Martin de San Juan   v   San Lorenzo",
-        "2.00",
-        "2.20",
-        "1.25",
-        517
-    ],
-    "84": [
-        "Benfica   v   Vitoria Setubal",
-        "0.18",
-        "5.00",
-        "12.00",
-        518
-    ],
-    "85": [
-        "Rio Ave   v   Braga",
-        "1.62",
-        "2.00",
-        "1.62",
-        519
-    ],
-    "86": [
-        "Lothian   v   St Mirren",
-        "12.00",
-        "7.00",
-        "0.12",
-        520
-    ],
-    "87": [
-        "Formartine   v   Forfar",
-        "4.00",
-        "3.00",
-        "0.57",
-        521
-    ],
-    "88": [
-        "East Kilbride   v   Albion",
-        "4.00",
-        "3.00",
-        "0.57",
-        522
-    ],
-    "89": [
-        "Peterhead   v   Raith Rovers",
-        "2.75",
-        "2.75",
-        "0.91",
-        523
-    ],
-    "90": [
-        "Buckie Thistle   v   Brechin",
-        "8.00",
-        "4.50",
-        "0.25",
-        524
-    ],
-    "91": [
-        "Livingston   v   Glenafton Athletic",
-        "0.12",
-        "7.00",
-        "12.00",
-        525
-    ],
-    "92": [
-        "Banks o'Dee   v   Ayr",
-        "14.00",
-        "8.00",
-        "0.10",
-        526
-    ],
-    "93": [
-        "Airdrie   v   Cove Rangers",
-        "0.30",
-        "4.50",
-        "5.00",
-        527
-    ],
-    "94": [
-        "Spartans   v   Fraserburgh",
-        "1.20",
-        "2.50",
-        "1.62",
-        528
-    ],
-    "95": [
-        "Queen's Park   v   Dunfermline",
-        "8.00",
-        "4.00",
-        "0.33",
-        529
-    ],
-    "96": [
-        "Stranraer   v   Brora Rangers",
-        "0.25",
-        "4.50",
-        "8.00",
-        530
-    ],
-    "97": [
-        "Stenhousemuir   v   Alloa",
-        "2.60",
-        "2.50",
-        "2.00",
-        531
-    ],
-    "98": [
-        "Dumbarton   v   Elgin",
-        "0.44",
-        "3.50",
-        "6.00",
-        532
-    ],
-    "99": [
-        "Montrose   v   Queen of the South",
-        "7.50",
-        "3.33",
-        "0.35",
-        533
-    ],
-    "100": [
-        "Clyde   v   East Fife",
-        "3.00",
-        "2.80",
+    "17": [
+        "Real Sociedad   v   Zenit",
         "0.80",
-        534
+        "2.75",
+        "3.20",
+        567
     ],
-    "101": [
-        "Arbroath   v   Berwick",
-        "0.44",
-        "3.50",
-        "6.00",
-        535
-    ],
-    "102": [
-        "Sydney FC Women   v   Melbourne City Women",
-        "3.75",
-        "2.30",
-        "0.75",
-        536
-    ],
-    "103": [
-        "Huesca   v   Tenerife",
-        "1.10",
-        "2.20",
-        "2.40",
-        537
-    ],
-    "104": [
-        "Lorca   v   Lugo",
+    "18": [
+        "Hertha Berlin   v   Ostersund",
         "1.30",
-        "2.10",
-        "2.10",
-        538
-    ],
-    "105": [
-        "Valladolid   v   Oviedo",
-        "0.75",
-        "2.60",
-        "3.33",
-        539
-    ],
-    "106": [
-        "Reus   v   Albacete",
-        "1.20",
-        "1.88",
-        "2.60",
-        540
-    ],
-    "107": [
-        "Penafiel   v   Gil Vicente",
-        "2.00",
         "2.20",
-        "2.60",
-        541
+        "2.20",
+        568
     ],
-    "108": [
-        "Virtus Entella   v   Venezia",
-        "1.75",
-        "2.00",
-        "1.60",
-        542
-    ],
-    "109": [
-        "Parma   v   Ascoli",
-        "0.62",
-        "2.40",
-        "4.50",
-        543
-    ],
-    "110": [
-        "Novara   v   Bari",
-        "1.62",
+    "19": [
+        "Hapoel Be'er Sheva   v   Viktoria Plzen",
         "2.10",
+        "2.30",
+        "1.30",
+        569
+    ],
+    "20": [
+        "Marseille   v   Salzburg",
+        "0.60",
+        "2.75",
+        "5.00",
+        570
+    ],
+    "21": [
+        "Guimaraes   v   Konyaspor",
+        "1.20",
+        "2.30",
+        "2.30",
+        571
+    ],
+    "22": [
+        "Zulte-Waregem   v   Lazio",
+        "2.10",
+        "2.50",
+        "1.20",
+        572
+    ],
+    "23": [
+        "Red Star Belgrade   v   FC Koln",
+        "1.10",
+        "2.25",
+        "2.60",
+        573
+    ],
+    "24": [
+        "Grenoble   v   Chambly Thelle",
+        "2.00",
+        "2.00",
+        "2.75",
+        574
+    ],
+    "25": [
+        "Meuselwitz   v   Lokomotive Leipzig",
         "1.62",
-        544
+        "2.20",
+        "1.38",
+        575
     ],
-    "111": [
-        "Empoli   v   Cesena",
-        "0.57",
-        "2.80",
-        "4.50",
-        545
+    "26": [
+        "Cordoba B   v   Villanovense",
+        "1.62",
+        "1.88",
+        "1.70",
+        576
     ],
-    "112": [
-        "Pescara   v   Pro Vercelli",
-        "0.67",
+    "27": [
+        "Tanzania   v   Zanzibar",
+        "0.36",
         "3.00",
-        "3.33",
-        546
+        "9.00",
+        577
     ],
-    "113": [
-        "Brescia   v   Spezia",
+    "28": [
+        "Zeljeznicar Sarajevo   v   Siroki Brijeg",
+        "0.91",
+        "2.10",
+        "2.75",
+        578
+    ],
+    "29": [
+        "Alger   v   Harrach",
+        "0.36",
+        "3.00",
+        "7.50",
+        579
+    ],
+    "30": [
+        "Sport Boys   v   Blooming",
+        "3.20",
+        "2.50",
+        "0.73",
+        580
+    ],
+    "31": [
+        "Real Potosi   v   San Jose",
+        "1.15",
+        "2.30",
+        "2.00",
+        581
+    ],
+    "32": [
+        "Sabah   v   Azal Pfc Baku",
+        "0.15",
+        "5.50",
+        "16.00",
+        582
+    ],
+    "33": [
+        "Haras El Hodood   v   El Zamalek",
+        "16.00",
+        "3.50",
+        "0.17",
+        583
+    ],
+    "34": [
+        "Kolkheti Poti U19   v   FC Shukura U19",
+        "0.10",
+        "5.50",
+        "22.00",
+        584
+    ],
+    "35": [
+        "Torpedo Kutaisi U19   v   Samtredia U19",
+        "9.00",
+        "2.90",
+        "0.33",
+        585
+    ],
+    "36": [
+        "Real CD Espana   v   Juticalpa",
+        "0.62",
+        "2.60",
+        "3.50",
+        586
+    ],
+    "37": [
+        "Corps of Signals   v   Vasco SC",
+        "2.25",
+        "1.30",
+        "1.75",
+        587
+    ],
+    "38": [
+        "Club Chennai   v   Atletico De Kolkata",
+        "1.15",
+        "2.00",
+        "2.30",
+        588
+    ],
+    "39": [
+        "General Diaz   v   Guarani (Par)",
+        "2.25",
+        "2.40",
+        "2.00",
+        589
+    ],
+    "40": [
+        "JS Kairouanaise   v   Esperance Sportive De Tunis",
+        "5.50",
+        "2.30",
+        "0.53",
+        590
+    ],
+    "41": [
+        "Ajman Club   v   Hatta",
+        "0.95",
+        "2.50",
+        "2.30",
+        591
+    ],
+    "42": [
+        "Al Nasr   v   Emirates Club",
+        "0.44",
+        "3.20",
+        "5.00",
+        592
+    ],
+    "43": [
+        "Vietell U21   v   Hoang Anh Gia Lia U21",
+        "12.00",
+        "3.20",
+        "0.22",
+        593
+    ],
+    "44": [
+        "Talleres de Remedios de Escalada   v   Atlanta",
         "1.25",
         "2.00",
-        "2.30",
-        547
+        "2.00",
+        594
     ],
-    "114": [
-        "Foggia   v   Ternana",
-        "0.67",
-        "2.60",
+    "45": [
+        "Al-Sailiya   v   Al Duhail",
+        "3.50",
+        "3.40",
+        "0.53",
+        595
+    ],
+    "46": [
+        "Al Ahli   v   Al Rayyan",
         "3.80",
-        548
+        "3.20",
+        "0.53",
+        596
     ],
-    "115": [
-        "Perugia   v   Carpi",
-        "0.85",
-        "2.20",
+    "47": [
+        "Al-Kharaityat Sc   v   Al Sadd Sport Club",
+        "3.60",
         "3.33",
-        549
+        "0.53",
+        597
     ]
 }
