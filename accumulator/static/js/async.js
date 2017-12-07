@@ -210,10 +210,14 @@ CreateANewRequest.prototype = {
         mainHtml += '<div class="clearfix"></div>';
         mainHtml += '<div class="grid">';
         mainHtml += '<div class="row">';
-        mainHtml += '<div class="col-sm-12 col-xs-12"><p class="get_font_size_1"><b>Your chosen games are as follows:</b></p>';
+        mainHtml += '<div class="col-sm-5 col-xs-6"><p class="get_font_size_1"><b>Your chosen games are as follows:</b></p>';
         for(j = 0; j < games_with_odds['match'].length; j++){
             mainHtml +='<p class="get_font_size_2">'+games_with_odds['match'][j]+'</p>';
         }
+        mainHtml += '</div>';
+        mainHtml += '<div class="col-sm-2 col-xs-3"><p class="get_font_size_1"><b>Other infos:</b></p>';
+        mainHtml += '<p class="get_font_size_2"><b>Stake(£): </b>'+ stake +'</p>';
+        mainHtml += '<p class="get_font_size_2"><b>Total games: </b>'+ total_games +'</p>';
         mainHtml += '</div>';
         mainHtml += '</div>';
         mainHtml += '</div>';
@@ -226,7 +230,7 @@ CreateANewRequest.prototype = {
         mainHtml += '     <th>Match odds 3</th>';
         mainHtml += '     <th>Match odds 4</th>';
         mainHtml += '     <th>Profit before before stake</th>'
-        mainHtml += '     <th>Choose your accumulator</th>';
+        mainHtml += '     <th>Choose your accumulator(s)</th>';
         mainHtml += '   </tr>';
         mainHtml += ' </thead>';
         mainHtml += ' <tbody>';
@@ -289,7 +293,7 @@ window.onload = function(){
     getGames.combinations();
   }
   if(document.getElementById('mad_combos2')){
-    alert('Here you can select your chosen accumulator and compare it with other bookmakers');
+    alert('Here you can choose your accumulator and compare it with other bookmakers');
     getGames.chosenCombinations();
   }
 }
