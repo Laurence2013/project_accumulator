@@ -71,9 +71,9 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
     odds = Odd.objects.values_list('id','home_odds','draw_odds','away_odds')
     get_bookies = Bookie.objects.all()
     whlist = [WilliamHillOdds0, WilliamHillOdds1, WilliamHillOdds2, WilliamHillOdds3, WilliamHillOdds4, WilliamHillOdds5, WilliamHillOdds6]
+    whg = [WilliamHillGames0, WilliamHillGames1, WilliamHillGames2, WilliamHillGames3, WilliamHillGames4, WilliamHillGames5, WilliamHillGames6]
     bookies_name = SettersGettersBookies()
     main_page_load = True
-    # open(base_dir + '/accumulator/static/json/test.json', 'w').close()
 
     def get_context_data(self, **kwargs):
         context = super(AccumulatorPageGamesView, self).get_context_data(**kwargs)
@@ -84,14 +84,34 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             match_day_id = self.getting_matches_and_odds_from_db(get_game_date_id)
             get_ids = WilliamHillDailyMatche.objects.values('wh_csv_links').get(id=match_day_id)
             get_bookies_ids = self.get_bookies_ids(get_ids)
-            wh0 = WilliamHillGames0.objects.values('id','games').filter(url_game_link_id=get_bookies_ids)
-            get_bookie_games = self.extract_and_get_games(wh0)
-            get_games_id = WilliamHillGames0.objects.values('id')
-            get_odds = self.extract_by_getting_odds(self.whlist[0], get_games_id)
-            self.bookies_name.set(self.whlist[0])
 
-            context['infos'] = self.match_info
-            context['bookies'] = self.get_bookies
+            if get_bookies_ids is 1:
+                william_hill_games = self.whg[0]
+                william_hill_odds = self.whlist[0]
+            if get_bookies_ids is 2:
+                william_hill_games = self.whg[1]
+                william_hill_odds = self.whlist[1]
+            if get_bookies_ids is 3:
+                william_hill_games = self.whg[2]
+                william_hill_odds = self.whlist[2]
+            if get_bookies_ids is 4:
+                william_hill_games = self.whg[3]
+                william_hill_odds = self.whlist[3]
+            if get_bookies_ids is 5:
+                william_hill_games = self.whg[4]
+                william_hill_odds = self.whlist[4]
+            if get_bookies_ids is 6:
+                william_hill_games = self.whg[5]
+                william_hill_odds = self.whlist[5]
+            if get_bookies_ids is 7:
+                william_hill_games = self.whg[6]
+                william_hill_odds = self.whlist[6]
+
+            wh = william_hill_games.objects.values('id','games').filter(url_game_link_id=get_bookies_ids)
+            get_bookie_games = self.extract_and_get_games(wh)
+            get_games_id = william_hill_games.objects.values('id')
+            get_odds = self.extract_by_getting_odds(william_hill_odds, get_games_id)
+            self.bookies_name.set(william_hill_odds)
             turn_to_json = list(self.break_list_into_equal_chunks(self.get_final_game(self.get_ammended_games(self.get_games(get_bookie_games, get_odds))),4))
 
             for games in get_games_id:
@@ -103,6 +123,8 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
                 insert_id_into_games_odds.append(add_games_id_to_json[turns])
 
             self.turnGamesWithOddsIntoJson(turn_to_json)
+            context['infos'] = self.match_info
+            context['bookies'] = self.get_bookies
             context['each_match'] = True
             return context
 
@@ -137,7 +159,6 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             get_accumulator = request.POST.getlist("accumulator")
             get_stake = request.POST.get("stake")
             games = self.filter_accumulator(get_accumulator, self.bookies_name.get())
-
             for games_with_odds_id in get_accumulator:
                 get_games = WilliamHillGames0.objects.get(id=games_with_odds_id)
                 final_chosen_games.append(get_games.games)
