@@ -160,7 +160,34 @@ class AccumulatorPageGamesView(TemplateView, GetBookiesDailyGames, TwoGamesAccum
             get_stake = request.POST.get("stake")
             games = self.filter_accumulator(get_accumulator, self.bookies_name.get())
             for games_with_odds_id in get_accumulator:
-                get_games = WilliamHillGames0.objects.get(id=games_with_odds_id)
+                try:
+                    get_games = WilliamHillGames0.objects.get(id=games_with_odds_id)
+                except Exception as e:
+                    print('Exception: ',e)
+                try:
+                    get_games = WilliamHillGames1.objects.get(id=games_with_odds_id)
+                except Exception as e:
+                    print('Exception: ',e)
+                try:
+                    get_games = WilliamHillGames2.objects.get(id=games_with_odds_id)
+                except Exception as e:
+                    print('Exception: ',e)
+                try:
+                    get_games = WilliamHillGames3.objects.get(id=games_with_odds_id)
+                except Exception as e:
+                    print('Exception: ',e)
+                try:
+                    get_games = WilliamHillGames4.objects.get(id=games_with_odds_id)
+                except Exception as e:
+                    print('Exception: ',e)
+                try:
+                    get_games = WilliamHillGames5.objects.get(id=games_with_odds_id)
+                except Exception as e:
+                    print('Exception: ',e)
+                try:
+                    get_games = WilliamHillGames6.objects.get(id=games_with_odds_id)
+                except Exception as e:
+                    print('Exception: ',e)
                 final_chosen_games.append(get_games.games)
 
             if len(games) is 2:
