@@ -23,9 +23,30 @@ class TestingFirefoxBrowser(TestCase):
         decimal = self.driver.find_element_by_id('site_pref_decimal')
         decimal.click()
         team_name = self.driver.find_element(By.XPATH, '//div[@class="matches"]/div[8]//a/span').text
-        print(team_name)
+        self.assertEqual('AZ Alkmaar v Cambuur', team_name)
 
-    # Here how to loop through a list of elements
+    def test_04_LoopingThroughAllDailyMatches(self):
+        leagues = list()
+        self.driver.get(self.baseUrl)
+        decimal = self.driver.find_element_by_id('site_pref_decimal')
+        decimal.click()
+        # leagues = self.driver.find_element(By.XPATH, '//div[@class="matches"]//div[@class="block-header-wrapper"]//span[@class="block-title"]').text
+        # leagues = self.driver.find_element(By.XPATH, '//div[@class="in-play-odds"]//span[@class="block-title"]').text
+        leagues = self.driver.find_elements_by_class_name('block-title')
+        for league in leagues:
+            print(league.text)
+
+    def test_05_ClickOnTomorrowsMatches(self):
+        self.driver.get(self.baseUrl)
+        tomorrowMatches = self.driver.find_element_by_id('feat-tomorrows')
+        tomorrowMatches.click()
+
+    def test_06_ClickOnFutureMatches(self):
+        self.driver.get(self.baseUrl)
+        futureMatches = self.driver.find_element_by_id('feat-future-dropdown')
+        futureMatches.click()
+        firstMatchDates = self.driver.find_element_by_id('2017-12-13')
+        firstMatchDates.click()
 
     def tearDown(self):
         time.sleep(3)
