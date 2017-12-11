@@ -30,18 +30,29 @@ class TestingFirefoxBrowser(TestCase):
         self.driver.get(self.baseUrl)
         decimal = self.driver.find_element_by_id('site_pref_decimal')
         decimal.click()
-        # leagues = self.driver.find_element(By.XPATH, '//div[@class="matches"]//div[@class="block-header-wrapper"]//span[@class="block-title"]').text
-        # leagues = self.driver.find_element(By.XPATH, '//div[@class="in-play-odds"]//span[@class="block-title"]').text
         leagues = self.driver.find_elements_by_class_name('block-title')
         for league in leagues:
             print(league.text)
 
-    def test_05_ClickOnTomorrowsMatches(self):
+    def test_05_LoopingThroughAllDailyMatchesInList(self):
+        todays_league = list()
+        self.driver.get(self.baseUrl)
+        decimal = self.driver.find_element_by_id('site_pref_decimal')
+        decimal.click()
+        # leagues = self.driver.find_element(By.XPATH,'//div[@id="ob-evs-for-type-435"]/div[1]/div/span[2]').text
+        leagues = self.driver.find_elements_by_class_name('featured-match')
+        for league in leagues:
+            todays_league.append(league.text)
+            
+        for today_league in todays_league:
+            print(today_league)
+
+    def test_06_ClickOnTomorrowsMatches(self):
         self.driver.get(self.baseUrl)
         tomorrowMatches = self.driver.find_element_by_id('feat-tomorrows')
         tomorrowMatches.click()
 
-    def test_06_ClickOnFutureMatches(self):
+    def test_07_ClickOnFutureMatches(self):
         self.driver.get(self.baseUrl)
         futureMatches = self.driver.find_element_by_id('feat-future-dropdown')
         futureMatches.click()
