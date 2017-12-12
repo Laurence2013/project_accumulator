@@ -217,6 +217,7 @@ class SortGamesOddsIntoDb(View, SaveOddsIntoDb, SaveGamesIntoDb):
 class Coral(View):
     def get(self, request, *args, **kwargs):
         test_list = list()
+        test_list2 = list()
         coral = Coral_Base()
         coral.get_todays_matches()
         matches = coral.get_todays_matches_list()
@@ -224,12 +225,15 @@ class Coral(View):
         for match in range(0, len(matches)):
             test_list.append(matches[match].split())
 
-        # if not test_list[0]:
-        #     print('It is empty')
-        # else:
-        #     print('It is NOT empty')
         list2 = filter(None, test_list)
         for l2 in list2:
-            print(l2)
+            test_list2.append(l2)
+
+        for test2 in range(0, len(test_list2)):
+            test_list2[test2].pop(0)
+            test_list2[test2].pop(0)
+            test_list2[test2].pop(0)
+
+        print(test_list2)
 
         return HttpResponse('Hello world')
