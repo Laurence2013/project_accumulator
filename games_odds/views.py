@@ -216,6 +216,9 @@ class SortGamesOddsIntoDb(View, SaveOddsIntoDb, SaveGamesIntoDb):
 
 class Coral_Games(View):
     def get(self, request, *args, **kwargs):
+        update_no = int(kwargs.get('update_no'))
+        if update_no is 1:
+            print('hello')
         # test_list = list()
         # test_list2 = list()
         # coral = Coral_Base()
@@ -235,7 +238,4 @@ class Coral_Games(View):
         #     test_list2[test2].pop(0)
         #     del test_list2[test2][-1]
         # print(test_list2)
-        print('args ',args)
-        print('kwargs ',kwargs)
-        print(kwargs.pop('update_no'))
         return HttpResponse('Hello world')
