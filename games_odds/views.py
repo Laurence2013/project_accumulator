@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import View, TemplateView
 from django.conf import settings
 from django.contrib import messages
+from django.http import HttpResponse
 from accumulator.models import WilliamHillDailyMatche
 from games_odds.webScraping.scrapingWilliamHill import ScrapingWilliamHill
 from games_odds.webScraping.decimalToFractionAndStoreInDb import DecimalToFractionAndStoreInDb
@@ -10,6 +11,7 @@ from games_odds.mainViewsApi.main_views_api import MainViewsApi
 from games_odds.william_hill_base import WilliamHillBase
 from games_odds.save_games_into_db import SaveGamesIntoDb
 from games_odds.save_odds_into_db import SaveOddsIntoDb
+from games_odds.coral_base import Coral_Base
 
 class Bookies(TemplateView):
     template_name = 'accumulator/bookies.html'
@@ -211,3 +213,23 @@ class SortGamesOddsIntoDb(View, SaveOddsIntoDb, SaveGamesIntoDb):
         isGamesStored = self.store_games_into_db(get_link, games_from_csv_file)
         isOddsStored = self.store_odds_into_db(get_link, odds_from_csv_file)
         return isGamesStored, isOddsStored
+
+class Coral(View):
+    def get(self, request, *args, **kwargs):
+        test_list = list()
+        coral = Coral_Base()
+        coral.get_todays_matches()
+        matches = coral.get_todays_matches_list()
+
+        for match in range(0, len(matches)):
+            test_list.append(matches[match].split())
+
+        # if not test_list[0]:
+        #     print('It is empty')
+        # else:
+        #     print('It is NOT empty')
+        list2 = filter(None, test_list)
+        for l2 in list2:
+            print(l2)
+
+        return HttpResponse('Hello world')
