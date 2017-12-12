@@ -214,26 +214,28 @@ class SortGamesOddsIntoDb(View, SaveOddsIntoDb, SaveGamesIntoDb):
         isOddsStored = self.store_odds_into_db(get_link, odds_from_csv_file)
         return isGamesStored, isOddsStored
 
-class Coral(View):
+class Coral_Games(View):
     def get(self, request, *args, **kwargs):
-        test_list = list()
-        test_list2 = list()
-        coral = Coral_Base()
-        coral.get_todays_matches()
-        matches = coral.get_todays_matches_list()
-
-        for match in range(0, len(matches)):
-            test_list.append(matches[match].split())
-
-        list2 = filter(None, test_list)
-        for l2 in list2:
-            test_list2.append(l2)
-
-        for test2 in range(0, len(test_list2)):
-            test_list2[test2].pop(0)
-            test_list2[test2].pop(0)
-            test_list2[test2].pop(0)
-
-        print(test_list2)
-
+        # test_list = list()
+        # test_list2 = list()
+        # coral = Coral_Base()
+        # coral.get_todays_matches()
+        # matches = coral.get_todays_matches_list()
+        #
+        # for match in range(0, len(matches)):
+        #     test_list.append(matches[match].split())
+        #
+        # list2 = filter(None, test_list)
+        # for l2 in list2:
+        #     test_list2.append(l2)
+        #
+        # for test2 in range(0, len(test_list2)):
+        #     test_list2[test2].pop(0)
+        #     test_list2[test2].pop(0)
+        #     test_list2[test2].pop(0)
+        #     del test_list2[test2][-1]
+        # print(test_list2)
+        print('args ',args)
+        print('kwargs ',kwargs)
+        print(kwargs.pop('update_no'))
         return HttpResponse('Hello world')

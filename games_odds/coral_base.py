@@ -6,7 +6,7 @@ class Coral_Base:
     def _webdriver_firefox(self):
         driver = webdriver.Firefox()
         return driver
-    
+
     def _base_url(self):
         baseUrl = 'http://sports.coral.co.uk/football'
         return baseUrl
