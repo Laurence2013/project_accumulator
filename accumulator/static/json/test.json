@@ -1,79 +1,296 @@
 {
     "0": [
-        "Arsenal FC   v   San Martin de San Juan",
-        "1.30",
-        "2.10",
-        "2.00",
-        31
+        "Sheff Utd   v   Bristol City",
+        "1.05",
+        "2.60",
+        "2.40",
+        640
     ],
     "1": [
-        "Feyenoord   v   Shakhtar Donetsk",
-        "2.25",
-        "2.50",
-        "1.15",
-        32
+        "Alaves   v   Las Palmas",
+        "1.38",
+        "2.40",
+        "1.90",
+        641
     ],
     "2": [
-        "Leipzig   v   Porto",
-        "1.15",
-        "2.40",
-        "2.30",
-        33
+        "Rio Ave   v   Moreirense",
+        "0.62",
+        "2.50",
+        "4.50",
+        642
     ],
     "3": [
-        "Man City   v   Napoli",
-        "0.53",
-        "3.50",
-        "4.00",
-        34
+        "Stuttgart   v   Leverkusen",
+        "2.20",
+        "2.60",
+        "1.15",
+        643
     ],
     "4": [
-        "Real Madrid   v   Tottenham",
-        "0.36",
-        "4.50",
-        "6.00",
-        35
+        "Bordeaux   v   Strasbourg",
+        "0.67",
+        "2.80",
+        "4.00",
+        644
     ],
     "5": [
-        "Monaco   v   Besiktas",
-        "0.60",
+        "Dundee   v   Aberdeen",
         "3.20",
-        "4.00",
-        36
+        "2.60",
+        "0.83",
+        645
     ],
     "6": [
-        "APOEL Nicosia   v   Dortmund",
-        "12.00",
-        "5.50",
-        "0.20",
-        37
+        "Willem II   v   NAC Breda",
+        "0.80",
+        "2.60",
+        "3.00",
+        646
     ],
     "7": [
-        "Maribor   v   Liverpool",
-        "14.00",
-        "6.00",
-        "0.18",
-        38
+        "Melbourne Victory   v   Adelaide United",
+        "2.00",
+        "2.50",
+        "2.60",
+        647
     ],
     "8": [
-        "Spartak Moscow   v   Sevilla",
-        "3.50",
-        "2.75",
-        "0.75",
-        39
+        "Temperley   v   Tigre",
+        "1.70",
+        "2.00",
+        "1.60",
+        648
     ],
     "9": [
-        "Syrianska   v   Brommapojkarna",
-        "4.00",
-        "3.33",
-        "0.50",
-        40
+        "Patronato   v   Olimpio Bahia Blanca",
+        "1.20",
+        "2.00",
+        "2.30",
+        649
     ],
     "10": [
-        "Start   v   Ranheim",
-        "0.70",
-        "2.80",
+        "Granada   v   Almeria",
+        "0.73",
+        "2.40",
+        "3.80",
+        650
+    ],
+    "11": [
+        "Barcelona B   v   Sporting Gijon",
+        "1.20",
+        "2.30",
+        "2.10",
+        651
+    ],
+    "12": [
+        "Novara   v   Cremonese",
+        "1.30",
+        "2.00",
+        "2.10",
+        652
+    ],
+    "13": [
+        "Ternana   v   Parma",
+        "2.00",
+        "2.10",
+        "1.30",
+        653
+    ],
+    "14": [
+        "Cesena   v   Pescara",
+        "1.15",
+        "2.60",
+        "1.90",
+        654
+    ],
+    "15": [
+        "Spezia   v   Foggia",
+        "0.91",
+        "2.40",
+        "2.75",
+        655
+    ],
+    "16": [
+        "Braunschweig   v   Holstein Kiel",
+        "2.25",
+        "2.50",
+        "1.05",
+        656
+    ],
+    "17": [
+        "Aue   v   Darmstadt",
+        "1.30",
+        "2.20",
+        "2.00",
+        657
+    ],
+    "18": [
+        "Paris F.C.   v   Lens",
+        "1.75",
+        "1.90",
+        "1.62",
+        658
+    ],
+    "19": [
+        "Orleans   v   Gazelec Ajaccio",
+        "1.60",
+        "2.10",
+        "1.60",
+        659
+    ],
+    "20": [
+        "Brest   v   Bourg-en-Bresse",
+        "0.50",
         "3.20",
-        41
+        "4.50",
+        660
+    ],
+    "21": [
+        "Lorient   v   Sochaux",
+        "0.62",
+        "2.80",
+        "3.75",
+        661
+    ],
+    "22": [
+        "Niort   v   Reims",
+        "2.30",
+        "2.10",
+        "1.15",
+        662
+    ],
+    "23": [
+        "Valenciennes   v   Quevilly Rouen",
+        "1.05",
+        "2.40",
+        "2.25",
+        663
+    ],
+    "24": [
+        "Auxerre   v   Chateauroux",
+        "0.91",
+        "2.30",
+        "2.80",
+        664
+    ],
+    "25": [
+        "Tours   v   Nancy",
+        "2.20",
+        "2.20",
+        "1.15",
+        665
+    ],
+    "26": [
+        "Bursaspor   v   Fenerbahce",
+        "2.10",
+        "2.30",
+        "1.15",
+        666
+    ],
+    "27": [
+        "Istanbulspor   v   Boluspor",
+        "1.60",
+        "2.10",
+        "1.60",
+        667
+    ],
+    "28": [
+        "Volendam   v   Jong FC Utrecht",
+        "0.44",
+        "3.33",
+        "5.00",
+        668
+    ],
+    "29": [
+        "Go Ahead Eagles   v   Jong PSV",
+        "1.20",
+        "2.60",
+        "1.80",
+        669
+    ],
+    "30": [
+        "Oss   v   NEC Nijmegen",
+        "4.00",
+        "3.50",
+        "0.50",
+        670
+    ],
+    "31": [
+        "Helmond Sport   v   FC Eindhoven",
+        "1.30",
+        "2.60",
+        "1.62",
+        671
+    ],
+    "32": [
+        "Almere   v   De Graafschap",
+        "2.80",
+        "3.00",
+        "0.73",
+        672
+    ],
+    "33": [
+        "Fortuna Sittard   v   Waalwijk",
+        "0.62",
+        "3.20",
+        "3.33",
+        673
+    ],
+    "34": [
+        "Dordrecht   v   MVV Maastricht",
+        "1.60",
+        "2.50",
+        "1.38",
+        674
+    ],
+    "35": [
+        "Telstar   v   Emmen",
+        "1.30",
+        "2.60",
+        "1.62",
+        675
+    ],
+    "36": [
+        "Sandecja Nowy Sacz   v   Jagiellonia",
+        "2.30",
+        "2.20",
+        "1.15",
+        676
+    ],
+    "37": [
+        "Gornik Zabrze   v   Lechia Gdansk",
+        "1.15",
+        "2.40",
+        "2.10",
+        677
+    ],
+    "38": [
+        "Ural   v   Arsenal Tula",
+        "1.45",
+        "1.88",
+        "2.00",
+        678
+    ],
+    "39": [
+        "Connah's Quay   v   Aberystwyth",
+        "0.40",
+        "3.50",
+        "5.00",
+        679
+    ],
+    "40": [
+        "Prestatyn Town   v   Cefn Druids",
+        "1.40",
+        "2.60",
+        "1.45",
+        680
+    ],
+    "41": [
+        "Quilmes   v   Juventud Unida",
+        "1.45",
+        "1.88",
+        "1.90",
+        681
     ]
 }

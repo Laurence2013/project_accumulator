@@ -216,26 +216,26 @@ class SortGamesOddsIntoDb(View, SaveOddsIntoDb, SaveGamesIntoDb):
 
 class Coral_Games(View):
     def get(self, request, *args, **kwargs):
+        test_list = list()
+        test_list2 = list()
         update_no = int(kwargs.get('update_no'))
         if update_no is 1:
-            print('hello')
-        # test_list = list()
-        # test_list2 = list()
-        # coral = Coral_Base()
-        # coral.get_todays_matches()
-        # matches = coral.get_todays_matches_list()
-        #
-        # for match in range(0, len(matches)):
-        #     test_list.append(matches[match].split())
-        #
-        # list2 = filter(None, test_list)
-        # for l2 in list2:
-        #     test_list2.append(l2)
-        #
-        # for test2 in range(0, len(test_list2)):
-        #     test_list2[test2].pop(0)
-        #     test_list2[test2].pop(0)
-        #     test_list2[test2].pop(0)
-        #     del test_list2[test2][-1]
-        # print(test_list2)
+            print('Hello from Coral')
+            # coral = Coral_Base()
+            # coral.get_todays_matches()
+            # matches = coral.get_todays_matches_list()
+            #
+            # for match in range(0, len(matches)):
+            #     test_list.append(matches[match].split())
+            #
+            # list2 = filter(None, test_list)
+            # for l2 in list2:
+            #     test_list2.append(l2)
+            #
+            # for test2 in range(0, len(test_list2)):
+            #     test_list2[test2].pop(0)
+            #     test_list2[test2].pop(0)
+            #     test_list2[test2].pop(0)
+            #     del test_list2[test2][-1]
+            # print(test_list2)
         return HttpResponse('Hello world')
