@@ -7,6 +7,8 @@ class TestingFirefoxBrowser(TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
         self.baseUrl = 'http://sports.coral.co.uk/football'
+        self.coralDailyGames = ['Todays matches', 'Tomorrow matches', '2017-12-13', '2017-12-14', '2017-12-15', 'Future matches']
+        self.coralBookieName = 'Coral'
 
     def test_01_OpenFirefoxBrowser(self):
         title = 'Football Betting Odds | UK & International Odds | Coral'
@@ -43,7 +45,7 @@ class TestingFirefoxBrowser(TestCase):
         leagues = self.driver.find_elements_by_class_name('featured-match')
         for league in leagues:
             todays_league.append(league.text)
-            
+
         for today_league in todays_league:
             print(today_league)
 

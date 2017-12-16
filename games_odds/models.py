@@ -66,6 +66,16 @@ class WilliamHillCsvLinks(models.Model):
     def __str__(self):
         return self.url_name
 
+class CoralCsvLinks(models.Model):
+    url_name = models.CharField(max_length = 50)
+    get_match_odds_link_csv = models.CharField(max_length = 100)
+    ids_for_tag_span_link_csv = models.CharField(max_length = 100)
+    ids_for_tag_tbody_link_csv = models.CharField(max_length = 100)
+    date_updated = models.DateTimeField(auto_now_add = True)
+
+    def __str__(self):
+        return self.url_name
+
 class WilliamHillGames0(models.Model):
     url_game_link = models.ForeignKey(WilliamHillCsvLinks, on_delete = models.CASCADE)
     games = models.CharField(max_length = 300)

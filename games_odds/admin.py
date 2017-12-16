@@ -1,5 +1,5 @@
 from django.contrib import admin
-from games_odds.models import TimeOfRefreshWilliamHill0, TimeOfRefreshWilliamHill1, TimeOfRefreshWilliamHill2, TimeOfRefreshWilliamHill3, TimeOfRefreshWilliamHill4, TimeOfRefreshWilliamHill5, TimeOfRefreshWilliamHill6, WilliamHillCsvLinks, WilliamHillGames0, WilliamHillGames1, WilliamHillGames2, WilliamHillGames3, WilliamHillGames4, WilliamHillGames5, WilliamHillGames6, WilliamHillOdds0, WilliamHillOdds1, WilliamHillOdds2, WilliamHillOdds3, WilliamHillOdds4, WilliamHillOdds5, WilliamHillOdds6
+from games_odds.models import TimeOfRefreshWilliamHill0, TimeOfRefreshWilliamHill1, TimeOfRefreshWilliamHill2, TimeOfRefreshWilliamHill3, TimeOfRefreshWilliamHill4, TimeOfRefreshWilliamHill5, TimeOfRefreshWilliamHill6, WilliamHillCsvLinks, CoralCsvLinks, WilliamHillGames0, WilliamHillGames1, WilliamHillGames2, WilliamHillGames3, WilliamHillGames4, WilliamHillGames5, WilliamHillGames6, WilliamHillOdds0, WilliamHillOdds1, WilliamHillOdds2, WilliamHillOdds3, WilliamHillOdds4, WilliamHillOdds5, WilliamHillOdds6
 
 admin.site.register(TimeOfRefreshWilliamHill0)
 admin.site.register(TimeOfRefreshWilliamHill1)
@@ -9,6 +9,7 @@ admin.site.register(TimeOfRefreshWilliamHill4)
 admin.site.register(TimeOfRefreshWilliamHill5)
 admin.site.register(TimeOfRefreshWilliamHill6)
 admin.site.register(WilliamHillCsvLinks)
+admin.site.register(CoralCsvLinks)
 admin.site.register(WilliamHillGames0)
 admin.site.register(WilliamHillGames1)
 admin.site.register(WilliamHillGames2)

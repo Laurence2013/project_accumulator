@@ -20,7 +20,7 @@ class Odd(models.Model):
 
     def __str__(self):
         return str(self.games)
- 
+
 class MatchInfo(models.Model):
     daily_matches = models.CharField(max_length = 200)
     combinations = models.CharField(max_length = 200)
@@ -55,3 +55,12 @@ class WilliamHillGamesWithOdds0(models.Model):
 
     def __str__(self):
         return self.match
+
+class CoralDailyMatche(models.Model):
+    bookies = models.ForeignKey(Bookie, on_delete = models.CASCADE)
+    coral_csv_links = models.ForeignKey(CoralCsvLinks, on_delete = models.CASCADE)
+    dates_of_games = models.CharField(max_length = 50)
+    date_updated = models.DateTimeField(auto_now_add = True)
+
+    def __str__(self):
+        return self.dates_of_games
