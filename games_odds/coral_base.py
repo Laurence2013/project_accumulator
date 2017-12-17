@@ -1,5 +1,6 @@
-from behave import *
+import time
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from xvfbwrapper import Xvfb
 
 class Coral_Base:
@@ -7,19 +8,19 @@ class Coral_Base:
     display = Xvfb()
     display.start()
 
-    @given(u'that the web driver method is called and calling Firefox object')
-    def _webdriver_firefox(self):
-        driver = webdriver.Firefox()
-        return driver
+    def __init__(self):
+        self.driver = webdriver.Firefox()
 
-    @when(u'returning the chosen web link for Coral')
-    def _base_url(self):
-        baseUrl = 'http://sports.coral.co.uk/football'
-        return baseUrl
+    def get_website_title(self, url):
+        self.driver.get(url)
+        return self.driver.title
 
-    @then(u'selenium will go to the link and grab the new daily match dates')
     def get_daily_match_dates(self):
         pass
+
+    def sleep_then_kill_browser(self):
+        time.sleep(1)
+        self.driver.close()
 
     # Get todays matches
     # def get_todays_matches(self):

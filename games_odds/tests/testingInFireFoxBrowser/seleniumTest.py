@@ -2,9 +2,12 @@ import time
 from django.test import TestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from xvfbwrapper import Xvfb
 
 class TestingFirefoxBrowser(TestCase):
     def setUp(self):
+        self.display = Xvfb()
+        self.display.start()
         self.driver = webdriver.Firefox()
         self.baseUrl = 'http://sports.coral.co.uk/football'
         self.coralDailyGames = ['Todays matches', 'Tomorrow matches', '2017-12-13', '2017-12-14', '2017-12-15', 'Future matches']

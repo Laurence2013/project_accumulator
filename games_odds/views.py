@@ -11,7 +11,7 @@ from games_odds.mainViewsApi.main_views_api import MainViewsApi
 from games_odds.william_hill_base import WilliamHillBase
 from games_odds.save_games_into_db import SaveGamesIntoDb
 from games_odds.save_odds_into_db import SaveOddsIntoDb
-from games_odds.features.steps.coral_base import Coral_Base
+from games_odds.coral_base import Coral_Base
 
 class Bookies(TemplateView):
     template_name = 'accumulator/bookies.html'
