@@ -5,10 +5,10 @@ from xvfbwrapper import Xvfb
 
 class Coral_Base:
     todays_matches_list = list()
-    display = Xvfb()
-    display.start()
+    # display = Xvfb()
+    # display.start()
 
-    def __init__(self):
+    def initiateWebdriver(self):
         self.driver = webdriver.Firefox()
 
     def get_website_title(self, url):
