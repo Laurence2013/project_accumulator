@@ -15,20 +15,18 @@ class Coral_Base:
         self.driver.get(url)
         return self.driver.title
 
-    def get_daily_match_dates(self, url):
-        daily_match_dates = list()
-        self.driver.get(url)
-        daily_match_dates.append(self.driver.find_element(By.XPATH, '//div[@id="feat-todays"]').text)
-        daily_match_dates.append(self.driver.find_element(By.XPATH, '//div[@id="feat-tomorrows"]').text)
-        click_on_future_matches = self.driver.find_element_by_id('feat-future-dropdown')
-        click_on_future_matches.click()
-        for n in range(1,5):
-            daily_match_dates.append(self.driver.find_element(By.XPATH, '//div[@id="ob-all-matches-content"]/div[1]/div[1]/ul/li['+ str(n) +']/a').text)
-        return daily_match_dates
+    def get_daily_match_dates(self):
+        pass
 
     def sleep_then_kill_browser(self):
         time.sleep(1)
         self.driver.close()
+
+    def test_mock_iteratble(self, listNum):
+        myNum = []
+        for i in range(0, len(listNum)):
+            myNum.append(listNum[i])
+        return myNum
 
     # Get todays matches
     # def get_todays_matches(self):

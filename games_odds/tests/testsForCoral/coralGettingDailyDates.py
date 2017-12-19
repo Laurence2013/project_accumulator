@@ -1,4 +1,5 @@
 from mock import Mock
+from mock import MagicMock
 from mock import patch
 from django.test import TestCase
 from games_odds.coral_base import Coral_Base
@@ -18,18 +19,20 @@ class CoralGettingDailyDates(TestCase):
     @patch.object(Coral_Base, 'get_website_title')
     def test_02_MockTestExample(self, mock_get_website_title):
         mock_get_website_title.return_value = 'http://sports.coral.co.uk/football'
-        # action
-        get_hello = self.coral.get_website_title(self.coralUrl)
-        # assert
-        self.assertEqual(self.coralUrl, get_hello)
+        get_url = self.coral.get_website_title(self.coralUrl)
+        self.assertEqual(self.coralUrl, get_url)
 
-    @patch.object(Coral_Base, 'get_website_title')
-    def test_03_MockTestExample(self, mock_get_website_title):
-        Coral_Base.get_website_title(self.coralUrl)
-        mock_get_website_title.assert_called_with(self.coralUrl)
+    def test_03_GettingDailyMatchDates(self):
+        todays_matches = ['Todays Matches', 'Tomorrows Matches']
+        self.coral.get_daily_match_dates = Mock()
+        self.coral.get_daily_match_dates.return_value = todays_matches
+        get_todays_matches = self.coral.get_daily_match_dates(todays_matches)
+        self.assertEqual(todays_matches, get_todays_matches)
 
-    def test_04_MockTestExample(self):
-        self.coral.get_website_title = Mock()
-        self.coral.get_website_title.return_value = self.coralUrl
-        get_link = self.coral.get_website_title(self.coralUrl)
-        self.assertEqual(self.coralUrl, get_link)
+    def test_04_GettingDailyMatchDates(self):
+        self.coral.initiateWebdriver()
+        get_matches = self.coral.get_daily_match_dates(self.coralUrl)
+        self.coral.sleep_then_kill_browser()
+        print()
+        for match in get_matches:
+            print(match)
