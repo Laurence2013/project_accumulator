@@ -23,16 +23,25 @@ class CoralGettingDailyDates(TestCase):
         self.assertEqual(self.coralUrl, get_url)
 
     def test_03_GettingDailyMatchDates(self):
-        todays_matches = ['Todays Matches', 'Tomorrows Matches']
+        todays_matches = ['Todays Matches', 'Tomorrows Matches', '21st of Dec 2017', '22st of Dec 2017', '23st of Dec 2017', 'Future Matches']
         self.coral.get_daily_match_dates = Mock()
         self.coral.get_daily_match_dates.return_value = todays_matches
         get_todays_matches = self.coral.get_daily_match_dates(todays_matches)
         self.assertEqual(todays_matches, get_todays_matches)
 
     def test_04_GettingDailyMatchDates(self):
+        todays_matches = ['Todays Matches', 'Tomorrows Matches', '21st of Dec 2017', '22st of Dec 2017', '23st of Dec 2017', 'Future Matches']
+        self.coral.get_daily_match_dates = Mock()
+        self.coral.get_daily_match_dates.side_effect = todays_matches
+        get_todays_matches = self.coral.get_daily_match_dates(todays_matches)
+        self.assertEqual(todays_matches[0], get_todays_matches)
+        get_todays_matches = self.coral.get_daily_match_dates(todays_matches)
+        self.assertEqual(todays_matches[1], get_todays_matches)
+        get_todays_matches = self.coral.get_daily_match_dates(todays_matches)
+        self.assertEqual(todays_matches[2], get_todays_matches)
+
+    def test_05_getTodaysMatches(self):
         self.coral.initiateWebdriver()
-        get_matches = self.coral.get_daily_match_dates(self.coralUrl)
-        self.coral.sleep_then_kill_browser()
-        print()
-        for match in get_matches:
-            print(match)
+        get_games = self.coral.get_todays_matches(self.coralUrl)
+        for game in get_games:
+            print(game)

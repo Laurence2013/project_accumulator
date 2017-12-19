@@ -53,3 +53,11 @@ class CoralGettingDailyDates(TestCase):
         myNum = self.coral.test_mock_iteratble(listNum)
         self.assertEqual([5,4,3,2,1], myNum)
         myNum = self.coral.test_mock_iteratble(listNum)
+
+    def test_07_GettingDailyMatchDates(self):
+        self.coral.initiateWebdriver()
+        get_matches = self.coral.get_daily_match_dates(self.coralUrl)
+        self.coral.sleep_then_kill_browser()
+        print()
+        for match in get_matches:
+            print(match)
