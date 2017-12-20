@@ -96,9 +96,47 @@ class Coral_Base:
             future_matches_b_list.append(f_b_matches.text)
         return future_matches_b_list
 
-    # Get future matches b
-    # Get future matches c
-    # Get future matches d
+    def get_future_matches_c(self, url):
+        future_matches_c_list = list()
+        self.driver.get(url)
+        change_to_decimal = self.driver.find_element_by_id('site_pref_decimal')
+        time.sleep(5)
+        change_to_decimal.click()
+        time.sleep(5)
+        feat_tomorrows = self.driver.find_element_by_id('feat-future-dropdown')
+        time.sleep(5)
+        feat_tomorrows.click()
+        time.sleep(5)
+        future_c_features = self.driver.find_element(By.XPATH, '//ul[@class="next-matches-dropdown"]/li[3]//a')
+        time.sleep(5)
+        future_c_features.click()
+        time.sleep(5)
+        future_matches_c = self.driver.find_elements_by_class_name('featured-match')
+
+        for f_c_matches in future_matches_c:
+            future_matches_c_list.append(f_c_matches.text)
+        return future_matches_c_list
+
+    def get_future_matches_d(self, url):
+        future_matches_d_list = list()
+        self.driver.get(url)
+        change_to_decimal = self.driver.find_element_by_id('site_pref_decimal')
+        time.sleep(5)
+        change_to_decimal.click()
+        time.sleep(5)
+        feat_tomorrows = self.driver.find_element_by_id('feat-future-dropdown')
+        time.sleep(5)
+        feat_tomorrows.click()
+        time.sleep(5)
+        future_d_features = self.driver.find_element(By.XPATH, '//ul[@class="next-matches-dropdown"]/li[4]//a')
+        time.sleep(5)
+        future_d_features.click()
+        time.sleep(5)
+        future_matches_d = self.driver.find_elements_by_class_name('featured-match')
+
+        for f_d_matches in future_matches_d:
+            future_matches_d_list.append(f_d_matches.text)
+        return future_matches_d_list
 
     def sleep_then_kill_browser(self):
         time.sleep(1)
