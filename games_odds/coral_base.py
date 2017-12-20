@@ -4,8 +4,8 @@ from selenium.webdriver.common.by import By
 from xvfbwrapper import Xvfb
 
 class Coral_Base:
-    display = Xvfb()
-    display.start()
+    # display = Xvfb()
+    # display.start()
 
     def initiateWebdriver(self):
         self.driver = webdriver.Firefox()
@@ -37,8 +37,65 @@ class Coral_Base:
             todays_matches_list.append(d_matches.text)
         return todays_matches_list
 
-    # Get tomorrows matches
-    # Get future matches a
+    def get_tomorrows_matches(self, url):
+        tomorrow_matches_list = list()
+        self.driver.get(url)
+        change_to_decimal = self.driver.find_element_by_id('site_pref_decimal')
+        time.sleep(5)
+        change_to_decimal.click()
+        time.sleep(5)
+        feat_tomorrows = self.driver.find_element_by_id('feat-tomorrows')
+        time.sleep(5)
+        feat_tomorrows.click()
+        time.sleep(5)
+        tomorrows_feat_matches = self.driver.find_elements_by_class_name('featured-match')
+
+        for t_matches in tomorrows_feat_matches:
+            tomorrow_matches_list.append(t_matches.text)
+        return tomorrow_matches_list
+
+    def get_future_matches_a(self, url):
+        future_matches_a_list = list()
+        self.driver.get(url)
+        change_to_decimal = self.driver.find_element_by_id('site_pref_decimal')
+        time.sleep(5)
+        change_to_decimal.click()
+        time.sleep(5)
+        feat_tomorrows = self.driver.find_element_by_id('feat-future-dropdown')
+        time.sleep(5)
+        feat_tomorrows.click()
+        time.sleep(5)
+        future_a_features = self.driver.find_element(By.XPATH, '//ul[@class="next-matches-dropdown"]/li[1]//a')
+        time.sleep(5)
+        future_a_features.click()
+        time.sleep(5)
+        future_matches_a = self.driver.find_elements_by_class_name('featured-match')
+
+        for f_a_matches in future_matches_a:
+            future_matches_a_list.append(f_a_matches.text)
+        return future_matches_a_list
+
+    def get_future_matches_b(self, url):
+        future_matches_b_list = list()
+        self.driver.get(url)
+        change_to_decimal = self.driver.find_element_by_id('site_pref_decimal')
+        time.sleep(5)
+        change_to_decimal.click()
+        time.sleep(5)
+        feat_tomorrows = self.driver.find_element_by_id('feat-future-dropdown')
+        time.sleep(5)
+        feat_tomorrows.click()
+        time.sleep(5)
+        future_b_features = self.driver.find_element(By.XPATH, '//ul[@class="next-matches-dropdown"]/li[2]//a')
+        time.sleep(5)
+        future_b_features.click()
+        time.sleep(5)
+        future_matches_b = self.driver.find_elements_by_class_name('featured-match')
+
+        for f_b_matches in future_matches_b:
+            future_matches_b_list.append(f_b_matches.text)
+        return future_matches_b_list
+
     # Get future matches b
     # Get future matches c
     # Get future matches d

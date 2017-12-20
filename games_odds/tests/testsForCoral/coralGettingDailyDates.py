@@ -45,3 +45,25 @@ class CoralGettingDailyDates(TestCase):
         get_games = self.coral.get_todays_matches(self.coralUrl)
         for game in get_games:
             print(game)
+        self.coral.sleep_then_kill_browser()
+
+    def test_06_getTomorrowsMatches(self):
+        self.coral.initiateWebdriver()
+        get_games = self.coral.get_tomorrows_matches(self.coralUrl)
+        for game in get_games:
+            print(game)
+        self.coral.sleep_then_kill_browser()
+
+    def test_07_getFutureMatches_a(self):
+        self.coral.initiateWebdriver()
+        get_games = self.coral.get_future_matches_a(self.coralUrl)
+        for game in get_games:
+            print(game)
+        self.coral.sleep_then_kill_browser()
+
+    def test_08_getFutureMatches_b(self):
+        self.coral.initiateWebdriver()
+        get_games = self.coral.get_future_matches_b(self.coralUrl)
+        for game in get_games:
+            print(game)
+        self.coral.sleep_then_kill_browser()
