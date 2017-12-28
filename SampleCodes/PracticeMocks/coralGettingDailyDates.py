@@ -61,3 +61,34 @@ class CoralGettingDailyDates(TestCase):
         print()
         for match in get_matches:
             print(match)
+
+    @patch("games_odds.coral_base.Coral_Base.initiateWebdriver")
+    def test_13_testing(self, mock_webDriverFirefox):
+        self.coral.initiateWebdriver.testM.testN()
+        self.assertEqual(mock_webDriverFirefox.testM.testN.call_count, 1)
+
+    # This is how you mock a class
+    @patch("games_odds.coral_base.Coral_Base")
+    def test_11_testing(self, someClass):
+        self.assertEqual(someClass, someClass)
+
+    @patch('games_odds.coral_base.Coral_Base.get_website_title')
+    def test_12_TestingWebDriverUrl(self, mock_webDriver_url):
+        self.coral.get_website_title.return_value = self.coralUrl
+        get_title = self.coral.get_website_title(self.coralUrl)
+        self.assertEqual(self.coralUrl, get_title)
+
+    @patch('games_odds.coral_base.Coral_Base.test')
+    def test_13_TestingWebDriverUrl(self, mock_site):
+        print()
+        print(mock_site)
+        self.coral.test.return_value = 'hello2'
+        print(self.coral.test())
+        # self.coral.get_website_title(self.coralUrl)
+        mock_site.assert_called()
+
+    @patch.object(Coral_Base, 'get_website_title')
+    def test_02_GettingWebsiteTitle(self, mock_get_website_title):
+        mock_get_website_title.return_value = 'http://sports.coral.co.uk/football'
+        get_url = self.coral.get_website_title(self.coralUrl)
+        self.assertEqual(self.coralUrl, get_url)
