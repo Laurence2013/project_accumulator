@@ -12,6 +12,7 @@ from games_odds.william_hill_base import WilliamHillBase
 from games_odds.save_games_into_db import SaveGamesIntoDb
 from games_odds.save_odds_into_db import SaveOddsIntoDb
 from games_odds.coral_base import Coral_Base
+from games_odds.sorting_matches_coral import SortingMatchesInCoral
 
 class Bookies(TemplateView):
     template_name = 'accumulator/bookies.html'
@@ -214,28 +215,11 @@ class SortGamesOddsIntoDb(View, SaveOddsIntoDb, SaveGamesIntoDb):
         isOddsStored = self.store_odds_into_db(get_link, odds_from_csv_file)
         return isGamesStored, isOddsStored
 
-class Coral_Games(View):
+class Coral_Games(View, SortingMatchesInCoral, Coral_Base):
     def get(self, request, *args, **kwargs):
         test_list = list()
         test_list2 = list()
         update_no = int(kwargs.get('update_no'))
         if update_no is 1:
-            print('Hello from Coral')
-            # coral = Coral_Base()
-            # coral.get_todays_matches()
-            # matches = coral.get_todays_matches_list()
-            #
-            # for match in range(0, len(matches)):
-            #     test_list.append(matches[match].split())
-            #
-            # list2 = filter(None, test_list)
-            # for l2 in list2:
-            #     test_list2.append(l2)
-            #
-            # for test2 in range(0, len(test_list2)):
-            #     test_list2[test2].pop(0)
-            #     test_list2[test2].pop(0)
-            #     test_list2[test2].pop(0)
-            #     del test_list2[test2][-1]
-            # print(test_list2)
+            print('hello world')
         return HttpResponse('Hello world')
