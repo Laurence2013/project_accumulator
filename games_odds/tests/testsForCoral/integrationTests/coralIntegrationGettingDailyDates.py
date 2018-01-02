@@ -35,6 +35,12 @@ class CoralIntegrationGettingDailyDates(LiveServerTestCase, TestCaseExactDataTyp
         isTheSame = self.assertDataTypeOfListIsEqual(self.expected_todays_match_list2, list_to_test)
         self.assertFalse(isTheSame)
 
+    def test_03_seperating_odds_from_games(self):
+        '''
+        To seperate the games from the odds by placing them in two seperate tables, using integration testing
+        '''
+        pass
+
     # def test_03_NotSameList(self):
     #     list_to_test = list()
     #     self.coral_base.initiateWebdriver()

@@ -17,3 +17,23 @@ class SortingMatchesInCoral(Coral_Base):
             test_list2[test2].pop(0)
             del test_list2[test2][-1]
         return test_list2
+
+    def seperating_odds(self, get_odds):
+        get_odds_list = list()
+
+        for eachOdds in range(0, len(get_odds)):
+            get_odds_list.append(get_odds[eachOdds][-3:])
+        return get_odds_list
+
+    def seperating_games(self, get_games):
+        for eachGames in range(0, len(get_games)):
+            get_games[eachGames].pop(-3)
+            get_games[eachGames].pop(-2)
+            get_games[eachGames].pop(-1)
+        return get_games
+
+    # def seperating_games(self, get_games):
+    #     games_list = list()
+    #     for eachGames in range(0, len(get_games)):
+    #         games_list.append(get_games[eachGames][-3:])
+    #     return games_list
