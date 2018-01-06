@@ -1,3 +1,7 @@
+'''
+This new prototype assertDataTypeOfListIsEqual, is very important test for the integration test. This is because it further test more if the games crawled from the website behaves a certain way
+'''
+
 class TestCaseExactDataTypeList:
     def assertDataTypeOfListIsEqual(self, list1, list2):
         isLenSame = self.checkBothListsAreEqualOfLength(list1, list2)

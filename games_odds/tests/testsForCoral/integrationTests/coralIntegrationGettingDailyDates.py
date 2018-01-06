@@ -35,7 +35,17 @@ class CoralIntegrationGettingDailyDates(LiveServerTestCase, TestCaseExactDataTyp
         isTheSame = self.assertDataTypeOfListIsEqual(self.expected_todays_match_list2, list_to_test)
         self.assertFalse(isTheSame)
 
-    def test_03_seperating_odds_from_games(self):
+    def test_03_gettingAllThedailyMatchDates(self):
+        '''
+        Using integration testing to get daily match dates in real time using selenium
+        '''
+        match_dates = list()
+        self.coral_base.initiateWebdriver()
+        get_match_dates = self.coral_base.get_daily_match_dates(self.coralUrl)
+        self.coral_base.sleep_then_kill_browser()
+        self.assertNotEqual(0, len(get_match_dates))
+
+    def test_04_seperating_odds_from_games(self):
         '''
         To seperate the games from the odds by placing them in two seperate tables, using integration testing
         '''

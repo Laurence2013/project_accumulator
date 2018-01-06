@@ -3,7 +3,7 @@ from django.views.generic import View, TemplateView
 from django.conf import settings
 from django.contrib import messages
 from django.http import HttpResponse
-from accumulator.models import WilliamHillDailyMatche
+from accumulator.models import *
 from games_odds.webScraping.scrapingWilliamHill import ScrapingWilliamHill
 from games_odds.webScraping.decimalToFractionAndStoreInDb import DecimalToFractionAndStoreInDb
 from games_odds.webScraping.combineOddsWithItsMatch import CombineOddsWithItsMatch
@@ -216,10 +216,16 @@ class SortGamesOddsIntoDb(View, SaveOddsIntoDb, SaveGamesIntoDb):
         return isGamesStored, isOddsStored
 
 class Coral_Games(View, SortingMatchesInCoral, Coral_Base):
+    coralUrl = 'http://sports.coral.co.uk/football'
+
     def get(self, request, *args, **kwargs):
         test_list = list()
         test_list2 = list()
         update_no = int(kwargs.get('update_no'))
         if update_no is 1:
-            print('hello world')
+            self.initiateWebdriver()
+            get_match_dates = self.get_daily_match_dates(self.coralUrl)
+            self.sleep_then_kill_browser()
+            coral_game_dates = Bookie.objects.filter(bookies_name = 'Corel').values_list('id', flat=True)
+            print(coral_game_dates)
         return HttpResponse('Hello world')
