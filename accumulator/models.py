@@ -57,9 +57,10 @@ class WilliamHillGamesWithOdds0(models.Model):
         return self.match
 
 class CoralDailyMatche(models.Model):
-    bookies = models.ForeignKey(Bookie, on_delete = models.CASCADE)
+    dates_id = models.IntegerField(default = 0)
     dates_of_games = models.CharField(max_length = 50)
     date_updated = models.DateTimeField(auto_now_add = True)
+    bookies = models.ForeignKey(Bookie, on_delete = models.CASCADE)
 
     def __str__(self):
         return self.dates_of_games

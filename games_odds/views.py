@@ -219,13 +219,16 @@ class Coral_Games(View, SortingMatchesInCoral, Coral_Base):
     coralUrl = 'http://sports.coral.co.uk/football'
 
     def get(self, request, *args, **kwargs):
-        test_list = list()
-        test_list2 = list()
         update_no = int(kwargs.get('update_no'))
         if update_no is 1:
             self.initiateWebdriver()
             get_match_dates = self.get_daily_match_dates(self.coralUrl)
             self.sleep_then_kill_browser()
             coral_game_dates = Bookie.objects.filter(bookies_name = 'Corel').values_list('id', flat=True)
-            print(coral_game_dates)
+            CoralDailyMatche.objects.all().delete()
+            date_string = coral_game_dates.values_list()[0][0]
+            for eachDate in range(0, len(get_match_dates)):
+                save_game_dates = CoralDailyMatche(dates_of_games=get_match_dates[eachDate], dates_id = eachDate + 1, bookies_id=date_string)
+                save_game_dates.save()
+
         return HttpResponse('Hello world')
