@@ -1,296 +1,562 @@
 {
     "0": [
-        "Sheff Utd   v   Bristol City",
-        "1.05",
-        "2.60",
-        "2.40",
-        640
+        "Sweden   v   Estonia",
+        "0.60",
+        "2.50",
+        "4.50",
+        682
     ],
     "1": [
-        "Alaves   v   Las Palmas",
-        "1.38",
-        "2.40",
-        "1.90",
-        641
+        "Shrewsbury   v   West Ham",
+        "4.00",
+        "0.55",
+        "3.50",
+        683
     ],
     "2": [
-        "Rio Ave   v   Moreirense",
-        "0.62",
-        "2.50",
-        "4.50",
-        642
+        "Tottenham   v   Wimbledon",
+        "0.12",
+        "7.00",
+        "22.00",
+        684
     ],
     "3": [
-        "Stuttgart   v   Leverkusen",
-        "2.20",
-        "2.60",
-        "1.15",
-        643
+        "Nottingham Forest   v   Arsenal",
+        "5.00",
+        "3.20",
+        "0.53",
+        685
     ],
     "4": [
-        "Bordeaux   v   Strasbourg",
-        "0.67",
-        "2.80",
-        "4.00",
-        644
+        "Barcelona   v   Levante",
+        "0.05",
+        "12.00",
+        "28.00",
+        686
     ],
     "5": [
-        "Dundee   v   Aberdeen",
-        "3.20",
+        "Athletic Bilbao   v   Alaves",
+        "0.67",
         "2.60",
-        "0.83",
-        645
+        "4.50",
+        687
     ],
     "6": [
-        "Willem II   v   NAC Breda",
-        "0.80",
-        "2.60",
+        "Villarreal   v   Deportivo La Coruna",
+        "0.55",
         "3.00",
-        646
+        "5.00",
+        688
     ],
     "7": [
-        "Melbourne Victory   v   Adelaide United",
-        "2.00",
-        "2.50",
-        "2.60",
-        647
+        "Celta Vigo   v   Real Madrid",
+        "5.00",
+        "4.00",
+        "0.44",
+        689
     ],
     "8": [
-        "Temperley   v   Tigre",
-        "1.70",
-        "2.00",
-        "1.60",
-        648
+        "Moreirense   v   Benfica",
+        "8.00",
+        "4.00",
+        "0.29",
+        690
     ],
     "9": [
-        "Patronato   v   Olimpio Bahia Blanca",
-        "1.20",
-        "2.00",
-        "2.30",
-        649
+        "Sporting Lisbon   v   Maritimo",
+        "0.18",
+        "5.00",
+        "12.00",
+        691
     ],
     "10": [
-        "Granada   v   Almeria",
-        "0.73",
-        "2.40",
-        "3.80",
-        650
+        "Porto   v   Guimaraes",
+        "0.12",
+        "6.50",
+        "16.00",
+        692
     ],
     "11": [
-        "Barcelona B   v   Sporting Gijon",
-        "1.20",
-        "2.30",
-        "2.10",
-        651
+        "Senlis Fc   v   Nantes",
+        "20.00",
+        "7.00",
+        "0.08",
+        693
     ],
     "12": [
-        "Novara   v   Cremonese",
-        "1.30",
-        "2.00",
-        "2.10",
-        652
+        "U.S. Fleury   v   Biesheim",
+        "0.62",
+        "2.75",
+        "4.00",
+        694
     ],
     "13": [
-        "Ternana   v   Parma",
-        "2.00",
-        "2.10",
-        "1.30",
-        653
+        "Sannois   v   Epinal",
+        "0.67",
+        "2.50",
+        "3.50",
+        695
     ],
     "14": [
-        "Cesena   v   Pescara",
-        "1.15",
-        "2.60",
-        "1.90",
-        654
+        "Dunkerque   v   Metz",
+        "1.70",
+        "2.10",
+        "1.60",
+        696
     ],
     "15": [
-        "Spezia   v   Foggia",
-        "0.91",
-        "2.40",
-        "2.75",
-        655
+        "Still 1930   v   Troyes",
+        "20.00",
+        "9.00",
+        "0.06",
+        697
     ],
     "16": [
-        "Braunschweig   v   Holstein Kiel",
-        "2.25",
-        "2.50",
-        "1.05",
-        656
+        "Sochaux   v   Amiens",
+        "1.30",
+        "2.10",
+        "2.10",
+        698
     ],
     "17": [
-        "Aue   v   Darmstadt",
-        "1.30",
-        "2.20",
-        "2.00",
-        657
+        "Vannes   v   Saint Brieuc",
+        "1.40",
+        "2.40",
+        "1.60",
+        699
     ],
     "18": [
-        "Paris F.C.   v   Lens",
-        "1.75",
-        "1.90",
-        "1.62",
-        658
+        "Rennes   v   Paris Saint-Germain",
+        "11.00",
+        "5.00",
+        "0.20",
+        700
     ],
     "19": [
-        "Orleans   v   Gazelec Ajaccio",
-        "1.60",
-        "2.10",
-        "1.60",
-        659
+        "Albacete   v   Tenerife",
+        "1.62",
+        "1.50",
+        "1.88",
+        701
     ],
     "20": [
-        "Brest   v   Bourg-en-Bresse",
-        "0.50",
-        "3.20",
-        "4.50",
-        660
+        "Huesca   v   Oviedo",
+        "1.25",
+        "1.88",
+        "2.40",
+        702
     ],
     "21": [
-        "Lorient   v   Sochaux",
-        "0.62",
-        "2.80",
-        "3.75",
-        661
+        "Leonesa   v   Numancia",
+        "1.38",
+        "2.00",
+        "2.00",
+        703
     ],
     "22": [
-        "Niort   v   Reims",
-        "2.30",
+        "Almeria   v   Lugo",
+        "1.30",
         "2.10",
-        "1.15",
-        662
+        "2.00",
+        704
     ],
     "23": [
-        "Valenciennes   v   Quevilly Rouen",
-        "1.05",
-        "2.40",
-        "2.25",
-        663
+        "Arouca   v   Oliveirense",
+        "0.20",
+        "4.80",
+        "14.00",
+        705
     ],
     "24": [
-        "Auxerre   v   Chateauroux",
-        "0.91",
-        "2.30",
-        "2.80",
-        664
+        "Penafiel   v   Covilha",
+        "4.00",
+        "2.20",
+        "0.75",
+        706
     ],
     "25": [
-        "Tours   v   Nancy",
-        "2.20",
-        "2.20",
-        "1.15",
-        665
+        "Mainz   v   M'gladbach",
+        "18.00",
+        "7.00",
+        "0.10",
+        707
     ],
     "26": [
-        "Bursaspor   v   Fenerbahce",
-        "2.10",
-        "2.30",
-        "1.15",
-        666
+        "Werder Bremen   v   Twente Enschede",
+        "0.00",
+        "45.00",
+        "55.00",
+        708
     ],
     "27": [
-        "Istanbulspor   v   Boluspor",
+        "Lamia   v   Xanthi",
+        "1.20",
         "1.60",
-        "2.10",
-        "1.60",
-        667
+        "3.20",
+        709
     ],
     "28": [
-        "Volendam   v   Jong FC Utrecht",
-        "0.44",
-        "3.33",
-        "5.00",
-        668
+        "PAS Giannina   v   Asteras Tripolis",
+        "1.40",
+        "1.80",
+        "2.20",
+        710
     ],
     "29": [
-        "Go Ahead Eagles   v   Jong PSV",
-        "1.20",
-        "2.60",
-        "1.80",
-        669
+        "Larissa   v   Olympiacos",
+        "7.00",
+        "3.00",
+        "0.40",
+        711
     ],
     "30": [
-        "Oss   v   NEC Nijmegen",
-        "4.00",
-        "3.50",
-        "0.50",
-        670
+        "Reading Women   v   Man City Women",
+        "5.00",
+        "3.20",
+        "0.44",
+        712
     ],
     "31": [
-        "Helmond Sport   v   FC Eindhoven",
-        "1.30",
-        "2.60",
-        "1.62",
-        671
+        "Toluca   v   Guadalaraja",
+        "1.15",
+        "2.25",
+        "2.25",
+        713
     ],
     "32": [
-        "Almere   v   De Graafschap",
-        "2.80",
-        "3.00",
-        "0.73",
-        672
+        "Guijuelo   v   Club Rapido de Bouzas",
+        "1.38",
+        "1.88",
+        "2.10",
+        714
     ],
     "33": [
-        "Fortuna Sittard   v   Waalwijk",
-        "0.62",
-        "3.20",
-        "3.33",
-        673
+        "Gimnastica Segoviana   v   Atl Madrid II",
+        "1.80",
+        "2.00",
+        "1.50",
+        715
     ],
     "34": [
-        "Dordrecht   v   MVV Maastricht",
-        "1.60",
-        "2.50",
+        "Pontevedra   v   Celta de Vigo II",
+        "1.90",
+        "2.10",
         "1.38",
-        674
+        716
     ],
     "35": [
-        "Telstar   v   Emmen",
-        "1.30",
-        "2.60",
-        "1.62",
-        675
+        "Ponferradina   v   San Sebastian de los Reyes",
+        "0.95",
+        "2.10",
+        "3.00",
+        717
     ],
     "36": [
-        "Sandecja Nowy Sacz   v   Jagiellonia",
-        "2.30",
-        "2.20",
-        "1.15",
-        676
+        "Arenas Club de Getxo   v   Real Racing Club Santander",
+        "2.25",
+        "1.88",
+        "1.25",
+        718
     ],
     "37": [
-        "Gornik Zabrze   v   Lechia Gdansk",
-        "1.15",
-        "2.40",
-        "2.10",
-        677
+        "Caudal Deportivo   v   Burgos",
+        "2.30",
+        "1.75",
+        "1.30",
+        719
     ],
     "38": [
-        "Ural   v   Arsenal Tula",
-        "1.45",
-        "1.88",
-        "2.00",
-        678
+        "Real Union Club Irun   v   Pena Sport",
+        "0.55",
+        "2.50",
+        "5.00",
+        720
     ],
     "39": [
-        "Connah's Quay   v   Aberystwyth",
-        "0.40",
-        "3.50",
+        "Mirandes   v   Leioa",
+        "0.50",
+        "2.75",
         "5.00",
-        679
+        721
     ],
     "40": [
-        "Prestatyn Town   v   Cefn Druids",
-        "1.40",
-        "2.60",
-        "1.45",
-        680
+        "Logrones   v   Athletic Club Bilbao II",
+        "0.91",
+        "2.20",
+        "2.80",
+        722
     ],
     "41": [
-        "Quilmes   v   Juventud Unida",
-        "1.45",
+        "Gernika Club   v   Real Sporting de Gijon II",
+        "0.67",
+        "2.30",
+        "4.00",
+        723
+    ],
+    "42": [
+        "Osasuna II   v   Barakaldo",
         "1.88",
         "1.90",
-        681
+        "1.45",
+        724
+    ],
+    "43": [
+        "Olot   v   Hercules de Alicante",
+        "2.30",
+        "2.00",
+        "1.15",
+        725
+    ],
+    "44": [
+        "Alcoyano   v   Llagostera",
+        "0.70",
+        "2.20",
+        "4.00",
+        726
+    ],
+    "45": [
+        "Cornella   v   Ontinyent",
+        "2.00",
+        "2.00",
+        "2.80",
+        727
+    ],
+    "46": [
+        "El Ejido 2012   v   Jumilla",
+        "0.91",
+        "2.20",
+        "2.80",
+        728
+    ],
+    "47": [
+        "Lorca Deportiva   v   Real Betis Balompie II",
+        "1.90",
+        "2.00",
+        "1.38",
+        729
+    ],
+    "48": [
+        "Ecija Balompie   v   Real Murcia",
+        "2.30",
+        "2.00",
+        "1.15",
+        730
+    ],
+    "49": [
+        "Villanovense   v   San Fernando",
+        "1.10",
+        "2.00",
+        "2.40",
+        731
+    ],
+    "50": [
+        "UCAM Murcia   v   Granada II",
+        "0.70",
+        "2.20",
+        "4.00",
+        732
+    ],
+    "51": [
+        "Merida   v   Marbella",
+        "2.00",
+        "2.00",
+        "2.75",
+        733
+    ],
+    "52": [
+        "Villarreal C   v   Crevillente Deportivo",
+        "0.65",
+        "2.25",
+        "4.80",
+        734
+    ],
+    "53": [
+        "Roda   v   Almazora",
+        "0.00",
+        "50.00",
+        "55.00",
+        735
+    ],
+    "54": [
+        "U.D Llanera   v   Condal Club",
+        "1.40",
+        "1.60",
+        "2.40",
+        736
+    ],
+    "55": [
+        "Becerril   v   Zamora",
+        "3.60",
+        "1.90",
+        "0.91",
+        737
+    ],
+    "56": [
+        "Torre Levante   v   Orihuela",
+        "2.50",
+        "1.62",
+        "1.40",
+        738
+    ],
+    "57": [
+        "Racing Club Villalbes   v   Bergantinos",
+        "1.62",
+        "1.60",
+        "2.20",
+        739
+    ],
+    "58": [
+        "Recreativo Huelva II   v   San Roque de Lepe",
+        "1.40",
+        "2.00",
+        "2.10",
+        740
+    ],
+    "59": [
+        "Mosconia   v   Gijon Industrial",
+        "1.62",
+        "1.70",
+        "2.00",
+        741
+    ],
+    "60": [
+        "EDMF Churra   v   Muleno",
+        "0.67",
+        "2.50",
+        "4.00",
+        742
+    ],
+    "61": [
+        "Iruna   v   Beti Kozkor",
+        "0.44",
+        "3.20",
+        "4.50",
+        743
+    ],
+    "62": [
+        "Laracha   v   Boiro",
+        "3.50",
+        "2.40",
+        "0.67",
+        744
+    ],
+    "63": [
+        "Rayo Ibense   v   Paterna",
+        "2.00",
+        "2.25",
+        "2.30",
+        745
+    ],
+    "64": [
+        "El Alamo   v   Los Yebenes San Bruno",
+        "2.00",
+        "2.25",
+        "2.30",
+        746
+    ],
+    "65": [
+        "Paiporta   v   La Nucia",
+        "2.50",
+        "2.30",
+        "0.91",
+        747
+    ],
+    "66": [
+        "Almazan   v   Salmantino",
+        "3.50",
+        "2.75",
+        "0.60",
+        748
+    ],
+    "67": [
+        "Collerense   v   Esporles",
+        "1.62",
+        "2.00",
+        "1.50",
+        749
+    ],
+    "68": [
+        "Algeciras   v   San Fermin",
+        "0.80",
+        "2.40",
+        "2.75",
+        750
+    ],
+    "69": [
+        "Silla   v   Recambios Colon",
+        "0.60",
+        "2.75",
+        "3.50",
+        751
+    ],
+    "70": [
+        "Gimnastica de Torrelavega   v   Rayo Cantabria",
+        "0.62",
+        "2.75",
+        "3.33",
+        752
+    ],
+    "71": [
+        "Reus Deportiu II   v   Palamos",
+        "0.60",
+        "2.75",
+        "3.50",
+        753
+    ],
+    "72": [
+        "Antequera   v   Maracena",
+        "0.20",
+        "4.50",
+        "7.50",
+        754
+    ],
+    "73": [
+        "Santfeliuenc   v   Granollers",
+        "0.80",
+        "2.25",
+        "3.00",
+        755
+    ],
+    "74": [
+        "Anorthosis   v   AEK Larnaca",
+        "2.40",
+        "0.75",
+        "3.50",
+        756
+    ],
+    "75": [
+        "APOEL Nicosia   v   Alki Oroklini",
+        "0.17",
+        "5.50",
+        "10.00",
+        757
+    ],
+    "76": [
+        "FC United of Manchester   v   Southport",
+        "0.40",
+        "3.50",
+        "5.50",
+        758
+    ],
+    "77": [
+        "Royal Knokke   v   Berchem",
+        "0.10",
+        "6.00",
+        "25.00",
+        759
+    ],
+    "78": [
+        "Five Islands   v   Grenades",
+        "1.62",
+        "2.50",
+        "1.25",
+        760
+    ],
+    "79": [
+        "Pigotts Bullets   v   Tryum",
+        "2.00",
+        "2.60",
+        "2.00",
+        761
     ]
 }

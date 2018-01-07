@@ -231,4 +231,11 @@ class Coral_Games(View, SortingMatchesInCoral, Coral_Base):
                 save_game_dates = CoralDailyMatche(dates_of_games=get_match_dates[eachDate], dates_id = eachDate + 1, bookies_id=date_string)
                 save_game_dates.save()
 
+            check_games_are_not_null = CoralDailyMatche.objects.values('dates_of_games')
+            for game in check_games_are_not_null.values_list():
+                if game[2] is '':
+                    messages.error(request, 'Something went wrong, nothing was added to the database!')
+                    return redirect('bookies')
+            messages.success(request, 'You have successfully added to database')
+            return redirect('bookies')
         return HttpResponse('Hello world')
