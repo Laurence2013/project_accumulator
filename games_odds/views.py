@@ -1,8 +1,11 @@
+import json
+from django.core.serializers.json import DjangoJSONEncoder
+from django.conf import settings
 from django.shortcuts import render, redirect
 from django.views.generic import View, TemplateView
 from django.conf import settings
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from accumulator.models import *
 from games_odds.webScraping.scrapingWilliamHill import ScrapingWilliamHill
 from games_odds.webScraping.decimalToFractionAndStoreInDb import DecimalToFractionAndStoreInDb
@@ -215,10 +218,31 @@ class SortGamesOddsIntoDb(View, SaveOddsIntoDb, SaveGamesIntoDb):
         isOddsStored = self.store_odds_into_db(get_link, odds_from_csv_file)
         return isGamesStored, isOddsStored
 
-class Coral_Games(View, SortingMatchesInCoral, Coral_Base):
-    coralUrl = 'http://sports.coral.co.uk/football'
+class GetAllCoralGameDates(View):
+    template_name = 'accumulator/coral/main_coral.html'
+    base_dir = settings.BASE_DIR
+
+    def get_context_data(self, **kwargs):
+        context = super(GetAllCoralGameDates, self).get_context_data(**kwargs)
+        return context
 
     def get(self, request, *args, **kwargs):
+        get_all_combinations = self.base_dir + '/games_odds/static/json/coral_game_dates.json'
+        with open(get_all_combinations) as json_file:
+            json_data = json.load(json_file)
+        return JsonResponse(json_data)
+
+class Coral_Games(TemplateView, SortingMatchesInCoral, Coral_Base):
+    coralUrl = 'http://sports.coral.co.uk/football'
+    template_name = 'accumulator/coral/main_coral.html'
+    base_dir = settings.BASE_DIR
+
+    def get_context_data(self, **kwargs):
+        context = super(Coral_Games, self).get_context_data(**kwargs)
+        return context
+
+    def get(self, request, *args, **kwargs):
+        matchday_dates = dict()
         update_no = int(kwargs.get('update_no'))
         if update_no is 1:
             self.initiateWebdriver()
@@ -234,8 +258,20 @@ class Coral_Games(View, SortingMatchesInCoral, Coral_Base):
             check_games_are_not_null = CoralDailyMatche.objects.values('dates_of_games')
             for game in check_games_are_not_null.values_list():
                 if game[2] is '':
-                    messages.error(request, 'Something went wrong, nothing was added to the database!')
+                    messages.error(request, 'Something went wrong, nothing was added to the database! Try saving it updating it again')
                     return redirect('bookies')
             messages.success(request, 'You have successfully added to database')
             return redirect('bookies')
-        return HttpResponse('Hello world')
+
+        if update_no is 0:
+            get_dates = CoralDailyMatche.objects.values_list('dates_of_games','dates_id')
+
+            for row in range(0, len(get_dates)):
+                matchday_dates[row] = get_dates[row]
+
+            s = json.dumps(matchday_dates, ensure_ascii=False, indent=4, cls=DjangoJSONEncoder)
+            with open(self.base_dir + "/games_odds/static/json/coral_game_dates.json", "w") as f:
+                f.write(s)
+
+            context = {'get_game_dates': True}
+            return render(request, self.template_name, self.get_context_data(**context))
