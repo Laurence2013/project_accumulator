@@ -22,7 +22,7 @@ CreateANewRequest.prototype = {
         for(var i = 0; i < matchday_length; i++){
           mainHtml += '<tr>';
           mainHtml += '<td>'+ matchday_dates[i][0] +'</td>';
-          mainHtml += '<td> Click here </td>';
+          mainHtml += '<td><a href="'+ matchday_dates[i][1] +'">Click here</a></td>';
           mainHtml += '</tr>';
 
         }

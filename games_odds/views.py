@@ -232,6 +232,38 @@ class GetAllCoralGameDates(View):
             json_data = json.load(json_file)
         return JsonResponse(json_data)
 
+class GetAllCoralMatchDayGames(View, SortingMatchesInCoral, Coral_Base):
+    coralUrl = 'http://sports.coral.co.uk/football'
+
+    def get_context_data(self, **kwargs):
+        context = super(GetAllCoralMatchDayGames, self).get_context_data(**kwargs)
+        return context
+
+    def get(self, request, matchday_games_id, *args, **kwargs):
+        if int(matchday_games_id) is 1:
+            if CoralGames0.objects.count() >= 1 and CoralOdds0.objects.count() >= 1:
+                print('Items are in there, go to that page')
+            else:
+                combine_all_games = list()
+                # self.initiateWebdriver()
+                # get_todays_games = self.get_todays_matches(self.coralUrl)
+                # self.sleep_then_kill_browser()
+                # get_todays_games_2 = self.sorting_each_games_data(get_todays_games)
+                # get_odds = self.seperating_odds(get_todays_games_2)
+                # get_matches = self.seperating_games(get_todays_games_2)
+                get_matches = [['Man', 'City', 'v', 'Bristol', 'City'], ['Bury', 'v', 'Fleetwood'], ['Oldham', 'v', 'Leicester', 'U23'], ['Yeovil', 'v', 'Forest', 'Green'], ['Luton', 'v', 'Peterborough'], ['Charlton', 'v', 'Oxford', 'Utd'], ['Rochdale', 'v', 'Lincoln'], ['Portsmouth', 'v', 'Chelsea', 'FC', 'U23'], ['Maidstone', 'v', 'Ebbsfleet'], ['Dag', '&', 'Red', 'v', 'Boreham', 'Wood'], ['AFC', 'Fylde', 'v', 'Chester'], ['v', 'Gateshead'], ['Atletico', 'Madrid', 'v', 'Lleida'], ['Valencia', 'v', 'Las', 'Palmas'], ['Chorley', 'v', 'Kidderminster'], ['Nuneaton', 'Town', 'v', 'Harrogate'], ['Havant', 'And', 'Waterlooville', 'v', 'Oxford', 'City'], ['Halifax', 'v', 'Macclesfield'], ['Tondela', 'v', 'Vitoria', 'Setubal'], ['Belenenses', 'v', 'Boavista'], ['Carrick', 'Rangers', 'v', 'Linfield'], ['Bristol', 'City', 'FC', 'U23', 'v', 'Coventry', 'City', 'U23'], ['Margate', 'v', 'Needham', 'Market'], ['Wingate', '&', 'Finchley', 'v', 'Leiston'], ['Folkestone', 'Invicta', 'v', 'Thurrock'], ['Burgess', 'Hill', 'v', 'Dorking', 'Wanderers'], ['Southend', 'United', '(Res)', 'v', 'AFC', 'Wimbledon', '(Res)'], ['Grimsby', 'Town', 'FC', '(Res)', 'v', 'York', 'City', 'FC', '(Res)'], ['Bradford', 'City', 'AFC', '(Res)', 'v', 'Port', 'Vale', '(Res)'], ['Tiverton', 'v', 'Kettering'], ['St', 'Ives', 'v', 'St', 'Neots']]
+
+                get_match_day_id = CoralDailyMatche.objects.values_list('id', flat = True).get(dates_id = matchday_games_id)
+
+                for each_games in get_matches:
+                    combine_all_games.append(' '.join(each_games))
+
+                print(combine_all_games)
+        else:
+            messages.error(request, 'The Match day ID do not match, please try again for Coral')
+            return redirect('bookies')
+        return HttpResponse(matchday_games_id)
+
 class Coral_Games(TemplateView, SortingMatchesInCoral, Coral_Base):
     coralUrl = 'http://sports.coral.co.uk/football'
     template_name = 'accumulator/coral/main_coral.html'

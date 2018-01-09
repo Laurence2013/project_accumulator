@@ -1,7 +1,7 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 from accumulator.views import JsonAsView, GetBookiesDailyGames, AccumulatorPageGamesView, GamesJsonAsView, GetAllCombinations
-from games_odds.views import Bookies, Main_William_Hill, William_Hill_Games_0, William_Hill_Games_1, William_Hill_Games_2, William_Hill_Games_3, William_Hill_Games_4, William_Hill_Games_5, William_Hill_Games_6, SortGamesOddsIntoDb, Coral_Games, GetAllCoralGameDates
+from games_odds.views import Bookies, Main_William_Hill, William_Hill_Games_0, William_Hill_Games_1, William_Hill_Games_2, William_Hill_Games_3, William_Hill_Games_4, William_Hill_Games_5, William_Hill_Games_6, SortGamesOddsIntoDb, Coral_Games, GetAllCoralGameDates, GetAllCoralMatchDayGames
 
 urlpatterns = [
     url(r'^index/$', AccumulatorPageGamesView.as_view(), name='accumulator'),
@@ -18,6 +18,7 @@ urlpatterns = [
 
     url(r'^bookies/coral/(?P<update_no>[0-1]+|0)/$', Coral_Games.as_view(), name='coral'),
     url(r'^bookies/coral/(?P<coral_game_dates>[0-1]+)/coral_matchday_dates/$', GetAllCoralGameDates.as_view(), name='coral_game_dates'),
+    url(r'^bookies/coral/(?P<update_no>[0-1]+|0)/(?P<matchday_games_id>[0-9]+)/$', GetAllCoralMatchDayGames.as_view(), name='matchday_games_id'),
     # url(r'^bookies/coral/(?P<coral_game_dates>[\w\s]+)/coral_matchday_dates/$', GetAllCoralGameDates.as_view(), name='coral_game_dates'),
 
     url(r'^william_hill_games_0/(?P<refresh_no>[0-9]+|0)/$', William_Hill_Games_0.as_view(), name='william_hill_0'),
