@@ -1,0 +1,31 @@
+get_matches_1 = list()
+        self.initiateWebdriver()
+        get_todays_games = self.get_todays_matches(self.coralUrl)
+        self.sleep_then_kill_browser()
+        get_todays_games_2 = self.sorting_each_games_data(get_todays_games)
+        get_odds = self.seperating_odds(get_todays_games_2)
+        get_matches = self.seperating_games(get_todays_games_2)
+        get_match_day_id = CoralDailyMatche.objects.values_list('id', flat = True).get(dates_id = matchday_games_id)
+
+        for each_match in get_matches:
+            get_matches_1.append(' '.join(each_match))
+
+        print(get_matches_1)
+
+        # get_matches = [['Man', 'City', 'v', 'Bristol', 'City'], ['Bury', 'v', 'Fleetwood'], ['Oldham', 'v', 'Leicester', 'U23'], ['Yeovil', 'v', 'Forest', 'Green'], ['Luton', 'v', 'Peterborough'], ['Charlton', 'v', 'Oxford', 'Utd'], ['Rochdale', 'v', 'Lincoln'], ['Portsmouth', 'v', 'Chelsea', 'FC', 'U23'], ['Maidstone', 'v', 'Ebbsfleet'], ['Dag', '&', 'Red', 'v', 'Boreham', 'Wood'], ['AFC', 'Fylde', 'v', 'Chester'], ['v', 'Gateshead'], ['Atletico', 'Madrid', 'v', 'Lleida'], ['Valencia', 'v', 'Las', 'Palmas'], ['Chorley', 'v', 'Kidderminster'], ['Nuneaton', 'Town', 'v', 'Harrogate'], ['Havant', 'And', 'Waterlooville', 'v', 'Oxford', 'City'], ['Halifax', 'v', 'Macclesfield'], ['Tondela', 'v', 'Vitoria', 'Setubal'], ['Belenenses', 'v', 'Boavista'], ['Carrick', 'Rangers', 'v', 'Linfield'], ['Bristol', 'City', 'FC', 'U23', 'v', 'Coventry', 'City', 'U23'], ['Margate', 'v', 'Needham', 'Market'], ['Wingate', '&', 'Finchley', 'v', 'Leiston'], ['Folkestone', 'Invicta', 'v', 'Thurrock'], ['Burgess', 'Hill', 'v', 'Dorking', 'Wanderers'], ['Southend', 'United', '(Res)', 'v', 'AFC', 'Wimbledon', '(Res)'], ['Grimsby', 'Town', 'FC', '(Res)', 'v', 'York', 'City', 'FC', '(Res)'], ['Bradford', 'City', 'AFC', '(Res)', 'v', 'Port', 'Vale', '(Res)'], ['Tiverton', 'v', 'Kettering'], ['St', 'Ives', 'v', 'St', 'Neots']]
+
+
+This bit here, helps to narrow the scope down in even smaller logical order, therefore, it can be understood before applying the higher level code
+
+        # print(get_matches[0])
+        # print(get_matches[1])
+        # test = list()
+        # test1 = list()
+        # test.append(' '.join(get_matches[0]))
+        # test1.append(' '.join(get_matches[1]))
+        # print(test)
+        # combine_all_games2.append(test)
+        # combine_all_games2.append(test1)
+        # print(combine_all_games2[1])
+        # print(combine_all_games2[0])
+        # print(combine_all_games2)

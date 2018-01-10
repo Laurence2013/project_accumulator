@@ -244,21 +244,46 @@ class GetAllCoralMatchDayGames(View, SortingMatchesInCoral, Coral_Base):
             if CoralGames0.objects.count() >= 1 and CoralOdds0.objects.count() >= 1:
                 print('Items are in there, go to that page')
             else:
-                combine_all_games = list()
+                # get_matches_1 = list()
+                get_odds_1 = list()
                 # self.initiateWebdriver()
                 # get_todays_games = self.get_todays_matches(self.coralUrl)
                 # self.sleep_then_kill_browser()
                 # get_todays_games_2 = self.sorting_each_games_data(get_todays_games)
                 # get_odds = self.seperating_odds(get_todays_games_2)
                 # get_matches = self.seperating_games(get_todays_games_2)
-                get_matches = [['Man', 'City', 'v', 'Bristol', 'City'], ['Bury', 'v', 'Fleetwood'], ['Oldham', 'v', 'Leicester', 'U23'], ['Yeovil', 'v', 'Forest', 'Green'], ['Luton', 'v', 'Peterborough'], ['Charlton', 'v', 'Oxford', 'Utd'], ['Rochdale', 'v', 'Lincoln'], ['Portsmouth', 'v', 'Chelsea', 'FC', 'U23'], ['Maidstone', 'v', 'Ebbsfleet'], ['Dag', '&', 'Red', 'v', 'Boreham', 'Wood'], ['AFC', 'Fylde', 'v', 'Chester'], ['v', 'Gateshead'], ['Atletico', 'Madrid', 'v', 'Lleida'], ['Valencia', 'v', 'Las', 'Palmas'], ['Chorley', 'v', 'Kidderminster'], ['Nuneaton', 'Town', 'v', 'Harrogate'], ['Havant', 'And', 'Waterlooville', 'v', 'Oxford', 'City'], ['Halifax', 'v', 'Macclesfield'], ['Tondela', 'v', 'Vitoria', 'Setubal'], ['Belenenses', 'v', 'Boavista'], ['Carrick', 'Rangers', 'v', 'Linfield'], ['Bristol', 'City', 'FC', 'U23', 'v', 'Coventry', 'City', 'U23'], ['Margate', 'v', 'Needham', 'Market'], ['Wingate', '&', 'Finchley', 'v', 'Leiston'], ['Folkestone', 'Invicta', 'v', 'Thurrock'], ['Burgess', 'Hill', 'v', 'Dorking', 'Wanderers'], ['Southend', 'United', '(Res)', 'v', 'AFC', 'Wimbledon', '(Res)'], ['Grimsby', 'Town', 'FC', '(Res)', 'v', 'York', 'City', 'FC', '(Res)'], ['Bradford', 'City', 'AFC', '(Res)', 'v', 'Port', 'Vale', '(Res)'], ['Tiverton', 'v', 'Kettering'], ['St', 'Ives', 'v', 'St', 'Neots']]
-
                 get_match_day_id = CoralDailyMatche.objects.values_list('id', flat = True).get(dates_id = matchday_games_id)
 
-                for each_games in get_matches:
-                    combine_all_games.append(' '.join(each_games))
+                # for each_match in get_matches:
+                #     get_matches_1.append(' '.join(each_match))
 
-                print(combine_all_games)
+                get_odds = [['1.67', '4.00', '5.25'], ['2.35', '3.20', '3.20'], ['1.40', '4.00', '8.00'], ['1.75', '3.20', '4.75'], ['1.14', '7.50', '17.00'], ['3.20', '3.40', '2.05'], ['1.67', '3.60', '4.20'], ['3.00', '3.75', '1.95'], ['6.00', '4.20', '1.44'], ['1.50', '4.00', '5.20'], ['1.14', '7.00', '17.00'], ['2.45', '3.30', '2.45'], ['2.00', '3.40', '3.20'], ['3.75', '3.50', '1.75'], ['9.50', '5.50', '1.25'], ['1.18', '6.00', '12.00'], ['1.70', '3.60', '4.00'], ['2.35', '3.30', '2.55'], ['13.00', '6.50', '1.15'], ['2.65', '3.25', '2.30'], ['3.00', '3.40', '2.05'], ['1.11', '8.00', '19.00'], ['2.45', '3.30', '2.45'], ['10.00', '6.00', '1.20'], ['1.01', '41.00', '151.00'], ['1.30', '4.80', '8.00'], ['2.10', '3.00', '3.30'], ['2.90', '2.87', '2.40'], ['23.00', '8.50', '1.11'], ['3.40', '2.90', '2.05'], ['1.75', '3.20', '4.25'], ['15.00', '5.80', '1.17']]
+
+                for each_odds in range(0, len(get_odds)):
+                    a = float(get_odds[each_odds][0])
+                    b = float(get_odds[each_odds][1])
+                    c = float(get_odds[each_odds][2])
+                    get_odds_1.append(a)
+                    get_odds_1.append(b)
+                    get_odds_1.append(c)
+
+                print(get_odds_1)
+
+                # for each_odds in get_odds:
+                #     get_odds_1.append(each_odds)
+                #
+                # for each_odds in get_odds_1:
+                #     print(each_odds)
+
+                #################################################################################################################
+                # for each_matches in get_matches_1:
+                #     save_each_match = CoralGames0(games = each_matches, match_day_id_id = get_match_day_id)
+                #     save_each_match.save()
+                #
+                # for each_odds in get_odds:
+                #     save_each_odds = CoralOdds0(home_odds = each_odds[0], draw_odds = each_odds[1], away_odds = [2], games_id = get_match_day_id)
+                #     save_each_odds.save()
+
         else:
             messages.error(request, 'The Match day ID do not match, please try again for Coral')
             return redirect('bookies')
