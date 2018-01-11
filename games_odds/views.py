@@ -234,6 +234,7 @@ class GetAllCoralGameDates(View):
 
 class GetAllCoralMatchDayGames(View, SortingMatchesInCoral, Coral_Base):
     coralUrl = 'http://sports.coral.co.uk/football'
+    base_dir = settings.BASE_DIR
 
     def get_context_data(self, **kwargs):
         context = super(GetAllCoralMatchDayGames, self).get_context_data(**kwargs)
@@ -242,18 +243,17 @@ class GetAllCoralMatchDayGames(View, SortingMatchesInCoral, Coral_Base):
     def get(self, request, matchday_games_id, *args, **kwargs):
         if int(matchday_games_id) is 1:
             if CoralGames0.objects.count() >= 1 and CoralOdds0.objects.count() >= 1:
+                get_todays_matches_dict = dict()
                 get_odds = CoralOdds0.objects.values_list('match', 'home_odds', 'draw_odds', 'away_odds')
                 get_games = CoralGames0.objects.values_list('id','games')
 
                 for each_odds in range(0, len(get_odds)):
-                    print(get_odds[each_odds][0])
-                print()
-                for each_games in range(0, len(get_games)):
-                    print(get_games[each_games][0])
+                    if get_odds[each_odds][0] == get_games[each_odds][0]:
+                        get_todays_matches_dict[each_odds] = [get_games[each_odds][1], get_odds[each_odds][1], get_odds[each_odds][2], get_odds[each_odds][3]]
 
-                # s = json.dumps(get_today_games, ensure_ascii=False, indent=4, cls=DjangoJSONEncoder)
-                # with open(self.base_dir + "/games_odds/static/json/coral_get_today_games.json", "w") as f:
-                #     f.write(s)
+                s = json.dumps(get_todays_matches_dict, ensure_ascii=False, indent=4, cls=DjangoJSONEncoder)
+                with open(self.base_dir + "/games_odds/static/json/coral_get_todays_matches.json", "w") as f:
+                    f.write(s)
             else:
                 CoralGames0.objects.all().delete()
                 CoralOdds0.objects.all().delete()
