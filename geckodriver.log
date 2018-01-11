@@ -10838,3 +10838,169 @@ JavaScript warning: http://sports.coral.co.uk/football, line 12092: unreachable 
 1515665308142	Marionette	DEBUG	Received DOM event "popstate" for "http://sports.coral.co.uk/football#"
 JavaScript warning: http://mathid.mathtag.com/d/i.js, line 1: unreachable code after return statement
 JavaScript warning: http://mathid.mathtag.com/d/i.js, line 1: unreachable code after return statement
+1515666836159	geckodriver	INFO	geckodriver 0.19.0
+1515666836170	geckodriver	INFO	Listening on 127.0.0.1:36789
+1515666837252	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.Kauhd4DBlMgP"
+1515666840757	Marionette	INFO	Enabled via --marionette
+
+(firefox:15067): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(firefox:15067): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(firefox:15067): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(firefox:15067): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(firefox:15067): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(firefox:15067): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15120): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15120): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15120): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15120): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15120): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15120): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+1515666846703	Marionette	INFO	Listening on port 44175
+1515666846800	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515666847097	Marionette	DEBUG	Register listener.js for window 2147483649
+1515666847173	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1515666847357	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1515666847357	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+JavaScript warning: http://sports.coral.co.uk/football, line 11929: unreachable code after return statement
+1515666852309	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://sports.coral.co.uk/football"
+1515666852679	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "2147483667"
+1515666855374	Marionette	DEBUG	Received DOM event "pageshow" for "http://sports.coral.co.uk/football"
+1515666856247	Marionette	DEBUG	Received DOM event "popstate" for "http://sports.coral.co.uk/football#"
+JavaScript warning: http://mathid.mathtag.com/d/i.js, line 1: unreachable code after return statement
+JavaScript warning: http://mathid.mathtag.com/d/i.js, line 1: unreachable code after return statement
+1515667060609	geckodriver	INFO	geckodriver 0.19.0
+1515667060618	geckodriver	INFO	Listening on 127.0.0.1:33056
+1515667061701	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.ar2I8tZvU2hs"
+1515667064179	Marionette	INFO	Enabled via --marionette
+
+(firefox:15302): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(firefox:15302): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(firefox:15302): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(firefox:15302): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(firefox:15302): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(firefox:15302): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15356): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15356): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15356): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15356): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15356): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15356): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+1515667070738	Marionette	INFO	Listening on port 43653
+1515667070779	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515667070961	Marionette	DEBUG	Register listener.js for window 2147483649
+1515667071190	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1515667071383	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1515667071384	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+JavaScript warning: http://sports.coral.co.uk/football, line 11929: unreachable code after return statement
+1515667080104	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://sports.coral.co.uk/football"
+1515667080517	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "2147483667"
+1515667081783	Marionette	DEBUG	Received DOM event "pageshow" for "http://sports.coral.co.uk/football"
+1515667082795	Marionette	DEBUG	Received DOM event "popstate" for "http://sports.coral.co.uk/football#"
+JavaScript warning: http://mathid.mathtag.com/d/i.js, line 1: unreachable code after return statement
+JavaScript warning: http://mathid.mathtag.com/d/i.js, line 1: unreachable code after return statement
+1515667327250	geckodriver	INFO	geckodriver 0.19.0
+1515667327258	geckodriver	INFO	Listening on 127.0.0.1:43591
+1515667328341	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.94rP0M6QX8yh"
+1515667334485	Marionette	INFO	Enabled via --marionette
+
+(firefox:15688): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(firefox:15688): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(firefox:15688): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(firefox:15688): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(firefox:15688): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(firefox:15688): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15744): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15744): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15744): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15744): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15744): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15744): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+1515667340928	Marionette	INFO	Listening on port 56757
+1515667341001	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515667341177	Marionette	DEBUG	Register listener.js for window 2147483649
+1515667341234	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1515667341881	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1515667341883	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+JavaScript warning: http://sports.coral.co.uk/football, line 11922: unreachable code after return statement
+1515667354277	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://sports.coral.co.uk/football"
+1515667354612	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "2147483667"
+1515667360271	Marionette	DEBUG	Received DOM event "pageshow" for "http://sports.coral.co.uk/football"
+JavaScript warning: http://mathid.mathtag.com/d/i.js, line 1: unreachable code after return statement
+JavaScript warning: http://mathid.mathtag.com/d/i.js, line 1: unreachable code after return statement
+1515667366211	Marionette	DEBUG	Received DOM event "popstate" for "http://sports.coral.co.uk/football#"
+1515667376768	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+1515667414491	geckodriver	INFO	geckodriver 0.19.0
+1515667414504	geckodriver	INFO	Listening on 127.0.0.1:54056
+1515667415605	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.3BXoyWUzO4p2"
+1515667421492	Marionette	INFO	Enabled via --marionette
+
+(firefox:15879): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(firefox:15879): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(firefox:15879): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(firefox:15879): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(firefox:15879): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(firefox:15879): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15929): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15929): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15929): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15929): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15929): GLib-GObject-CRITICAL **: g_object_ref: assertion 'object->ref_count > 0' failed
+
+(/usr/lib/firefox/firefox:15929): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+1515667427519	Marionette	INFO	Listening on port 59843
+1515667427614	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515667427788	Marionette	DEBUG	Register listener.js for window 2147483649
+1515667428549	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1515667428707	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1515667428708	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+JavaScript warning: http://sports.coral.co.uk/football, line 11922: unreachable code after return statement
+1515667433887	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://sports.coral.co.uk/football"
+1515667434309	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "2147483667"
+1515667440532	Marionette	DEBUG	Received DOM event "pageshow" for "http://sports.coral.co.uk/football"
+JavaScript warning: http://mathid.mathtag.com/d/i.js, line 1: unreachable code after return statement
+JavaScript warning: http://mathid.mathtag.com/d/i.js, line 1: unreachable code after return statement
+1515667446206	Marionette	DEBUG	Received DOM event "popstate" for "http://sports.coral.co.uk/football#"
+1515667456598	Marionette	DEBUG	Canceled page load listener because no navigation has been detected

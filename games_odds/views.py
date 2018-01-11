@@ -258,13 +258,11 @@ class GetAllCoralMatchDayGames(View, SortingMatchesInCoral, Coral_Base):
                 get_odds = self.seperating_odds(get_todays_games_2)
                 get_matches = self.seperating_games(get_todays_games_2)
                 get_match_day_id = CoralDailyMatche.objects.values_list('id', flat = True).get(dates_id = matchday_games_id)
+                get_match_day_dates = CoralDailyMatche.objects.values_list('dates_of_games', flat = True).get(dates_id = matchday_games_id)
                 get_match_id = CoralGames0.objects.values_list('id', flat = True)
-                #
+
                 for each_match in get_matches:
                     get_matches_1.append(' '.join(each_match))
-
-                # get_odds = [['2.62', '2.90', '2.62'], ['2.80', '2.90', '2.45'], ['1.33', '4.60', '8.50'], ['1.13', '7.50', '19.00'], ['3.00', '3.50', '2.00'], ['4.75', '3.80', '1.57'], ['12.00', '5.20', '1.22'], ['1.80', '3.00', '4.33'], ['2.15', '3.10', '3.00'], ['1.50', '3.30', '7.00'], ['4.60', '3.00', '1.80'], ['2.80', '2.75', '2.55'], ['2.37', '3.10', '2.65'], ['1.04', '15.00', '61.00'], ['9.50', '5.75', '1.22'], ['7.50', '4.00', '1.40'], ['5.25', '3.60', '1.57']]
-
 
                 for each_odds in range(0, len(get_odds)):
                     home = get_odds[each_odds][0]
@@ -282,27 +280,11 @@ class GetAllCoralMatchDayGames(View, SortingMatchesInCoral, Coral_Base):
                     get_odds_1[each_odds].append(get_match_id[count])
                     count += 1
 
-                # for each_odds in get_odds_1:
-                #     print(each_odds[0], each_odds[1], each_odds[2], each_odds[3])
-
-                # a = float(get_odds[each_odds][0])
-                # b = float(get_odds[each_odds][1])
-                # c = float(get_odds[each_odds][2])
-                # get_odds_1.append(a)
-                # get_odds_1.append(b)
-                # get_odds_1.append(c)
-
-                # for each_odds in get_odds:
-                #     get_odds_1.append(each_odds)
-                #
-                # for each_odds in get_odds_1:
-                #     print(each_odds)
-
-                ################################################################################################################
                 for each_odds in get_odds_1:
                     save_each_odds = CoralOdds0(home_odds = each_odds[0], draw_odds = each_odds[1], away_odds = each_odds[2], match_id = each_odds[3], games_id = get_match_day_id)
                     save_each_odds.save()
-
+                messages.success(request, 'Saving into '+ get_match_day_dates + ' was successfully saved into Database')
+                return redirect('bookies')
         else:
             messages.error(request, 'The Match day ID do not match, please try again for Coral')
             return redirect('bookies')
