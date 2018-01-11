@@ -79,6 +79,7 @@ class CoralGames0(models.Model):
 
 class CoralOdds0(models.Model):
     games = models.ForeignKey(CoralDailyMatche, on_delete = models.CASCADE)
+    match = models.ForeignKey(CoralGames0, on_delete = models.CASCADE, default = None)
     home_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     draw_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     away_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
