@@ -3,6 +3,7 @@ class SortingMatchesInCoral:
     def sorting_each_games_data(self, todays_matches_list):
         test_list = list()
         test_list2 = list()
+        
         for match in range(0, len(todays_matches_list)):
             test_list.append(todays_matches_list[match].split())
 
@@ -11,10 +12,15 @@ class SortingMatchesInCoral:
             test_list2.append(l2)
 
         for test2 in range(0, len(test_list2)):
-            test_list2[test2].pop(0)
-            test_list2[test2].pop(0)
-            test_list2[test2].pop(0)
-            del test_list2[test2][-1]
+            if test_list2[test2][2] == 'LIVE':
+                test_list2[test2].pop(0)
+                test_list2[test2].pop(0)
+                test_list2[test2].pop(0)
+                del test_list2[test2][-1]
+            else:
+                test_list2[test2].pop(0)
+                test_list2[test2].pop(0)
+                del test_list2[test2][-1]
         return test_list2
 
     def seperating_odds(self, get_odds):
@@ -31,6 +37,9 @@ class SortingMatchesInCoral:
             get_games[eachGames].pop(-1)
         return get_games
 
+    '''
+    Here is NOT IN USE!!!
+    '''
     # def seperating_games(self, get_games):
     #     games_list = list()
     #     for eachGames in range(0, len(get_games)):

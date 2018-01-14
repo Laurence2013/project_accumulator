@@ -1,134 +1,134 @@
 {
     "0": [
-        "Ham v Shrewsbury",
-        "1.50",
-        "4.20",
-        "7.00"
+        "West Ham v Shrewsbury",
+        "1.53",
+        "3.90",
+        "6.50"
     ],
     "1": [
-        "Wed v Carlisle",
+        "Sheff Wed v Carlisle",
         "1.57",
         "4.00",
-        "5.75"
+        "5.80"
     ],
     "2": [
-        "v Fleetwood",
-        "1.25",
-        "5.75",
+        "Leicester v Fleetwood",
+        "1.28",
+        "5.50",
         "13.00"
     ],
     "3": [
-        "v Cardiff",
+        "Mansfield v Cardiff",
         "3.70",
         "3.25",
         "2.10"
     ],
     "4": [
-        "v Stevenage",
-        "1.44",
-        "4.33",
-        "7.50"
+        "Reading v Stevenage",
+        "1.53",
+        "4.20",
+        "6.50"
     ],
     "5": [
-        "Telford v York",
+        "AFC Telford v York",
         "3.20",
         "3.40",
         "2.00"
     ],
     "6": [
-        "v Chippenham",
-        "2.30",
+        "Poole v Chippenham",
+        "2.37",
         "3.25",
-        "2.75"
+        "2.70"
     ],
     "7": [
-        "v Caen",
+        "Bordeaux v Caen",
         "1.87",
-        "3.25",
+        "3.30",
         "4.50"
     ],
     "8": [
-        "v Strasbourg",
-        "1.30",
-        "5.25",
-        "11.00"
+        "Marseille v Strasbourg",
+        "1.28",
+        "5.75",
+        "12.00"
     ],
     "9": [
-        "v Nice",
-        "1.70",
+        "Monaco v Nice",
+        "1.67",
         "3.90",
-        "4.60"
+        "4.80"
     ],
     "10": [
-        "v Nimes",
-        "2.80",
+        "Nancy v Nimes",
+        "3.00",
         "3.20",
-        "2.37"
+        "2.25"
     ],
     "11": [
-        "v Valenciennes",
-        "1.75",
+        "Clermont v Valenciennes",
+        "1.80",
         "3.50",
-        "4.40"
+        "4.25"
     ],
     "12": [
-        "v Niort",
-        "2.00",
+        "Auxerre v Niort",
+        "2.05",
         "3.10",
-        "3.70"
+        "3.60"
     ],
     "13": [
-        "v Tours",
+        "Reims v Tours",
         "1.40",
         "4.33",
         "7.00"
     ],
     "14": [
-        "Havre v Paris FC",
-        "1.95",
-        "3.10",
-        "4.00"
+        "Le Havre v Paris FC",
+        "2.00",
+        "3.00",
+        "3.90"
     ],
     "15": [
-        "v Lorient",
-        "4.00",
+        "Chateauroux v Lorient",
+        "4.20",
         "3.40",
-        "1.85"
+        "1.80"
     ],
     "16": [
-        "En Bresse v US Quevilly Rouen",
-        "2.15",
+        "Bourg En Bresse v US Quevilly Rouen",
+        "2.25",
         "3.30",
-        "3.10"
+        "3.00"
     ],
     "17": [
-        "Ajaccio v Orleans",
+        "AC Ajaccio v Orleans",
         "1.75",
         "3.25",
         "4.75"
     ],
     "18": [
-        "Ajaccio v Brest",
-        "2.90",
+        "GFC Ajaccio v Brest",
+        "3.00",
         "3.10",
-        "2.37"
+        "2.35"
     ],
     "19": [
-        "Rotterdam v Vitesse",
+        "Sparta Rotterdam v Vitesse",
         "3.40",
         "3.30",
         "2.05"
     ],
     "20": [
-        "v Racing Genk",
+        "Oostende v Racing Genk",
         "2.55",
         "3.25",
         "2.55"
     ],
     "21": [
-        "Brugge v Charleroi",
+        "Club Brugge v Charleroi",
         "1.50",
-        "3.75",
-        "5.50"
+        "3.80",
+        "5.80"
     ]
 }

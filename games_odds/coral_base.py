@@ -170,7 +170,6 @@ class Coral_Base:
         sorting_matches = SortingMatchesInCoral()
         coral_db_match_list.objects.all().delete()
         coral_db_odds_list.objects.all().delete()
-
         get_matches_1 = list()
         get_odds_1 = list()
         self.initiateWebdriver()
