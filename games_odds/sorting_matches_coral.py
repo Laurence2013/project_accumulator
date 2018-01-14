@@ -1,6 +1,5 @@
-from games_odds.coral_base import Coral_Base
-
-class SortingMatchesInCoral(Coral_Base):
+# from games_odds.coral_base import Coral_Base
+class SortingMatchesInCoral:
     def sorting_each_games_data(self, todays_matches_list):
         test_list = list()
         test_list2 = list()

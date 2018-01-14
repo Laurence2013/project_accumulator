@@ -232,7 +232,65 @@ class GetAllCoralGameDates(View):
             json_data = json.load(json_file)
         return JsonResponse(json_data)
 
-class GetAllCoralMatchDayGames(View, SortingMatchesInCoral, Coral_Base):
+class Get_Coral_Matches_0(View):
+    base_dir = settings.BASE_DIR
+
+    def get_context_data(self, **kwargs):
+        context = super(Get_Coral_Matches_0, self).get_context_data(**kwargs)
+        return context
+
+    def get(self, request, *args, **kwargs):
+        get_all_combinations = self.base_dir + '/games_odds/static/json/coral_get_matches_0.json'
+        with open(get_all_combinations) as json_file:
+            json_data = json.load(json_file)
+        return JsonResponse(json_data)
+
+class Get_Coral_Matches_1(View):
+    base_dir = settings.BASE_DIR
+
+    def get_context_data(self, **kwargs):
+        context = super(Get_Coral_Matches_1, self).get_context_data(**kwargs)
+        return context
+
+    def get(self, request, *args, **kwargs):
+        get_all_combinations = self.base_dir + '/games_odds/static/json/coral_get_matches_1.json'
+        with open(get_all_combinations) as json_file:
+            json_data = json.load(json_file)
+        return JsonResponse(json_data)
+
+class Get_Coral_Matches_2(View):
+    base_dir = settings.BASE_DIR
+
+    def get_context_data(self, **kwargs):
+        context = super(Get_Coral_Matches_2, self).get_context_data(**kwargs)
+        return context
+
+    def get(self, request, *args, **kwargs):
+        get_all_combinations = self.base_dir + '/games_odds/static/json/coral_get_matches_2.json'
+        with open(get_all_combinations) as json_file:
+            json_data = json.load(json_file)
+        return JsonResponse(json_data)
+
+class Get_Coral_Matches_3(View):
+    base_dir = settings.BASE_DIR
+
+    def get_context_data(self, **kwargs):
+        context = super(Get_Coral_Matches_3, self).get_context_data(**kwargs)
+        return context
+
+    def get(self, request, *args, **kwargs):
+        get_all_combinations = self.base_dir + '/games_odds/static/json/coral_get_matches_3.json'
+        with open(get_all_combinations) as json_file:
+            json_data = json.load(json_file)
+        return JsonResponse(json_data)
+
+class GetAllCoralMatchDayGames(TemplateView, SortingMatchesInCoral, Coral_Base):
+    coral_db_match_list = [CoralGames0, CoralGames1, CoralGames2, CoralGames3]
+    coral_db_odds_list = [CoralOdds0, CoralOdds1, CoralOdds2, CoralOdds3]
+    template_name_0 = 'accumulator/coral/coral_0.html'
+    template_name_1 = 'accumulator/coral/coral_1.html'
+    template_name_2 = 'accumulator/coral/coral_2.html'
+    template_name_3 = 'accumulator/coral/coral_3.html'
     coralUrl = 'http://sports.coral.co.uk/football'
     base_dir = settings.BASE_DIR
 
@@ -242,62 +300,67 @@ class GetAllCoralMatchDayGames(View, SortingMatchesInCoral, Coral_Base):
 
     def get(self, request, matchday_games_id, *args, **kwargs):
         if int(matchday_games_id) is 1:
-            if CoralGames0.objects.count() >= 1 and CoralOdds0.objects.count() >= 1:
-                get_todays_matches_dict = dict()
-                get_odds = CoralOdds0.objects.values_list('match', 'home_odds', 'draw_odds', 'away_odds')
-                get_games = CoralGames0.objects.values_list('id','games')
-
-                for each_odds in range(0, len(get_odds)):
-                    if get_odds[each_odds][0] == get_games[each_odds][0]:
-                        get_todays_matches_dict[each_odds] = [get_games[each_odds][1], get_odds[each_odds][1], get_odds[each_odds][2], get_odds[each_odds][3]]
-
-                s = json.dumps(get_todays_matches_dict, ensure_ascii=False, indent=4, cls=DjangoJSONEncoder)
-                with open(self.base_dir + "/games_odds/static/json/coral_get_todays_matches.json", "w") as f:
-                    f.write(s)
+            coral_json = "/games_odds/static/json/coral_get_matches_0.json"
+            adjust_matches_2 = self.get_coral_match_day_games(self.coral_db_match_list[0], self.coral_db_odds_list[0], matchday_games_id, coral_json)
+            if adjust_matches_2 is not None:
+                context = {
+                    'match_day': True,
+                    'adjust_matches': adjust_matches_2,
+                }
+                return render(request, self.template_name_0, self.get_context_data(**context))
             else:
-                CoralGames0.objects.all().delete()
-                CoralOdds0.objects.all().delete()
+                get_coral_daily_matches = self.save_coral_matches_and_odds(self.coral_db_match_list[0], self.coral_db_odds_list[0], matchday_games_id, self.coralUrl)
+                if self.coral_db_match_list[0].objects.count() >= 1 and self.coral_db_odds_list[0].objects.count() >= 1:
+                    messages.success(request, 'Saving into '+ get_coral_daily_matches + ' was successfully saved into Database')
+                    return redirect('bookies')
 
-                get_matches_1 = list()
-                get_odds_1 = list()
-                self.initiateWebdriver()
-                get_todays_games = self.get_todays_matches(self.coralUrl)
-                self.sleep_then_kill_browser()
-                get_todays_games_2 = self.sorting_each_games_data(get_todays_games)
-                get_odds = self.seperating_odds(get_todays_games_2)
-                get_matches = self.seperating_games(get_todays_games_2)
-                get_match_day_id = CoralDailyMatche.objects.values_list('id', flat = True).get(dates_id = matchday_games_id)
-                get_match_day_dates = CoralDailyMatche.objects.values_list('dates_of_games', flat = True).get(dates_id = matchday_games_id)
-                get_match_id = CoralGames0.objects.values_list('id', flat = True)
+        if int(matchday_games_id) is 2:
+            coral_json = "/games_odds/static/json/coral_get_matches_1.json"
+            adjust_matches_2 = self.get_coral_match_day_games(self.coral_db_match_list[1], self.coral_db_odds_list[1], matchday_games_id, coral_json)
+            if adjust_matches_2 is not None:
+                context = {
+                    'match_day': True,
+                    'adjust_matches': adjust_matches_2,
+                }
+                return render(request, self.template_name_1, self.get_context_data(**context))
+            else:
+                get_coral_daily_matches = self.save_coral_matches_and_odds(self.coral_db_match_list[1], self.coral_db_odds_list[1], matchday_games_id, self.coralUrl)
+                if self.coral_db_match_list[1].objects.count() >= 1 and self.coral_db_odds_list[1].objects.count() >= 1:
+                    messages.success(request, 'Saving into '+ get_coral_daily_matches + ' was successfully saved into Database')
+                    return redirect('bookies')
 
-                for each_match in get_matches:
-                    get_matches_1.append(' '.join(each_match))
+        if int(matchday_games_id) is 3:
+            coral_json = "/games_odds/static/json/coral_get_matches_2.json"
+            adjust_matches_2 = self.get_coral_match_day_games(self.coral_db_match_list[2], self.coral_db_odds_list[2], matchday_games_id, coral_json)
+            if adjust_matches_2 is not None:
+                context = {
+                    'match_day': True,
+                    'adjust_matches': adjust_matches_2,
+                }
+                return render(request, self.template_name_2, self.get_context_data(**context))
+            else:
+                get_coral_daily_matches = self.save_coral_matches_and_odds(self.coral_db_match_list[2], self.coral_db_odds_list[2], matchday_games_id, self.coralUrl)
+                if self.coral_db_match_list[2].objects.count() >= 1 and self.coral_db_odds_list[2].objects.count() >= 1:
+                    messages.success(request, 'Saving into '+ get_coral_daily_matches + ' was successfully saved into Database')
+                    return redirect('bookies')
 
-                for each_odds in range(0, len(get_odds)):
-                    home = get_odds[each_odds][0]
-                    draw = get_odds[each_odds][1]
-                    away = get_odds[each_odds][2]
-                    odds = [float(home), float(draw), float(away)]
-                    get_odds_1.append(odds)
+        if int(matchday_games_id) is 4:
+            coral_json = "/games_odds/static/json/coral_get_matches_3.json"
+            adjust_matches_2 = self.get_coral_match_day_games(self.coral_db_match_list[3], self.coral_db_odds_list[3], matchday_games_id, coral_json)
+            if adjust_matches_2 is not None:
+                context = {
+                    'match_day': True,
+                    'adjust_matches': adjust_matches_2,
+                }
+                return render(request, self.template_name_3, self.get_context_data(**context))
+            else:
+                get_coral_daily_matches = self.save_coral_matches_and_odds(self.coral_db_match_list[3], self.coral_db_odds_list[3], matchday_games_id, self.coralUrl)
+                if self.coral_db_match_list[3].objects.count() >= 1 and self.coral_db_odds_list[3].objects.count() >= 1:
+                    messages.success(request, 'Saving into '+ get_coral_daily_matches + ' was successfully saved into Database')
+                    return redirect('bookies')
 
-                for each_matches in get_matches_1:
-                    save_each_match = CoralGames0(games = each_matches, match_day_id_id = get_match_day_id)
-                    save_each_match.save()
-
-                count = 0
-                for each_odds in range(0, len(get_odds_1)):
-                    get_odds_1[each_odds].append(get_match_id[count])
-                    count += 1
-
-                for each_odds in get_odds_1:
-                    save_each_odds = CoralOdds0(home_odds = each_odds[0], draw_odds = each_odds[1], away_odds = each_odds[2], match_id = each_odds[3], games_id = get_match_day_id)
-                    save_each_odds.save()
-                messages.success(request, 'Saving into '+ get_match_day_dates + ' was successfully saved into Database')
-                return redirect('bookies')
-        else:
-            messages.error(request, 'The Match day ID do not match, please try again for Coral')
-            return redirect('bookies')
-        return HttpResponse(matchday_games_id)
+        messages.error(request, 'The Match day ID do not match, please try again for Coral')
+        return redirect('bookies')
 
 class Coral_Games(TemplateView, SortingMatchesInCoral, Coral_Base):
     coralUrl = 'http://sports.coral.co.uk/football'

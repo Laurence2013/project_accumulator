@@ -57,7 +57,7 @@ class WilliamHillGamesWithOdds0(models.Model):
         return self.match
 
 '''
-These are the Coral Stuff, maybe need to put some where else later
+These are the Coral Stuff, maybe I need to put some where else later
 '''
 
 class CoralDailyMatche(models.Model):
@@ -80,6 +80,63 @@ class CoralGames0(models.Model):
 class CoralOdds0(models.Model):
     games = models.ForeignKey(CoralDailyMatche, on_delete = models.CASCADE)
     match = models.ForeignKey(CoralGames0, on_delete = models.CASCADE, default = None)
+    home_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
+    draw_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
+    away_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
+    date_updated = models.DateTimeField(auto_now_add = True)
+
+    def __str__(self):
+        return self.games
+
+class CoralGames1(models.Model):
+    games = models.CharField(max_length = 300)
+    match_day_id = models.ForeignKey(CoralDailyMatche, on_delete = models.CASCADE)
+    date_updated = models.DateTimeField(auto_now_add = True)
+
+    def __str__(self):
+        return self.games
+
+class CoralOdds1(models.Model):
+    games = models.ForeignKey(CoralDailyMatche, on_delete = models.CASCADE)
+    match = models.ForeignKey(CoralGames1, on_delete = models.CASCADE, default = None)
+    home_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
+    draw_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
+    away_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
+    date_updated = models.DateTimeField(auto_now_add = True)
+
+    def __str__(self):
+        return self.games
+
+class CoralGames2(models.Model):
+    games = models.CharField(max_length = 300)
+    match_day_id = models.ForeignKey(CoralDailyMatche, on_delete = models.CASCADE)
+    date_updated = models.DateTimeField(auto_now_add = True)
+
+    def __str__(self):
+        return self.games
+
+class CoralOdds2(models.Model):
+    games = models.ForeignKey(CoralDailyMatche, on_delete = models.CASCADE)
+    match = models.ForeignKey(CoralGames2, on_delete = models.CASCADE, default = None)
+    home_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
+    draw_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
+    away_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
+    date_updated = models.DateTimeField(auto_now_add = True)
+
+    def __str__(self):
+        return self.games
+
+class CoralGames3(models.Model):
+    games = models.CharField(max_length = 300)
+    match_day_id = models.ForeignKey(CoralDailyMatche, on_delete = models.CASCADE)
+    date_updated = models.DateTimeField(auto_now_add = True)
+
+    def __str__(self):
+        return self.games
+
+class CoralOdds3(models.Model):
+    games = models.ForeignKey(CoralDailyMatche, on_delete = models.CASCADE)
+    match = models.ForeignKey(CoralGames3, on_delete = models.CASCADE, default = None)
     home_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     draw_odds = models.DecimalField(max_digits = 5, decimal_places = 2)
     away_odds = models.DecimalField(max_digits = 5, decimal_places = 2)

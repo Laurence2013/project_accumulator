@@ -1,7 +1,11 @@
 import time
+import json
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from xvfbwrapper import Xvfb
+from accumulator.models import *
+from games_odds.sorting_matches_coral import SortingMatchesInCoral
+from django.core.serializers.json import DjangoJSONEncoder
 
 class Coral_Base:
     # display = Xvfb()
@@ -141,3 +145,75 @@ class Coral_Base:
     def sleep_then_kill_browser(self):
         time.sleep(1)
         self.driver.close()
+
+    def get_coral_match_day_games(self, coral_db_match_list, coral_db_odds_list, matchday_games_id, coral_json):
+        if coral_db_match_list.objects.count() >= 1 and coral_db_odds_list.objects.count() >= 1:
+            get_todays_matches_dict = dict()
+            get_match_day_dates = CoralDailyMatche.objects.values_list('dates_of_games', flat = True).get(dates_id = matchday_games_id)
+            get_odds = coral_db_odds_list.objects.values_list('match', 'home_odds', 'draw_odds', 'away_odds')
+            get_games = coral_db_match_list.objects.values_list('id','games')
+            adjust_matches_1 = get_match_day_dates.replace("'", "")
+            adjust_matches_2 = adjust_matches_1.replace(" ","_")
+
+            for each_odds in range(0, len(get_odds)):
+                if get_odds[each_odds][0] == get_games[each_odds][0]:
+                    get_todays_matches_dict[each_odds] = [get_games[each_odds][1], get_odds[each_odds][1], get_odds[each_odds][2], get_odds[each_odds][3]]
+
+            s = json.dumps(get_todays_matches_dict, ensure_ascii=False, indent=4, cls=DjangoJSONEncoder)
+            with open(self.base_dir + coral_json, "w") as f:
+                f.write(s)
+
+            return adjust_matches_2
+        return None
+
+    def save_coral_matches_and_odds(self, coral_db_match_list, coral_db_odds_list, matchday_games_id, coral_url):
+        sorting_matches = SortingMatchesInCoral()
+        coral_db_match_list.objects.all().delete()
+        coral_db_odds_list.objects.all().delete()
+
+        get_matches_1 = list()
+        get_odds_1 = list()
+        self.initiateWebdriver()
+        get_games = self.__daily_matches_func_name(matchday_games_id, coral_url)
+        self.sleep_then_kill_browser()
+        get_todays_games_2 = sorting_matches.sorting_each_games_data(get_games)
+        get_odds = sorting_matches.seperating_odds(get_todays_games_2)
+        get_matches = sorting_matches.seperating_games(get_todays_games_2)
+        get_match_day_id = CoralDailyMatche.objects.values_list('id', flat = True).get(dates_id = matchday_games_id)
+        get_match_day_dates = CoralDailyMatche.objects.values_list('dates_of_games', flat = True).get(dates_id = matchday_games_id)
+        get_match_id = coral_db_match_list.objects.values_list('id', flat = True)
+
+        for each_match in get_matches:
+            get_matches_1.append(' '.join(each_match))
+
+        for each_odds in range(0, len(get_odds)):
+            home = get_odds[each_odds][0]
+            draw = get_odds[each_odds][1]
+            away = get_odds[each_odds][2]
+            odds = [float(home), float(draw), float(away)]
+            get_odds_1.append(odds)
+
+        for each_matches in get_matches_1:
+            save_each_match = coral_db_match_list(games = each_matches, match_day_id_id = get_match_day_id)
+            save_each_match.save()
+
+        count = 0
+        for each_odds in range(0, len(get_odds_1)):
+            get_odds_1[each_odds].append(get_match_id[count])
+            count += 1
+
+        for each_odds in get_odds_1:
+            save_each_odds = coral_db_odds_list(home_odds = each_odds[0], draw_odds = each_odds[1], away_odds = each_odds[2], match_id = each_odds[3], games_id = get_match_day_id)
+            save_each_odds.save()
+
+        return get_match_day_dates
+
+    def __daily_matches_func_name(self, matchday_games_id, coral_url):
+        if int(matchday_games_id) is 1:
+            return self.get_todays_matches(coral_url)
+        if int(matchday_games_id) is 2:
+            return self.get_tomorrows_matches(coral_url)
+        if int(matchday_games_id) is 3:
+            return self.get_future_matches_a(coral_url)
+        if int(matchday_games_id) is 4:
+            return self.get_future_matches_b(coral_url)
